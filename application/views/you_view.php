@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-<h1>Hello you!</h1>
-</body>
-</html>
+<h1>This is you_view</h1>
+
+Here is the content! 
