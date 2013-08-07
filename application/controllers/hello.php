@@ -1,13 +1,9 @@
 <?php
 
-class Hello extends Controller {
+class Hello extends CI_Controller {
 
-	function Hello()
-	{
-		parent:Controller();
-	}
 	
-	function you()
+	public function you()
 	{
 		$this->load->view('you_view');
 	}
