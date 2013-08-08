@@ -4,7 +4,7 @@ class Hello extends CI_Controller {
 
 	public function index()
 	{
-		 echo "Hi, all";
+		 echo "We are in index";
 		 $this->you();
 	}
 
@@ -12,7 +12,7 @@ class Hello extends CI_Controller {
 	public function you()
 	{
 		// echo "this is you";
-		$this->load->view('view');
+		$this->load->view('helloview');
 	}
 }
 ?>
