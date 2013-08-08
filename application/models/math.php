@@ -2,7 +2,7 @@
 
 Class Math extends CI_Model{
 
-	public function add{
+	public function add(){
 		return (1 + 1);
 	}
 }
