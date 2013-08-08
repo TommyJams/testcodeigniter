@@ -18,7 +18,7 @@ class Hello extends CI_Controller{
 		$this->load->model('math');
 
 		$data['addTotal'] = $this->math->add($data['val1'], $data['val2']);
-		$data['subTotal'] = $this->math->add($data['val1'], $data['val2']);
+		$data['subTotal'] = $this->math->sub($data['val1'], $data['val2']);
 
 		$this->load->view('helloview', $data);
 	}
