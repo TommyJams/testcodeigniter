@@ -15,7 +15,7 @@ class Hello extends CI_Controller{
 
 	public function addstuff(){
 		$this->load->model("math");
-		echo $this->math->add(2+2);
+		echo $this->math->add(2, 2);
 	}
 }
 ?>
