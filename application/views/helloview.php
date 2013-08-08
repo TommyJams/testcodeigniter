@@ -13,11 +13,11 @@
 
 	<h2>Add</h2>
 
-	<p><?php echo val1. "+" .val2. "=" .$addTotal; ?></p>
+	<p><?php echo $val1. "+" .$val2. "=" .$addTotal; ?></p>
 
 	<h2>Sub</h2>
 
-	<p><?php echo val1. "1" .val2. "=" .$subTotal; ?></p>
+	<p><?php echo $val1. "1" .$val2. "=" .$subTotal; ?></p>
 
 
 </div>
