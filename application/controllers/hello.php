@@ -4,7 +4,7 @@ class Hello extends CI_Controller {
 
 	public function index()
 	{
-		 echo "You are in index ";
+		 echo "You are in index". PHP_EOL;
 		 $this->addstuff();
 	}
 
@@ -18,7 +18,7 @@ class Hello extends CI_Controller {
 	public function addstuff()
 	{
 		$this->load->model("math");
-		echo $this->math->add();
+		echo 'Sum is:' $this->math->add();
 	}
 }
 ?>
