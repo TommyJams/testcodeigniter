@@ -12,7 +12,7 @@ class Hello extends CI_Controller{
 	public function you(){
 		// echo "this is you";
 		$data['title'] = "Welcome";
-		$this->load->view('helloview');
+		$this->load->view('helloview', $data);
 	}
 
 	public function addstuff(){
