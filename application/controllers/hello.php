@@ -4,8 +4,8 @@ class Hello extends CI_Controller{
 
 	public function index(){
 		 echo "You are in index";
-		 echo "\n";
-		 $this->addstuff();
+		// $this->addstuff();
+		 $this->you();
 	}
 
 
