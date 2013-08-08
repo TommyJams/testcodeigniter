@@ -5,7 +5,7 @@ class Hello extends CI_Controller {
 	public function index()
 	{
 		 echo "Hi, all";
-		//$this->load->view('you_view');
+		 $this->you();
 	}
 
 
