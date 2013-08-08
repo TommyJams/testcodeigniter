@@ -17,7 +17,7 @@
 
 	<h2>Sub</h2>
 
-	<p><?php echo $val1. "1" .$val2. "=" .$subTotal; ?></p>
+	<p><?php echo $val2. "-" .$val1. "=" .$subTotal; ?></p>
 
 
 </div>

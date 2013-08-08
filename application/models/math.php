@@ -9,6 +9,6 @@ Class Math extends CI_Model{
 
 	public function sub($val1, $val2){
 	//	return (1 + 1);
-		return ($val1 - $val2);
+		return ($val2 - $val1);
 	}
 }
