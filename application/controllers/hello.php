@@ -3,7 +3,7 @@
 class Hello extends CI_Controller{
 
 	public function index(){
-		 echo "You are in index";
+		// echo "You are in index";
 		// $this->addstuff();
 		 $this->you();
 	}
@@ -11,6 +11,7 @@ class Hello extends CI_Controller{
 
 	public function you(){
 		// echo "this is you";
+		$data['title'] = "Welcome";
 		$this->load->view('helloview');
 	}
 
