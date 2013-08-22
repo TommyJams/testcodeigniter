@@ -17,44 +17,44 @@
 		<meta property="fb:app_id" content="566516890030362" />
 		
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/jquery.qtip.css"/>
-		<link rel="stylesheet" type="text/css" href="style/jquery-ui/jquery-ui.css"/>
-		<link rel="stylesheet" type="text/css" href="style/supersized/supersized.css"/>
-		<link rel="stylesheet" type="text/css" href="style/supersized/supersized.shutter.css"/>
-		<link rel="stylesheet" type="text/css" href="style/fancybox/jquery.fancybox.css"/> 
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/jquery-ui/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/supersized/supersized.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/supersized/supersized.shutter.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/fancybox/jquery.fancybox.css"/> 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/base.css"/> 
 		
-		<link rel="stylesheet" type="text/css" media="screen and (max-width:969px)" href="style/responsive/width-0-969.css"/>
-		<link rel="stylesheet" type="text/css" media="screen and (max-width:767px)" href="style/responsive/width-0-767.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:969px)" href="<?php echo base_url();?>style/responsive/width-0-969.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:767px)" href="<?php echo base_url();?>style/responsive/width-0-767.css"/>
 		
-		<link rel="stylesheet" type="text/css" media="screen and (min-width:480px) and (max-width:969px)" href="style/responsive/width-480-969.css"/>
-		<link rel="stylesheet" type="text/css" media="screen and (min-width:768px) and (max-width:969px)" href="style/responsive/width-768-969.css"/>
-		<link rel="stylesheet" type="text/css" media="screen and (min-width:480px) and (max-width:767px)" href="style/responsive/width-480-767.css"/>
-		<link rel="stylesheet" type="text/css" media="screen and (max-width:479px)" href="style/responsive/width-0-479.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:480px) and (max-width:969px)" href="<?php echo base_url();?>style/responsive/width-480-969.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:768px) and (max-width:969px)" href="<?php echo base_url();?>style/responsive/width-768-969.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:480px) and (max-width:767px)" href="<?php echo base_url();?>style/responsive/width-480-767.css"/>
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:479px)" href="<?php echo base_url();?>style/responsive/width-0-479.css"/>
 		
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Voces"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Dosis:400,300,200,500,600,700,800" />
 
-		<script type="text/javascript" src="script/linkify.js"></script>
-		<script type="text/javascript" src="script/jquery.min.js"></script>
-		<script type="text/javascript" src="script/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="script/jquery.easing.js"></script>
-		<script type="text/javascript" src="script/jquery.blockUI.js"></script>
-		<script type="text/javascript" src="script/jquery.qtip.min.js"></script>
-		<script type="text/javascript" src="script/jquery.fancybox.js"></script>
-		<script type="text/javascript" src="script/jquery.supersized.min.js"></script>
-		<script type="text/javascript" src="script/jquery.elastic.source.js"></script>
-		<script type="text/javascript" src="script/jquery.infieldlabel.min.js"></script>
-		<script type="text/javascript" src="script/jquery.carouFredSel.packed.js"></script>
-		<script type="text/javascript" src="script/jquery.scrollTo.min.js"></script>
-		<script type="text/javascript" src="script/jquery.supersized.shutter.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/linkify.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.easing.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.qtip.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.fancybox.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.supersized.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.elastic.source.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.infieldlabel.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.carouFredSel.packed.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.scrollTo.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/jquery.supersized.shutter.min.js"></script>
 
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>    
 
-		<script type="text/javascript" src="script/script.js"></script>
-		<script type="text/javascript" src="script/main.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/script.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/main.js"></script>
 		
-        <script type="text/javascript" src="plugin/contact-form/contact-form.js"></script>
-		<script type="text/javascript" src="plugin/newsletter-form/newsletter-form.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>plugin/contact-form/contact-form.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>plugin/newsletter-form/newsletter-form.js"></script>
         <script type="text/javascript">
           var _gaq = _gaq || [];
 		  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js'; 
