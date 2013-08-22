@@ -12,7 +12,9 @@
 		public function newsletterform(){
 		
 //	require_once('config.php');
-	require_once('../../include/functions.php');
+//	require_once('../../include/functions.php');
+
+	require_once('/application/controllers/functions.php');
 	
 	/**************************************************************************/
 	

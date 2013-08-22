@@ -1,1 +1,0 @@
-[27-Feb-2013 02:55:39] PHP Fatal error:  Using $this when not in object context in /home5/tommyjam/public_html/plugin/contact-form/template/default.php on line 9
