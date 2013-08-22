@@ -11,7 +11,7 @@ class Azurepage extends CI_Controller{
 
 	public function azurelanding(){
 		// echo "this is you";
-		$this->load->view('you_view');
+		$this->load->view('azure_view');
 	}
 
 }
