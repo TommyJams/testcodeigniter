@@ -39,7 +39,7 @@
 */
 
 // $route['default_controller'] = "welcome";
-$route['default_controller'] = "hello";
+$route['default_controller'] = "azurepage";
 $route['404_override'] = '';
 
 
