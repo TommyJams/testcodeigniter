@@ -53,8 +53,8 @@
 		<script type="text/javascript" src="<?php echo base_url();?>script/script.js"></script>
 		<script type="text/javascript" src="<?php echo base_url();?>script/main.js"></script>
 		
-        <script type="text/javascript" src="<?php echo base_url();?>plugin/contact-form/contact-form.js"></script>
-		<script type="text/javascript" src="<?php echo base_url();?>plugin/newsletter-form/newsletter-form.js"></script>
+        <script type="text/javascript" src="plugin/contact-form/contact-form.js"></script>
+		<script type="text/javascript" src="plugin/newsletter-form/newsletter-form.js"></script>
         <script type="text/javascript">
           var _gaq = _gaq || [];
 		  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js'; 
