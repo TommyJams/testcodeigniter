@@ -16,12 +16,12 @@
 		<meta property="og:description" content="Revolutionizing Live Entertainment" />
 		<meta property="fb:app_id" content="566516890030362" />
 		
-		<link rel="stylesheet" type="text/css" href="style/jquery.qtip.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/jquery.qtip.css"/>
 		<link rel="stylesheet" type="text/css" href="style/jquery-ui/jquery-ui.css"/>
 		<link rel="stylesheet" type="text/css" href="style/supersized/supersized.css"/>
 		<link rel="stylesheet" type="text/css" href="style/supersized/supersized.shutter.css"/>
 		<link rel="stylesheet" type="text/css" href="style/fancybox/jquery.fancybox.css"/> 
-		<link rel="stylesheet" type="text/css" href="style/base.css"/> 
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/base.css"/> 
 		
 		<link rel="stylesheet" type="text/css" media="screen and (max-width:969px)" href="style/responsive/width-0-969.css"/>
 		<link rel="stylesheet" type="text/css" media="screen and (max-width:767px)" href="style/responsive/width-0-767.css"/>
