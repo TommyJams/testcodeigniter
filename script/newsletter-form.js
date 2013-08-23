@@ -4,7 +4,7 @@
 	
 	function submitNewsletterForm()
 	{
-		console.log("hello");
+		console.info("hello");
         blockForm('newsletter-form','block');
 	    $.post('/application/controllers/newsletter-form.php',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
 	}
