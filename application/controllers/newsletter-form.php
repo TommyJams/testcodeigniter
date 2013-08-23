@@ -6,6 +6,7 @@
 	class Newsletter-form extends CI_Controller{
 	
 		public function index(){
+			console.info("hello all...i am in.");
 		 	$this->newsletterform();
 	}
 
