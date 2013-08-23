@@ -20,18 +20,17 @@
 	
 	$response=array('error'=>0,'info'=>null);
 
-	$values=array
+/*	$values=array
 	(
 		'newsletter-form-mail'		=> $_POST['newsletter-form-mail']
 	);
 	
-//	if(isGPC()) $values=array_map('stripslashes',$values);
+	if(isGPC()) $values=array_map('stripslashes',$values); */
 	
 	/**************************************************************************/
 	
 	if(this->validateEmail($values['newsletter-form-mail'])==false)
 	{
- 		echo "hello";
  		$response['error']=1;
  		$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
 	//	$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
@@ -40,16 +39,16 @@
 	
 	/**************************************************************************/
 	
-/**	
+/*
 	if(($handle=fopen(NEWSLETTER_FORM_DATA_FILE_PATH,'a+'))===false)
 	{
  		$response['error']=1;	
 		$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_FILE_ERROR);
 		this->createResponse($response);		
-	}
+	} 
 	
 	/**************************************************************************/
-	
+/*	
 	if(($emails=@split("\n",fread($handle,filesize(NEWSLETTER_FORM_DATA_FILE_PATH))))===false)
 	{
  		$response['error']=1;	
@@ -58,7 +57,7 @@
 	}
 	
 	/**************************************************************************/
-	
+/*	
 	$values['newsletter-form-mail']=strtolower($values['newsletter-form-mail']);
 	if(in_array($values['newsletter-form-mail'],$emails))
 	{
@@ -68,7 +67,7 @@
 	}
 	
 	/**************************************************************************/
-	
+/*	
 	if(fwrite($handle,$values['newsletter-form-mail']."\n")===false)
 	{
   		$response['error']=1;		
@@ -78,7 +77,7 @@
     else
     {
         /************* This code is for MailChimp Integration ****************/
-        require_once('/application/libraries/MCAPI.class.php');
+/*        require_once('/application/libraries/MCAPI.class.php');
 
         // API Key: http://admin.mailchimp.com/account/api/
         $api = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
@@ -120,14 +119,14 @@
 
 	/**************************************************************************/ 
 	
-	$response['error']=0;	
+/*	$response['error']=0;	
 	$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_SEND_MSG_OK);
 	this->createResponse($response);	
 	
 	/**************************************************************************/	
 	/**************************************************************************/
-	}
-**/
+//	}
+
 }	
 
  	function createResponse($response)
