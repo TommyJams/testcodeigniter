@@ -11,7 +11,6 @@
 
 		public function newsletterform(){
 
-			print_r("hello");
 			$values=array
 			(
 				'newsletter-form-mail'		=> $_POST['newsletter-form-mail']
@@ -28,8 +27,7 @@
 	}	
 
  	function createResponse($response){
- 		$response = $this->input->post('response');
-  //    echo json_encode($response);
+ 		echo json_encode($response);
         exit;
     }
 

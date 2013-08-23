@@ -5,13 +5,7 @@
 	function submitNewsletterForm()
 	{
 		blockForm('newsletter-form','block');
-        $.ajax({
-            type: "POST",
-            url: "newsletter-form/newsletterform",
-            data: "$('#newsletter-form').serialize()",
-            success: submitNewsletterFormResponse
-        });
-	//	$.post('/application/controllers/newsletter-form.php',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
+	    $.post('/application/controllers/newsletter-form/newsletterform',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
 	}
 	
 	/*****************************************************************/
