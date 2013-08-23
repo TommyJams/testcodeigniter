@@ -5,7 +5,7 @@
 	function submitNewsletterForm()
 	{
 		blockForm('newsletter-form','block');
-	    $.post('newsletter-form/newsletterform',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
+	    $.post('/application/controllers/newsletter-form.php',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
 	}
 	
 	/*****************************************************************/
