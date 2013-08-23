@@ -32,8 +32,9 @@
 	if(this->validateEmail($values['newsletter-form-mail'])==false)
 	{
  		echo "hello";
- 		$response['error']=1;	
-		$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
+ 		$response['error']=1;
+ 		$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
+	//	$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
 		this->createResponse($response);
 	}
 	
