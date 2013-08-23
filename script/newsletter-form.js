@@ -6,7 +6,7 @@
 	{
 		console.info("hello all...");
         blockForm('newsletter-form','block');
-	    $.post('<?= site_url('Newsletter-form/newsletterform'); ?>)',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
+	    $.post('<?= site_url('Newsletter-form/newsletterform'); ?>'),$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
 	}
 	
 	/*****************************************************************/
