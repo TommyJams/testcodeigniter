@@ -14,7 +14,7 @@
 //	require_once('config.php');
 //	require_once('../../include/functions.php');
 
-	require_once('/application/controllers/functions.php');
+//	require_once('/application/controllers/functions.php');
 	
 	/**************************************************************************/
 	
@@ -25,15 +25,15 @@
 		'newsletter-form-mail'		=> $_POST['newsletter-form-mail']
 	);
 	
-	if(isGPC()) $values=array_map('stripslashes',$values);
+//	if(isGPC()) $values=array_map('stripslashes',$values);
 	
 	/**************************************************************************/
 	
-	if(!validateEmail($values['newsletter-form-mail']))
+	if(this->validateEmail($values['newsletter-form-mail'])==false)
 	{
  		$response['error']=1;	
 		$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
-		createResponse($response);
+		this->createResponse($response);
 	}
 	
 	/**************************************************************************/
@@ -42,7 +42,7 @@
 	{
  		$response['error']=1;	
 		$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_FILE_ERROR);
-		createResponse($response);		
+		this->createResponse($response);		
 	}
 	
 	/**************************************************************************/
@@ -51,7 +51,7 @@
 	{
  		$response['error']=1;	
 		$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_FILE_ERROR);
-		createResponse($response);		
+		this->createResponse($response);		
 	}
 	
 	/**************************************************************************/
@@ -61,7 +61,7 @@
 	{
   		$response['error']=1;		
 		$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_MAIL_EXIST);
-		createResponse($response);	
+		this->createResponse($response);	
 	}
 	
 	/**************************************************************************/
@@ -70,7 +70,7 @@
 	{
   		$response['error']=1;		
 		$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_FILE_ERROR);
-		createResponse($response);		
+		this->createResponse($response);		
 	}
     else
     {
@@ -104,7 +104,7 @@
             //'Error: ' . $api->errorMessage;
             $response['error']=1;
             $response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_API_FAILURE);
-            createResponse($response);
+            this->createResponse($response);
         }
 		else
 		{
@@ -119,10 +119,23 @@
 	
 	$response['error']=0;	
 	$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_SEND_MSG_OK);
-	createResponse($response);		
+	this->createResponse($response);		
 	
 	/**************************************************************************/	
 	/**************************************************************************/
 	}
 }	
+
+ 	function createResponse($response)
+    {
+        echo json_encode($response);
+        exit;
+    }
+
+    function validateEmail($email)
+    {
+        if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i',$email,$result)) return(false);
+        else return(true);
+    }
+
 ?>
