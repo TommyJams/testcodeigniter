@@ -27,7 +27,8 @@
 	}	
 
  	function createResponse($response){
-        echo json_encode($response);
+ 		$response = $this->input->post('response');
+  //    echo json_encode($response);
         exit;
     }
 
