@@ -9,7 +9,7 @@
             type: "POST",
             url: "newsletter-form/newsletterform",
             data: "$('#newsletter-form').serialize()",
-            success: submitNewsletterFormResponse(response)
+            success: submitNewsletterFormResponse
         });
 	//	$.post('/application/controllers/newsletter-form.php',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
 	}
