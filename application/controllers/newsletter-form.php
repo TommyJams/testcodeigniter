@@ -40,6 +40,7 @@
 	
 	/**************************************************************************/
 	
+/**	
 	if(($handle=fopen(NEWSLETTER_FORM_DATA_FILE_PATH,'a+'))===false)
 	{
  		$response['error']=1;	
@@ -117,15 +118,16 @@
 		}
 	}
 
-	/**************************************************************************/
+	/**************************************************************************/ 
 	
 	$response['error']=0;	
 	$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_SEND_MSG_OK);
-	this->createResponse($response);		
+	this->createResponse($response);	
 	
 	/**************************************************************************/	
 	/**************************************************************************/
 	}
+**/
 }	
 
  	function createResponse($response)
