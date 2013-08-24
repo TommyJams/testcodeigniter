@@ -13,7 +13,7 @@
 
 		public function newsletterform(){
 
-			$values=array
+			/*$values=array
 			(
 				'newsletter-form-mail'		=> $_POST['newsletter-form-mail']
 			);
@@ -21,12 +21,15 @@
 			$response=array('error'=>0,'info'=>null);
 			if(this->validateEmail($values['newsletter-form-mail'])==false)
 			{
-				console.info("hello all...i am Validating");
  				$response['error']=1;
  				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
 			//	$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
 				this->createResponse($response);
-			}
+			}*/
+
+				$response['error']=1;
+ 				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
+				this->createResponse($response);
 		}	
 
 	 	function createResponse($response){

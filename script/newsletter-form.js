@@ -4,7 +4,7 @@
 	
 	function submitNewsletterForm()
 	{
-		console.info("hello all...");
+		console.info("submitting");
         blockForm('newsletter-form','block');
 	    $.post('/../application/controllers/newsletter.php/Newsletter/newsletterform',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
     }
@@ -13,6 +13,7 @@
 	
 	function submitNewsletterFormResponse(response)
 	{
+        console.info("submitted...");
         blockForm('newsletter-form','unblock');
         $('#newsletter-form-mail,#newsletter-form-send').qtip('destroy');
 
