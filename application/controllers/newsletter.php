@@ -4,7 +4,13 @@
 	/**************************************************************************/
 
 	class Newsletter extends CI_Controller{
-	
+
+		public function Newsletter() {
+
+			parent::Controller(); 
+		
+		}
+
 		public function newsletterform(){
 
 			$values=array
@@ -21,16 +27,18 @@
 			//	$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
 				this->createResponse($response);
 			}
-	}	
+		}	
 
- 	function createResponse($response){
- 		echo json_encode($response);
-        exit;
-    }
+	 	function createResponse($response){
+	 		echo json_encode($response);
+	        exit;
+	    }
 
-    function validateEmail($email){
-        if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i',$email,$result)) return(false);
-        else return(true);
-    }
+	    function validateEmail($email){
+	        if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i',$email,$result)) return(false);
+	        else return(true);
+	    }
+
+	}
 
 ?>
