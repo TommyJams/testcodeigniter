@@ -6,8 +6,16 @@
 	{
 		console.info("hello all...");
         blockForm('newsletter-form','block');
-	    $.post('<?= base_url('newsletter-form/newsletterform'); ?>'),$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
-	}
+	 //   $.post('<?= base_url('newsletter-form/newsletterform'); ?>'),$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
+	    $.ajax({
+        type: "POST",
+        url: <?= site_url('Newsletter-form/newsletterform'); ?>
+        data: {$('#newsletter-form').serialize()},  // fix: need to append your data to the call
+        success: function (data) {
+        }
+    });
+
+    }
 	
 	/*****************************************************************/
 	
