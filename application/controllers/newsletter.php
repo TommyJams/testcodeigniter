@@ -11,7 +11,7 @@
 		
 		}
 
-		public function newsletterform(){
+		public function validateData(){
 
 			/*$values=array
 			(
