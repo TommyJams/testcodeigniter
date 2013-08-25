@@ -23,7 +23,7 @@
 
 		public function validateData(){
 
-			/*$values=array
+			$values=array
 			(
 				'newsletter-form-mail'		=> $_POST['newsletter-form-mail']
 			);
@@ -35,11 +35,8 @@
  				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
 			//	$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
 				this->createResponse($response);
-			}*/
+			}
 
-				$response['error']=1;
- 				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
-				this->createResponse($response);
 		}	
 
 	}
