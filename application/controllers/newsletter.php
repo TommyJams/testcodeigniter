@@ -12,7 +12,7 @@
 		}
 
 		function createResponse($response){
-	 		echo json_encode($response);
+	 		echo json_encod($response);
 	        exit;
 	    }
 
@@ -34,7 +34,7 @@
  				$response['error']=1;
  				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter valid email address');	
 				//$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
-				//createResponse($response);
+				createResponse($response);
 			}
 
 		}	
