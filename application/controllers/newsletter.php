@@ -21,7 +21,7 @@
 	        else return(true);
 	    }*/
 
-		public function validateData(){
+		public function validateData() {
 
 			$values=array
 			(
