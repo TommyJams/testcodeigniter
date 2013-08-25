@@ -29,7 +29,7 @@
 			);
 			
 			$response=array('error'=>0,'info'=>null);
-			if(this->validateEmail1($values['newsletter-form-mail'])==false)
+			if(this->validateEmail($values['newsletter-form-mail'])==false)
 			{
  				$response['error']=1;
  				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
