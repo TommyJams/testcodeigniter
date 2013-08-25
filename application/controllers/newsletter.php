@@ -5,12 +5,6 @@
 
 	class Newsletter extends CI_Controller{
 
-		public function Newsletter() {
-
-			parent::Controller(); 
-		
-		}
-
 		/*function createResponse($response){
 	 		echo json_encode($response);
 	        exit;
