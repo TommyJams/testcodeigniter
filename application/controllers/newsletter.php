@@ -12,7 +12,7 @@
 		}
 
 		function createResponse($response){
-	 		echo json_encod($response);
+	 		echo json_encode($response);
 	        exit;
 	    }
 
@@ -29,12 +29,12 @@
 			);
 			
 			$response=array('error'=>0,'info'=>null);
-			if(validateEmail($values['newsletter-form-mail'])==false)
+			if($this->validateEmail($values['newsletter-form-mail'])==false)
 			{
  				$response['error']=1;
  				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter valid email address');	
 				//$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
-				createResponse($response);
+				$this->createResponse($response);
 			}
 
 		}	
