@@ -29,11 +29,11 @@
 			);
 			
 			$response=array('error'=>0,'info'=>null);
-			//if(this->validateEmail($values['newsletter-form-mail'])==false)
+			if(validateEmail($values['newsletter-form-mail'])==false)
 			{
  				$response['error']=1;
- 				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter vaid email address');	
-			//	$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
+ 				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter valid email address');	
+				//$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
 				createResponse($response);
 			}
 
