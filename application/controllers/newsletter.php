@@ -11,12 +11,12 @@
 		
 		}
 
-		function createResponse($response){
+		/*function createResponse($response){
 	 		echo json_encode($response);
 	        exit;
 	    }
 
-	    /*function validateEmail($email){
+	    function validateEmail($email){
 	        if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i',$email,$result)) return(false);
 	        else return(true);
 	    }*/
