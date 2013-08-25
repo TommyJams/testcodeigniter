@@ -6,7 +6,7 @@
 	{
 		console.info("submitting");
         blockForm('newsletter-form','block');
-	    $.post('/newsletter.php/newsletter/validateData',{},submitNewsletterFormResponse,'json');
+	    $.post('/../application/controllers/newsletter.php/newsletter/validateData',$('#newsletter-form').serialize(),submitNewsletterFormResponse,'json');
     }
 	
 	/*****************************************************************/
