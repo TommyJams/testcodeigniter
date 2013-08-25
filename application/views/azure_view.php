@@ -92,13 +92,13 @@
 
 		<div id="leftSidebarBox">
 			<ul>
-				<li><a href="beta/aboutus.php" 	target="_blank" title="About Us" 		alt="About Us"><img src="beta/images/icons/sidebar/about_1.png"/></a></li>
-				<li><a href="beta/terms.php" 	target="_blank" title="Terms of Use" 	alt="Terms of Use"><img src="beta/images/icons/sidebar/terms_1.png"/></a></li>
+				<li><a href="beta/aboutus.php" 	target="_blank" title="About Us" 		alt="About Us"><img src="<?php echo base_url();?>image/icons/sidebar/about_1.png"/></a></li>
+				<li><a href="beta/terms.php" 	target="_blank" title="Terms of Use" 	alt="Terms of Use"><img src="<?php echo base_url();?>image/icons/sidebar/terms_1.png"/></a></li>
 				<!--<li><a href="faq.php" title="FAQ" alt="FAQ"><img src="beta/images/icons/sidebar/faq_1.png" style="width:100%; height:100%;"/></a></li>-->
-				<li><a href="beta/careers.php" 	target="_blank" title="Careers" 		alt="Careers"><img src="beta/images/icons/sidebar/careers_1.png"/></a></li>
-				<li><a href="beta/press.php" 	target="_blank" title="Press" 			alt="Press"><img src="beta/images/icons/sidebar/press_1.png"/></a></li>
-				<li><a href="beta/advertise.php" target="_blank" title="Advertise" 		alt="Advertise"><img src="beta/images/icons/sidebar/advertise_1.png"/></a></li>
-				<li><a href="beta/help.php" 	target="_blank" title="Help" 			alt="Help"><img src="beta/images/icons/sidebar/help_1.png"/></a></li>
+				<li><a href="beta/careers.php" 	target="_blank" title="Careers" 		alt="Careers"><img src="<?php echo base_url();?>image/icons/sidebar/careers_1.png"/></a></li>
+				<li><a href="beta/press.php" 	target="_blank" title="Press" 			alt="Press"><img src="<?php echo base_url();?>image/icons/sidebar/press_1.png"/></a></li>
+				<li><a href="beta/advertise.php" target="_blank" title="Advertise" 		alt="Advertise"><img src="<?php echo base_url();?>image/icons/sidebar/advertise_1.png"/></a></li>
+				<li><a href="beta/help.php" 	target="_blank" title="Help" 			alt="Help"><img src="<?php echo base_url();?>image/icons/sidebar/help_1.png"/></a></li>
 			</ul>
 		</div>
 
@@ -521,7 +521,7 @@
 							
 								<a href="//www.mixcloud.com/widget/iframe/?feed=http%3A%2F%2Fwww.mixcloud.com%2Ftommyjams%2Fkrishna-marate-18th-august-2013%2F&embed_uuid=7c32c46a-f95d-4f9c-b0ad-ec6cc91d298e&stylecolor=&embed_type=widget_standard" class="preloader obom-overlay-video fancybox-audio-mixcloud">
 									
-									<img src="beta/images/radioone/artists/krishnamarathe.jpg" align="left" class="obom-image">
+									<img src="<?php echo base_url();?>image/radioone/artists/krishnamarathe.jpg" align="left" class="obom-image">
 
 									<span align="left" class="obom-image-overlay">
 
@@ -535,7 +535,7 @@
 
 								<div class="obomSummaryContainer">
 								
-									<img src="image/icon/radioonelogo.png" align="left">
+									<img src="<?php echo base_url();?>image/icon/radioonelogo.png" align="left">
 
 									Welcome to "One Bengaluru One Music", powered by TommyJams! Tune in to Radio One 94.3 FM every Sunday from 9 PM - 10 PM to hear artists from across the world jamming live in the studio!
 									
