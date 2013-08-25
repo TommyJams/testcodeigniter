@@ -9,7 +9,7 @@
 /* Load OAuth lib. You can find it at http://oauth.net */
 //require_once('OAuth.php');
 
-$this->load->helper('oauth');
+$this->load->helper('OAuth');
 
 /**
  * Twitter OAuth class
