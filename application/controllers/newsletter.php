@@ -16,12 +16,12 @@
 	        exit;
 	    }
 
-	    function validateEmail1($email){
+	    function validateEmail($email){
 	        if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i',$email,$result)) return(false);
 	        else return(true);
 	    }
 
-		public function validateData1(){
+		public function validateData(){
 
 			$values=array
 			(
@@ -34,7 +34,7 @@
  				$response['error']=1;
  				$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>'Please enter valid email address');	
 				//$response['info'][]=array('fieldId'=>'newsletter-form-mail','message'=>NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL);
-				$this->createResponse($response);
+				createResponse($response);
 			}
 
 		}	
