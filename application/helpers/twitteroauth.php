@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
  * Abraham Williams (abraham@abrah.am) http://abrah.am
@@ -7,7 +7,8 @@
  */
 
 /* Load OAuth lib. You can find it at http://oauth.net */
-require_once('OAuth.php');
+//require_once('OAuth.php');
+$this->load->helper('OAuth');
 
 /**
  * Twitter OAuth class
