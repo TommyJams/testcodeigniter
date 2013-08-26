@@ -105,7 +105,7 @@
 					$subject = "$email joined mailing list as a fan";
 					$message = "$email joined mailing list as a fan"; 
 					
-					$this->load->plugin('mail');
+					$this->load->helper('mail');
            			send_email($to, $sender, $subject, $message);
 				}  
 			} 
