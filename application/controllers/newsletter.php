@@ -64,7 +64,7 @@
     		{
         		/************* This code is for MailChimp Integration ****************/
         		//require_once('MCAPI.class.php');
-        		$this->load->library('MCAPI');
+        	/*	$this->load->library('MCAPI');
 
         		// API Key: http://admin.mailchimp.com/account/api/
         		$api = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
@@ -101,7 +101,7 @@
 					$subject = "$email joined mailing list as a fan";
 					$message = "$email joined mailing list as a fan";
 					$this->load->helper('mail');
-				} 
+				} */ 
 			} 
 
 			/**************************************************************************/
