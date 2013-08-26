@@ -65,7 +65,7 @@
         		/************* This code is for MailChimp Integration ****************/
         		$config = array(
 	    				'apikey' => '4b1d3dfd9a40c3a47861fa481d644505-us5' );
-        		
+
 				$this->load->library('MCAPI', $config, 'mail_chimp');
 
         		// API Key: http://admin.mailchimp.com/account/api/
@@ -98,19 +98,16 @@
             		createResponse($response);
         		}
 				
-			/*	else
+				else
 				{
-					$data = array(
-              		'to'  => 'alerts@tommyjams.com',
-              		'subject' => '$email joined mailing list as a fan',
-              		'message'   => '$email joined mailing list as a fan'
-            		);
-					
 					$to = "alerts@tommyjams.com";
+					$sender = "alerts@tommyjams.com";
 					$subject = "$email joined mailing list as a fan";
 					$message = "$email joined mailing list as a fan"; 
-					$this->load->helper('mail');
-				}  */
+					
+					$this->load->plugin('mail');
+           			send_email($to, $sender, $subject, $message);
+				}  
 			} 
 
 			/**************************************************************************/
