@@ -26,7 +26,7 @@
 	
 			/**************************************************************************/
 	
-			if(($handle=fopen(NEWSLETTER_FORM_DATA_FILE_PATH,'a+'))===false)
+			if(($handle=fopen(NEWSLETTER_FORM_DATA_FILE_PATH,'r+b'))===false)
 			{
  				$response['error']=1;	
 				$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_FILE_ERROR);
