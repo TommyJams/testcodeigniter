@@ -135,7 +135,7 @@ $(document).ready(function()
 	/**************************************************************************/
 	
 	//$.getJSON('http://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='+options.twitter.name+'&count='+options.twitter.count+'&callback=?', function(data) 
-	$.getJSON('tweet_test', function(data) 
+	$.getJSON('tweet_test/auth', function(data) 
     {
 		if(data.length)
 		{
