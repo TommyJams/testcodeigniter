@@ -63,11 +63,14 @@
     		else
     		{
         		/************* This code is for MailChimp Integration ****************/
-        		//require_once('MCAPI.class.php');
-        		$this->load->library('MCAPI');
+        		$config = array(
+	    				'apikey' => '4b1d3dfd9a40c3a47861fa481d644505-us5'  // Insert your api key
+            			'secure' => FALSE   // Optional (defaults to FALSE)
+					);
+				$this->load->library('MCAPI', $config, 'mail_chimp');
 
         		// API Key: http://admin.mailchimp.com/account/api/
-        		$api = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
+        		// $api = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
 
         		// List's Id: http://admin.mailchimp.com/lists/
         		$list_id = "a29827c7a6";
@@ -88,7 +91,7 @@
 										)
 									);
 
-        		if($api->listSubscribe($list_id, $email, $merge_vars, $email_type, $double_optin, $update_existing, $replace_interests, $send_welcome) === false) 
+        		if($this->mail_chimp->listSubscribe($list_id, $email, $merge_vars, $email_type, $double_optin, $update_existing, $replace_interests, $send_welcome) === false) 
         		{
             		//'Error: ' . $api->errorMessage;
             		$response['error']=1;
