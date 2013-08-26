@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class CI_MCAPI {
+class MCAPI {
     var $version = "1.3";
     var $errorMessage;
     var $errorCode;
