@@ -4,7 +4,7 @@
 //ini_set('smtp_port', '587');
 //ini_set('extension','php_openssl.dll');
 
-function send_email($recipient, $sender, $subject, $message){
+function send_email($to, $sender, $subject, $mess){
 
 	$message = "
 	<html>
