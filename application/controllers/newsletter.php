@@ -95,13 +95,20 @@
             		$response['info'][]=array('fieldId'=>'newsletter-form-send','message'=>NEWSLETTER_FORM_MSG_API_FAILURE);
             		createResponse($response);
         		}
-				else
+				
+			/*	else
 				{
+					$data = array(
+              		'to'  => 'alerts@tommyjams.com',
+              		'subject' => '$email joined mailing list as a fan',
+              		'message'   => '$email joined mailing list as a fan'
+            		);
+					
 					$to = "alerts@tommyjams.com";
 					$subject = "$email joined mailing list as a fan";
-					$message = "$email joined mailing list as a fan";
+					$message = "$email joined mailing list as a fan"; 
 					$this->load->helper('mail');
-				} 
+				}  */
 			} 
 
 			/**************************************************************************/
