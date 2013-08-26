@@ -42,7 +42,7 @@ Newsletter-Form constants
 
 */
 
-define('NEWSLETTER_FORM_DATA_FILE_PATH','../newsletter/newsletter.csv');
+define('NEWSLETTER_FORM_DATA_FILE_PATH','newsletter/newsletter.csv');
 	
 define('NEWSLETTER_FORM_MSG_INVALID_DATA_MAIL','Please enter a valid e-mail address.');
 define('NEWSLETTER_FORM_MSG_FILE_ERROR','Sorry. We can\'t add your e-mail address.');
