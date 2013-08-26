@@ -3,7 +3,7 @@
 	/**************************************************************************/
 	/**************************************************************************/
 
-	class Newsletter extends CI_Controller{
+	class Newsletter_2 extends CI_Controller{
 
 		function createResponse($response){
 	 		echo json_encode($response);
