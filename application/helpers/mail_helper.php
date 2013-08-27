@@ -32,6 +32,7 @@ function send_email($to, $sender, $subject, $mess){
 	//	$headers = "MIME-Version: 1.0" . "\r\n";
 	//	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 
+		$CI =& get_instance();
     	$CI->load->library('phpmailer/class.phpmailer');
     //	require_once("phpmailer/class.phpmailer.php");
     	$mail = new PHPMailer();  // create a new object
