@@ -31,13 +31,13 @@ function send_email($to, $sender, $subject, $body){
 		$mail->Subject = $subject;
 		$mail->Body = $message;
 		$mail->AddAddress($to);
-	/*	if(!$mail->Send()) {
+		if(!$mail->Send()) {
 			$error = 'Mail error: '.$mail->ErrorInfo; 
 			return false;
 		} else {
 			$error = 'Message sent!';
 			return true;
 		}
-    	console.log('$error'); */
+    	console.log('$error'); 
 	}
 ?>

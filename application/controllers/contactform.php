@@ -82,12 +82,12 @@
 			$mail->Subject=CONTACT_FORM_SUBJECT;
 			$mail->MsgHTML($body); */
 
-			if(!$mail->Send())
+		/*	if(!$mail->Send())
 			{
  				$response['error']=1;	
 				$response['info'][]=array('fieldId'=>'contact-form-send','message'=>CONTACT_FORM_SEND_MSG_ERROR);
 				createResponse($response);		
-			}
+			} */
 
 			$response['error']=0;
 			$response['info'][]=array('fieldId'=>'contact-form-send','message'=>CONTACT_FORM_SEND_MSG_OK);
