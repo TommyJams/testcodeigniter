@@ -5,15 +5,25 @@ class Twitterproxy extends CI_Controller{
 	public function twitterhandle(){
 
 		session_start();
-		$this->load->library('twitteroauth/TwitterOAuth');
+
+		$config = array( 
+					'twitteruser' => 'tommyjams',
+                  	'notweets'  => 10,
+                  	'consumerkey' => 'Fh22VgGqVUgoFfhn4uADdw',
+                  	'consumersecret' => 'slSgXgHTTgi6z2cFl8dfWIwILM3njiWfQHaF8cE0xA"',
+                  	'accesstoken' => '630529499-sWjOJ9pXm9qufutOCUdw8iq0exSFj2RSoClsauSq',
+                  	'accesstokensecret' => 'iLsAk65xqzn8nXWmVul9gp33SvVz5AxN2UK1Lb7ew',
+                  );
+
+		$this->load->library('twitteroauth/TwitterOAuth', $config);
 		// require_once("twitteroauth/twitteroauth.php"); //Path to twitteroauth library
- 
+ 		/*
 		$twitteruser = "tommyjams";
 		$notweets = 10;
 		$consumerkey = "Fh22VgGqVUgoFfhn4uADdw";
 		$consumersecret = "slSgXgHTTgi6z2cFl8dfWIwILM3njiWfQHaF8cE0xA";
 		$accesstoken = "630529499-sWjOJ9pXm9qufutOCUdw8iq0exSFj2RSoClsauSq";
-		$accesstokensecret = "iLsAk65xqzn8nXWmVul9gp33SvVz5AxN2UK1Lb7ew";
+		$accesstokensecret = "iLsAk65xqzn8nXWmVul9gp33SvVz5AxN2UK1Lb7ew"; */
  
 		function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret) {
   			$connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_token_secret);
