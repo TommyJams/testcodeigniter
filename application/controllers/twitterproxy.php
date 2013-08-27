@@ -34,7 +34,7 @@ class Twitterproxy extends CI_Controller{
  
 		$tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$twitteruser."&count=".$notweets);
  
- 		$output = json_encode($anobject);
+ 		$output = json_encode($tweets);
     	$this->output->set_content_type('application/json');
     	$this->output->set_output($output);
 		// echo json_encode($tweets);
