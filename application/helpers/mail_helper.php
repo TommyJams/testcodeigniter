@@ -33,7 +33,7 @@ function send_email($to, $sender, $subject, $mess){
 	//	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 
 		$CI =& get_instance();
-    	$CI->load->library('phpmailer/class.phpmailer');
+    	$CI->load->library('phpmailer/PHPMailer');
     //	require_once("phpmailer/class.phpmailer.php");
     	$mail = new PHPMailer();  // create a new object
 		$mail->IsSMTP(); // enable SMTP
