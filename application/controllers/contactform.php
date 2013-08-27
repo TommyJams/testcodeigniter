@@ -52,7 +52,7 @@
 			$sender = "alerts@tommyjams.com";
 			$subject = "TommyJams Landing Page: Contact form";
 			
-			$this->load->helper('contact-mail');
+			$this->load->helper('contactmail');
 			send_email($to, $sender, $subject, $body);
 			
 
