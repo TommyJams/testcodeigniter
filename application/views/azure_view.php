@@ -53,7 +53,7 @@
 		<script type="text/javascript" src="<?php echo base_url();?>script/script.js"></script>
 		<script type="text/javascript" src="<?php echo base_url();?>script/main.js"></script>
 		
-        <script type="text/javascript" src="plugin/contact-form/contact-form.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>script/contact-form.js"></script>
 	<!---	<script type="text/javascript" src="plugin/newsletter-form/newsletter-form.js"></script> -->
 		<script type="text/javascript" src="<?php echo base_url();?>script/newsletter-form.js"></script>
         <script type="text/javascript">
