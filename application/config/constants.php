@@ -50,6 +50,31 @@ define('NEWSLETTER_FORM_MSG_MAIL_EXIST','Sorry. Your e-mail address exists.');
 define('NEWSLETTER_FORM_MSG_API_FAILURE','Sorry. Try again later.');
 define('NEWSLETTER_FORM_SEND_MSG_OK','Thank you. Your e-mail has been added to our database. You shall hear from us very soon, meanwhile you can check out our blog.');
 
+/*
+
+Contact-Form constants
+
+*/
+
+define('CONTACT_FORM_TO_NAME','contact@tommyjams.com');
+define('CONTACT_FORM_TO_EMAIL','contact@tommyjams.com');
+	
+define('CONTACT_FORM_SMTP_HOST','');
+define('CONTACT_FORM_SMTP_USER','');
+define('CONTACT_FORM_SMTP_PORT','');
+define('CONTACT_FORM_SMTP_SECURE','');
+define('CONTACT_FORM_SMTP_PASSWORD','');
+	
+define('CONTACT_FORM_SUBJECT','TommyJams Landing Page: Contact form');
+
+define('CONTACT_FORM_MSG_INVALID_DATA_NAME','Please enter your name.');
+define('CONTACT_FORM_MSG_INVALID_DATA_MAIL','Please enter valid e-mail.');
+define('CONTACT_FORM_MSG_INVALID_DATA_MESSAGE','Please enter your message.');
+	
+define('CONTACT_FORM_SEND_MSG_OK','Thank you for contacting us.');
+define('CONTACT_FORM_SEND_MSG_ERROR','Sorry, we can\'t send this message.');
+
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
