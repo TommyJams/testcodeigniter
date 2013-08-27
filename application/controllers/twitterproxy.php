@@ -5,7 +5,8 @@ class Twitterproxy extends CI_Controller{
 	public function twitterhandle(){
 
 		session_start();
-		require_once("twitteroauth/twitteroauth.php"); //Path to twitteroauth library
+		$this->load->library('twitteroauth/twitteroauth');
+		// require_once("twitteroauth/twitteroauth.php"); //Path to twitteroauth library
  
 		$twitteruser = "tommyjams";
 		$notweets = 10;
