@@ -66,7 +66,7 @@
         		$config = array(
 	    				'apikey' => '4b1d3dfd9a40c3a47861fa481d644505-us5' );
 
-				$this->load->library('MCAPI', $config, 'mail_chimp');
+				$this->load->library('mailchimp/MCAPI', $config, 'mail_chimp');
 
         		// API Key: http://admin.mailchimp.com/account/api/
         		// $api = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
