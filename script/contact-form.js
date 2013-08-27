@@ -5,7 +5,7 @@
     function submitContactForm()
     {
         blockForm('contact-form','block');
-        $.post('contact-form/validateDetails',$('#contact-form').serialize(),submitContactFormResponse,'json');
+        $.post('contactform/validateDetails',$('#contact-form').serialize(),submitContactFormResponse,'json');
     }
 
     /*****************************************************************/

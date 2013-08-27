@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class Contact-form extends CI_Controller{
+	class Contactform extends CI_Controller{
 	
 		public function validateDetails(){
 			
