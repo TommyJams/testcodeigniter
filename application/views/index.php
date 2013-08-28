@@ -38,11 +38,11 @@ elseif(isset($_SESSION['username_artist']))
 
     <title>TommyJams</title>
 
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>style/style.css" rel="stylesheet" type="text/css" />
 
-    <link href="css/supersized/supersized.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>style/supersized/supersized.css" rel="stylesheet" type="text/css" />
 
-	<link href="css/mainTiles.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo base_url();?>style/mainTiles.css" rel="stylesheet" type="text/css" />
 
     <!--
 
@@ -74,13 +74,13 @@ elseif(isset($_SESSION['username_artist']))
 		
     </style>
 
-    <script type="text/javascript" src="js/jquery.min.js" ></script>
+    <script type="text/javascript" src="<?php echo base_url();?>script/jquery.min.js" ></script>
 
-    <script type="text/javascript" src="js/jquery.supersized.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>script/jquery.supersized.min.js"></script>
 	
-    <script type="text/javascript" src="js/main.js"></script> <!--contains document ready function-->
+    <script type="text/javascript" src="<?php echo base_url();?>script/main.js"></script> <!--contains document ready function-->
 	
-	<script type="text/javascript" src="js/csspopup.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>script/csspopup.js"></script>
 
     <script language="javascript"> 
 
