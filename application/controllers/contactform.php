@@ -46,9 +46,12 @@
 			$values=array_map('htmlspecialchars',$values);
 	
 		//	$Template=new Template($values,'template/default.php');
-			$Template=new Template($values, $this->load->view('contactdefault_view'));
-			$body=$Template->output();
+		/*	$Template=new Template($values, $this->load->view('contactdefault_view'));
+			$body=$Template->output(); */
 	
+			$view = $this->load->view('contactdefault_view',$values, TRUE);
+			$body = array('content' => $view);
+
 			$to = "contact@tommyjams.com";
 			$sender = "alerts@tommyjams.com";
 			$subject = "TommyJams Landing Page: Contact form";
