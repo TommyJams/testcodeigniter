@@ -51,7 +51,7 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>    
 
 		<script type="text/javascript" src="<?php echo base_url();?>script/script.js"></script>
-		<script type="text/javascript" src="<?php echo base_url();?>script/main.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>script/main1.js"></script>
 		
         <script type="text/javascript" src="<?php echo base_url();?>script/contact-form.js"></script>
 	<!---	<script type="text/javascript" src="plugin/newsletter-form/newsletter-form.js"></script> -->
