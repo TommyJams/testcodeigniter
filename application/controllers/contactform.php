@@ -46,7 +46,7 @@
 	
 			$values=array_map('htmlspecialchars',$values);
 	
-			$Template=new Template($values,'template/default.php');
+			$Template=new Template($values,'default.php');
 			$body=$Template->output(); 
 
 			$to = "contact@tommyjams.com";
