@@ -12,7 +12,7 @@
 
 			$values=array
 			(
-				'contact-form-name'						=> $_POST['contact-form-name'],
+				'contactformname'						=> $_POST['contact-form-name'],
 				'contact-form-mail'						=> $_POST['contact-form-mail'],
 				'contact-form-message'					=> $_POST['contact-form-message']
 			);
