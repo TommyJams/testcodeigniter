@@ -188,7 +188,7 @@
 						</form>
 						<!-- /Newsletter form -->
 
-						<a href="<?php echo base_url();?>betapage/1" class="button-black clear-fix">
+						<a href="<?php echo base_url();?>index" class="button-black clear-fix">
 							<span class="click-here"></span>
 							Get Started
 						</a>

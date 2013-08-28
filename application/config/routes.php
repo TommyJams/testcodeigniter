@@ -40,7 +40,9 @@
 
 // $route['default_controller'] = "welcome";
 $route['default_controller'] = "azurepage";
-$route['betapage/(:any)'] = "betapage/betalandingpage";
+
+$route['index'] = "index/betalandingpage";
+
 $route['404_override'] = '';
 
 

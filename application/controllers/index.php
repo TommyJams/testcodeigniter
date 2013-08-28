@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Betapage extends CI_Controller{
+class Index extends CI_Controller{
 
 	public function betalandingpage(){
 		// echo "this is you";
