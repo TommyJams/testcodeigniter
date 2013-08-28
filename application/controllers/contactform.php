@@ -50,7 +50,7 @@
 			$body=$Template->output(); */
 	
 			$view = $this->load->view('contactdefault_view',$values, TRUE);
-			$body = array('content' => $view);
+			$body = $view->output();
 
 			$to = "contact@tommyjams.com";
 			$sender = "alerts@tommyjams.com";
