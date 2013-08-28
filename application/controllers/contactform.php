@@ -10,7 +10,7 @@
 		
 			$response=array('error'=>0,'info'=>null);
 
-			$values=array
+			$values['contactdetails']=array
 			(
 				'contact-form-name'						=> $_POST['contact-form-name'],
 				'contact-form-mail'						=> $_POST['contact-form-mail'],
