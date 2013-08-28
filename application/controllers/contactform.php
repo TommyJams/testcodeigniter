@@ -10,22 +10,22 @@
 		
 			$response=array('error'=>0,'info'=>null);
 
-			$values['contactdetails']=array
+			$values=array
 			(
-				'contact-form-name'						=> $_POST['contact-form-name'],
+				'contactformname'						=> $_POST['contact-form-name'],
 				'contact-form-mail'						=> $_POST['contact-form-mail'],
 				'contact-form-message'					=> $_POST['contact-form-message']
 			);
 	
 			/**************************************************************************/
 	
-			if(isEmpty($values['contact-form-name']))
+			if(isEmpty($values['contactformname']))
 			{
 				$response['error']=1;
-				$response['info'][]=array('fieldId'=>'contact-form-name','message'=>CONTACT_FORM_MSG_INVALID_DATA_NAME);
+				$response['info'][]=array('fieldId'=>'contactformname','message'=>CONTACT_FORM_MSG_INVALID_DATA_NAME);
 			}
 	
-			if(!validateEmail($values['contact-form-mail']))
+		/*	if(!validateEmail($values['contact-form-mail']))
 			{
  				$response['error']=1;	
 				$response['info'][]=array('fieldId'=>'contact-form-mail','message'=>CONTACT_FORM_MSG_INVALID_DATA_MAIL);
@@ -36,7 +36,7 @@
 				$response['error']=1;
 				$response['info'][]=array('fieldId'=>'contact-form-message','message'=>CONTACT_FORM_MSG_INVALID_DATA_MESSAGE);
 			}	
-	
+	*/
 			if($response['error']==1) createResponse($response);
 	
 			/**************************************************************************/
@@ -49,7 +49,7 @@
 		/*	$Template=new Template($values, $this->load->view('contactdefault_view'));
 			$body=$Template->output(); */
 	
-			$body = $this->load->view('contactdefault_view',$values, TRUE);
+			$body = $this->load->view('contactdefault_view',$values);
 		//	$body = $view->output();
 			print json_encode($body);
 
