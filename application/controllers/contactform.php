@@ -6,35 +6,36 @@
 			
 			$this->load->helper('functions');
 			//	require_once("phpmailer/class.phpmailer.php");
-			require_once("class/Template.class.php");
-		
+			//require_once("class/Template.class.php");
+			$this->load->library('contactform/Template');
+
 			$response=array('error'=>0,'info'=>null);
 
 			$values=array
 			(
-				'contactformname'						=> $_POST['contact-form-name'],
-				'contactformmail'						=> $_POST['contact-form-mail'],
-				'contactformmessage'					=> $_POST['contact-form-message']
+				'contact-form-name'						=> $_POST['contact-form-name'],
+				'contact-form-mail'						=> $_POST['contact-form-mail'],
+				'contact-form-message'					=> $_POST['contact-form-message']
 			);
 	
 			/**************************************************************************/
 	
-			if(isEmpty($values['contactformname']))
+			if(isEmpty($values['contact-form-name']))
 			{
 				$response['error']=1;
-				$response['info'][]=array('fieldId'=>'contactformname','message'=>CONTACT_FORM_MSG_INVALID_DATA_NAME);
+				$response['info'][]=array('fieldId'=>'contact-form-name','message'=>CONTACT_FORM_MSG_INVALID_DATA_NAME);
 			}
 	
-			if(!validateEmail($values['contactformmail']))
+			if(!validateEmail($values['contact-form-mail']))
 			{
  				$response['error']=1;	
-				$response['info'][]=array('fieldId'=>'contactformmail','message'=>CONTACT_FORM_MSG_INVALID_DATA_MAIL);
+				$response['info'][]=array('fieldId'=>'contact-form-mail','message'=>CONTACT_FORM_MSG_INVALID_DATA_MAIL);
 			}
 	
-			if(isEmpty($values['contactformmessage']))
+			if(isEmpty($values['contact-form-message']))
 			{
 				$response['error']=1;
-				$response['info'][]=array('fieldId'=>'contactformmessage','message'=>CONTACT_FORM_MSG_INVALID_DATA_MESSAGE);
+				$response['info'][]=array('fieldId'=>'contact-form-message','message'=>CONTACT_FORM_MSG_INVALID_DATA_MESSAGE);
 			}	
 	
 			if($response['error']==1) createResponse($response);
@@ -45,13 +46,8 @@
 	
 			$values=array_map('htmlspecialchars',$values);
 	
-		//	$Template=new Template($values,'template/default.php');
-		/*	$Template=new Template($values, $this->load->view('contactdefault_view'));
-			$body=$Template->output(); */
-	
-			$body = $this->load->view('contactdefault_view',$values);
-		//	$body = $view->output();
-			print json_encode($body);
+			$Template=new Template($values,'template/default.php');
+			$body=$Template->output(); 
 
 			$to = "contact@tommyjams.com";
 			$sender = "alerts@tommyjams.com";
@@ -60,7 +56,6 @@
 			$this->load->helper('contactmail');
 			send_email($to, $sender, $subject, $body);
 			
-
 			/*
 			$mail=new PHPMailer();
 			$mail->CharSet='UTF-8';
