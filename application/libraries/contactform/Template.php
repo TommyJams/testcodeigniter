@@ -7,7 +7,7 @@
     {
         /**********************************************************************/
         
-        function __construct($data,$path)
+        function __construct($data='',$path='')
         {
             $this->data=$data;
             $this->path=$path;
