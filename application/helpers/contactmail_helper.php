@@ -16,7 +16,9 @@ function send_email($to, $sender, $subject, $body){
 	//	$headers = "MIME-Version: 1.0" . "\r\n";
 	//	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 
-    	require_once("phpmailer/class.phpmailer.php");
+    //	require_once("phpmailer/class.phpmailer.php");
+    	$CI =& get_instance();
+    	$CI->load->library('phpmailer/PHPMailer');
     	$mail = new PHPMailer();  // create a new object
 		$mail->IsSMTP(); // enable SMTP
 		$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
