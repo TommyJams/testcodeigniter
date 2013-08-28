@@ -13,8 +13,8 @@
 			$values=array
 			(
 				'contactformname'						=> $_POST['contact-form-name'],
-				'contact-form-mail'						=> $_POST['contact-form-mail'],
-				'contact-form-message'					=> $_POST['contact-form-message']
+				'contactformmail'						=> $_POST['contact-form-mail'],
+				'contactformmessage'					=> $_POST['contact-form-message']
 			);
 	
 			/**************************************************************************/
@@ -25,18 +25,18 @@
 				$response['info'][]=array('fieldId'=>'contactformname','message'=>CONTACT_FORM_MSG_INVALID_DATA_NAME);
 			}
 	
-		/*	if(!validateEmail($values['contact-form-mail']))
+			if(!validateEmail($values['contactformmail']))
 			{
  				$response['error']=1;	
-				$response['info'][]=array('fieldId'=>'contact-form-mail','message'=>CONTACT_FORM_MSG_INVALID_DATA_MAIL);
+				$response['info'][]=array('fieldId'=>'contactformmail','message'=>CONTACT_FORM_MSG_INVALID_DATA_MAIL);
 			}
 	
-			if(isEmpty($values['contact-form-message']))
+			if(isEmpty($values['contactformmessage']))
 			{
 				$response['error']=1;
-				$response['info'][]=array('fieldId'=>'contact-form-message','message'=>CONTACT_FORM_MSG_INVALID_DATA_MESSAGE);
+				$response['info'][]=array('fieldId'=>'contactformmessage','message'=>CONTACT_FORM_MSG_INVALID_DATA_MESSAGE);
 			}	
-	*/
+	
 			if($response['error']==1) createResponse($response);
 	
 			/**************************************************************************/
