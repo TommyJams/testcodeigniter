@@ -49,8 +49,9 @@
 		/*	$Template=new Template($values, $this->load->view('contactdefault_view'));
 			$body=$Template->output(); */
 	
-			$view = $this->load->view('contactdefault_view',$values, TRUE);
-			$body = $view->output();
+			$body = $this->load->view('contactdefault_view',$values, TRUE);
+		//	$body = $view->output();
+			print json_encode($body);
 
 			$to = "contact@tommyjams.com";
 			$sender = "alerts@tommyjams.com";
