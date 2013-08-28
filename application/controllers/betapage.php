@@ -24,6 +24,5 @@ class Betapage extends CI_Controller{
 		
 		$this->load->view('betapage_view');
 	}
-
 }
 ?>
