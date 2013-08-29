@@ -161,7 +161,7 @@
                 Login With Facebook
             </h3>
 			<div id="loginBoxDetails">
-				<div class='fb-login-button'  fb_only='true' fb_register='true' size='xlarge' onlogin=facebookLoginCallback(); registration-url='<?php echo base_url();?>fbconnect.php?registered=no'></div>
+				<div class='fb-login-button'  fb_only='true' fb_register='true' size='xlarge' onlogin=facebookLoginCallback(); registration-url='<?php echo base_url();?>fbconnect?registered=no'></div>
 			</div>
         </center>
     </div>
