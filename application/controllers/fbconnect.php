@@ -96,7 +96,7 @@ class Fbconnect extends CI_Controller{
   		}
   	
   		if ($_GET['registered']=='no')
-			$this->load->view('fbConnect1_view','FACEBOOK_APP_ID');
+			$this->load->view('fbConnect1_view', $facebook);
   		
   	}
 	

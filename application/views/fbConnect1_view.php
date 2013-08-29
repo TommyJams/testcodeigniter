@@ -52,7 +52,7 @@
 				<div id="textContainer">
 
 					<iframe src="https://www.facebook.com/plugins/registration?
-								client_id=<?php echo $FACEBOOK_APP_ID;?>&
+								client_id=<?php echo $appId;?>&
 				 				redirect_uri=http://testcodigniter.azurewebsites.net/index/fbconnect.php?registered=fbregistered&
 				 				fb_only=true&
 				 				fb_register=true&
