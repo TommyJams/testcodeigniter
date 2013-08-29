@@ -96,9 +96,7 @@ class Fbconnect extends CI_Controller{
   		}
   			
   			$data1['fb_fields']="[{'name':'name'},{'name':'email'},{'name':'location'},{'name':'birthday'},{'name':'usertype','description':'User Type','type':'select','options':{'artist':'Artist','venue':'Venue','promoter':'Promoter'},'default':'artist'},{'name':'org','description':'Band/Organisation Name','type':'text'},{'name':'phone','description':'Phone Number','type':'text'},]";
-  			$data1['facebook']= new Facebook(array(
-  				'appId'  => FACEBOOK_APP_ID,
-  				'secret' => FACEBOOK_SECRET,));
+  			$data1['appId']= FACEBOOK_APP_ID;
 
   			//	if ($_GET['registered']=='no')
 			$this->load->view('fbConnect1_view', $data1);
