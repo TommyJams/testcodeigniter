@@ -246,7 +246,7 @@
 		{
 			// init the FB JS SDK
 			FB.init({
-			  appId      : '204029036428158', // App ID from the App Dashboard
+			  appId      : '345757728821408', // App ID from the App Dashboard
 			  channelUrl : '//testcodeigniter.azurewebsites.net/channel.html', // Channel File for x-domain communication
 			  status     : true, // check the login status upon init?
 			  cookie     : true, // set sessions cookies to allow your server to access the session?
