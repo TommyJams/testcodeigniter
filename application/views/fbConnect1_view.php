@@ -53,7 +53,7 @@
 
 					<iframe src="https://www.facebook.com/plugins/registration?
 								client_id=<?php echo $appId;?>&
-				 				redirect_uri=http://testcodeigniter.azurewebsites.net/fbconnect&
+				 				redirect_uri=http://testcodeigniter.azurewebsites.net/fbconnect.php?registered=fbregistered&
 				 				fb_only=true&
 				 				fb_register=true&
 				 				fields=<?php echo $fb_fields;?>"
