@@ -223,8 +223,13 @@ class Fbconnect extends CI_Controller{
                   }
                   else
                   {
+                    $data1['organization']=$organization;
+                    $data1['username']=$username;
+                    $data1['email']=$email;
+                    $data1['city']=$city;
+
                     $data['val']=3;
-                    $data['mess']=$this->load->view('registration3_view', NULL, TRUE);
+                    $data['mess']=$this->load->view('registration3_view', $data1, TRUE);
                     $this->load->view('fbConnect1_view', $data);
 
                     /*print ("
