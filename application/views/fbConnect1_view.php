@@ -60,7 +60,7 @@
                     <?php elseif ($val == 3): ?>
                     <?php echo $mess;?>
 
-                    <?php else ($val == 4): ?>
+                    <?php elseif ($val == 4): ?>
                     <?php echo $mess;?>
 
 				</div>
