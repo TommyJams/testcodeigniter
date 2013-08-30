@@ -104,7 +104,7 @@ class Fbconnect extends CI_Controller{
 			 	   $this->load->view('fbConnect1_view', $data1);
 
         elseif ($_GET['registered']=='fbregistered') //User registered just now
-          {
+        {
             //enter into database
             if ($_REQUEST) 
             {
@@ -115,13 +115,10 @@ class Fbconnect extends CI_Controller{
               //echo '</pre>';
               
               //$verification = check_registration($response,$fb_fields);
-              
-
               if($response)
               {
-                $fbid=$response["user_id"];
-                
-              //  include("connect.php");
+                $fbid=$response["user_id"]; 
+                //  include("connect.php");
                 $this->load->helper('connect');          
                 $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
@@ -225,18 +222,12 @@ class Fbconnect extends CI_Controller{
                     <br><br><br>
                     <center><a href='fbconnect?registered=yes' style='width:120px; height:20px; background:#ffcc00;'>Continue</a></center>
                     "); 
-
-		// elseif ($_GET['registered']=='fbregistered')
-
-  		
+                  }
+                }    
+              }    
+            } 
+          }     	
   	}
-	
-/*	public function checkRegistrationStatus(){
-		if ($_GET['registered']=='no')
-			$this->load->view('fbConnect1_view','FACEBOOK_APP_ID');
-
-
-	}*/
 } 	
 ?>
 
