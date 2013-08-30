@@ -54,15 +54,15 @@
                     <?php if ($val == 1): ?>
 					<?php echo $iframe;?>
 
-                    <?php if ($val == 2): ?>
+                    <?php elseif ($val == 2): ?>
                     <?php echo $mess;?>
 
-                    <?php if ($val == 3): ?>
+                    <?php elseif ($val == 3): ?>
                     <?php echo $mess;?>
 
-                    <?php if ($val == 4): ?>
+                    <?php else ($val == 4): ?>
                     <?php echo $mess;?>
-                    
+
 				</div>
 			</div>
 		</div>
