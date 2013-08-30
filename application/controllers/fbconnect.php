@@ -311,8 +311,8 @@ class Fbconnect extends CI_Controller{
                     $to = "alerts@tommyjams.com";
                     $subject = "$email joined fbconnect";
                     $message = "$email joined fbconnect";
-                    include("include/mail.php");
-                  } */
+                    include("include/mail.php"); */
+                  } 
                   
                   $q_link = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                   $result_set_link = mysql_query($q_link);
