@@ -2,7 +2,7 @@
 
 class Fbconnect extends CI_Controller{
 
-	public function connectFb(){
+	public function registerMethod(){
 
 		ob_start();
 		// Path to PHP-SDK
@@ -99,14 +99,13 @@ class Fbconnect extends CI_Controller{
   			$data1['appId']= FACEBOOK_APP_ID;
         $data2['iframe']=$this->load->view('registration1_view', $data1, TRUE);
 
-        $this->uri->segment(1);
-
-  			if($this->uri->segment(1)=='noregister'){
+        $registrationParam = $this->uri->segment(2);
+        
+  			if($registrationParam=='noregister'){
           $data2['val']=1;
 			 	  $this->load->view('fbConnect1_view', $data2);
         }
-
-        elseif ($this->uri->segment(1)=='fbregistered') //User registered just now
+        elseif ($registrationParam=='fbregistered') //User registered just now
         {
             //enter into database
             if ($_REQUEST) 
@@ -344,7 +343,7 @@ class Fbconnect extends CI_Controller{
             }
           }   
 
-          elseif ($this->uri->segment(1)=='preregistered') //Existing user
+          elseif ($registrationParam=='preregistered') //Existing user
           {
             $data['val']=4;
             $data['mess']=$this->load->view('registration4_view', NULL, TRUE);
