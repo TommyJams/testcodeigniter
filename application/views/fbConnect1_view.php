@@ -51,7 +51,7 @@
 
 				<div id="textContainer">
 
-                    <?php if ($val == 1): ?>
+                <!--    <?php if ($val == 1): ?> -->
 					<?php echo $iframe;?>
 
                  <!--   <?php elseif ($val == 2): ?> -->
