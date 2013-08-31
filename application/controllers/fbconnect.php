@@ -122,7 +122,7 @@ class Fbconnect extends CI_Controller{
               { 
                 $fbid=$response["user_id"];
 
-              //  $this->load->database('databaseCheck');
+                //  $this->load->database('databaseCheck');
                // include("connect.php");
                 $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
