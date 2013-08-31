@@ -101,7 +101,7 @@ class Fbconnect extends CI_Controller{
 
         $registrationParam = $this->uri->segment(3);
 
-        error_log('noregister:'.$registrationParam);
+        //error_log('noregister:'.$registrationParam);
         
   			if($registrationParam=='noregister'){
           $data2['val']=1;
@@ -109,6 +109,7 @@ class Fbconnect extends CI_Controller{
         }
         elseif ($registrationParam=='fbregistered') //User registered just now
         {
+            error_log('fbregistered');
             //enter into database
             if ($_REQUEST) 
             {
@@ -117,7 +118,7 @@ class Fbconnect extends CI_Controller{
               //echo '<pre>';
               //print_r ($response);
               //echo '</pre>';
-              
+              error_log('fbregistered:'.$response);
               //$verification = check_registration($response,$fb_fields);
               if($response)
               { 
