@@ -80,7 +80,7 @@ class Fbconnect extends CI_Controller{
     			// Proceed knowing you have a logged in user who's authenticated.
     			$user_profile = $facebook->api('/me');
   			} catch (FacebookApiException $e) {
-    			console.log('<pre>'.htmlspecialchars(print_r($e, true)).'</pre>');
+    			error_log('FacebookApiException: '.$e);
     			$user = null;
   			}
 		}
