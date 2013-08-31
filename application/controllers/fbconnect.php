@@ -126,7 +126,7 @@ class Fbconnect extends CI_Controller{
 
                 //  $this->load->database('databaseCheck');
                // include("connect.php");
-                $query_check1 = "SELECT * FROM `members` WHERE fb_id = '$fbid'";
+                $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
 
                 //if user is logged in on facebook but has never registered on tommyjams
