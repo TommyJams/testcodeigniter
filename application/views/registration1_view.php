@@ -1,6 +1,6 @@
 <iframe src="https://www.facebook.com/plugins/registration?
 		client_id=<?php echo $appId;?>&
-		redirect_url=http://testcodeigniter.azurewebsites.net/fbconnect?c=fbconnect&m=connectFb&registered=fbregistered&
+		redirect_url=http://testcodeigniter.azurewebsites.net/fbconnect?registered=fbregistered&
 		fb_only=true&fb_register=true&fields=<?php echo $fb_fields;?>"
 	scrolling="auto"
 	frameborder="no"
