@@ -99,7 +99,7 @@ class Fbconnect extends CI_Controller{
   			$data1['appId']= FACEBOOK_APP_ID;
         $data2['iframe']=$this->load->view('registration1_view', $data1, TRUE);
 
-        $registrationParam = $this->uri->segment(2);
+        $registrationParam = $this->uri->segment(3);
 
         error_log('noregister:'.$registrationParam);
         
