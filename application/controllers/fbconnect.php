@@ -101,7 +101,7 @@ class Fbconnect extends CI_Controller{
 
         $registrationParam = $this->uri->segment(2);
 
-        log_message('error','noregister: $registrationParam');
+        error_log('noregister:'.$registrationParam);
         
   			if($registrationParam=='noregister'){
           $data2['val']=1;
