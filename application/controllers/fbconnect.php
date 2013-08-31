@@ -99,14 +99,14 @@ class Fbconnect extends CI_Controller{
   			$data1['appId']= FACEBOOK_APP_ID;
         $data2['iframe']=$this->load->view('registration1_view', $data1, TRUE);
 
-        $this->input->get('registered');
+        $this->uri->segment(1);
 
-  			if ($_GET['registered']=='no'){
+  			if($this->uri->segment(1)=='noregister'){
           $data2['val']=1;
 			 	  $this->load->view('fbConnect1_view', $data2);
         }
 
-        elseif ($_GET['registered']=='fbregistered') //User registered just now
+        elseif ($this->uri->segment(1)=='fbregistered') //User registered just now
         {
             //enter into database
             if ($_REQUEST) 
@@ -344,7 +344,7 @@ class Fbconnect extends CI_Controller{
             }
           }   
 
-          elseif ($_GET['registered']=='yes') //Existing user
+          elseif ($this->uri->segment(1)=='preregistered') //Existing user
           {
             $data['val']=4;
             $data['mess']=$this->load->view('registration4_view', NULL, TRUE);

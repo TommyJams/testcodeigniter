@@ -8,5 +8,5 @@ You are successfully registered
   <tr><td>City</td><td>$city</td></tr>
 </table>
 <br><br><br>
-<center><a href='http://testcodeigniter.azurewebsites.net/fbconnect?c=fbconnect&m=connectFb&registered=yes' 
+<center><a href='http://testcodeigniter.azurewebsites.net/fbconnect/preregistered' 
   style='width:120px; height:20px; background:#ffcc00;'>Continue</a></center>
