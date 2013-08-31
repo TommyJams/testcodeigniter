@@ -100,6 +100,8 @@ class Fbconnect extends CI_Controller{
         $data2['iframe']=$this->load->view('registration1_view', $data1, TRUE);
 
         $registrationParam = $this->uri->segment(2);
+
+        log_message('error','noregister: $registrationParam');
         
   			if($registrationParam=='noregister'){
           $data2['val']=1;
