@@ -44,6 +44,7 @@ $route['default_controller'] = "azurepage";
 $route['index'] = "index/betalandingpage";
 
 $route['fbconnect?registered=no'] = "fbconnect?c=fbconnect&m=connectFb&registered=no";
+$route['fbconnect?registered=fbregistered'] = "fbconnect?c=fbconnect&m=connectFb&registered=fbregistered"
 
 $route['404_override'] = '';
 
