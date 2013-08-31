@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'tommyjamstest.cloudapp.net';
-$db['default']['username'] = 'tommyjams';
+$db['default']['username'] = 'tommyjamslinux';
 $db['default']['password'] = '1tommyblah';
 $db['default']['database'] = 'tommyjam_test';
 $db['default']['dbdriver'] = 'mysql';
