@@ -2,6 +2,56 @@
 
 class Fbconnect extends CI_Controller{
 
+  function parse_signed_request($signed_request, $secret) {
+        list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
+
+        // decode the data
+        $sig = base64_url_decode($encoded_sig);
+        $data = json_decode(base64_url_decode($payload), true);
+
+        if (strtoupper($data['algorithm']) !== 'HMAC-SHA256') {
+          error_log('Unknown algorithm. Expected HMAC-SHA256');
+          return null;
+        }
+
+        // check sig
+        $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+        if ($sig !== $expected_sig) {
+          error_log('Bad Signed JSON signature!');
+          return null;
+        }
+
+        return $data;
+    }
+
+    function base64_url_decode($input) {
+        return base64_decode(strtr($input, '-_', '+/'));
+    }
+
+    function verify_fields($f,$sf) {
+        //$fields = json_encode($sf);
+      //print_r ($fields);
+      //print_r ($f);
+        return (strcmp($fields,$f) === 0);
+    }
+
+    function check_registration($response, $fb_fields) {
+          if ($response && isset($response["registration_metadata"]["fields"])) {
+              $verified = verify_fields($response["registration_metadata"]["fields"], $fb_fields);
+
+              if (!$verified) { // fields don't match!
+                   echo 'Registration metadata failed. Fields dont match.';
+                   return false;
+              } 
+              else { // we verified the fields, insert the Data to the DB
+                   echo 'Registration metadata passed!';
+                   return true;
+              }
+          }
+         echo 'Response not found.';
+         return false;
+    }
+
 	public function registerMethod(){
 
 		ob_start();
@@ -44,56 +94,6 @@ class Fbconnect extends CI_Controller{
 		else {
   			$loginUrl = $facebook->getLoginUrl($params);
 		}
-
-		function parse_signed_request($signed_request, $secret) {
-  			list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
-
-  			// decode the data
-  			$sig = base64_url_decode($encoded_sig);
-  			$data = json_decode(base64_url_decode($payload), true);
-
-  			if (strtoupper($data['algorithm']) !== 'HMAC-SHA256') {
-    			error_log('Unknown algorithm. Expected HMAC-SHA256');
-    			return null;
-  			}
-
-  			// check sig
-  			$expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
-  			if ($sig !== $expected_sig) {
-    			error_log('Bad Signed JSON signature!');
-    			return null;
-  			}
-
-  			return $data;
-		}
-
-		function base64_url_decode($input) {
-    		return base64_decode(strtr($input, '-_', '+/'));
-		}
-
-		function verify_fields($f,$sf) {
-    		//$fields = json_encode($sf);
-			//print_r ($fields);
-			//print_r ($f);
-    		return (strcmp($fields,$f) === 0);
-		}
-
-		function check_registration($response, $fb_fields) {
-        	if ($response && isset($response["registration_metadata"]["fields"])) {
-            	$verified = verify_fields($response["registration_metadata"]["fields"], $fb_fields);
-
-            	if (!$verified) { // fields don't match!
-                	 echo 'Registration metadata failed. Fields dont match.';
-					         return false;
-            	}	
-            	else { // we verified the fields, insert the Data to the DB
-                	 echo 'Registration metadata passed!';
-					         return true;
-            	}
-        	}
-			   echo 'Response not found.';
-			   return false;
-  	}
   			
   			$data1['fb_fields']="[{'name':'name'},{'name':'email'},{'name':'location'},{'name':'birthday'},{'name':'usertype','description':'User Type','type':'select','options':{'artist':'Artist','venue':'Venue','promoter':'Promoter'},'default':'artist'},{'name':'org','description':'Band/Organisation Name','type':'text'},{'name':'phone','description':'Phone Number','type':'text'},]";
   			$data1['appId']= FACEBOOK_APP_ID;
