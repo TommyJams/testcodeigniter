@@ -1,1 +1,0 @@
-$database = 'tommyjam_test';

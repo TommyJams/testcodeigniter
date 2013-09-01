@@ -59,7 +59,7 @@ class Fbconnect extends CI_Controller{
 		ob_start();
 		// Path to PHP-SDK
 		require 'src/facebook.php';
-
+    $database = 'tommyjam_test';
 		/*define('FACEBOOK_APP_ID', '566516890030362');
 		define('FACEBOOK_SECRET', '731fb276b0e0e1a8a77ecbdf72e2591b'); */
 
@@ -128,7 +128,6 @@ class Fbconnect extends CI_Controller{
 
                 //  $this->load->database('databaseCheck');
                // include("connect.php");
-                //$database = 'tommyjam_test';
                 $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
 
