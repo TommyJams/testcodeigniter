@@ -356,7 +356,7 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-//$database = 'tommyjam_test';
+$config['database'] = 'tommyjam_test';
 
 
 /* End of file config.php */
