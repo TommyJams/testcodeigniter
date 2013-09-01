@@ -126,7 +126,7 @@ class Fbconnect extends CI_Controller{
 
                 //  $this->load->database('databaseCheck');
                // include("connect.php");
-                $database = 'tommyjam_test';
+                //$database = 'tommyjam_test';
                 $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
 
