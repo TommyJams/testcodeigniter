@@ -126,6 +126,7 @@ class Fbconnect extends CI_Controller{
 
                 //  $this->load->database('databaseCheck');
                // include("connect.php");
+                $database = 'tommyjam_test';
                 $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
 
@@ -208,12 +209,12 @@ class Fbconnect extends CI_Controller{
                   */
                   $ip=$_SERVER['REMOTE_ADDR'];
 
-                  $data['databasedata']=array(
+                /*  $data['databasedata']=array(
                           'what' => $what, 'actual_type' => $actual_type, 'birth' => $birth, 'organization' => $organization, 
                           'username' => $username, 'fb_username' => $fb_username, 'password' => $password, 'email' => $email, 
                           'phone' => $phone, 'fbid' => $fbid, 'city' => $city, 'state' => $state, 'country' => $country, 
                           'about' => $about, 'gender' => $gender, 'fb' => $fb, 1, 'job' => $job, 'fbid' => $fbid, 
-                          'ip' => $ip, CURRENT_TIMESTAMP);
+                          'ip' => $ip, CURRENT_TIMESTAMP); */
                   
                   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
