@@ -2,7 +2,7 @@
 
 class Fbconnect extends CI_Controller{
 
-    public $database = 'tommyjam_test';
+    //public $database = 'tommyjam_test';
 
   function parse_signed_request($signed_request, $secret) {
         list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
