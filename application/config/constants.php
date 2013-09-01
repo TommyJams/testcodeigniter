@@ -74,7 +74,7 @@ define('CONTACT_FORM_MSG_INVALID_DATA_MESSAGE','Please enter your message.');
 define('CONTACT_FORM_SEND_MSG_OK','Thank you for contacting us.');
 define('CONTACT_FORM_SEND_MSG_ERROR','Sorry, we can\'t send this message.');
 
-define('database', 'tommyjam_test');
+//$database = 'tommyjam_test';
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
