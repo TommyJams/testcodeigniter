@@ -121,9 +121,9 @@ class Fbconnect extends CI_Controller{
               //print_r ($response);
               //echo '</pre>';
              // error_log('fbregistered:'.$response);
-              $verification = check_registration($response,$fb_fields);
+              //$verification = check_registration($response,$fb_fields);
               error_log('fbregistered:'.$response);
-              error_log('fbregistered:'.$verification);
+              //error_log('fbregistered:'.$verification);
               if($response)
               { 
                 $fbid=$response["user_id"];
