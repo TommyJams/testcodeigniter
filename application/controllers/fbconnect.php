@@ -190,7 +190,7 @@ class Fbconnect extends CI_Controller{
                   $fb_username = '';
                   $about = '';
 
-                  $this->load->helper('fieldsCheck')
+                  $this->load->helper('fieldsCheck');
                   $gender=get_key($user_profile, "gender");
                   
                   $this->load->helper('fieldsCheck');
