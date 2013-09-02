@@ -156,7 +156,7 @@ class Fbconnect extends CI_Controller{
                   $username=mysql_real_escape_string($response["registration"]["name"]);
                   error_log('username:'.$username);
                   $city_country=$response["registration"]["location"]["name"];
-                  $split=explode(",", $city_country); //Eg. Split "Bangalore, India" into "Bangalore" and "India"
+                  $split=explode(",", $city_country ); //Eg. Split "Bangalore, India" into "Bangalore" and "India"
                   if ($split[2]) //Eg. "Bankok, Krung Thep, Thailand"
                   {
                     $city=addslashes($split[0]);
@@ -175,7 +175,8 @@ class Fbconnect extends CI_Controller{
                   $you=$fbid;
                   $birth=$response["registration"]["birthday"];
                   $fb=addslashes('http://www.facebook.com/').$fbid;
-                  $gender=$response["registration"]["gender"];
+                  //$gender=$response["registration"]["gender"];
+                  //error_log('gender:'.$gender);
                   $phone=$response["registration"]["phone"];
                   $organization=mysql_real_escape_string($response["registration"]["org"]);
                   error_log('organization:'.$organization);
@@ -226,7 +227,7 @@ class Fbconnect extends CI_Controller{
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 */
                   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)
-                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
+                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', NULL, '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 
                   $ress = mysql_query($query);
                   if (!$ress)
