@@ -186,9 +186,9 @@ class Fbconnect extends CI_Controller{
 
                   //print_r($user_profile);
 
-                  $gender = '';
+                 /* $gender = '';
                   $fb_username = '';
-                  $about = '';
+                  $about = '';*/
 
                   $this->load->helper('fieldsCheck');
                   $gender=get_key($user_profile, "gender");
