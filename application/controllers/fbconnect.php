@@ -175,7 +175,7 @@ class Fbconnect extends CI_Controller{
                   $you=$fbid;
                   $birth=$response["registration"]["birthday"];
                   $fb=addslashes('http://www.facebook.com/').$fbid;
-                  //$gender=$response["registration"]["gender"];
+                  $gender=$user_profile["gender"];
                   //error_log('gender:'.$gender);
                   $phone=$response["registration"]["phone"];
                   $organization=mysql_real_escape_string($response["registration"]["org"]);
@@ -227,7 +227,7 @@ class Fbconnect extends CI_Controller{
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 */
                   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)
-                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', NULL, '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
+                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender','$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 
                   $ress = mysql_query($query);
                   if (!$ress)
