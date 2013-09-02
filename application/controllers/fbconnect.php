@@ -154,7 +154,7 @@ class Fbconnect extends CI_Controller{
                   //$password=$response["registration"]["password"];
                   $password=md5($password);
                   $username=mysql_real_escape_string($response["registration"]["name"]);
-                  error_log('username:'.$username);
+                  //error_log('username:'.$username);
                   $city_country=$response["registration"]["location"]["name"];
                   $split=explode(",", $city_country ); //Eg. Split "Bangalore, India" into "Bangalore" and "India"
                   if ($split[2]) //Eg. "Bankok, Krung Thep, Thailand"
@@ -177,7 +177,7 @@ class Fbconnect extends CI_Controller{
                   $fb=addslashes('http://www.facebook.com/').$fbid;
                   $phone=$response["registration"]["phone"];
                   $organization=mysql_real_escape_string($response["registration"]["org"]);
-                  error_log('organization:'.$organization);
+                  //error_log('organization:'.$organization);
                   $actual_type=$response["registration"]["usertype"];
                   if($actual_type=='promoter'){$what="Promoter";}
                   elseif($actual_type=='venue'){$what="Promoter";}
@@ -192,16 +192,20 @@ class Fbconnect extends CI_Controller{
                   
                  // error_log('about:'.$about);
 
-                  $default_value = "";
+                  $default_value = '';
 
                   if(isset($gender)==FALSE)
                     $gender = default_value;
 
-                  if(isset($fb_username)==FALSE)
+                  if(isset($fb_username)==FALSE){
                     $fb_username = default_value;
+                    error_log('fb_username:'.$fb_username);
+                  }
 
-                  if(isset($about)==FALSE)
+                  if(isset($about)==FALSE){
                     $about = default_value;
+                    error_log('about:'.$about);
+                  } 
 
                   /*$data['fb_check'] = array(
                           'gender' => $gender, 'fb_username' => $fb_username, 'about' => $about);
