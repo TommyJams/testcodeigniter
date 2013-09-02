@@ -1,8 +1,8 @@
 <?php
 
-function get_key ($haystack, $needle, $default_value =  '')
+function get_key ($haystack, $needle)
 {
-	//$default_value = '';
+	$default_value = '';
 
 if (is_array($haystack)) {
 // We have an array. Find the key.
