@@ -150,6 +150,9 @@ class Fbconnect extends CI_Controller{
                 else
                 {
                   $email=$response["registration"]["email"];
+
+                  error_log('email:'.$email);
+
                   $password=rand(111111,9999999);
                   //$password=$response["registration"]["password"];
                   $password=md5($password);
