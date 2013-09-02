@@ -54,14 +54,7 @@
                     <?php if ($val == 1): ?> 
 					<?php echo $iframe;?>
 
-                    <?php elseif ($val == 2): ?> 
-                    <?php echo $mess;?> 
-
-                    <?php elseif ($val == 3): ?> 
-                    <?php echo $mess;?> 
-
-                    <?php elseif ($val == 4): ?>  
-                    <?php echo $mess;?> 
+                    
 
                     <? endif; ?>
 
