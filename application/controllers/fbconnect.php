@@ -185,28 +185,34 @@ class Fbconnect extends CI_Controller{
                   else{$what="Artist";}
 
                   //print_r($user_profile);
-                  $fb_username=mysql_real_escape_string($user_profile["username"]);
-                  $gender=$user_profile["gender"];
-                  $about=$user_profile["bio"];
-                  $about=addslashes($about);
-                  
-                 // error_log('about:'.$about);
 
                   $default_value = '';
 
-                  if(isset($gender)==FALSE)
-                    $gender = default_value;
-
-                  if(isset($fb_username)==FALSE){
+                  if(isset($user_profile["username"])==FALSE)
                     $fb_username = default_value;
-                    error_log('fb_username:'.$fb_username);
+                  else
+                    $fb_username=mysql_real_escape_string($user_profile["username"]);
+
+                  if(isset($user_profile["gender"])==FALSE)
+                    $gender = default_value;
+                  else
+                    $gender=$user_profile["gender"];
+
+                  if(isset($user_profile["about"])==FALSE)
+                    $about = default_value;
+                  else{
+                    $about=$user_profile["bio"];
+                    $about=addslashes($about);
                   }
 
-                  if(isset($about)==FALSE){
-                    $about = default_value;
-                    error_log('about:'.$about);
-                  } 
-
+                 /* $gender=$user_profile["gender"];
+                  $about=$user_profile["bio"];
+                  $about=addslashes($about); */
+                  
+                 // error_log('about:'.$about);
+                  error_log('fb_username:'.$fb_username);
+                  error_log('about:'.$about);
+                
                   /*$data['fb_check'] = array(
                           'gender' => $gender, 'fb_username' => $fb_username, 'about' => $about);
 
