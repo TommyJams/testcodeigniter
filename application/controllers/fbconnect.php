@@ -196,37 +196,9 @@ class Fbconnect extends CI_Controller{
 
                   $about=addslashes($about);
 
-                  //$default_value = '';
-
-                  /*if(isset($user_profile["username"])==FALSE)
-                    $fb_username = $default_value;
-                  else
-                    $fb_username=mysql_real_escape_string($user_profile["username"]);
-
-                  if(isset($user_profile["gender"])==FALSE)
-                    $gender = $default_value;
-                  else
-                    $gender=$user_profile["gender"];
-
-                  if(isset($user_profile["about"])==FALSE)
-                    $about = $default_value;
-                  else{
-                    $about=$user_profile["bio"];
-                    $about=addslashes($about);
-                  }*/
-
-                 /* $gender=$user_profile["gender"];
-                  $about=$user_profile["bio"];
-                  $about=addslashes($about); */
-                  
-                  error_log('gender:'.$gender);
-                  error_log('fb_username:'.$fb_username);
-                  error_log('about:'.$about);
+                 
                 
-                  /*$data['fb_check'] = array(
-                          'gender' => $gender, 'fb_username' => $fb_username, 'about' => $about);
-
-                  $this->load->helper('fieldsCheck', $data);*/
+                  
 
                   /*
                   $emp=$user_profile["work"]["0"]["employer"]["name"];
@@ -251,14 +223,8 @@ class Fbconnect extends CI_Controller{
                   $ida=$id*15993;
                   $link="$ida";
                   */
-                  $ip=$_SERVER['REMOTE_ADDR'];
 
-                /*  $data['databasedata']=array(
-                          'what' => $what, 'actual_type' => $actual_type, 'birth' => $birth, 'organization' => $organization, 
-                          'username' => $username, 'fb_username' => $fb_username, 'password' => $password, 'email' => $email, 
-                          'phone' => $phone, 'fbid' => $fbid, 'city' => $city, 'state' => $state, 'country' => $country, 
-                          'about' => $about, 'gender' => $gender, 'fb' => $fb, 1, 'job' => $job, 'fbid' => $fbid, 
-                          'ip' => $ip, CURRENT_TIMESTAMP); */
+                  $ip=$_SERVER['REMOTE_ADDR'];
                   
                /*   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
