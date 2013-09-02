@@ -192,6 +192,8 @@ class Fbconnect extends CI_Controller{
                   
                  // error_log('about:'.$about);
 
+                  $default_value = "";
+
                   if(isset($gender)==FALSE)
                     $gender = default_value;
 
