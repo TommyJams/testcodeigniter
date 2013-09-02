@@ -185,22 +185,16 @@ class Fbconnect extends CI_Controller{
                   else{$what="Artist";}
 
                   //print_r($user_profile);
-
-                 /* $gender = '';
-                  $fb_username = '';
-                  $about = '';*/
-
                   $this->load->helper('fieldsCheck');
                   $gender=get_key($user_profile, "gender");
                   
                   $this->load->helper('fieldsCheck');
-                  $fb_username=get_key($user_profile, "fb_username");
+                  $fb_username=get_key($user_profile, "username");
 
                   $this->load->helper('fieldsCheck');
                   $about=get_key($user_profile, "bio");
 
                   $about=addslashes($about);
-
 
                   //$default_value = '';
 
@@ -225,7 +219,7 @@ class Fbconnect extends CI_Controller{
                   $about=$user_profile["bio"];
                   $about=addslashes($about); */
                   
-                 // error_log('about:'.$about);
+                  error_log('gender:'.$gender);
                   error_log('fb_username:'.$fb_username);
                   error_log('about:'.$about);
                 
