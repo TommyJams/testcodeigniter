@@ -175,7 +175,7 @@ class Fbconnect extends CI_Controller{
                   $you=$fbid;
                   $birth=$response["registration"]["birthday"];
                   $fb=addslashes('http://www.facebook.com/').$fbid;
-                  //$gender=$response["registration"]["gender"];
+                  $gender=$response["registration"]["gender"];
                   $phone=$response["registration"]["phone"];
                   $organization=mysql_real_escape_string($response["registration"]["org"]);
                   error_log('organization:'.$organization);
@@ -187,7 +187,7 @@ class Fbconnect extends CI_Controller{
 
                   //print_r($user_profile);
                   $fb_username=mysql_real_escape_string($user_profile["username"]);
-                  //$about=$user_profile["bio"];
+                  $about=$user_profile["bio"];
                   $about=addslashes($about);
                   error_log('about:'.$about);
                   /*
@@ -225,8 +225,8 @@ class Fbconnect extends CI_Controller{
                /*   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 */
-                  $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `fb`, `status`, `user`, `ip`, `time`)
-                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
+                  $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)
+                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 
                   $ress = mysql_query($query);
                   if (!$ress)
