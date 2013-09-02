@@ -188,6 +188,7 @@ class Fbconnect extends CI_Controller{
 
                   //print_r($user_profile);
                   $fb_username=mysql_real_escape_string($user_profile["username"]);
+                  error_log('username:'.$fb_username);
                   $about=$user_profile["bio"];
                   $about=addslashes($about);
                   error_log('about:'.$about);
