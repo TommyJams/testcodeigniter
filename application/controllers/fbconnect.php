@@ -186,9 +186,21 @@ class Fbconnect extends CI_Controller{
 
                   //print_r($user_profile);
 
-                  $default_value = '';
+                  $gender=$this->load->helper('fieldsCheck')
+                  get_key($user_profile, 'gender');
+                  
+                  $fb_username=$this->load->helper('fieldsCheck');
+                  get_key($user_profile, 'fb_username');
 
-                  if(isset($user_profile["username"])==FALSE)
+                  $about=$this->load->helper('fieldsCheck');
+                  get_key($user_profile, 'bio');
+
+                  $about=addslashes($about);
+
+
+                  //$default_value = '';
+
+                  /*if(isset($user_profile["username"])==FALSE)
                     $fb_username = $default_value;
                   else
                     $fb_username=mysql_real_escape_string($user_profile["username"]);
@@ -203,7 +215,7 @@ class Fbconnect extends CI_Controller{
                   else{
                     $about=$user_profile["bio"];
                     $about=addslashes($about);
-                  }
+                  }*/
 
                  /* $gender=$user_profile["gender"];
                   $about=$user_profile["bio"];
