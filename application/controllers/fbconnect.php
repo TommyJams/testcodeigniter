@@ -175,8 +175,6 @@ class Fbconnect extends CI_Controller{
                   $you=$fbid;
                   $birth=$response["registration"]["birthday"];
                   $fb=addslashes('http://www.facebook.com/').$fbid;
-                  $gender=$user_profile["gender"];
-                  //error_log('gender:'.$gender);
                   $phone=$response["registration"]["phone"];
                   $organization=mysql_real_escape_string($response["registration"]["org"]);
                   error_log('organization:'.$organization);
@@ -188,10 +186,26 @@ class Fbconnect extends CI_Controller{
 
                   //print_r($user_profile);
                   $fb_username=mysql_real_escape_string($user_profile["username"]);
-                  error_log('username:'.$fb_username);
+                  $gender=$user_profile["gender"];
                   $about=$user_profile["bio"];
                   $about=addslashes($about);
-                  error_log('about:'.$about);
+                  
+                 // error_log('about:'.$about);
+
+                  if(isset($gender)==FALSE)
+                    $gender = default_value;
+
+                  if(isset($fb_username)==FALSE)
+                    $fb_username = default_value;
+
+                  if(isset($about)==FALSE)
+                    $about = default_value;
+
+                  /*$data['fb_check'] = array(
+                          'gender' => $gender, 'fb_username' => $fb_username, 'about' => $about);
+
+                  $this->load->helper('fieldsCheck', $data);*/
+
                   /*
                   $emp=$user_profile["work"]["0"]["employer"]["name"];
                   $emp=addslashes($emp);
