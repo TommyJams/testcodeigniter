@@ -157,7 +157,7 @@ class Fbconnect extends CI_Controller{
                   //error_log('username:'.$username);
                   $city_country=$response["registration"]["location"]["name"];
                   $split=explode(",", $city_country ); //Eg. Split "Bangalore, India" into "Bangalore" and "India"
-                  if ($split[2]) //Eg. "Bankok, Krung Thep, Thailand"
+                  if (isset($split[2])) //Eg. "Bankok, Krung Thep, Thailand"
                   {
                     $city=addslashes($split[0]);
                     $state=trim($split[1]);
