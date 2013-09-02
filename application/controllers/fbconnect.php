@@ -150,13 +150,11 @@ class Fbconnect extends CI_Controller{
                 else
                 {
                   $email=$response["registration"]["email"];
-
-                  error_log('email:'.$email);
-
                   $password=rand(111111,9999999);
                   //$password=$response["registration"]["password"];
                   $password=md5($password);
                   $username=mysql_real_escape_string($response["registration"]["name"]);
+                  error_log('username:'.$username);
                   $city_country=$response["registration"]["location"]["name"];
                   $split=explode(",", $city_country); //Eg. Split "Bangalore, India" into "Bangalore" and "India"
                   if ($split[2]) //Eg. "Bankok, Krung Thep, Thailand"
@@ -180,6 +178,7 @@ class Fbconnect extends CI_Controller{
                   //$gender=$response["registration"]["gender"];
                   $phone=$response["registration"]["phone"];
                   $organization=mysql_real_escape_string($response["registration"]["org"]);
+                  error_log('organization:'.$organization);
                   $actual_type=$response["registration"]["usertype"];
                   if($actual_type=='promoter'){$what="Promoter";}
                   elseif($actual_type=='venue'){$what="Promoter";}
@@ -190,6 +189,7 @@ class Fbconnect extends CI_Controller{
                   $fb_username=mysql_real_escape_string($user_profile["username"]);
                   //$about=$user_profile["bio"];
                   $about=addslashes($about);
+                  error_log('about:'.$about);
                   /*
                   $emp=$user_profile["work"]["0"]["employer"]["name"];
                   $emp=addslashes($emp);
@@ -225,8 +225,8 @@ class Fbconnect extends CI_Controller{
                /*   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 */
-                  $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)
-                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
+                  $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `fb`, `status`, `user`, `ip`, `time`)
+                                     VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 
                   $ress = mysql_query($query);
                   if (!$ress)
