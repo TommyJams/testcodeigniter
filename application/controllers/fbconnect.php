@@ -189,17 +189,17 @@ class Fbconnect extends CI_Controller{
                   $default_value = '';
 
                   if(isset($user_profile["username"])==FALSE)
-                    $fb_username = default_value;
+                    $fb_username = $default_value;
                   else
                     $fb_username=mysql_real_escape_string($user_profile["username"]);
 
                   if(isset($user_profile["gender"])==FALSE)
-                    $gender = default_value;
+                    $gender = $default_value;
                   else
                     $gender=$user_profile["gender"];
 
                   if(isset($user_profile["about"])==FALSE)
-                    $about = default_value;
+                    $about = $default_value;
                   else{
                     $about=$user_profile["bio"];
                     $about=addslashes($about);
