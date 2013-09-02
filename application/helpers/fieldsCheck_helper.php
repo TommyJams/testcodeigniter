@@ -1,6 +1,6 @@
 <?php
 
-function get_key ($haystack, $needle, $default_value)
+function get_key ($haystack, $needle, $default_value =  '')
 {
 	//$default_value = '';
 
