@@ -26,6 +26,8 @@ class Artist extends CI_Controller{
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 		$results = mysql_query($SQLs);
+		$type = "";
+		$user = "";
 		while ($a = mysql_fetch_assoc($results))
 		{
 			$id=$a["id"];$idaa=$id;$name=$a["name"];
@@ -38,6 +40,7 @@ class Artist extends CI_Controller{
 			$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];
 		}
 
+		$users = "";
 		if($type=="Promoter"){     $users="images/promoter/$user";; }
  		elseif($type=="Artist"){     $users="images/artist/$user"; }
 		if(!file_exists($users) && $user==""){$users="images/profile.jpg";}
