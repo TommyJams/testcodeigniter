@@ -42,6 +42,8 @@
 $route['default_controller'] = "azurepage";
 
 $route['index'] = "index/betalandingpage";
+$route['promoter'] = "artist/artistpage";
+$route['artist'] = "promoter/promoterpage";
 
 // $route['fbconnect'] = "fbconnect/connectFb";
 

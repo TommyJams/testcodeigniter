@@ -195,11 +195,7 @@ class Fbconnect extends CI_Controller{
                   $about=get_key($user_profile, "bio");
 
                   $about=addslashes($about);
-
-                 
-                
                   
-
                   /*
                   $emp=$user_profile["work"]["0"]["employer"]["name"];
                   $emp=addslashes($emp);
@@ -263,10 +259,14 @@ class Fbconnect extends CI_Controller{
                     ");*/
 
                     /************* This code is for MailChimp Integration ****************/
-                   /* require_once('../plugin/newsletter-form/MCAPI.class.php');
+                    //require_once('../plugin/newsletter-form/MCAPI.class.php');
 
                     // API Key: http://admin.mailchimp.com/account/api/
-                    $mcapi = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
+                    //$mcapi = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
+                    $config = array(
+                              'apikey' => '4b1d3dfd9a40c3a47861fa481d644505-us5' );
+
+                    $this->load->library('mailchimp/MCAPI', $config, 'mail_chimp');
 
                     // List's Id: http://admin.mailchimp.com/lists/
                     $list_id = "a29827c7a6";
@@ -311,23 +311,29 @@ class Fbconnect extends CI_Controller{
                                 )
                               );
 
-                    if($mcapi->listSubscribe($list_id, $email, $merge_vars, $email_type, $double_optin, $update_existing, $replace_interests, $send_welcome) === false)
+                    if($this->mail_chimp->listSubscribe($list_id, $email, $merge_vars, $email_type, $double_optin, $update_existing, $replace_interests, $send_welcome) === false)
                     {
                       //'Error: ' . $mcapi->errorMessage;
                       // We don't want to stop registration just because mailchimp did not work.
                       // Let's just send an email to alerts@tommyjams.com to notify admin.
-                      $errorMsg = $mcapi->errorMessage;
+                      //$errorMsg = $mcapi->errorMessage;
 
                       $to = "alerts@tommyjams.com";
+                      $sender = "alerts@tommyjams.com";
                       $subject = "Mailchimp FBConnect failure: $email, Error: $errorMsg";
                       $message = "$email could not be added/updated in the current mailchimp list on fb registration. Please try manually. Error being faced: $errorMsg";
-                      include("include/mail.php");
+                      //include("include/mail.php");
+                      $this->load->helper('mail');
+                      send_email($to, $sender, $subject, $message);
                     }
                                     
                     $to = "alerts@tommyjams.com";
+                    $sender = "alerts@tommyjams.com";
                     $subject = "$email joined fbconnect";
                     $message = "$email joined fbconnect";
-                    include("include/mail.php"); */
+                    //include("include/mail.php"); 
+                    $this->load->helper('mail');
+                    send_email($to, $sender, $subject, $message);
                   } 
                   
                   $q_link = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
@@ -366,15 +372,17 @@ class Fbconnect extends CI_Controller{
             $data['mess']=$this->load->view('registration4_view', NULL, TRUE);
             $this->load->view('fbConnect1_view', $data);
 
-            /*
-            if($_SESSION['username'])
+            
+            if($this->session->userdata('username'))
             {
-              header("Location: promoter.php?success=1");
+              //header("Location: promoter.php?success=1");
+              header("Location: promoter");
               exit;
             }
-            elseif($_SESSION['username_artist'])
+            elseif($this->session->userdata('username_artist'))
             {
-              header("Location: artist.php?success=1");
+              //header("Location: artist.php?success=1");
+              header("Location: artist");
               exit;
             }
             else
@@ -404,7 +412,7 @@ class Fbconnect extends CI_Controller{
                 if($emp!=""){$job="Work as"; $organization=$emp;}else{$job="Studying"; $organization=$student;}
                 if($_GET["what"]==1){$what="Promoter";}else{$what="Artist";}*/
                 // include("connect.php");
-                /*
+                
                 $q1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid' AND status=1";
                 $result_set1 = mysql_query($q1);  
 
@@ -421,58 +429,72 @@ class Fbconnect extends CI_Controller{
                   
                   if($type=="Promoter")
                   {
-                    $_SESSION['username'] = $fbid;
-                    $_SESSION['password'] = $found_admin["password"];
+                    $newdata = array(
+                                  'username'  => $fbid,
+                                  'password'  => $found_admin["password"]
+                                  );
+                    $this->session->set_userdata($newdata);
+                    //$_SESSION['username'] = $fbid;
+                    //$_SESSION['password'] = $found_admin["password"];
                     {   
-                      header("Location: promoter.php?success=1");
+                      //header("Location: promoter.php?success=1");
+                      header("Location: promoter");
                       exit;
                     }
                   }
 
                   elseif($type=="Artist")
                   {
-                    $_SESSION['username_artist'] = $fbid;
-                    $_SESSION['password_artist'] = $found_admin["password"];
+                    $newdata = array(
+                                  'username_artist'  => $fbid,
+                                  'password_artist'  => $found_admin["password"]
+                                  );
+                    $this->session->set_userdata($newdata);
+                    //$_SESSION['username_artist'] = $fbid;
+                    //$_SESSION['password_artist'] = $found_admin["password"];
                     {
-                      header("Location: artist.php?success=1");
+                      //header("Location: artist.php?success=1");
+                      header("Location: artist");
                       exit;
                     }
                   }
                 }
                 else
                 {
-                  header("Location: index.php");
+                  header("Location: index");
                   exit;
                 }
               }
               else
               {
-                header("Location: index.php");
+                header("Location: index");
                 exit;
               }
-            }
-           */ 
+            } 
           }
           
-          /*else
+          else
           {
-            //default behaviour when landing on fbconnect.php
-            if($_SESSION['username'])
+            //default behaviour when landing on fbconnect.php $this->session->userdata('session_id');
+            if($this->session->userdata('username'))
             {
-              header("Location: promoter.php?success=1");
-                exit;
+              //header("Location: promoter.php?success=1");
+              header("Location: promoter");
+              exit;
             }
-            elseif($_SESSION['username_artist'])
+            elseif($this->session->userdata('username_artist'))
             {
-              header("Location: artist.php?success=1");
-                exit;
+              //header("Location: artist.php?success=1");
+              header("Location: artist");
+              exit;
             }
             else
             {
-              header("Location: index.php");
-                exit;
+              //header("Location: index.php");
+              header("Location: index");
+              exit;
             }           
-          }*/
+          }
  
 
             	
