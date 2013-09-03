@@ -369,9 +369,9 @@ class Fbconnect extends CI_Controller{
 
           elseif ($registrationParam=='preregistered') //Existing user
           {
-            $data['val']=4;
+            /*$data['val']=4;
             $data['mess']=$this->load->view('registration4_view', NULL, TRUE);
-            $this->load->view('fbConnect1_view', $data);
+            $this->load->view('fbConnect1_view', $data);*/
             
             if($sessionArray['username'])
             {
