@@ -7,18 +7,21 @@ class Index extends CI_Controller{
 
 		ob_start();
 
-		$session_id = $this->session->userdata('session_id');
-		if (!isset($session_id)) {
+		$sessionArray = $this->session->all_userdata();
+
+		//$session_id = $this->session->userdata('session_id');
+		if (!isset($sessionArray['session_id'])) {
 			session_start();
 		}
 
-		if(isset($this->session->userdata('username'))) {
+		// $this->session->userdata('username')
+		if(isset($sessionArray['username'])) {
 		//header("Location: promoter.php?success=1");
 		header("Location: promoter");	
 		exit;
 		}
 
-		elseif(isset($this->session->userdata('username_artist'))) {
+		elseif(isset($sessionArray['username_artist'])) {
 		//header("Location: artist.php?success=1");
 		header("Location: artist");
 		exit;
