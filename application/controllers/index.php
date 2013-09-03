@@ -7,7 +7,8 @@ class Index extends CI_Controller{
 
 		ob_start();
 
-		if (!isset($this->session->userdata('session_id'))) {
+		$session_id = $this->session->userdata('session_id');
+		if (!isset($session_id)) {
 			session_start();
 		}
 
