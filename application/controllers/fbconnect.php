@@ -454,7 +454,9 @@ class Fbconnect extends CI_Controller{
                     //$_SESSION['password_artist'] = $found_admin["password"];
                     {
                       //header("Location: artist.php?success=1");
-                      header("Location: artist");
+                      //header("Location: artist");
+                      $back_to = 'http://testcodeigniter.azurewebsites.net/artist';
+                      redirect($back_to);
                       exit;
                     }
                   }
