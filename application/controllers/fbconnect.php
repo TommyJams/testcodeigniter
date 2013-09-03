@@ -60,6 +60,7 @@ class Fbconnect extends CI_Controller{
 		// Path to PHP-SDK
 		require 'src/facebook.php';
     $database = 'tommyjam_test';
+    $sessionArray = $this->session->all_userdata();
 		/*define('FACEBOOK_APP_ID', '566516890030362');
 		define('FACEBOOK_SECRET', '731fb276b0e0e1a8a77ecbdf72e2591b'); */
 
@@ -195,7 +196,7 @@ class Fbconnect extends CI_Controller{
                   $about=get_key($user_profile, "bio");
 
                   $about=addslashes($about);
-                  
+
                   /*
                   $emp=$user_profile["work"]["0"]["employer"]["name"];
                   $emp=addslashes($emp);
@@ -371,15 +372,14 @@ class Fbconnect extends CI_Controller{
             $data['val']=4;
             $data['mess']=$this->load->view('registration4_view', NULL, TRUE);
             $this->load->view('fbConnect1_view', $data);
-
             
-            if($this->session->userdata('username'))
+            if($sessionArray['username'])
             {
               //header("Location: promoter.php?success=1");
               header("Location: promoter");
               exit;
             }
-            elseif($this->session->userdata('username_artist'))
+            elseif($sessionArray['username_artist'])
             {
               //header("Location: artist.php?success=1");
               header("Location: artist");
@@ -476,13 +476,13 @@ class Fbconnect extends CI_Controller{
           else
           {
             //default behaviour when landing on fbconnect.php $this->session->userdata('session_id');
-            if($this->session->userdata('username'))
+            if($sessionArray['username'])
             {
               //header("Location: promoter.php?success=1");
               header("Location: promoter");
               exit;
             }
-            elseif($this->session->userdata('username_artist'))
+            elseif($sessionArray['username_artist'])
             {
               //header("Location: artist.php?success=1");
               header("Location: artist");
