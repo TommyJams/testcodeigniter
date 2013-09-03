@@ -19,6 +19,7 @@ class Artist extends CI_Controller{
 		
 		$database = 'tommyjam_test';
 		$username=$sessionArray['username_artist'];
+		error_log($username);
 		$password=md5($sessionArray['password_artist']);
 
 		//include('connect.php');
