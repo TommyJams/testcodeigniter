@@ -69,6 +69,7 @@ public function profilepage(){
 		$user = "";
 		$nsilver = "";
 		$id = "";
+		$a = array();
 
 		while ($a = mysql_fetch_assoc($results))
 		{
