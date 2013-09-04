@@ -68,5 +68,7 @@
 				</div>
 			</div>
 		</div>
+
+        <?  include("include/rightCommon.php"); ?>
 	</body>
 </html>
