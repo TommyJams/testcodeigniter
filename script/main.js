@@ -16,19 +16,19 @@
 						link	: '/blog/'
                     },
 					{
-                        image	: 'images/background/CrossLegacy_resize.jpg',
+                        image	: '/images/background/CrossLegacy_resize.jpg',
                         title   : 'Cross Legacy',
                         details : 'Christian Rock',
 						link	: '/blog/'
                     },
                     {
-                        image	: 'images/background/Solder2_resize.jpg',
+                        image	: '/images/background/Solder2_resize.jpg',
                         title   : 'Solder',
                         details : '\'Feel Good\' Rock',
 						link	: '/blog/'
                     },
 					{
-                        image	: 'images/background/parvaaz_resize.jpg',
+                        image	: '/images/background/parvaaz_resize.jpg',
                         title   : 'Parvaaz',
                         details : 'Kashmiri Rock',
 						link	: '/blog/'
