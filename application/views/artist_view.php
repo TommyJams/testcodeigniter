@@ -126,7 +126,7 @@
 			else {
 				if(!isset($_GET["id"]) && !isset($_GET["gig"])){ 
 					//print("$('#lefty').load('include/profile.php');");
-					$.post('artist/profilepage','',showProfile,'json');
+					print("$.post('artist/profilepage','',showProfile,'json');");
 				}
 				else if(isset($_GET["id"])){ print("$('#lefty').load('include/profile.php?id=$_GET[id]');");}
 				else if(isset($_GET["gig"])){ print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]');");}
