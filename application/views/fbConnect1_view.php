@@ -28,20 +28,7 @@
         <div id="background-overlay"></div>
     <!-- /Background overlay -->    
     
-        <?	include("include/leftSidebar.php");	?>        
-            <div id="logoContainer">            
-                <a href="<?php echo base_url();?>index">            
-                    <img alt="Home" title="Home" src="images/tjlogo_small.png">        
-                </a>
-            </div>
-            <div id="slideText">
-                <h3 id="slideTextHeading">
-                    Slide Text Heading
-                </h3>
-                <h4 id="slideTextBody">
-                    Slide Text Body
-                <h4>
-            </div>
+        <?	include("include/leftCommon.php");	?>       
 
         <div id="main-container">
             <div id="inner-container">
