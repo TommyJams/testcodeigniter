@@ -63,7 +63,7 @@
     {
 		$("#loading-indicator").show();
 		$("#lefty").load("include/profile.php",{"id": a.id});
-		//console.log("Data", a.id);
+		console.log("Data: ", a);
     }
     function loadfram(a) 
     {
