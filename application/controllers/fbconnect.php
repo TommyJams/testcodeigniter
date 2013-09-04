@@ -376,13 +376,15 @@ class Fbconnect extends CI_Controller{
             if($sessionArray['username'])
             {
               //header("Location: promoter.php?success=1");
-              header("Location: promoter");
+              //header("Location: promoter");
+              redirect('http://testcodeigniter.azurewebsites.net/promoter');
               exit;
             }
             elseif($sessionArray['username_artist'])
             {
               //header("Location: artist.php?success=1");
-              header("Location: artist");
+              //header("Location: artist");
+              redirect('http://testcodeigniter.azurewebsites.net/artist');
               exit;
             }
             else
@@ -438,7 +440,9 @@ class Fbconnect extends CI_Controller{
                     //$_SESSION['password'] = $found_admin["password"];
                     {   
                       //header("Location: promoter.php?success=1");
-                      header("Location: promoter");
+                      //header("Location: promoter");
+                      redirect('http://testcodeigniter.azurewebsites.net/promoter');
+
                       exit;
                     }
                   }
@@ -455,21 +459,23 @@ class Fbconnect extends CI_Controller{
                     {
                       //header("Location: artist.php?success=1");
                       //header("Location: artist");
-                      $back_to = 'http://testcodeigniter.azurewebsites.net/artist';
-                      redirect($back_to);
+                      //$back_to = 'http://testcodeigniter.azurewebsites.net/artist';
+                      redirect('http://testcodeigniter.azurewebsites.net/artist');
                       exit;
                     }
                   }
                 }
                 else
                 {
-                  header("Location: index");
+                  //header("Location: index");
+                  redirect('http://testcodeigniter.azurewebsites.net/index');
                   exit;
                 }
               }
               else
               {
-                header("Location: index");
+                //header("Location: index");
+                redirect('http://testcodeigniter.azurewebsites.net/index');
                 exit;
               }
             } 
@@ -481,19 +487,22 @@ class Fbconnect extends CI_Controller{
             if($sessionArray['username'])
             {
               //header("Location: promoter.php?success=1");
-              header("Location: promoter");
+              //header("Location: promoter");
+              redirect('http://testcodeigniter.azurewebsites.net/promoter');
               exit;
             }
             elseif($sessionArray['username_artist'])
             {
               //header("Location: artist.php?success=1");
-              header("Location: artist");
+              //header("Location: artist");
+              redirect('http://testcodeigniter.azurewebsites.net/promoter');
               exit;
             }
             else
             {
               //header("Location: index.php");
-              header("Location: index");
+              //header("Location: index");
+              redirect('http://testcodeigniter.azurewebsites.net/index');
               exit;
             }           
           }
