@@ -463,5 +463,5 @@
 
 	function facebookLoginCallback()
 	{
-		window.location = "http://tommyjams.com/beta/fbconnect.php?registered=yes";
+		window.location = "http://testcodeigniter.azurewebsites.net/fbconnect/preregistered";
 	}
