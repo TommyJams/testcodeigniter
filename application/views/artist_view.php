@@ -45,6 +45,7 @@
         link = a+".php?include="+a; 
         parent.leftframe.location.href=link; 
     </script>-->
+    
     <script>
     function loadframe(a) 
     {
@@ -73,6 +74,7 @@
 		$("#lefty").load("include/artist_gigs.php?page="+a);
     }
     </script>
+    
 	<script type="text/javascript">
           var _gaq = _gaq || [];
 		  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js'; 
