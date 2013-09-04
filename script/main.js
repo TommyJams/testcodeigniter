@@ -10,7 +10,7 @@
                 slide		: 
                 [
                     {
-                        image	: 'images/background/OneNiteStand_resize.jpg',
+                        image	: '/images/background/OneNiteStand_resize.jpg',
                         title   : 'One Nite Stand',
                         details : 'Dance Rock',
 						link	: '/blog/'
