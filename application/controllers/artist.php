@@ -2,11 +2,11 @@
 
 class Artist extends CI_Controller{
 
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
 	public function artistpage(){
 		ob_start();
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 		session_start();
@@ -53,6 +53,9 @@ class Artist extends CI_Controller{
 	}
 
 public function profilepage(){
+
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
 	
 	if(isset($sessionArray['username_artist'])  && !isset($_GET['id']))
 	{
