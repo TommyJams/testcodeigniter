@@ -62,7 +62,7 @@
 	function showProfile(a)
     {
 		$("#loading-indicator").show();
-		print("$('#lefty').load('include/profile.php',{'json': a});" );
+		print("$('#lefty').load('include/profile.php',{"json": a});" );
     }
     function loadfram(a) 
     {
