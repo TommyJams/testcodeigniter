@@ -56,8 +56,7 @@ public function profilepage(){
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
-	$a = array();
-
+	
 	if(isset($sessionArray['username_artist'])  && !isset($_GET['id']))
 	{
 		$username=$sessionArray['username_artist'];
@@ -82,8 +81,7 @@ public function profilepage(){
 			$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
 			$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
 
-			$response["id"]=$id;
-			$response["name"]=$name;
+			$response=$a;
 		}
 	}
 	else if(isset($sessionArray['username'])  && !isset($_GET["id"]))
@@ -146,7 +144,7 @@ public function profilepage(){
 	//$response['id'] = $id; 
 	//$response = $a;
 	$this->load->helper('functions');
-	createResponse($a);
+	createResponse($response);
 
 	//$this->load->view('profile_subview');
 	}
