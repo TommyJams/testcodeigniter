@@ -143,9 +143,8 @@ public function profilepage(){
 	$this->load->helper('functions');
 	createResponse($response);
 
-
 	//$this->load->view('profile_subview');
-}
+	}
 }
 ?>
 
