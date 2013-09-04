@@ -62,7 +62,7 @@
 	function showProfile(a)
     {
 		$("#loading-indicator").show();
-		$("#lefty").load("include/profile.php?id="+a);
+		$("#lefty").load("include/profile.php?id="+a.id);
     }
     function loadfram(a) 
     {
@@ -74,7 +74,7 @@
 		$("#lefty").load("include/artist_gigs.php?page="+a);
     }
     </script>
-    
+
 	<script type="text/javascript">
           var _gaq = _gaq || [];
 		  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js'; 
@@ -124,7 +124,10 @@
 			else if(isset($_GET["feed"])){ print("$('#lefty').load('include/feed.php?feed=$_GET[feed]');");}
 			else if(isset($_GET["thank"])){ print("$('#lefty').load('include/thank.php?rate=1');");}
 			else {
-				if(!isset($_GET["id"]) && !isset($_GET["gig"])){ print("$('#lefty').load('include/profile.php');");}
+				if(!isset($_GET["id"]) && !isset($_GET["gig"])){ 
+					//print("$('#lefty').load('include/profile.php');");
+					$.post('artist/profilepage','',showProfile,'json');
+				}
 				else if(isset($_GET["id"])){ print("$('#lefty').load('include/profile.php?id=$_GET[id]');");}
 				else if(isset($_GET["gig"])){ print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]');");}
 			}

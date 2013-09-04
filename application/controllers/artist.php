@@ -68,6 +68,7 @@ public function profilepage(){
 		$type = "";
 		$user = "";
 		$nsilver = "";
+		$id = "";
 
 		while ($a = mysql_fetch_assoc($results))
 		{
@@ -137,6 +138,11 @@ public function profilepage(){
 
 	if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
 	else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
+
+	$response['id'] = $id; 
+	$this->load->helper('functions');
+	createResponse($response);
+
 
 	//$this->load->view('profile_subview');
 }
