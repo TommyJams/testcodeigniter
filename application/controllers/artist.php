@@ -141,7 +141,7 @@ public function profilepage(){
 
 	$response['id'] = $id; 
 	$this->load->helper('functions');
-	createResponse($response);
+	createResponse($a);
 
 	//$this->load->view('profile_subview');
 	}
