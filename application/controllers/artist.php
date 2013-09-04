@@ -69,7 +69,7 @@ public function profilepage(){
 		$user = "";
 		$nsilver = "";
 		$id = "";
-		//$a = array();
+		$response = array('id','name');
 
 		while ($a = mysql_fetch_assoc($results))
 		{
@@ -81,6 +81,9 @@ public function profilepage(){
 			$job=$a["job"];$designation=$a["designation"];
 			$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
 			$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+
+			$response["id"]=$id;
+			$response["name"]=$name;
 		}
 	}
 	else if(isset($sessionArray['username'])  && !isset($_GET["id"]))
@@ -141,7 +144,7 @@ public function profilepage(){
 	else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
 
 	//$response['id'] = $id; 
-	$response = $a;
+	//$response = $a;
 	$this->load->helper('functions');
 	createResponse($response);
 
