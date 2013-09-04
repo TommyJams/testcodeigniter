@@ -62,8 +62,8 @@
 	function showProfile(a)
     {
 		$("#loading-indicator").show();
-		$("#lefty").load("include/profile.php",{"id": a.id});
-		console.log("Data: ", a);
+		$("#lefty").load("include/profile.php", JSON.stringify(a));
+		console.log("Data: ", JSON.stringify(a));
     }
     function loadfram(a) 
     {
