@@ -56,7 +56,8 @@ public function profilepage(){
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
-	
+	$a = array();
+
 	if(isset($sessionArray['username_artist'])  && !isset($_GET['id']))
 	{
 		$username=$sessionArray['username_artist'];
@@ -69,7 +70,6 @@ public function profilepage(){
 		$user = "";
 		$nsilver = "";
 		$id = "";
-		$response = array('id','name');
 
 		while ($a = mysql_fetch_assoc($results))
 		{
@@ -146,7 +146,7 @@ public function profilepage(){
 	//$response['id'] = $id; 
 	//$response = $a;
 	$this->load->helper('functions');
-	createResponse($response);
+	createResponse($a);
 
 	//$this->load->view('profile_subview');
 	}
