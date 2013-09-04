@@ -48,7 +48,7 @@ class Artist extends CI_Controller{
 
 		// loading artist_view file
 		//$_SESSION = $this->session->all_userdata();
-		$this->profilepage();
+		//$this->profilepage();
 		$this->load->view('artist_view');
 	}
 
