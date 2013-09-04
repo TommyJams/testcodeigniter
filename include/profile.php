@@ -97,7 +97,7 @@
                             <h1 style="display:inline-block;"><? print ("$name"); ?></h1>
                         </div>
                         <h2 style='padding-top:0px;'>
-                            User: <?print (json_decode($_POST['id']));?>
+                            User: <?print (json_decode($_POST['json'])->id);?>
 							<br>
                             <?print ("$designation");?>
                             <?
