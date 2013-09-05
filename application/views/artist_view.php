@@ -59,10 +59,10 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/gigs.php?gig="+a);
     }
-	function showProfile(id)
+	function showProfile(user_id)
     {
     	$("#loading-indicator").show();
-		$.post('artist/profilepage',id,showProfileCallback,'json');
+		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
 		//console.log("id: ", JSON.stringify(id));
 		console.log("id: ", id);
     }
