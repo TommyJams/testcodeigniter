@@ -19,7 +19,6 @@ class Artist extends CI_Controller{
 		}
 		
 		$username=$sessionArray['username_artist'];
-		error_log($username);
 		$password=md5($sessionArray['password_artist']);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
@@ -55,6 +54,7 @@ public function profilepage(){
 
 	// Initializing variables. 
 	// Codeigniter throws "undefined variable" error on un-intialized variables.
+	$linkedID = $_POST['id'];
 	$type = "";
 	$user = "";
 	$nsilver = "";
@@ -105,10 +105,9 @@ public function profilepage(){
 	}
 	else
 	{
-		$link = $_POST['id'];
-		error_log("Post ID: ", $link);
+		error_log("Post ID: ", $linkedID);
 
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
+		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$linkedID'";
 		$results = mysql_query($SQLs);
 
 		if (mysql_num_rows($results) == 1) 
