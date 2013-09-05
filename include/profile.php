@@ -94,12 +94,12 @@
 				<div class="data">
                     <div style="width:35%; height:100%; float:left;">
                         <div id="userName">
-                            <h1 style="display:inline-block;"><? print ("$name"); ?></h1>
+                            <h1 style="display:inline-block;"><? print (json_decode($_POST['json'])->name); ?></h1>
                         </div>
                         <h2 style='padding-top:0px;'>
-                            User: <?print (json_decode($_POST['json'])->id);?>
+                            User: <?print (json_decode($_POST['json'])->username);?>
 							<br>
-                            <?print ("$designation");?>
+                            <?print (json_decode($_POST['json'])->designation);?>
                             <?
 							/*print ("$usernam");
                             if($organization!="")
@@ -131,14 +131,14 @@
                     </div>
 					<div class="socialInfo">
 						<div class="userType">
-							<h1><?print($type);?></h1>
+							<h1><?print(json_decode($_POST['json'])->type);?></h1>
 						</div>
 						<div class="userGenre">
 							<h2 style="padding-top:0px;">
 							<?
 								if($type=="Promoter"){print("Style: ");}
 								elseif($type=="Artist"){print("Genre: ");}
-								print($genre);
+								print(json_decode($_POST['json'])->genre);
 							?>
 							</h2>
 						</div>
@@ -146,8 +146,9 @@
 							<? 
 								if($fb!="")
 								{
-									print("<a href='$fb' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
-								}
+									//print("<a href='$fb' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
+								    print("<a href='(json_decode($_POST['json'])->fb)' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
+                                }
 							?>
 							<?
 								if($twitter!="")
