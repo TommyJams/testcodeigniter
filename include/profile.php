@@ -242,14 +242,21 @@
 									</table>
                                     <div class="gig" style="">
                                         <span class="gigs" >
-                                        <?php foreach($responce['gigsHistory'] as $row){ ?>
+                                        <?php 
+                                        $gigsHistory = (json_decode($_POST['json'])->gigsHistory);
+                                        foreach($gigsHistory as $row){ ?>
                                         <?
+                                        $gig_name=$row[0];
+                                        $pr_name=$row[1];
+                                        $ar_name=$row[2];
+                                        $date=$row[3];
+                                        $city=$row[4];
                                         if((json_decode($_POST['json'])->type)=="Promoter") 
-										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$row->gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$row->ar_name</a></td>"); }
+										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$ar_name</a></td>"); }
                                         else if((json_decode($_POST['json'])->type)=="Artist")
-                                        { print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$row->gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$pr_id'); class='greenRef' >$row->pr_name</a></td>"); }
+                                        { print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$pr_id'); class='greenRef' >$pr_name</a></td>"); }
 										
-										print("<td width='40%'>$row->formattedDate<br>$v_city</td></tr></table>");
+										print("<td width='40%'>$date<br>$city</td></tr></table>");
                                         ?><?php } ?>
 										</span>
                                         <!--<span class="gigs"><? /*print("<td width='40%'>$formattedDate<br>$v_city</td></tr></table>");*/?></span>-->
