@@ -63,7 +63,7 @@
     {
     	var abc = user_id; 
     	$("#loading-indicator").show();
-		$.post('artist/profilepage',{id: abc},showProfileCallback,'json');
+		$.post('artist/profilepage',"id:" + abc,showProfileCallback,'json');
 		//console.log("id: ", JSON.stringify(id));
 		console.log("id: ", user_id);
     }
