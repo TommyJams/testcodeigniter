@@ -110,21 +110,21 @@
                         </h2>
                         <h2 style='padding-top:0px;'>
                             <?
-                            if($city!="")
+                            if((json_decode($_POST['json'])->city)!="")
                             {
-                                print("$city");
+                                print(json_decode($_POST['json'])->city);
                             }
-                            if($state!="")
+                            if((json_decode($_POST['json'])->state)!="")
                             {
-                                if($city!="")
+                                if((json_decode($_POST['json'])->city)!="")
                                     print(", ");
-                                print("$state");
+                                print(json_decode($_POST['json'])->state);
                             }
-                            if($country!="")
+                            if((json_decode($_POST['json'])->country)!="")
                             {
-                                if($city!="" || $state!="")
+                                if((json_decode($_POST['json'])->city)!="" || (json_decode($_POST['json'])->state)!="")
                                     print(", ");
-                                print("$country");
+                                print(json_decode($_POST['json'])->country);
                             }
                             ?>
                         </h2>
@@ -136,8 +136,8 @@
 						<div class="userGenre">
 							<h2 style="padding-top:0px;">
 							<?
-								if($type=="Promoter"){print("Style: ");}
-								elseif($type=="Artist"){print("Genre: ");}
+								if((json_decode($_POST['json'])->type)=="Promoter"){print("Style: ");}
+								elseif((json_decode($_POST['json'])->type)=="Artist"){print("Genre: ");}
 								print(json_decode($_POST['json'])->genre);
 							?>
 							</h2>
