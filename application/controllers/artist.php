@@ -60,7 +60,7 @@ public function profilepage(){
 	$nsilver = "";
 	$id = "";
 	
-	if(isset($sessionArray['username_artist'])  && !isset($_GET['id']))
+	if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 	{
 		$username=$sessionArray['username_artist'];
 		$password=md5($sessionArray['password_artist']);
@@ -82,7 +82,7 @@ public function profilepage(){
 			$response=$a;
 		}
 	}
-	else if(isset($sessionArray['username'])  && !isset($_GET["id"]))
+	else if(isset($sessionArray['username'])  && !isset($_POST["id"]))
 	{
 		$username=$sessionArray['username'];
 		$password=md5($sessionArray['password']);
@@ -105,7 +105,7 @@ public function profilepage(){
 	}
 	else
 	{
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE link=$_GET[id]";
+		$SQLs = "SELECT * FROM `$database`.`members` WHERE link=$_POST[id]";
 		$results = mysql_query($SQLs);
 
 		if (mysql_num_rows($results) == 1) 
