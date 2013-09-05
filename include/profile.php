@@ -243,7 +243,7 @@
                                     <div class="gig" style="">
                                         <span class="gigs" >
                                         <?php 
-                                        $gigsHistory = (json_decode($_POST['json'])->gigsHistory);
+                                        $gigsHistory = (json_decode($_POST['json'])->gigHistory);
                                         foreach($gigsHistory as $row){ ?>
                                         <?
                                         $gig_name=$row[0];
