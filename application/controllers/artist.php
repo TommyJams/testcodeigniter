@@ -104,7 +104,7 @@ public function profilepage(){
 	}
 	else
 	{
-		$link = '591741';
+		$link = $_POST['id'];
 		error_log("Post ID: ".$link);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
