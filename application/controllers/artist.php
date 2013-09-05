@@ -174,14 +174,15 @@ public function profilepage(){
 		
 		$formattedDate = date('d-m-Y',strtotime($v_date));
 
-		$resp['gigsHistory'] = array( 
+	}	
+
+$resp['gigsHistory'] = array( 
 				"gig_name" => array($gig_name), 
 				"ar_name" => array($ar_name), 
 				"pr_name" => array($pr_name), 
 				"formattedDate" => array($formattedDate), 
 				"v_city" => array($v_city)
 				);
-	}	
 
 	error_log(json_encode($resp));
 	$this->load->helper('functions');
