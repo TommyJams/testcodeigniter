@@ -175,7 +175,7 @@ public function profilepage(){
 		$formattedDate = date('d-m-Y',strtotime($v_date));
 
 		$resp['gigsHistory'] = array(
-				'gig_name' => $gig_name, 'ar_name' => $ar_name, 'pr_name' => $pr_name, 'formattedDate' => $formattedDate, 'v_city' => $v_city
+				'gig_name' => 'hello', 'ar_name' => $ar_name, 'pr_name' => $pr_name, 'formattedDate' => $formattedDate, 'v_city' => $v_city
 				);
 	}	
 
