@@ -62,7 +62,7 @@
 	function showProfile(id)
     {
     	$("#loading-indicator").show();
-		$.post('artist/profilepage','id',showProfileCallback,'json');
+		$.post('artist/profilepage',id,showProfileCallback,'json');
     }
     function showProfileCallback(a)
     {
