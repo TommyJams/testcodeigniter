@@ -247,10 +247,12 @@
                                         foreach($gigsHistory as $row){ ?>
                                         <?
                                         $gig_name=$row[0];
-                                        $pr_name=$row[1];
-                                        $ar_name=$row[2];
-                                        $date=$row[3];
-                                        $city=$row[4];
+                                        $pr_id=$row[1];
+                                        $pr_name=$row[2];
+                                        $ar_id=$row[3];
+                                        $ar_name=$row[4];
+                                        $date=$row[5];
+                                        $city=$row[6];
                                         if((json_decode($_POST['json'])->type)=="Promoter") 
 										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$ar_name</a></td>"); }
                                         else if((json_decode($_POST['json'])->type)=="Artist")

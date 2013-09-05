@@ -174,7 +174,7 @@ public function profilepage(){
 		
 		$formattedDate = date('d-m-Y',strtotime($v_date));
 
-		$gigRow = array($gig_name, $pr_name, $ar_name, $formattedDate, $v_city);
+		$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city);
 
 		$response['gigHistory'][] = $gigRow;
 	}	
