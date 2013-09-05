@@ -159,10 +159,6 @@ public function profilepage(){
     }
     $results = mysql_query($SQLs);
 
-    error_log($link);
-    error_log($results);
-
-	
 	while ($a = mysql_fetch_assoc($results))
     {
         $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
@@ -178,18 +174,13 @@ public function profilepage(){
 		
 		$formattedDate = date('d-m-Y',strtotime($v_date));
 
-		//$respon=$a;
+		$gigRow = array(
+				$gig_name, $pr_name, $formattedDate, $v_city
+			);
 
+		$response['gigHistory'][] = $gigRow;
 	}	
 
-/*	$resp['gigsHistory'] = array( 
-				"gig_name" => array($gig_name), 
-				"ar_name" => array($ar_name), 
-				"pr_name" => array($pr_name), 
-				"formattedDate" => array($formattedDate), 
-				"v_city" => array($v_city)
-				);
-*/
 	//error_log(json_decode($gig_id));
 	$this->load->helper('functions');
 	createResponse($response);
