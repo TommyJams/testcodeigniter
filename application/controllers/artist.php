@@ -159,7 +159,9 @@ public function profilepage(){
     }
     $results = mysql_query($SQLs);
 
+    error_log($link);
     error_log($results);
+
 	
 	while ($a = mysql_fetch_assoc($results))
     {
