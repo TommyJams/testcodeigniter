@@ -242,14 +242,15 @@
 									</table>
                                     <div class="gig" style="">
                                         <span class="gigs" >
+                                        <?php foreach($responce['gigsHistory'] as $row){ ?>
                                         <?
                                         if((json_decode($_POST['json'])->type)=="Promoter") 
-										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$ar_name</a></td>"); }
+										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$row->gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$row->ar_name</a></td>"); }
                                         else if((json_decode($_POST['json'])->type)=="Artist")
-                                        { print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$pr_id'); class='greenRef' >$pr_name</a></td>"); }
+                                        { print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$row->gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$pr_id'); class='greenRef' >$row->pr_name</a></td>"); }
 										
-										print("<td width='40%'>$formattedDate<br>$v_city</td></tr></table>");
-                                        ?>
+										print("<td width='40%'>$row->formattedDate<br>$v_city</td></tr></table>");
+                                        ?><?php } ?>
 										</span>
                                         <!--<span class="gigs"><? /*print("<td width='40%'>$formattedDate<br>$v_city</td></tr></table>");*/?></span>-->
                                         <!--<span class="gigs" style="color:#999; font-size:9px; line-height:3px; padding-top:10px;"></span>-->

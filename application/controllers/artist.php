@@ -179,6 +179,7 @@ public function profilepage(){
 				);
 	}	
 
+	error_log(json_encode($response));
 	$this->load->helper('functions');
 	createResponse($response);
 
