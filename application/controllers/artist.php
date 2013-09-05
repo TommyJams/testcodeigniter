@@ -151,6 +151,34 @@ public function profilepage(){
 	$response['about'] = $about;
 	$response['users'] = $users;
 
+    if($type=="Promoter"){   
+        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$link AND status=1 ORDER BY id DESC"; 
+    }
+    else if($type=="Artist"){   
+        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
+    }
+    $results = mysql_query($SQLs);
+	
+	while ($a = mysql_fetch_assoc($results))
+    {
+        $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
+        $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
+                               
+        $SQL = "SELECT * FROM `$database`.`shop` WHERE link=$gig_id";
+        $result = mysql_query($SQL);
+        
+        while ($b = mysql_fetch_assoc($result))
+        {
+        	$gig_name=$b["gig"];$v_state=$b["venue_state"];$v_city=$b["venue_city"];$v_date=$b["venue_date"];
+        }
+		
+		$formattedDate = date('d-m-Y',strtotime($v_date));
+
+		$response['gigsHistory'] = array(
+				'gig_name' => $gig_name, 'ar_name' => $ar_name, 'pr_name' => $pr_name, 'formattedDate' => $formattedDate, 'v_city' => $v_city
+				);
+	}	
+
 	$this->load->helper('functions');
 	createResponse($response);
 

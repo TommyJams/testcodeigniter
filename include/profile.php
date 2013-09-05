@@ -228,38 +228,24 @@
                         <div class="boxy">
                             <div class="giglist clearfix">
                                 <div id="pgig" style="top:2px;">
-                                <?  
-                                if($type=="Promoter")	{   $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$link AND status=1 ORDER BY id DESC"; }
-                                else if($type=="Artist")	{   $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; }
-                                $results = mysql_query($SQLs);
-								if($results)
-								{
-								?>
 									<table>
 										<tr>
 											<td style="background: #ffcc00; width: 30%;"><h1>GIG NAME</h1></td>
-											<td style="background: #ffcc00; width: 30%;"><h1><?if($type=="Promoter"){print("ARTIST");}else if($type=="Artist"){print("HOST");}?></h1></td>
+											<td style="background: #ffcc00; width: 30%;">
+                                                <h1>
+                                                    <?if((json_decode($_POST['json'])->type)=="Promoter"){print("ARTIST");}
+                                                    else if((json_decode($_POST['json'])->type)=="Artist"){print("HOST");}?>
+                                                </h1>
+                                            </td>
 											<td style="background: #ffcc00; width: 40%;"><h1>LOCATION</h1></td>
 										</tr>
 									</table>
-								<?
-								}
-                                while ($a = mysql_fetch_assoc($results))
-                                {
-                                    $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
-                                    $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
-                                    $SQL = "SELECT * FROM `$database`.`shop` WHERE link=$gig_id";
-                                    $result = mysql_query($SQL);
-                                    while ($b = mysql_fetch_assoc($result))
-                                    {$gig_name=$b["gig"];$v_state=$b["venue_state"];$v_city=$b["venue_city"];$v_date=$b["venue_date"];}
-									$formattedDate = date('d-m-Y',strtotime($v_date));
-                                ?>
                                     <div class="gig" style="">
                                         <span class="gigs" >
                                         <?
-                                        if($type=="Promoter") 
+                                        if((json_decode($_POST['json'])->type)=="Promoter") 
 										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$ar_name</a></td>"); }
-                                        else if($type=="Artist")
+                                        else if((json_decode($_POST['json'])->type)=="Artist")
                                         { print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gig('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$pr_id'); class='greenRef' >$pr_name</a></td>"); }
 										
 										print("<td width='40%'>$formattedDate<br>$v_city</td></tr></table>");
@@ -268,7 +254,7 @@
                                         <!--<span class="gigs"><? /*print("<td width='40%'>$formattedDate<br>$v_city</td></tr></table>");*/?></span>-->
                                         <!--<span class="gigs" style="color:#999; font-size:9px; line-height:3px; padding-top:10px;"></span>-->
                                     </div>
-                                        <? }       ?>               
+                                                     
                                 </div> <!--pgig-->
                             </div> <!--gigslist-->
                         </div> <!--boxy-->
