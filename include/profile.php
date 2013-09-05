@@ -81,15 +81,15 @@
         ?>
  <!-- <div id="box" style="display:block;  padding-right:30px;">-->
 
-
 <? if(!isset($_GET["edit"])){ ?>		
+<? $userpic = (json_decode($_POST['json'])->users); ?>
 <section id="left">
             <div id="userStats">
 				<div id="userPic" class="pic">
 					<? if(!isset($_GET['id']))
                     {print("<a href='#' onclick=popup('profil')>");}
 					else {print("<a href='#'>");}
-					print ("<img class='userStatsPic' src='$users'/>"); ?></a>
+					print ("<img class='userStatsPic' src='$userpic'/>"); ?></a>
 				</div>
 				<div class="data">
                     <div style="width:35%; height:100%; float:left;">
