@@ -105,6 +105,7 @@ public function profilepage(){
 	}
 	else
 	{
+		error_log("Post ID: ", $_POST["id"]);
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE link=$_POST[id]";
 		$results = mysql_query($SQLs);
 
