@@ -64,7 +64,7 @@
     	$("#loading-indicator").show();
 		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
 		//console.log("id: ", JSON.stringify(id));
-		console.log("id: ", id);
+		console.log("id: ", user_id);
     }
     function showProfileCallback(a)
     {
