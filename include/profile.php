@@ -143,6 +143,7 @@
 							</h2>
 						</div>
 						<div class="socialMediaLinks">
+                            <? $fb = (json_decode($_POST['json'])->fb); ?>
 							<? 
 								if($fb!="")
 								{
@@ -150,30 +151,35 @@
 								    //print("<a href='(json_decode($_POST['json'])->fb)' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
                                 }
 							?>
+                            <? $twitter = (json_decode($_POST['json'])->twitter); ?>
 							<?
 								if($twitter!="")
 								{ 
 									print("<a href='$twitter' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/twitter.png' /></a>"); 
 								}
 							?>
+                            <? $rever = (json_decode($_POST['json'])->rever); ?>
 							<? 
 								if($rever!="")
 								{
 									print("<a href='$rever' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/reverbnation.png' /></a>"); 
 								}
 							?>
+                            <? $youtube = (json_decode($_POST['json'])->youtube); ?>
 							<? 
 								if($youtube!="")
 								{ 
 									print("<a href='$youtube' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/youtube.png' /></a>"); 
 								}
 							?>
+                            <? $myspace = (json_decode($_POST['json'])->myspace); ?>
 							<? 
 								if($myspace!="")
 								{
 									print("<a href='$myspace' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/myspace.png' /></a>"); 
 								}
 							?>
+                            <? $gplus = (json_decode($_POST['json'])->gplus); ?>
 							<? 
 								if($gplus!="")
 								{ 
@@ -184,6 +190,7 @@
 					</div>
 					<div class="medals" style="width:35%; height: auto; float:right; position:relative; top:50%; margin-top:-25px;">
                         <center>
+                            <? $userRating = (json_decode($_POST['json'])->userRating); ?>
                             <?                                                         
                             print("<a alt='TommyJams Rating (rated out of 5 by Hosts, Fans, Editor)' title='TommyJams Rating (rated out of 5 by Hosts, Fans, Editor)'><div style='background:#007888; color: #FFF; height:50px; width:50px; '><h1>$userRating</h1></div></a>");
                             /*print("<a alt='User Rating' title='User Rating'><div style='background:#606060; color:#FFF; height:50px; width:50px; margin-top:5px;'><h1>$silver</h1></div></a>");*/
@@ -201,6 +208,7 @@
                     </div>
                     <div class="about" style = "height: 88%; background: #000; overflow-y:auto;">
                         <p>
+                            <? $about = (json_decode($_POST['json'])->about); ?>
 							<? 
 								/*convert to URL*/
 								$aboutStr = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $about);
