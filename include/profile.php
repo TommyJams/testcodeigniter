@@ -89,7 +89,8 @@
 					<? if(!isset($_GET['id']))
                     {print("<a href='#' onclick=popup('profil')>");}
 					else {print("<a href='#'>");}
-					print ("<img class='userStatsPic' src='$users'/>"); ?></a>
+                    <? $userpic = print (json_decode($_POST['json'])->users); ?>
+					print ("<img class='userStatsPic' src='$userpic'/>"); ?></a>
 				</div>
 				<div class="data">
                     <div style="width:35%; height:100%; float:left;">

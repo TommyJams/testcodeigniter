@@ -147,6 +147,10 @@ public function profilepage(){
 	if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
 	else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
 
+	$response = $userRating;
+	$response = $about;
+	$response = $users;
+
 	$this->load->helper('functions');
 	createResponse($response);
 
