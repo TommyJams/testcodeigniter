@@ -186,7 +186,7 @@ public function profilepage(){
 				"v_city" => array($v_city)
 				);
 */
-	error_log($gig_id);
+	error_log(json_encode($gig_id));
 	$this->load->helper('functions');
 	createResponse($response);
 
