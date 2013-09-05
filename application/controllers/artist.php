@@ -125,7 +125,7 @@ public function profilepage(){
 			$response=$a;
 		}
 		else {
-			print('<br><br><br><br>No user Exist');
+			error_log('No user Exist');
 			exit;
 		}
 	}
@@ -160,6 +160,8 @@ public function profilepage(){
         $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
     }
     $results = mysql_query($SQLs);
+
+	error_log('Cant get to promoter');
 
 	while ($a = mysql_fetch_assoc($results))
     {
