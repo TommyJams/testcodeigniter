@@ -173,7 +173,8 @@ public function profilepage(){
         }
 		
 		$formattedDate = date('d-m-Y',strtotime($v_date));
-		error_log($formattedDate);
+
+		$respon=$a;
 
 	}	
 
@@ -185,7 +186,7 @@ public function profilepage(){
 				"v_city" => array($v_city)
 				);
 
-	error_log(json_encode($resp));
+	error_log(json_encode($respon));
 	$this->load->helper('functions');
 	createResponse($response);
 
