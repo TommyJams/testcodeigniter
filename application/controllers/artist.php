@@ -57,7 +57,7 @@ public function profilepage(){
 	$type = "";
 	$user = "";
 	$nsilver = "";
-	$id = "";
+	//$id = "";
 	
 	if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 	{
