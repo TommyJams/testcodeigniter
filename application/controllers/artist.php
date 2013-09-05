@@ -54,11 +54,11 @@ public function profilepage(){
 
 	// Initializing variables. 
 	// Codeigniter throws "undefined variable" error on un-intialized variables.
-	$linkedID = $_POST['id'];
 	$type = "";
 	$user = "";
 	$nsilver = "";
-	$id = "";
+	//$id = "";
+	$link = $_POST['id'];
 	
 	if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 	{
@@ -105,9 +105,9 @@ public function profilepage(){
 	}
 	else
 	{
-		error_log("Post ID: ", $linkedID);
+		error_log("Post ID: ", $link);
 
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$linkedID'";
+		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
 		$results = mysql_query($SQLs);
 
 		if (mysql_num_rows($results) == 1) 
