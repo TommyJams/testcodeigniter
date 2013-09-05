@@ -146,8 +146,8 @@
 							<? 
 								if($fb!="")
 								{
-									//print("<a href='$fb' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
-								    print("<a href='(json_decode($_POST['json'])->fb)' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
+									print("<a href='$fb' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
+								    //print("<a href='(json_decode($_POST['json'])->fb)' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/facebook.png' /></a>");
                                 }
 							?>
 							<?
