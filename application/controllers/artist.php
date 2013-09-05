@@ -173,10 +173,11 @@ public function profilepage(){
         }
 		
 		$formattedDate = date('d-m-Y',strtotime($v_date));
+		error_log($formattedDate);
 
 	}	
 
-$resp['gigsHistory'] = array( 
+	$resp['gigsHistory'] = array( 
 				"gig_name" => array($gig_name), 
 				"ar_name" => array($ar_name), 
 				"pr_name" => array($pr_name), 
