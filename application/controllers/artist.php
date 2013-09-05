@@ -158,6 +158,8 @@ public function profilepage(){
         $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
     }
     $results = mysql_query($SQLs);
+
+    error_log($results);
 	
 	while ($a = mysql_fetch_assoc($results))
     {
@@ -186,7 +188,7 @@ public function profilepage(){
 				"v_city" => array($v_city)
 				);
 */
-	error_log(json_decode($gig_id));
+	//error_log(json_decode($gig_id));
 	$this->load->helper('functions');
 	createResponse($response);
 
