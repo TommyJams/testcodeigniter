@@ -179,7 +179,6 @@ public function profilepage(){
 		$response['gigHistory'][] = $gigRow;
 	}	
 
-	//error_log(json_decode($gig_id));
 	$this->load->helper('functions');
 	createResponse($response);
 

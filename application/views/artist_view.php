@@ -59,9 +59,13 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/gigs.php?gig="+a);
     }
-	function showProfile(a)
+	function showProfile(id)
     {
-		$("#loading-indicator").show();
+    	$("#loading-indicator").show();
+		$.post('artist/profilepage','id',showProfileCallback,'json');
+    }
+    function showProfileCallback(a)
+    {
 		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
 		console.log("Data: ", JSON.stringify(a));
     }
@@ -127,7 +131,7 @@
 			else {
 				if(!isset($_GET["id"]) && !isset($_GET["gig"])){ 
 					//print("$('#lefty').load('include/profile.php');");
-					print("$.post('artist/profilepage','',showProfile,'json');");
+					print("$.post('artist/profilepage','',showProfileCallback,'json');");
 				}
 				else if(isset($_GET["id"])){ print("$('#lefty').load('include/profile.php?id=$_GET[id]');");}
 				else if(isset($_GET["gig"])){ print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]');");}
