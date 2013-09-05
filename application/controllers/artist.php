@@ -57,8 +57,7 @@ public function profilepage(){
 	$type = "";
 	$user = "";
 	$nsilver = "";
-	//$id = "";
-	$link = $_POST['id'];
+	$id = "";
 	
 	if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 	{
@@ -105,6 +104,7 @@ public function profilepage(){
 	}
 	else
 	{
+		$link = $_POST['id'];
 		error_log("Post ID: ", $link);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
