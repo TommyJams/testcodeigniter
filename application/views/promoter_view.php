@@ -182,7 +182,7 @@
               <a  href="javascript:;" onClick="promoterGigs()"><h3>My Gigs</h3></a>
             </li>
             <li>
-              <a href="javascript:;" onClick="promoterProfile();"><h3>Profile</h3></a>
+              <a href="javascript:;" onClick="promoterProfile()"><h3>Profile</h3></a>
             </li>
             <li>
               <a href="javascript:;" onClick="loadfram();"><h3>Edit Profile</h3></a>
