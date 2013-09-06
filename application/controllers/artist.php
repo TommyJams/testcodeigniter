@@ -130,7 +130,6 @@ public function profilepage(){
 		}
 	}
 
-	error_log('1');
 	// Initializing variables before they are used. 
 	// Codeigniter throws "undefined" error on un-intialized variables.
 	$userRating = "";
@@ -144,15 +143,11 @@ public function profilepage(){
 	if($about=="")
 		{$about="Add details for this section by editing your profile";}
 
-	error_log('2');
-
 	if($type=="Promoter"){     $users="images/promoter/$user";$usersa="../images/promoter/$user";; }
  	elseif($type=="Artist"){     $users="images/artist/$user";$usersa="../images/artist/$user"; }
 
 	if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
 	else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
-
-	error_log('3');
 
 	$response['userRating'] = $userRating;
 	$response['about'] = $about;
@@ -166,11 +161,8 @@ public function profilepage(){
     }
     $results = mysql_query($SQLs);
 
-	error_log('4');
-
 	while ($a = mysql_fetch_assoc($results))
     {
-    	error_log('5');
 
         $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
         $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
@@ -189,10 +181,8 @@ public function profilepage(){
 
 		$response['gigHistory'][] = $gigRow;
 
-		error_log('6');
 	}	
 
-	error_log('7');
 	$this->load->helper('functions');
 	createResponse($response);
 

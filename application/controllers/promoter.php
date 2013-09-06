@@ -5,6 +5,7 @@ class Promoter extends CI_Controller{
 	public function promoterpage(){
 		ob_start();
 
+		error_log(1);
 		$sessionArray = $this->session->all_userdata();
 		$database = 'tommyjam_test';
 
