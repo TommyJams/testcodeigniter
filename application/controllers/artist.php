@@ -187,7 +187,76 @@ public function profilepage(){
 	createResponse($response);
 
 	//$this->load->view('profile_subview');
+}
+
+public function mydibs(){
+	ob_start();
+
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
+
+	if (!isset($sessionArray['session_id'])) {
+		session_start();
 	}
+	if(isset($sessionArray['username_artist']))
+	{
+		$username=$sessionArray['username_artist'];
+		$password=md5($sessionArray['password_artist']);
+	}
+	elseif(isset($sessionArray['username']))
+	{
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
+	}
+	else
+	{
+		$this->sessionlogout();
+		exit;
+	}
+
+	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
+	$result_set2 = mysql_query($q2);	
+	if (mysql_num_rows($result_set2) == 1) 
+	{
+ 		$found = mysql_fetch_array($result_set2);
+		$artist_id=$found["link"];
+	}
+
+	if(isset($sessionArray['username_artist']))
+    {
+    	$SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$artist_id ORDER BY id DESC";
+    }
+ 	elseif(isset($sessionArray['username']))
+    {
+        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$artist_id ORDER BY id DESC";
+    }
+    
+    $results = mysql_query($SQLs);
+            
+    while ($a = mysql_fetch_assoc($results))
+    {
+        $gig_id=$a["gig_id"];
+        $id=$a["id"];$gig=$a["gig_name"];$promoter=$a["promoter_id"];$promoter_name=$a["promoter_name"];
+        $artist=$a["artist_id"];$artist_name=$a["artist_name"];
+        $link=$a["gig_id"];$statuss=$a["status"];
+
+        $SQLe = "SELECT * FROM `$database`.`shop` WHERE link=$link";
+        $resulte = mysql_query($SQLe);
+        while ($f = mysql_fetch_assoc($resulte))
+        {
+            $city=$f["venue_city"];$state=$f["venue_state"];$time=$f["venue_time"];$date=$f["venue_date"];
+        }
+		$formattedDate = date('d-m-Y',strtotime($date));
+
+		$dibRow = array($gig, $city, $state, $formattedDate, $time, $statuss);
+
+		$response['dibHistory'][] = $dibRow;
+	}	
+
+	$this->load->helper('functions');
+	createResponse($response);
+}
+
 }
 ?>
 

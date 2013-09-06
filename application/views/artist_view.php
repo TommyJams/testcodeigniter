@@ -59,6 +59,27 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/gigs.php?gig="+a);
     }
+
+    function artistDibsCallback(a)
+    {
+      console.log("Dib Data: ", JSON.stringify(a));
+      $("#lefty").load("include/dib.php", {json: JSON.stringify(a)});
+    }
+    function artistDibs()
+    {
+      $.post('artist/mydibs','',artistDibsCallback,'json');
+    }
+
+    function artistProfileCallback(a)
+    {
+      console.log("Profile Data: ", JSON.stringify(a));
+      $("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
+    }
+    function artistProfile()
+    {
+      $.post('artist/profilepage','',artistProfileCallback,'json');
+    }
+
 	function showProfile(user_id)
     {
     	//var abc = user_id; 
@@ -158,10 +179,10 @@
 				<a  href="javascript:;" onClick="loadframe('gig');"><h3>Find Gigs</h3></a>
 			  </li>
 			  <li>
-				<a  href="javascript:;" onClick="loadframe('dib');"><h3>Dibs Status</h3></a>
+				<a  href="javascript:;" onClick="artistDibs()"><h3>Dibs Status</h3></a>
 			  </li>
 			  <li>
-				<a href="javascript:;" onClick="loadframe('left');"><h3>Profile</h3></a>
+				<a href="javascript:;" onClick="artistProfile()"><h3>Profile</h3></a>
 			  </li>
 			  <li>
 				<a href="javascript:;" onClick="loadfram();"><h3>Edit Profile</h3></a>

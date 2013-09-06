@@ -1,32 +1,3 @@
-<?
-ob_start();
-
-if (!isset($_SESSION)) {
-session_start();
-}
-
-include('../connect.php');
-
-if(isset($_SESSION['username_artist']))
-{
-	$username=$_SESSION['username_artist'];
-$password=md5($_SESSION['password_artist']);
-
-}
-elseif(isset($_SESSION['username']))
-{
-	$username=$_SESSION['username'];
-$password=md5($_SESSION['password']);
-
-}
-else
-{
-header("logout.php");
-exit;
-}
-
-
- ?>
 <html>
 <head>
 	<link rel='stylesheet' href='css/edit.css'>
@@ -34,15 +5,6 @@ exit;
 
 </head>
 <body>
-<?
-	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
-	$result_set2 = mysql_query($q2);	
-	if (mysql_num_rows($result_set2) == 1) 
-{
- 		$found = mysql_fetch_array($result_set2);
-		$artist_id=$found["link"];
-} ?>
-
 <section id="left" style="width:100%">
     <div class="gcontent">
         <div class="head" style="background:#000;">
@@ -58,36 +20,19 @@ exit;
                     <td width="30%"><h1>Status</h1></td>
                 </tr>
             </table>
-
-            <?
-            if(isset($_SESSION['username_artist']))
-            {
-            $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$artist_id ORDER BY id DESC";
-            }
-            elseif(isset($_SESSION['username']))
-            {
-            $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$artist_id ORDER BY id DESC";
-            }
-            $results = mysql_query($SQLs);
-            while ($a = mysql_fetch_assoc($results))
-            {
-                $gig_id=$a["gig_id"];
-                $id=$a["id"];$gig=$a["gig_name"];$promoter=$a["promoter_id"];$promoter_name=$a["promoter_name"];
-                $artist=$a["artist_id"];$artist_name=$a["artist_name"];
-                $link=$a["gig_id"];$statuss=$a["status"];
-
-                $SQLe = "SELECT * FROM `$database`.`shop` WHERE link=$link";
-                $resulte = mysql_query($SQLe);
-                while ($f = mysql_fetch_assoc($resulte))
-                {
-                    $city=$f["venue_city"];$state=$f["venue_state"];$time=$f["venue_time"];$date=$f["venue_date"];
-                }
-				$formattedDate = date('d-m-Y',strtotime($date));
-            ?>					
-
                 <span class="gigs" style="padding:10px;" >
                     <div class='gigsTableItemContainer'>
-                    <?
+                        <?php 
+                        $dibsHistory = (json_decode($_POST['json'])->dibHistory);
+                        foreach($dibsHistory as $row){ ?>
+                        <?
+                        $gig=$row[0];
+                        $city=$row[1];
+                        $state=$row[2];
+                        $formattedDate=$row[3];
+                        $time=$row[4];
+                        $statuss=$row[5];
+
                         print("
                         <table width=100% style='text-align:center;'>
                             <tr>
@@ -97,7 +42,7 @@ exit;
                                 <td width=10%>$time</td>
                                 <td width=30%>
                         ");
-
+                
                                 if($statuss==1)
                                 {
                                     print("<a href='#' class='greenRef' style='color:#FFF;'>Accepted</a></td></tr><tr><td colspan=4></td><td><center>");
@@ -119,12 +64,9 @@ exit;
                                 print("</td>
                             </tr>
                         </table>");                   
-                    ?>
+                    ?><?php } ?>
                     </div>
                 </span>
-            <?
-            }
-            ?>
         </div> <!--boxy-->
 	</div> <!--gcontent-->
 </section>
