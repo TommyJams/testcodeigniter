@@ -73,27 +73,7 @@
         }
       /*else if(a=="dib"){ $("#lefty").load("include/dib.php");}*/  
     }
-    function loadframeCallback(a) 
-    {     
-      $("#loading-indicator").show();
-      if(a=="left")
-        { 
-          $("#lefty").load("include/profile.php");
-        }
-      else if(a=="gigs")
-        { 
-          $("#lefty").load("include/promoter_gigs.php");
-        }
-      else if(a=="add")
-        { 
-          $("#lefty").load("include/gig.php");
-        }
-      else if(a.substring(0,9)=="updategig")
-        { 
-          $("#lefty").load("include/gig.php?"+a);
-        }
-      /*else if(a=="dib"){ $("#lefty").load("include/dib.php");}*/  
-    }
+    
     function loadfram(a) 
     {
 		  $("#loading-indicator").show();
@@ -109,6 +89,16 @@
     {
       $.post('promoter/mygigs','',promoterGigsCallback,'json');
     }
+
+    function promoterProfileCallback(a)
+    {
+      console.log("Profile Data: ", JSON.stringify(a));
+      $("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
+    }
+    function promoterProfile()
+    {
+      $.post('promoter/profilepage','',promoterProfileCallback,'json');
+    }    
 
 	  function showProfile(user_id)
     {
@@ -192,7 +182,7 @@
               <a  href="javascript:;" onClick="promoterGigs()"><h3>My Gigs</h3></a>
             </li>
             <li>
-              <a href="javascript:;" onClick="loadframe('left');"><h3>Profile</h3></a>
+              <a href="javascript:;" onClick="promoterProfile();"><h3>Profile</h3></a>
             </li>
             <li>
               <a href="javascript:;" onClick="loadfram();"><h3>Edit Profile</h3></a>
