@@ -22,6 +22,10 @@
 							</table>					
                                     <span class="gigs" style="padding:10px;" >
                                     <? $status = (json_decode($_POST['json'])->status); ?>
+                                    <? $gig = (json_decode($_POST['json'])->gig); ?>
+                                    <? $city = (json_decode($_POST['json'])->venue_city); ?>
+                                    <? $formattedDate = (json_decode($_POST['json'])->venue_date); ?>
+                                    <? $vtime = (json_decode($_POST['json'])->venue_time); ?>
                                     <?                                                                         
 									if($status==1)
                                     {
