@@ -105,17 +105,20 @@
 
     }
 
-	function showProfile(a)
+	function showProfile(user_id)
+    {
+      //var abc = user_id; 
+      $("#loading-indicator").show();
+    $.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
+    //console.log("id: ", JSON.stringify(id));
+    console.log("id: ", user_id);
+    }
     
-	{
-	
-		$("#loading-indicator").show();
-
-		//$("#lefty").load("include/profile.php?id="+a);
+    function showProfileCallback(a)
+    {
     console.log("Data: ", JSON.stringify(a));
-    $("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
-
-	}
+    $("#lefty").load("include/profile.php", {json: JSON.stringify(a)}); 
+    }
 
     function gig(a) 
 

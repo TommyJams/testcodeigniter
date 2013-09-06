@@ -5,7 +5,6 @@ class Promoter extends CI_Controller{
 	public function promoterpage(){
 		ob_start();
 
-		error_log(1);
 		$sessionArray = $this->session->all_userdata();
 		$database = 'tommyjam_test';
 
@@ -20,17 +19,18 @@ class Promoter extends CI_Controller{
 		}
 		
 		$username=$sessionArray['username'];
-		error_log("Username: ".$username);
 		$password=md5($sessionArray['password']);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 		$results = mysql_query($SQLs);
+		
+		// Initializing variables
 		$type = "";
 		$user = "";
+		
 		while ($a = mysql_fetch_assoc($results))
 		{
 			$id=$a["id"];$idaa=$id;$name=$a["name"];
-			//$_SESSION['name']=$name;
 			$sessionArray['name']=$name;
 			$email=$a["email"];$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
 			$mobile=$a["mobile"];$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];
