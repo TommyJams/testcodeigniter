@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel='stylesheet' href='<?php echo base_url();?>style/edit.css'>
+	<link rel='stylesheet' href='css/edit.css'>
 	<!-- Include the JS files -->
 
 </head>
