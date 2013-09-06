@@ -69,8 +69,8 @@
     }
     function showProfileCallback(a)
     {
-		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
 		console.log("Data: ", JSON.stringify(a));
+		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
     }
     function loadfram(a) 
     {

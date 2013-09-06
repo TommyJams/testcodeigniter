@@ -1,8 +1,8 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Artist extends CI_Controller{
+class Promoter extends CI_Controller{
 
-	public function artistpage(){
+	public function promoterpage(){
 		ob_start();
 
 		$sessionArray = $this->session->all_userdata();
@@ -12,14 +12,14 @@ class Artist extends CI_Controller{
 		session_start();
 		}
 
-		if(!isset($sessionArray['username_artist']))
+		if(!isset($sessionArray['username']))
 		{
 			redirect('http://testcodeigniter.azurewebsites.net/index');
 			exit;
 		}
 		
-		$username=$sessionArray['username_artist'];
-		$password=md5($sessionArray['password_artist']);
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 		$results = mysql_query($SQLs);
@@ -44,7 +44,7 @@ class Artist extends CI_Controller{
 		else if(!file_exists($users) && $user!=""){$users="https://graph.facebook.com/"."$user/picture&type=large";}
 
 		// loading artist_view file
-		$this->load->view('artist_view');
+		$this->load->view('promoter_view');
 	}
 
 public function profilepage(){
@@ -199,5 +199,4 @@ public function profilepage(){
 	//$this->load->view('profile_subview');
 	}
 }
-?>
-
+?>	
