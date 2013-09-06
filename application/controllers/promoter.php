@@ -7,7 +7,6 @@ class Promoter extends CI_Controller{
 
 		error_log(1);
 		$sessionArray = $this->session->all_userdata();
-		error_log($sessionArray);
 		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
@@ -21,6 +20,7 @@ class Promoter extends CI_Controller{
 		}
 		
 		$username=$sessionArray['username'];
+		error_log("Username: ".$username);
 		$password=md5($sessionArray['password']);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
