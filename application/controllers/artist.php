@@ -248,7 +248,7 @@ public function mydibs(){
         }
 		$formattedDate = date('d-m-Y',strtotime($date));
 
-		$dibRow = array($gig, $city, $formattedDate, $time, $statuss);
+		$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name,   );
 
 		$response['dibHistory'][] = $dibRow;
 	}	

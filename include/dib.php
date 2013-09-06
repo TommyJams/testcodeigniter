@@ -45,6 +45,9 @@
                                 if($statuss==1)
                                 {
                                     print("<a href='#' class='greenRef' style='color:#FFF;'>Accepted</a></td></tr><tr><td colspan=4></td><td><center>");
+                                    
+                                    $database = 'tommyjam_test';
+                                    
                                     $SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$promoter";
                                     $resulte = mysql_query($SQLe);
                                     while ($f = mysql_fetch_assoc($resulte))
