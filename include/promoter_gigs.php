@@ -70,10 +70,7 @@
                                                         <td><font color=#a00 >Awaiting Email Verification</font></td>                                                                                                            </tr>                                                </table>                                            </div>");                                    }
                                     ?>
                                     </span>
-                                <?
-                                }
-                                ?>
-                        </div> <!--boxy-->                                        </div> <!--gcontent--><!--
+                        </div> <!--boxy--> </div> <!--gcontent--><!--
                  <script>
                     document.getElementById('boxy').style.height=self.innerHeight-200+'px';
                 </script>-->
