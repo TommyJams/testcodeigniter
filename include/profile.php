@@ -281,7 +281,7 @@
         <section id="left" >
         <!--<div class="register">-->
             <div id="pageContainer" style = "width:100%; height:100%;">
-                <?                                 if(isset($_GET['success']) && $_GET['success']==1)
+                <?  if(isset($_GET['success']) && $_GET['success']==1)
                 {print("Change Done Successfullly");}
                 else{
                     if(isset($_GET['error']) && $_GET['error']==1)

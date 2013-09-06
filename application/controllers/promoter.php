@@ -9,7 +9,7 @@ class Promoter extends CI_Controller{
 		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
-		session_start();
+			session_start();
 		}
 
 		if(!isset($sessionArray['username']))
@@ -132,7 +132,6 @@ public function profilepage(){
 		}
 	}
 
-	error_log('1');
 	// Initializing variables before they are used. 
 	// Codeigniter throws "undefined" error on un-intialized variables.
 	$userRating = "";
@@ -146,15 +145,11 @@ public function profilepage(){
 	if($about=="")
 		{$about="Add details for this section by editing your profile";}
 
-	error_log('2');
-
 	if($type=="Promoter"){     $users="images/promoter/$user";$usersa="../images/promoter/$user";; }
  	elseif($type=="Artist"){     $users="images/artist/$user";$usersa="../images/artist/$user"; }
 
 	if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
 	else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
-
-	error_log('3');
 
 	$response['userRating'] = $userRating;
 	$response['about'] = $about;
@@ -168,12 +163,8 @@ public function profilepage(){
     }
     $results = mysql_query($SQLs);
 
-	error_log('4');
-
 	while ($a = mysql_fetch_assoc($results))
     {
-    	error_log('5');
-
         $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
         $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
                                
@@ -190,15 +181,129 @@ public function profilepage(){
 		$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city);
 
 		$response['gigHistory'][] = $gigRow;
-
-		error_log('6');
 	}	
 
-	error_log('7');
 	$this->load->helper('functions');
 	createResponse($response);
 
 	//$this->load->view('profile_subview');
 	}
+
+public function gigpage(){
+
+	if(isset($_SESSION['username']))
+	{
+		$username=$_SESSION['username'];
+		$password=md5($_SESSION['password']);
+	}
+	else
+	{
+		redirect('http://testcodeigniter.azurewebsites.net/index');
+		exit;
+	}
+
+	if(isset($_GET["updategig"]))
+	{
+		$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
+		$resultsa = mysql_query($SQLsa);
+		if (!$resultsa)
+			die("Database query failed: " . mysql_error());
+		
+		$pl = mysql_fetch_assoc($resultsa);
+		$plink=$pl["link"];
+		$link=$_GET["updategig"];
+
+		$SQLs = "SELECT * FROM `$database`.`shop` WHERE `link`=$link AND `promoter`=$plink";
+		$results = mysql_query($SQLs);
+		if (!$results)
+			die("Database query failed: " . mysql_error());
+
+		$a = mysql_fetch_assoc($results);
+		$do="updategig&id=$link";
+		$show=0;
+		$ok="Update Gig";
+
+		$durationSaved = $a['duration'];
+		$timeSaved = $a['venue_time'];
+		$tempExplode1 = explode(":",$timeSaved);
+		$hourSaved = $tempExplode1[0];
+		$tempExplode2 = explode(" ",$tempExplode1);
+		$minSaved = $tempExplode2[0];
+		$amSaved = $tempExplode2[1];
+	}
+	else
+	{
+		$do="add";
+		$show=1;
+		$ok="Launch Gig";
+							
+		$todayDate = intval(date("d"));
+		$todayMonth = intval(date("m"));
+		$todayYear = intval(date("Y"));
+	}
+}
+
+public function mygigs(){
+	ob_start();
+
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
+
+	if (!isset($sessionArray['session_id'])) {
+		session_start();
+	}
+	if(isset($sessionArray['username']))
+	{
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
+	}
+	else
+	{
+		$this->sessionlogout();
+		exit;
+	}
+
+	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
+    $result_set2 = mysql_query($q2);	
+    if (mysql_num_rows($result_set2) == 1) 
+    {
+        $found = mysql_fetch_array($result_set2);
+        $promoter_id=$found["link"];
+    } 
+    $SQLs = "SELECT * FROM `$database`.`shop`  WHERE promoter=$promoter_id ORDER BY id DESC";
+    $results = mysql_query($SQLs);                                                                
+
+    while ($a = mysql_fetch_assoc($results))
+    {
+        $id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
+        $add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];$country=$a["venue_country"];
+        $pincode=$a["venue_pin"];
+        $date=$a["venue_date"];$vtime=$a["venue_time"]; $formattedDate = date('d-m-Y',strtotime($date));
+        $period=$a["period"];
+        $status=$a["status"];$link=$a["link"];
+    	$desc=$a["desc"];$budget_min=$a["budget_min"];$budget_max=$a["budget_max"];$time=$a["time"];   
+
+    	$response = $a;                    
+	}
+
+	$this->load->helper('functions');
+	createResponse($response);
+}
+
+public function sessionlogout(){
+
+	ob_start();
+	$sessionArray = $this->session->all_userdata();
+	
+	if (!isset($sessionArray['session_id'])) {
+		session_start();
+	}
+
+	$username=$sessionArray['username'];
+	$this->session->sess_destroy();
+	redirect('http://testcodeigniter.azurewebsites.net/index');
+	exit;
+}
+
 }
 ?>	

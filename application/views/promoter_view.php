@@ -55,17 +55,61 @@
     function loadframe(a) 
     {     
 		  $("#loading-indicator").show();
-      if(a=="left"){ $("#lefty").load("include/profile.php");}
-      else if(a=="gigs"){  $("#lefty").load("include/promoter_gigs.php");}
-      else if(a=="add"){ $("#lefty").load("include/gig.php");}
-		  else if(a.substring(0,9)=="updategig"){$("#lefty").load("include/gig.php?"+a);}
-      /*else if(a=="dib"){ $("#lefty").load("include/dib.php");}*/
+      if(a=="left")
+        { 
+          $("#lefty").load("include/profile.php");
+        }
+      else if(a=="gigs")
+        { 
+          $("#lefty").load("include/promoter_gigs.php");
+        }
+      else if(a=="add")
+        { 
+          $("#lefty").load("include/gig.php");
+        }
+		  else if(a.substring(0,9)=="updategig")
+        { 
+          $("#lefty").load("include/gig.php?"+a);
+        }
+      /*else if(a=="dib"){ $("#lefty").load("include/dib.php");}*/  
+    }
+    function loadframeCallback(a) 
+    {     
+      $("#loading-indicator").show();
+      if(a=="left")
+        { 
+          $("#lefty").load("include/profile.php");
+        }
+      else if(a=="gigs")
+        { 
+          $("#lefty").load("include/promoter_gigs.php");
+        }
+      else if(a=="add")
+        { 
+          $("#lefty").load("include/gig.php");
+        }
+      else if(a.substring(0,9)=="updategig")
+        { 
+          $("#lefty").load("include/gig.php?"+a);
+        }
+      /*else if(a=="dib"){ $("#lefty").load("include/dib.php");}*/  
     }
     function loadfram(a) 
     {
 		  $("#loading-indicator").show();
       $("#lefty").load("include/profile.php?edit=1");
     }
+
+    function promoterGigsCallback(a)
+    {
+      console.log("Gig Data: ", JSON.stringify(a));
+      $("#lefty").load("include/promoter_gigs.php", {json: JSON.stringify(a)});
+    }
+    function promoterGigs()
+    {
+      $.post('promoter/mygigs','',promoterGigsCallback,'json');
+    }
+
 	  function showProfile(user_id)
     {
       $("#loading-indicator").show();
@@ -77,6 +121,7 @@
       console.log("Data: ", JSON.stringify(a));
       $("#lefty").load("include/profile.php", {json: JSON.stringify(a)}); 
     }
+
     function gig(a) 
     {
 		  $("#loading-indicator").show();      
@@ -140,10 +185,11 @@
         <div id="menuFooter" style="background:#000;">
           <ul>
             <li>
-              <a  href="javascript:;" onClick="loadframe('add');"><h3>Launch Gig</h3></a>
+              <a  href="javascript:;" onClick="loadframeCallback('add');"><h3>Launch Gig</h3></a>
             </li>
             <li>
-              <a  href="javascript:;" onClick="loadframe('gigs');"><h3>My Gigs</h3></a>
+              <!--<a  href="javascript:;" onClick="loadframe('gigs');"><h3>My Gigs</h3></a> -->
+              <a  href="javascript:;" onClick="promoterGigs()"><h3>My Gigs</h3></a>
             </li>
             <li>
               <a href="javascript:;" onClick="loadframe('left');"><h3>Profile</h3></a>

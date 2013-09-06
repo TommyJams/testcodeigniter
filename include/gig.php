@@ -1,25 +1,3 @@
-<?
-ob_start();
-
-if (!isset($_SESSION)) {
-session_start();
-}
-
-
-include('../connect.php');
-
-if(isset($_SESSION['username']))
-{
-	$username=$_SESSION['username'];
-	$password=md5($_SESSION['password']);
-}
-else
-{
-	header("index.php");
-	exit;
-}
-?>
-
 <html>
 <head>
 	<link rel='stylesheet' href='css/edit.css'>
