@@ -28,10 +28,9 @@
                         <?
                         $gig=$row[0];
                         $city=$row[1];
-                        $state=$row[2];
-                        $formattedDate=$row[3];
-                        $time=$row[4];
-                        $statuss=$row[5];
+                        $formattedDate=$row[2];
+                        $time=$row[3];
+                        $statuss=$row[4];
 
                         print("
                         <table width=100% style='text-align:center;'>
@@ -42,7 +41,7 @@
                                 <td width=10%>$time</td>
                                 <td width=30%>
                         ");
-                
+
                                 if($statuss==1)
                                 {
                                     print("<a href='#' class='greenRef' style='color:#FFF;'>Accepted</a></td></tr><tr><td colspan=4></td><td><center>");
