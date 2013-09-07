@@ -420,9 +420,10 @@ class Artist extends CI_Controller{
 		$response["nPage"] = $nPage;
 		$response["total_pages"] = $total_pages;
 
-		error_log("Find Gigs: ".$total_pages);
 		$this->load->helper('functions');
 		createResponse($response);
+
+		error_log("Find Gigs: ".$response);
 	}
 
 }
