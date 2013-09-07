@@ -118,7 +118,7 @@
 		  console.log("Data: ", JSON.stringify(a));
       $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
     }
-    function gigProfile(id) 
+    function gigProfile(user_id) 
     {
       $("#loading-indicator").show();      
       $.post('artist/gigProfilePage',{id: user_id},showProfileCallback,'json');

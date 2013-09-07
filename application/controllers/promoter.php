@@ -251,12 +251,14 @@ public function sessionlogout(){
 	exit;
 }
 
-public function gigProfilePage(){
+public function gigProfilePage(id){
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
-	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$_GET[gig]'";
+	$userId = id;
+
+	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$userId'";
 	$results = mysql_query($SQLs);
 	$a = mysql_fetch_array($results);
 	{
