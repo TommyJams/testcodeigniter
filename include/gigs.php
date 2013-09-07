@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel='stylesheet' href='css/edit.css'>
+	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files --> 
 	<script type="text/JavaScript">
 	function show(d)
@@ -103,7 +103,7 @@
 				<div class="data">
                     <div style=" width:35%; height:100%; float:left;">
                         <div id="userName">
-                            <?php $gig = (json_decode($_POST['json'])->gig);?>
+                            <?php $gig = (json_decode($_POST['json'])->gigData['gig']);?>
 							<h1 style="display:inline-block;"><? print ("$gig"); ?></h1>
 						</div>
                         <?php $promoter_name = (json_decode($_POST['json'])->promoter_name);?>
