@@ -178,14 +178,14 @@
                             ?>
                                 <tr height='20' bgcolor='#000'>
                                     <td width=25%>
-                                        <a href='javascript:;' onClick=gig('<?$link?>'); class='highlightRef' ><h3><?$gig?></h3></a>
+                                        <?print("<a href='javascript:;' onClick=gig('$link'); class='highlightRef' ><h3>$gig</h3></a>?");?>
                                     </td>
         							<td width=20%>
-                                        <a href='javascript:;' onClick=showProfile('<?$pid?>'); class='highlightRef'><h3><?$promoter_name?></h3></a>
+                                        <?print("<a href='javascript:;' onClick=showProfile('<?$pid?>'); class='highlightRef'><h3><?$promoter_name?></h3></a>");?>
         							</td>
-                                    <td width=20%><?$city?></td>
-                                    <td width=10%><?$formattedDate?></td>
-                                    <td width=10%><?$time?></td>
+                                    <td width=20%><?print($city);?></td>
+                                    <td width=10%><?print($formattedDate);?></td>
+                                    <td width=10%><?print($time);?></td>
                                     <td width=15%>
                                         <?
                                         if($gigStatus==1)
