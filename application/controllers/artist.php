@@ -284,9 +284,8 @@ class Artist extends CI_Controller{
 		$todayTime = strtotime(date("Y-m-d"));
 
 		//What is the query string
-		if(isset($_POST['searchString']))								//Search string passed in query?
-			$searchGigs = $_POST['searchString'];
-		else
+		$searchGigs = $_POST['searchString'];
+		if(!isset($searchGigs))								//Search string passed in query?
 		{
 			$searchGigs = $this->session->userdata('findGigsString');	//Search string present in session?
 
