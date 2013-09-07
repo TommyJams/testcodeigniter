@@ -551,6 +551,7 @@ class Artist extends CI_Controller{
 			}
 
 			$to = $artist_email;
+			$sender = "alerts@tommyjams.com";
 			$subject = "Registered Dib for $gig";
 			$mess="
 			<p style='text-align:left;'>
@@ -579,10 +580,11 @@ class Artist extends CI_Controller{
 				</tr>
 			</table>
 			</center>";
-			include("include/mail.php");
-
+			$this->load->helper('mail');
+    		send_email($to, $sender, $subject, $mess);
+			
 			$to = "alerts@tommyjams.com";
-			include("include/mail.php");
+			send_email($to, $sender, $subject, $mess);
 
 			$to = $promoter_email;
 			$subject = "Dib Received for $gig";
@@ -613,10 +615,10 @@ class Artist extends CI_Controller{
 				</tr>
 			</table>
 			</center>";
-			include("include/mail.php");
+			send_email($to, $sender, $subject, $mess);
 
 			$to = "alerts@tommyjams.com";
-			include("include/mail.php");
+			send_email($to, $sender, $subject, $mess);
 
 			$response['status']='ok';
 			createResponse($response);
