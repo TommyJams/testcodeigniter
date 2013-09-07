@@ -98,7 +98,7 @@
 	function findGigsPage(searchString,nPage)
     {
     	$("#loading-indicator").show();
-		$.post('artist/profilepage',{searchString: searchString, nPage: nPage},findGigsPageCallback,'json');
+		$.post('artist/findGigs',{searchString: searchString, nPage: nPage},findGigsPageCallback,'json');
     }
     function findGigsPageCallback(a)
     {

@@ -264,19 +264,23 @@ class Artist extends CI_Controller{
 		//What is the query string
 		if(isset($_POST['searchString']))								//Search string passed in query?
 			$searchGigs = $_POST['searchString'];
-		else if(isset($this->session->userdata('findGigsString')))	//Search string present in session?
-			$searchGigs = $this->session->userdata('findGigsString');
 		else
-			$searchGigs = NULL;										//Empty search string
+		{
+			$searchGigs = $this->session->userdata('findGigsString');	//Search string present in session?
+
+			if(!isset($searchGigs))										
+				$searchGigs = NULL;										//Empty search string
+		}
 
 		// Which page to show?
 		if(isset($_POST['findGigsPage']))							//Page passed in query?
 			$nPage = $_POST['findGigsPage'];
-		else if(isset($this->session->userdata('findGigsPage')))	//Page present in session?
-			$nPage = $this->session->userdata('findGigsPage');	
 		else
-			$nPage = 1;												//Fresh ask for find gigs
-
+		{
+			$nPage = $this->session->userdata('findGigsPage');		//Page present in session?
+			if(!isset($nPage))										
+				$nPage = 1;											//Fresh ask for find gigs
+		}
 		//$this->session->userdata('session_id');
 
 		/*$scity=$_POST["city"];$scity=$_POST["city"];$scity=$_POST["city"];
