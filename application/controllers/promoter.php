@@ -291,7 +291,7 @@ public function gigProfilePage(){
 	}
 
 	$gigs="images/gig/$image";
-	$response = $gigs;
+	$response['gigs'] = $gigs;
 
 	$todayTime = strtotime(date("Y-m-d"));
 	$dated = strtotime($date); 
@@ -319,11 +319,11 @@ public function gigProfilePage(){
 		$artist_booked_id=$found["artist_id"];
 		$artist_booked_name=$found["artist_name"];
 
-		$response = $artist_booked_id;
-		$response = $artist_booked_name;
+		$response['artist_booked_id'] = $artist_booked_id;
+		$response['artist_booked_name'] = $artist_booked_name;
 
 		$gigStatus = 1;
-		$response = $gigStatus;	
+		$response['gigStatus'] = $gigStatus;	
 		$yes = 1;	
     }
 
@@ -331,7 +331,7 @@ public function gigProfilePage(){
 	elseif($promoter==$prolink)
 	{
 		$gigStatus = 2;
-		$response = $gigStatus;
+		$response['gigStatus'] = $gigStatus;
 	}
     
     elseif(isset($sessionArray['username_artist']))
@@ -352,27 +352,26 @@ public function gigProfilePage(){
         {                    
 			$found = mysql_fetch_array($result_set4);
             $statuss=$found["status"];
-            if($statuss==1){$gigStatus = 3; $response = $gigStatus;}
-            elseif($statuss==2){$gigStatus = 4; $response = $gigStatus;}
-            elseif($statuss==4){$gigStatus = 5; $response = $gigStatus;}
+            if($statuss==1){$gigStatus = 3; $response['gigStatus'] = $gigStatus;}
+            elseif($statuss==2){$gigStatus = 4; $response['gigStatus'] = $gigStatus;}
+            elseif($statuss==4){$gigStatus = 5; $response['gigStatus'] = $gigStatus;}
         }
 	
 		elseif($todayTime > $dated)
 		{
 			$gigStatus = 6;
-			$response = $gigStatus;
+			$response['gigStatus'] = $gigStatus;
 		}
         else
         {                       
             if($yes!=1)
         	{   
         		$gigStatus = 7;
-        		$response = $gigStatus;
+        		$response['gigStatus'] = $gigStatus;
         	}
         }
     }    
                         
-
 	$this->load->helper('functions');
 	createResponse($response);
 
