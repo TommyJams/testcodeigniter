@@ -619,6 +619,7 @@ class Artist extends CI_Controller{
 			send_email($to, $sender, $subject, $mess);
 
 			$response="ok";
+			error_log("dIB RESPONSE: ",$response);
 			createResponse($response);
 		}
 
