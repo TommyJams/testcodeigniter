@@ -474,7 +474,7 @@ public function launchGigFunc(){
     $gigStatus = 2;
 
     $response['gig'] = $gig; 
-    /*$response['cat'] = $cat;   
+    $response['cat'] = $cat;   
 	$response['budget_min'] = $budget_min;
 	$response['budget_max'] = $budget_max;
 	$response['formattedDate'] =  $date;
@@ -490,7 +490,7 @@ public function launchGigFunc(){
 	$response['country'] = $venue_country;
 	$response['gigStatus'] = $gigStatus;
 	$response['add'] = $venue_add;
-	$response['pincode'] = $venue_pin;*/
+	$response['pincode'] = $venue_pin;
 
 	$this->load->helper('functions');
 	createResponse($response);
