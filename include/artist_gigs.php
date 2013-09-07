@@ -24,12 +24,13 @@
         {
             e.preventDefault();
 
-            findGigsPage(document.getElementById('search').value,
+            findGigsPage(
+                            document.getElementById('search').value,
                             1,
                             document.getElementById('city').value,
                             document.getElementById('date').value,
                             document.getElementById('cat').value,
-                            document.getElementById('budget_min').value,
+                            document.getElementById('budget_min').value
                         );
         });
     </script>
