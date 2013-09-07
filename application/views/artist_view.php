@@ -97,7 +97,7 @@
     }
     function findGigsPageCallback(a)
     {
-    	console.log("Data: ");
+    	console.log("Data: ", JSON.stringify(a));
 		$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
     }
 	function findGigsPage()
