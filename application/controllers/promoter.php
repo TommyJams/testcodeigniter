@@ -282,7 +282,7 @@ public function gigProfilePage(){
 		$desc=$a["desc"];$budget_min=$a["budget_min"];
 		$budget_max=$a["budget_min"]+$a["budget_min"]*$a["budget_max"]/100;$time=$a["time"];
 
-		$response = $a;
+		//$response = $a;
 	}
 
 	if($image=="")
@@ -306,9 +306,6 @@ public function gigProfilePage(){
 		die("Database query failed: " . mysql_error());
 	$pl = mysql_fetch_assoc($resultsa);
 	$prolink=$pl["link"];
-
-	//$link = $response["link"];
-	error_log($link);
 
     $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
     $result_set4 = mysql_query($q4);	
@@ -371,6 +368,25 @@ public function gigProfilePage(){
         	}
         }
     }    
+       
+    $response['gig'] = $gig; 
+    $response['cat'] = $cat;   
+	$response['budget_min'] = $budget_min;
+	$response['budget_max'] = $budget_max;
+	$response['formattedDate'] =  $date;
+	$response['vtime'] = $time;
+	$response['duration'] = $duration;
+	$response['fb'] = $fb;
+	$response['web'] = $web;
+	$response['twitter'] = $twitter;
+	$response['desc'] = $desc;
+	$response['promoter_name'] = $name;
+	$response['city'] = $venue_city;
+	$response['state'] = $venue_state;
+	$response['country'] = $venue_country;
+	$response['gigStatus'] = $gigStatus;
+	$response['add'] = $venue_add;
+	$response['pincode'] = $venue_pin;
                         
 	$this->load->helper('functions');
 	createResponse($response);
