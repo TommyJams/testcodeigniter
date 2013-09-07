@@ -259,7 +259,27 @@ class Artist extends CI_Controller{
 
 	public function findGigs()
 	{
+		$sessionArray = $this->session->all_userdata();
 		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		if(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+		}
+		elseif(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+		}
+		else
+		{
+			$this->sessionlogout();
+			exit;
+		}
 
 		$todayTime = strtotime(date("Y-m-d"));
 
@@ -375,39 +395,40 @@ class Artist extends CI_Controller{
                 $gigStatus=0;										// Gig is open
                 $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
                 $result_set4 = mysql_query($q4);	
-                if (mysql_num_rows($result_set4) == 1) 		//Gig is Booked
+                if (mysql_num_rows($result_set4) == 1) 				//Gig is Booked
                 {
                     $found = mysql_fetch_array($result_set4);
                     $gigStatus=1;
                 }
-                
-            	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$_SESSION[username_artist]'";
-                $result_set2 = mysql_query($q2);	
-                if (mysql_num_rows($result_set2) == 1) 
+                else
                 {
-                        $found = mysql_fetch_array($result_set2);
-                        $artist_id=$found["link"];
-                }
+	            	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
+	                $result_set2 = mysql_query($q2);	
+	                if (mysql_num_rows($result_set2) == 1) 
+	                {
+	                        $found = mysql_fetch_array($result_set2);
+	                        $artist_id=$found["link"];
+	                }
 
-                $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
-                $result_set4 = mysql_query($q4);
-                if (mysql_num_rows($result_set4) == 1) 
-                {
-                    $found = mysql_fetch_array($result_set4);
-                    $statuss=$found["status"];
-                    
-                    if($statuss==2){$gigStatus = 2;}				//Dib Rejected
-                    elseif($statuss==4){$gigStatus = 4;}			//Dib Pending
-                }
-            	elseif($todayTime > $dated)
-				{
-					$gigStatus = -1;								//Gig expired
+	                $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
+	                $result_set4 = mysql_query($q4);
+	                if (mysql_num_rows($result_set4) == 1) 
+	                {
+	                    $found = mysql_fetch_array($result_set4);
+	                    $statuss=$found["status"];
+	                    
+	                    if($statuss==2){$gigStatus = 2;}				//Dib Rejected
+	                    elseif($statuss==4){$gigStatus = 4;}			//Dib Pending
+	                }
+	            	elseif($todayTime > $dated)
+					{
+						$gigStatus = -1;								//Gig expired
+					}
 				}
 
-				$gigRow = array($gig, $link, $pid, $promoter_name, $city, $formattedDate, $time, $gigStatus);
+				//$gigRow = array($gig, $link, $pid, $promoter_name, $city, $formattedDate, $time, $gigStatus);
 				//$response["foundGigs"][] = $gigRow;
             }
-
         }
 
 		//Save data in session
