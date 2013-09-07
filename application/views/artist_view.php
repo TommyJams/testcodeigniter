@@ -97,6 +97,7 @@
     }
 	function findGigsPage()
     {
+    	console.log("JS: Find Gigs Page");
     	$("#loading-indicator").show();
 		$.post('artist/findGigs','',findGigsPageCallback,'json');
     }
