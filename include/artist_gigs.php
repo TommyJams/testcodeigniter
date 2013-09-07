@@ -169,9 +169,9 @@
                     if($total_pages>20){$total_pages=20;}
                     for($i=1;$i<=$total_pages;$i++){
 						if($nPage == $i)
-							print("<a href='javascript:;' onClick=findGigsPage(NULL,$i,NULL,NULL,NULL,NULL); style='background: #ffcc00; height: 15px; padding: 10px; float:left;' >$i</a>");
+							print("<a href='javascript:;' onClick=findGigsPage(undefined,$i,undefined,undefined,undefined,undefined); style='background: #ffcc00; height: 15px; padding: 10px; float:left;' >$i</a>");
 						else
-							print("<a href='javascript:;' onClick=findGigsPage(NULL,$i,NULL,NULL,NULL,NULL); class='highlightRef' style='height: 15px; padding: 10px; float:left;' >$i</a>");
+							print("<a href='javascript:;' onClick=findGigsPage(undefined,$i,undefined,undefined,undefined,undefined); class='highlightRef' style='height: 15px; padding: 10px; float:left;' >$i</a>");
 					}
                     ?>
 					</div>
