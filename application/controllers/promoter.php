@@ -251,16 +251,15 @@ public function sessionlogout(){
 	exit;
 }
 
-public function gigProfilePage($id){
-
-	error_log($id);
+public function gigProfilePage(){
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
-	$userId = $id;
+	$user_id = $_POST['id']; 
+	error_log($user_id);
 
-	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$userId'";
+	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$user_id'";
 	$results = mysql_query($SQLs);
 	$a = mysql_fetch_array($results);
 	{
