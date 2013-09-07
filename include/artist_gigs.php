@@ -151,12 +151,11 @@
                                         elseif($gigStatus==-1)
         									print("<a class='dibStatusRef' href='#'style='color:#666;'>Closed</a>");
         								else
-                                            {?>
-                                            <form  action="dib_action.php"  method="post">
+                                            /*<form name="dibForm" action="dib_action.php"  method="post">
                                                 <input type="hidden" name="gig" value="<? print($link);?>">
                                                 <input id="dibStatusButton" name="dib" type="submit" value="DIB" style="height:80%; width:auto;" onClick="return confirmSubmit()">
-                                            </form>
-                                            <?}
+                                            </form>*/
+                                            print("<a href='javascript:;' onClick=confirmSubmit('$link'); id='dibStatusButton' style='height:80%; width:auto;'>DIB</a>");
                                         ?>
                                     </td>
                                 </tr>
@@ -185,11 +184,11 @@
 </script>
 
 <script LANGUAGE="JavaScript">
-function confirmSubmit()
+function confirmSubmit(link)
 {
     var agree=confirm("Are you sure you wish to call dibs for this gig? The host will receive the dibs and choose an artist. Please note, these dibs are not cancellable.");
     if (agree)
-        return true ;
+        dibAction(link) ;
     else
         return false ;
 }
