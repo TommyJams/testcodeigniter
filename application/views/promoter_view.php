@@ -128,7 +128,7 @@
     function launchGigCallback(a) 
     {
 		  $("#loading-indicator").show();      
-		  console.log("Data: ", JSON.stringify(a));
+		  console.log("All Gig Data: ", JSON.stringify(a));
       $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
     }
     function launchGig() 
