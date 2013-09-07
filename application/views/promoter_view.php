@@ -121,7 +121,7 @@
     function gigProfile(user_id) 
     {
       $("#loading-indicator").show();      
-      $.post('artist/gigProfilePage',{id: user_id},showProfileCallback,'json');
+      $.post('promoter/gigProfilePage',{id: user_id},showProfileCallback,'json');
     }
 
     </script>
