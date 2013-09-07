@@ -12,6 +12,15 @@
 
 </head>
  <body>
+ 	<?php 
+		$do="add";
+		$show=1;
+		$ok="Launch Gig";
+							
+		$todayDate = intval(date("d"));
+		$todayMonth = intval(date("m"));
+		$todayYear = intval(date("Y"));
+ 	?>
     <div class="head">
 		<h1>LAUNCH GIG</h1>
 	</div>
@@ -25,7 +34,7 @@
                             <fieldset id="details" style = "height:auto; float:left">
                                 <p>
                                     <label for="gig">Name: <span class="requiredField">*</span></label>
-                                    <input type="text" id="gig" name="gig" style="width:200px;" value="<? if($a) echo $a['gig']; ?>" pattern="^[a-zA-Z0-9. /()-_:@]{3,50}$" autofocus required />
+                                    <input type="text" id="gig" name="gig" style="width:200px;" value="" pattern="^[a-zA-Z0-9. /()-_:@]{3,50}$" autofocus required />
                                     <em>Name of Gig</em>
                                 </p>
 								<? if($show==1){ ?>
