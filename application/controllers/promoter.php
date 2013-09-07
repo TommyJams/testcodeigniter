@@ -307,7 +307,7 @@ public function gigProfilePage(){
 	$pl = mysql_fetch_assoc($resultsa);
 	$prolink=$pl["link"];
 
-	$link = $response["link"];
+	//$link = $response["link"];
 	error_log($link);
 
     $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
