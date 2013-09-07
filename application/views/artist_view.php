@@ -82,11 +82,8 @@
 
 	function showProfile(user_id)
     {
-    	//var abc = user_id; 
     	$("#loading-indicator").show();
 		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
-		//console.log("id: ", JSON.stringify(id));
-		console.log("id: ", user_id);
     }
     function showProfileCallback(a)
     {
@@ -98,9 +95,15 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/profile.php?edit=1");
     }
-	function loadFindGigsPage(a)
+	function findGigsPage(searchString,nPage)
     {
-		$("#lefty").load("include/artist_gigs.php?page="+a);
+    	$("#loading-indicator").show();
+		$.post('artist/profilepage',{searchString: searchString, nPage: nPage},findGigsPageCallback,'json');
+    }
+    function findGigsPageCallback(a)
+    {
+    	console.log("Data: ", JSON.stringify(a));
+		$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
     }
     </script>
 
@@ -176,7 +179,7 @@
 		<div id="menuFooter" style="background:#000;">
 			<ul>
 			  <li>
-				<a  href="javascript:;" onClick="loadframe('gig');"><h3>Find Gigs</h3></a>
+				<a  href="javascript:;" onClick="findGigsPage()"><h3>Find Gigs</h3></a>
 			  </li>
 			  <li>
 				<a  href="javascript:;" onClick="artistDibs()"><h3>Dibs Status</h3></a>

@@ -1,28 +1,4 @@
-<?php
-ob_start();
-
-if (!isset($_SESSION)) {
-session_start();
-}
-
-include('../connect.php');
-
-if(isset($_SESSION['username_artist']))
-{
-	$username=$_SESSION['username_artist'];
-$password=md5($_SESSION['password_artist']);
-
-}
-else
-{
-header("logout.php");
-exit;
-}
-
-$todayTime = strtotime(date("Y-m-d"));
- ?>
-
- <html>
+<html>
 <head>
     <link rel='stylesheet' href='css/edit.css'>
 
@@ -43,15 +19,15 @@ $todayTime = strtotime(date("Y-m-d"));
 	.paging p#total_display{color:#aaa; font-size:12px; padding-top:10px;}
 	</style>
 	-->
-
+    <?
+    $foundGigs = (json_decode($_POST['json'])->foundGigs);
+    $total_pages = (json_decode($_POST['json'])->total_pages);
+    $nPage = (json_decode($_POST['json'])->nPage);
+    ?>
+                            
 </head>
 
 <body>
-    <? 
-	if(!isset($_SESSION["searchGigs"])){$_SESSION["searchGigs"]=NULL;} /*Need to set $searchGigs to NULL in this case so as to get a query LIKE '%%' when searching for all gigs*/
-	$searchGigs=$_SESSION["searchGigs"];
-	if(!isset($_SESSION["page"])){$_SESSION["page"]=1;}
-    ?> 
 
 <div id="searchbox">
     <form method="post" action="artist.php?gigs=search" style = "display:block; height: 100%; width:100%; padding: 0px 0px;">
@@ -60,7 +36,7 @@ $todayTime = strtotime(date("Y-m-d"));
         <select name="city" style = "height: 40%; width: 19%">
         <option value='all'>Any City</option>
         <? 
-			$scity=$_POST["city"];$scity=$_POST["city"];$scity=$_POST["city"];
+			/*$scity=$_POST["city"];$scity=$_POST["city"];$scity=$_POST["city"];
 			$que = "SELECT DISTINCT venue_city FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 			$sea=mysql_query($que);
             while($a = mysql_fetch_assoc($sea))
@@ -70,13 +46,13 @@ $todayTime = strtotime(date("Y-m-d"));
 					print("<option value='$city' selected='selected'>$city</option>");
 				else
 					print("<option value='$city'>$city</option>");
-			}
+			}*/
 		?>
         </select>
         <select name="date" style = "height: 40%; width: 19%">
         <option value='all'>Any Date</option>
         <?
-			$que = "SELECT DISTINCT venue_date FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+			/*$que = "SELECT DISTINCT venue_date FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 			$sea=mysql_query($que);
             while($a = mysql_fetch_assoc($sea))
 			{
@@ -90,13 +66,13 @@ $todayTime = strtotime(date("Y-m-d"));
 				{
 					print("<option value='$date'>$formattedDate</option>");
 				}
-			}
+			}*/
 		?>
         </select>
         <select name="cat" style = "height: 40%; width: 19%">
         <option value='all'>Any Genre</option>
         <? 
-			$que = "SELECT DISTINCT category FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+			/*$que = "SELECT DISTINCT category FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 			$sea=mysql_query($que);
             while($a = mysql_fetch_assoc($sea))
 			{
@@ -108,13 +84,13 @@ $todayTime = strtotime(date("Y-m-d"));
 					else
 						print("<option value='$cat'>$cat</option>");
 				}
-			}
+			}*/
 		?>
         </select>
         <select name="budget_min" style = "height: 40%; width: 20%">
         <option value='all'>Any Budget</option>
         <? 
-			$que = "SELECT DISTINCT budget_min FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2 ORDER BY budget_min DESC";
+			/*$que = "SELECT DISTINCT budget_min FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2 ORDER BY budget_min DESC";
 			$sea=mysql_query($que);
             while($a = mysql_fetch_assoc($sea))
 			{	
@@ -126,7 +102,7 @@ $todayTime = strtotime(date("Y-m-d"));
 					else
 						print("<option value='$min'>$min</option>");
 				}
-			}
+			}*/
 		?>
         </select>
 		<!--
@@ -160,10 +136,10 @@ $todayTime = strtotime(date("Y-m-d"));
                         </tr>
 					</table>
 					<div style="height:78%; width:100%; overflow-y:auto;">
-                    <table width="100%" style="padding: 10px 10px; text-align: center;">
-                        <?
-
-							$query = "SELECT COUNT(*) as num FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+                        <table width="100%" style="padding: 10px 10px; text-align: center;">
+                            <?
+							/*
+                            $query = "SELECT COUNT(*) as num FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 							$que   = "SELECT               * FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 							if(isset($_SESSION["scity"]) & $_SESSION["scity"]!="all"){$searchCity = $_SESSION["scity"]; $query.=" AND `venue_city` = '$searchCity'";  $que.=" AND `venue_city` = '$searchCity'";}
 							if(isset($_SESSION["sdate"]) & $_SESSION["sdate"]!="all"){$searchDate = $_SESSION["sdate"]; $query.=" AND `venue_date` = '$searchDate'";  $que.=" AND `venue_date` = '$searchDate'";}
@@ -189,89 +165,59 @@ $todayTime = strtotime(date("Y-m-d"));
 								$formattedDate = date('d-m-Y',$dated);
 
                                 if($v<=($_SESSION["page"]*6) && $v>($_SESSION["page"]*6)-6)
-                                {
-                        ?>
-                                    <tr height='20' bgcolor='#000'>
+                                {*/
+                            foreach($foundGigs as $row){
+                                $gig=$row[0];
+                                $link=$row[1];
+                                $pid=$row[2];
+                                $promoter_name=$row[3];
+                                $city=$row[4];
+                                $formattedDate=$row[5];
+                                $time=$row[6];
+                                $gigStatus=$row[7];
+                            ?>
+                                <tr height='20' bgcolor='#000'>
+                                    <td width=25%>
+                                        <a href='javascript:;' onClick=gig('<?$link?>'); class='highlightRef' ><h3><?$gig?></h3></a>
+                                    </td>
+        							<td width=20%>
+                                        <a href='javascript:;' onClick=showProfile('<?$pid?>'); class='highlightRef'><h3><?$promoter_name?></h3></a>
+        							</td>
+                                    <td width=20%><?$city?></td>
+                                    <td width=10%><?$formattedDate?></td>
+                                    <td width=10%><?$time?></td>
+                                    <td width=15%>
                                         <?
-                                        print("
-                                            <td width=25%><a href='javascript:;' onClick=gig('$link'); class='highlightRef' ><h3>$gig</h3></a></td>
-											<td width=20%>");
-												if(isset($_SESSION["username_artist"]))
-												{
-													print("<a href='javascript:;' onClick=showProfile('$pid'); class='highlightRef'><h3>$promoter_name</h3></a>");
-												}
-												else
-												{
-													print("<h3>$promoter_name</h3>");
-												}
-										print("
-											</td>
-                                            <td width=20%>$city</td>
-                                            <td width=10%>$formattedDate</td>
-                                            <td width=10%>$time</td>
-                                            <td width=15%>");
-                                            $yes=0;
-                                            $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
-                                            $result_set4 = mysql_query($q4);	
-                                            if (mysql_num_rows($result_set4) == 1) 
-                                            {
-                                                $found = mysql_fetch_array($result_set4);
-                                                $yes=1;                
-                                                print("<a class='dibStatusRef' href='#'style='color:#666;'>Booked</a>");
-                                            }
-                                            elseif(isset($_SESSION["username_artist"]))
-                                            { 
-                                                $q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$_SESSION[username_artist]'";
-                                                $result_set2 = mysql_query($q2);	
-                                                if (mysql_num_rows($result_set2) == 1) 
-                                                {
-                                                        $found = mysql_fetch_array($result_set2);
-                                                        $artist_id=$found["link"];
-                                                }
-
-                                                $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
-                                                $result_set4 = mysql_query($q4);	
-                                                if (mysql_num_rows($result_set4) == 1) 
-                                                {
-                                                    $found = mysql_fetch_array($result_set4);
-                                                    $statuss=$found["status"];
-                                                    
-                                                    if($statuss==2){print("<a href='#' class='dibStatusRef redRef' style='color:#FFF;'>Rejected</a>");}
-                                                    elseif($statuss==4){print("<a href='#' class='dibStatusRef' style='color:#666;'>Pending</a>");}
-                                                }
-												elseif($todayTime > $dated)
-												{
-													print("<a class='dibStatusRef' href='#'style='color:#666;'>Closed</a>");
-												}
-                                                else
-                                                {
-                                                    if($yes!=1) { 
-                                                    ?>
-                                                    <form  action="dib_action.php"  method="post">
-                                                        <input type="hidden" name="gig" value="<? print($link);?>">
-                                                        <input id="dibStatusButton" name="dib" type="submit" value="DIB" style="height:80%; width:auto;" onClick="return confirmSubmit()">
-                                                    </form>
-                                                    <?
-                                                    }
-                                                }
-
-                                            }
-                                            print("</td>");
+                                        if($gigStatus==1)
+                                            print("<a class='dibStatusRef' href='#'style='color:#666;'>Booked</a>");
+                                        elseif($gigStatus==2)
+                                            print("<a href='#' class='dibStatusRef redRef' style='color:#FFF;'>Rejected</a>");
+                                        elseif($gigStatus==4)
+                                            print("<a href='#' class='dibStatusRef' style='color:#666;'>Pending</a>");
+                                        elseif($gigStatus==-1)
+        									print("<a class='dibStatusRef' href='#'style='color:#666;'>Closed</a>");
+        								else
+                                            {?>
+                                            <form  action="dib_action.php"  method="post">
+                                                <input type="hidden" name="gig" value="<? print($link);?>">
+                                                <input id="dibStatusButton" name="dib" type="submit" value="DIB" style="height:80%; width:auto;" onClick="return confirmSubmit()">
+                                            </form>
+                                            <?}
                                         ?>
-                                    </tr>
-                                <?
-                                }
-                            }
-                    print("</table></div>");
+                                    </td>
+                                </tr>
+                            <?}?>
+                        </table>
+                    </div>
 					?>
 					<div id ="pgNoContainer" style="position:absolute; bottom: 0px; padding-left:10px; margin-bottom:5px; height: 45px; max-height:12%;">
 					<?
                     if($total_pages>20){$total_pages=20;}
                     for($i=1;$i<=$total_pages;$i++){
-						if($_SESSION["page"] == $i)
-							print("<a href='artist.php?gigs=search&page=$i' style='background: #ffcc00; height: 15px; padding: 10px; float:left;' >$i</a>");
+						if($nPage == $i)
+							print("<a href='javascript:;' onClick=findGigsPage(); style='background: #ffcc00; height: 15px; padding: 10px; float:left;' >$i</a>");
 						else
-							print("<a href='artist.php?gigs=search&page=$i' class='highlightRef' style='height: 15px; padding: 10px; float:left;' >$i</a>");
+							print("<a href='javascript:;' onClick=findGigsPage(); class='highlightRef' style='height: 15px; padding: 10px; float:left;' >$i</a>");
 					}
                     ?>
 					</div>
