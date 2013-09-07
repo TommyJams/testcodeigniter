@@ -489,7 +489,7 @@ class Artist extends CI_Controller{
 
 		if(!isset($gigLink))
 		{
-			$response['status']='error';
+			$response='error';
 			createResponse($response);
 		}
 
@@ -535,7 +535,7 @@ class Artist extends CI_Controller{
 			$result_set4 = mysql_query($q4);	
 			if (mysql_num_rows($result_set4) == 1) 
 			{
-				$response['status']='error';
+				$response='error';
 				createResponse($response);
 			}
 
@@ -544,7 +544,7 @@ class Artist extends CI_Controller{
 			if (!$result_set2)
 			{
 				die("Database query failed: " . mysql_error());
-				$response['status']='error';
+				$response='error';
 				createResponse($response);
 			}
 
@@ -618,11 +618,11 @@ class Artist extends CI_Controller{
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 
-			$response['status']="ok";
+			$response="ok";
 			createResponse($response);
 		}
 
-		$response['status']="ok";
+		$response="ok";
 		createResponse($response);
 	}
 
