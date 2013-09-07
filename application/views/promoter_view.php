@@ -122,7 +122,7 @@
     {
       console.log("id: ", user_id);
       $("#loading-indicator").show();      
-      $.post('promoter/gigProfilePage',{id: user_id},showProfileCallback,'json');
+      $.post('promoter/gigProfilePage',{id: user_id},gigProfileCallback,'json');
     }
 
     </script>
