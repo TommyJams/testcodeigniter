@@ -285,8 +285,6 @@ class Artist extends CI_Controller{
 		}
 
 
-		error_log("SearchGigs: ".$searchGigs);
-
 		// Which page to show?
 		if(isset($_POST['nPage']) && $_POST['nPage']!=NULL)				//Page passed in query?
 			$nPage = $_POST['nPage'];
@@ -550,8 +548,6 @@ class Artist extends CI_Controller{
 				createResponse($response);
 			}
 
-			error_log("Dib Action Status 1: ".$response['status']);
-
 			$to = $artist_email;
 			$sender = "alerts@tommyjams.com";
 			$subject = "Registered Dib for $gig";
@@ -622,9 +618,10 @@ class Artist extends CI_Controller{
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 
+			$response['status']='ok';
+
 			error_log("Dib Action Status 2: ".$response['status']);
 
-			$response['status']='ok';
 			createResponse($response);
 		}
 
