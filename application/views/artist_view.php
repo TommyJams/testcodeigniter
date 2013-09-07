@@ -95,16 +95,15 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/profile.php?edit=1");
     }
-	function findGigsPage()
-    {
-    	console.log("JS: Find Gigs Page");
-    	$("#loading-indicator").show();
-		$.post('artist/findGigs','',findGigsPageCallback,'json');
-    }
     function findGigsPageCallback(a)
     {
-    	console.log("Data: ", JSON.stringify(a));
+    	console.log("Data: ");
 		$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
+    }
+	function findGigsPage()
+    {
+    	$("#loading-indicator").show();
+		$.post('artist/findGigs','',findGigsPageCallback,'json');
     }
     </script>
 
