@@ -23,7 +23,14 @@
         $('#findGigsForm').bind('submit',function(e) 
         {
             e.preventDefault();
-            findGigsPage($('#search').value,1,$('#city').value,$('#date').value,$('#cat').value,$('#budget_min').value);
+
+            findGigsPage(document.getElementById('search').value,
+                            1,
+                            document.getElementById('city').value,
+                            document.getElementById('date').value,
+                            document.getElementById('cat').value,
+                            document.getElementById('budget_min').value,
+                        );
         });
     </script>
                             
