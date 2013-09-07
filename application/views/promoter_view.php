@@ -195,7 +195,7 @@
         <div id="menuFooter" style="background:#000;">
           <ul>
             <li>
-              <a  href="javascript:;" onClick="launchGig()"><h3>Launch Gig</h3></a>
+              <a  href="javascript:;" onClick="include/gig.php"><h3>Launch Gig</h3></a>
             </li>
             <li>
               <!--<a  href="javascript:;" onClick="loadframe('gigs');"><h3>My Gigs</h3></a> -->
