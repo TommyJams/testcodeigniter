@@ -8,9 +8,9 @@ class Artist extends CI_Controller{
 		$sessionArray = $this->session->all_userdata();
 		$database = 'tommyjam_test';
 
-		if (!isset($sessionArray['session_id'])) {
+		/*if (!isset($sessionArray['session_id'])) {
 		session_start();
-		}
+		}*/
 
 		if(!isset($sessionArray['username_artist']))
 		{
