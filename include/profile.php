@@ -253,7 +253,7 @@
                                         $ar_name=$row[4];
                                         $date=$row[5];
                                         $city=$row[6];
-                                        $gig_id=$gig_id[7];
+                                        $gig_id=$row[7];
                                         if((json_decode($_POST['json'])->type)=="Promoter") 
 										{ print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gigProfile('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$ar_id'); class='greenRef' >$ar_name</a></td>"); }
                                         else if((json_decode($_POST['json'])->type)=="Artist")
