@@ -620,6 +620,7 @@ class Artist extends CI_Controller{
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 
+			error_log("Dib Action Status: ".$response['status']);
 			$response['status']='ok';
 			createResponse($response);
 		}

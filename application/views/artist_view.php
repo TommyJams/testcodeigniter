@@ -108,8 +108,8 @@
     {
     	obj = JSON.parse(a);
     	console.log("Dib Status:",obj.status);
-    	if(obj.status != 'error')
-    		alert('Congratulations! You have successfully applied for the gig. Please await our email for more details.');
+    	//if(obj.status != 'error')
+    	alert('Congratulations! You have successfully applied for the gig. Please await our email for more details.');
     	findGigsPage();
     }
     function dibAction(link)
