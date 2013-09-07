@@ -380,13 +380,13 @@ public function gigProfilePage(){
 	$response['web'] = $web;
 	$response['twitter'] = $twitter;
 	$response['desc'] = $desc;
-	$response['promoter_name'] = $name;
-	$response['city'] = $venue_city;
-	$response['state'] = $venue_state;
-	$response['country'] = $venue_country;
+	$response['promoter_name'] = $promoter_name;
+	$response['city'] = $city;
+	$response['state'] = $state;
+	$response['country'] = $country;
 	$response['gigStatus'] = $gigStatus;
-	$response['add'] = $venue_add;
-	$response['pincode'] = $venue_pin;
+	$response['add'] = $add;
+	$response['pincode'] = $pincode;
                         
 	$this->load->helper('functions');
 	createResponse($response);
