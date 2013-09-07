@@ -103,15 +103,17 @@
 				<div class="data">
                     <div style=" width:35%; height:100%; float:left;">
                         <div id="userName">
+                            <?php $gig = (json_decode($_POST['json'])->gig);?>
 							<h1 style="display:inline-block;"><? print ("$gig"); ?></h1>
 						</div>
                         <?php $promoter_name = (json_decode($_POST['json'])->promoter_name);?>
                         <h2 id='gigHostName'>Hosted by: <? print ("<a href='javascript:;' onClick=showProfile('$promoter');>$promoter_name</a>"); ?></h2>
-                        <h2><?
+                        <h2><?php
                             $city = (json_decode($_POST['json'])->city);
                             $state = (json_decode($_POST['json'])->state);
                             $country = (json_decode($_POST['json'])->country);
-
+                            ?>
+                            <?
                             if($city!="")
                             {
                                 print("$city");
@@ -203,26 +205,39 @@
                     <div class="boxy" style = "height:auto; margin:20px 0px;">
                         <table width="100%" style="text-align:left;">
                             <tr>
+                                <?php $formattedDate = (json_decode($_POST['json'])->date); ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Date<h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  print ("$formattedDate"); ?><td>
                             </tr>
                             <tr style="color: #000; width:10%" >
+                                <?php $vtime = (json_decode($_POST['json'])->vtime); ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Time<h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  print ("$vtime"); ?></td>
                             </tr>
 							<tr style="color: #000; width:10%" >
+                                <?php $duration = (json_decode($_POST['json'])->duration); ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Duration<h2></td>
-                                <td style="color: #000; background: #fff; padding:5px;"><?  print ("$duration hours"); ?></td>
+                                <td style="color: #000; background: #fff; padding:5px;"><?  print ("$duration"); ?></td>
                             </tr>
                             <tr style="color: #000; width:10%" >
+                                <?php $cat = (json_decode($_POST['json'])->cat); ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Genre<h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  print ("$cat"); ?></td>
                             </tr>
                             <tr style="color: #000; width:10%" >
+                                <?php $budget_min = (json_decode($_POST['json'])->budget_min); ?>
+                                <?php $budget_max = (json_decode($_POST['json'])->budget_max); ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Budget<h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  if($budget_min == -1){print("Undefined");}else{print("INR $budget_min - $budget_max");} ?></td>
                             </tr>
                             <tr style="color: #000; width:10%" >
+                                <?php 
+                                    $add = (json_decode($_POST['json'])->add);
+                                    $city = (json_decode($_POST['json'])->city);
+                                    $state = (json_decode($_POST['json'])->state);
+                                    $country = (json_decode($_POST['json'])->country);
+                                    $pincode = (json_decode($_POST['json'])->pincode); 
+                                ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Venue</h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  print ("$add, $city, $state, $country, $pincode"); ?></td>
                             </tr>
