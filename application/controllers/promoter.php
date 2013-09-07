@@ -286,7 +286,7 @@ public function gigProfilePage(){
 	{
 		$image="gigs.jpg";
 	}
-	
+
 	$gigs="images/gig/$image";
 	$response = $gigs;
 
@@ -324,7 +324,7 @@ public function gigProfilePage(){
 		$yes = 1;	
     }
 
-    $promoter = $response["promoter"];
+    //$promoter = $response["promoter"];
 	elseif($promoter==$prolink)
 	{
 		$gigStatus = 2;
