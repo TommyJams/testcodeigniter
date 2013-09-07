@@ -98,7 +98,7 @@
 	function findGigsPage()
     {
     	$("#loading-indicator").show();
-		$.post('artist/findGigs',,findGigsPageCallback,'json');
+		$.post('artist/findGigs','',findGigsPageCallback,'json');
     }
     function findGigsPageCallback(a)
     {
