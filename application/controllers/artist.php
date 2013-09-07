@@ -386,10 +386,10 @@ class Artist extends CI_Controller{
 		$que   = "SELECT               * FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		if(isset($sCity)   && $sCity!="all")  {$query.=" AND `venue_city` = '$sCity'";  $que.=" AND `venue_city` = '$sCity'";}
 		if(isset($sDate)   && $sDate!="all")  {$query.=" AND `venue_date` = '$sDate'";  $que.=" AND `venue_date` = '$sDate'";}
-		if(isset($sCat)    && $scat !="all")  {$query.=" AND `category` LIKE '%$sCat%'"; $que.=" AND `category` LIKE '%$sCat%'";}
-		if(isset($sBudget) && $sbudget!="all"){$query.=" AND `budget_min` >= '$sBudget'"; $que.=" AND `budget_min` >= '$sBudget'";}
+		if(isset($sCat)    && $sCat !="all")  {$query.=" AND `category` LIKE '%$sCat%'"; $que.=" AND `category` LIKE '%$sCat%'";}
+		if(isset($sBudget) && $sBudget!="all"){$query.=" AND `budget_min` >= '$sBudget'"; $que.=" AND `budget_min` >= '$sBudget'";}
 		$que.= " ORDER BY venue_date DESC";
-		
+
 		$total_pages = mysql_fetch_array(mysql_query($query));
         $total_pages = $total_pages['num']/6;
         $total_pages = ceil($total_pages);
