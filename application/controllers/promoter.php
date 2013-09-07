@@ -251,7 +251,7 @@ public function sessionlogout(){
 	exit;
 }
 
-public function gigProfilePage(id){
+public function gigProfilePage($id){
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
