@@ -100,10 +100,10 @@
     	console.log("Data: ", JSON.stringify(a));
 		$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
     }
-	function findGigsPage()
+	function findGigsPage(searchString,page,city,date,category,budget_min)
     {
     	$("#loading-indicator").show();
-		$.post('artist/findGigs','',findGigsPageCallback,'json');
+		$.post('artist/findGigs','{searchGigs: searchString,nPage: page,sCity: city,sDate: date,sCat: category,sBudget: budget_min}',findGigsPageCallback,'json');
     }
     </script>
 

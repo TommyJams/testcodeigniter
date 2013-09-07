@@ -295,28 +295,70 @@ class Artist extends CI_Controller{
 		}
 
 		// Which page to show?
-		if(isset($_POST['findGigsPage']))							//Page passed in query?
-			$nPage = $_POST['findGigsPage'];
+		if(isset($_POST['nPage']) && $_POST['nPage']!=NULL)				//Page passed in query?
+			$nPage = $_POST['nPage'];
 		else
 		{
-			$nPage = $this->session->userdata('findGigsPage');		//Page present in session?
+			$nPage = $this->session->userdata('findGigsPage');			//Page present in session?
 
 			if($nPage === FALSE)										
-				$nPage = 1;											//Fresh ask for find gigs
+				$nPage = 1;												//Fresh ask for find gigs
 		}
 
-		//$this->session->userdata('session_id');
+		// City Filter?
+		if(isset($_POST['sCity']) && $_POST['sCity']!=NULL)				//City passed in query?
+			$sCity = $_POST['sCity'];
+		else
+		{
+			$sCity = $this->session->userdata('findGigsCity');			//City present in session?
 
-		/*$scity=$_POST["city"];$scity=$_POST["city"];$scity=$_POST["city"];
+			if($sCity === FALSE)										
+				$sCity = "all";											//Reset City filter to all
+		}
+
+		// Date Filter?
+		if(isset($_POST['sDate']) && $_POST['sDate']!=NULL)				//Date passed in query?
+			$sDate = $_POST['sDate'];
+		else
+		{
+			$sDate = $this->session->userdata('findGigsDate');			//Date present in session?
+
+			if($sDate === FALSE)										
+				$sDate = "all";											//Reset Date filter to all
+		}
+
+		// Category Filter?
+		if(isset($_POST['sCat']) && $_POST['sCat']!=NULL)				//Category passed in query?
+			$sCat = $_POST['sCat'];
+		else
+		{
+			$sCat = $this->session->userdata('findGigsCat');			//Category present in session?
+
+			if($sCat === FALSE)										
+				$sCat = "all";											//Reset Category filter to all
+		}
+
+		// Budget Filter?
+		if(isset($_POST['sBudget']) && $_POST['sBudget']!=NULL)			//Budget passed in query?
+			$sBudget = $_POST['sBudget'];
+		else
+		{
+			$sBudget = $this->session->userdata('findGigsBudget');		//Budget present in session?
+
+			if($sBudget === FALSE)										
+				$sBudget = "all";										//Reset Budget filter to all
+		}
+
 		$que = "SELECT DISTINCT venue_city FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$sea=mysql_query($que);
         while($a = mysql_fetch_assoc($sea))
 		{
 			$city=$a["venue_city"];
-			if(isset($_SESSION["scity"]) & $_SESSION["scity"]!="all" & $city==$_SESSION["scity"])
+			$response['cityList'][] = $city;
+			/*if(isset($_SESSION["scity"]) & $_SESSION["scity"]!="all" & $city==$_SESSION["scity"])
 				print("<option value='$city' selected='selected'>$city</option>");
 			else
-				print("<option value='$city'>$city</option>");
+				print("<option value='$city'>$city</option>");*/
 		}
 
 
@@ -325,6 +367,8 @@ class Artist extends CI_Controller{
         while($a = mysql_fetch_assoc($sea))
 		{
 			$date=$a["venue_date"];
+			$response['dateList'][] = $date;
+			/*
 			$formattedDate = date('d-m-Y',strtotime($date));
 			if(isset($_SESSION["sdate"]) & $_SESSION["sdate"]!="all" & $date==$_SESSION["sdate"])
 			{
@@ -333,7 +377,7 @@ class Artist extends CI_Controller{
 			else
 			{
 				print("<option value='$date'>$formattedDate</option>");
-			}
+			}*/
 		}
 
 		$que = "SELECT DISTINCT category FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
@@ -341,13 +385,15 @@ class Artist extends CI_Controller{
         while($a = mysql_fetch_assoc($sea))
 		{
 			$cat=$a["category"];
+			$response['catList'][] = $cat;
+			/*
 			if(!strpos($cat,"/"))
 			{
 				if(isset($_SESSION["scat"]) & $_SESSION["scat"]!="all" & $cat==$_SESSION["scat"])
 					print("<option value='$cat' selected='selected'>$cat</option>");
 				else
 					print("<option value='$cat'>$cat</option>");
-			}
+			}*/
 		}
 
 		$que = "SELECT DISTINCT budget_min FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2 ORDER BY budget_min DESC";
@@ -355,14 +401,15 @@ class Artist extends CI_Controller{
         while($a = mysql_fetch_assoc($sea))
 		{	
 			$min=$a["budget_min"];
-			if($min>=0)
+			$response['budgetList'][] = $min;
+			/*if($min>=0)
 			{
 				if(isset($_SESSION["sbudget"]) & $_SESSION["sbudget"]!="all" & $_SESSION["sbudget"]==$min)
 					print("<option value='$min' selected='selected'>$min</option>");
 				else
 					print("<option value='$min'>$min</option>");
-			}
-		}*/
+			}*/
+		}
 
 		$query = "SELECT COUNT(*) as num FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$que   = "SELECT               * FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
@@ -433,14 +480,24 @@ class Artist extends CI_Controller{
 
 		//Save data in session
 		$sessionData = array(
-	          'findGigsPage'  => $nPage
+	          'findGigsPage'  => $nPage,
+	          'findGigsString'  => $searchGigs,
+	          'findGigsCity'  => $sCity,
+	          'findGigsDate'  => $sDate,
+	          'findGigsCat'  => $sCat,
+	          'findGigsBudget'  => $sBudget
         );
 		$this->session->set_userdata($sessionData);
 
 		//Save some page level data in response
 		$response['nPage'] = $nPage;
+		$response['searchGigs'] = $searchGigs;
+		$response['sCity'] = $sCity;
+		$response['sDate'] = $sDate;
+		$response['sCat'] = $sCat;
+		$response['sBudget'] = $sBudget;
 		$response['total_pages'] = $total_pages;
-		
+
 		$this->load->helper('functions');
 		createResponse($response);
 	}
