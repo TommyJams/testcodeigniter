@@ -293,7 +293,7 @@ class Artist extends CI_Controller{
 				$searchGigs = NULL;										//Empty search string
 		}
 
-		error_log("$searchGigs: ".$searchGigs);
+		error_log("SearchGigs: ".$_POST['searchString']);
 
 		// Which page to show?
 		if(isset($_POST['nPage']) && $_POST['nPage']!=NULL)				//Page passed in query?
