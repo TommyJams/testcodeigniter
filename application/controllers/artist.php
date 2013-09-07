@@ -294,6 +294,8 @@ class Artist extends CI_Controller{
 				$searchGigs = NULL;										//Empty search string
 		}
 
+		error_log("$searchGigs: ".$searchGigs);
+
 		// Which page to show?
 		if(isset($_POST['nPage']) && $_POST['nPage']!=NULL)				//Page passed in query?
 			$nPage = $_POST['nPage'];
@@ -382,7 +384,6 @@ class Artist extends CI_Controller{
 			$response['budgetList'][] = $min;
 		}
 
-		error_log("$searchGigs: ".$searchGigs);
 		$query = "SELECT COUNT(*) as num FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$que   = "SELECT               * FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		if(isset($sCity)   && $sCity!="all")  {$query.=" AND `venue_city` = '$sCity'";  $que.=" AND `venue_city` = '$sCity'";}

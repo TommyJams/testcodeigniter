@@ -104,7 +104,7 @@
     {
     	$("#loading-indicator").show();
     	console.log('searchString: ',searchString,'page: ',page,'city: ',city,'date: ',date,'category: ',category,'budget_min: ',budget_min);
-		$.post('artist/findGigs','{searchString: searchString,nPage: page,sCity: city,sDate: date,sCat: category,sBudget: budget_min}',findGigsPageCallback,'json');
+		$.post('artist/findGigs',{searchString: searchString,nPage: page,sCity: city,sDate: date,sCat: category,sBudget: budget_min},findGigsPageCallback,'json');
     }
     </script>
 
