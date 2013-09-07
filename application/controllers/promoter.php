@@ -253,6 +253,8 @@ public function sessionlogout(){
 
 public function gigProfilePage($id){
 
+	error_log($id);
+
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
