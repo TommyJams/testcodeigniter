@@ -94,10 +94,11 @@
         <section id="left" style="width:100%; height:100%;">
 			<div id="userStats" class="clearfix">
                 <div id="userPic" class="pic">
+                    <?php $gigs = (json_decode($_POST['json'])->gigs);?>
 					<? if(isset($_SESSION['username']))
                     {print("<a href='#'  onclick=popup('profil')>");}
 					else {print("<a href='#'>");}
-					print ("<img src='$gigs' class='userStatsPic' />"); ?>
+                    print ("<img src='$gigs' class='userStatsPic' />"); ?>
 					</a>
 				</div>
 				<div class="data">

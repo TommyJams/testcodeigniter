@@ -471,6 +471,11 @@ public function launchGigFunc(){
 	$this->load->helper('mail');
     send_email($to, $sender, $subject, $mess);
 
+    $image="gigs.jpg";
+	
+	$gigs="images/gig/$image";
+	$response['gigs'] = $gigs;
+
     $gigStatus = 2;
 
     $response['gig'] = $gig; 
