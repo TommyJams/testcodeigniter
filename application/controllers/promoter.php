@@ -282,7 +282,11 @@ public function gigProfilePage(){
 		$response = $a;
 	}
 
-	if($image==""){$image="gigs.jpg";}
+	if($image=="")
+	{
+		$image="gigs.jpg";
+	}
+	
 	$gigs="images/gig/$image";
 	$response = $gigs;
 
