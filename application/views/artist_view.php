@@ -107,15 +107,13 @@
     function dibActionCallback(a)
     {
     	//obj = JSON.parse(a);
-    	$("#loading-indicator").hide();
     	//console.log("Dib Status:",obj.status);
     	//if(obj.status != 'error')
     	alert('Congratulations! You have successfully applied for the gig. Please await our email for more details.');
-    	findGigsPage();
+    	//findGigsPage();
     }
     function dibAction(link)
     {
-    	$("#loading-indicator").show();
     	console.log("Dib Action: ",link);
 		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
     }

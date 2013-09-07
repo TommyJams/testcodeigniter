@@ -618,10 +618,12 @@ class Artist extends CI_Controller{
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 
-			$response['status']='ok';
+			$response['status']="ok";
 			createResponse($response);
 		}
 
+		$response['status']="ok";
+		createResponse($response);
 	}
 
 }
