@@ -1,48 +1,4 @@
-<?
-ob_start();
-
-if (!isset($_SESSION)) {
-session_start();
-}
-include('../connect.php');
-if(isset($_SESSION['username_artist'])  && !isset($_GET["id"]))
-{
-	$username=$_SESSION['username_artist'];
-	$password=md5($_SESSION['password_artist']);
-}
-else if(isset($_SESSION['username'])  && !isset($_GET["id"]))
-{
-	$username=$_SESSION['username'];
-	$password=md5($_SESSION['password']);
-}
-else{header("logout.php");exit;}
-
-
-$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$_GET[gig]'";
-$results = mysql_query($SQLs);
-$a = mysql_fetch_array($results);
-{
-	$id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
-	$add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];$country=$a["venue_country"];$pincode=$a["venue_pin"];
-	$fb=$a["fb"];$twitter=$a["twitter"];$web=$a["web"];
-	$date=$a["venue_date"];$vtime=$a["venue_time"];$duration=$a["duration"];
-	$formattedDate = date('d-m-Y',strtotime($date));
-	$period=$a["period"];$promoter_name=$a["promoter_name"];$promoter=$a["promoter"];
-	$SQLs = "SELECT mobile FROM `$database`.`members` WHERE link='$promoter'";
-	$result = mysql_query($SQLs);
-	$b = mysql_fetch_array($result);
-	{$mobile=$b["mobile"];}
-	if(!isset($_SESSION["username"])){$mobile=$mobile[0]." * * * * * * * *";}
-	$status=$a["status"];$link=$a["link"];$image=$a["image"];
-	$desc=$a["desc"];$budget_min=$a["budget_min"];$budget_max=$a["budget_min"]+$a["budget_min"]*$a["budget_max"]/100;$time=$a["time"];
-}
-if($image==""){$image="gigs.jpg";}
-$gigs="images/gig/$image";
-
-$todayTime = strtotime(date("Y-m-d"));
-$dated = strtotime($date);
- ?>
- <html>
+<html>
 <head>
 	<link rel='stylesheet' href='css/edit.css'>
 	<!-- Include the JS files --> 
@@ -149,8 +105,13 @@ $dated = strtotime($date);
                         <div id="userName">
 							<h1 style="display:inline-block;"><? print ("$gig"); ?></h1>
 						</div>
+                        <?php $promoter_name = (json_decode($_POST['json'])->promoter_name);?>
                         <h2 id='gigHostName'>Hosted by: <? print ("<a href='javascript:;' onClick=showProfile('$promoter');>$promoter_name</a>"); ?></h2>
                         <h2><?
+                            $city = (json_decode($_POST['json'])->city);
+                            $state = (json_decode($_POST['json'])->state);
+                            $country = (json_decode($_POST['json'])->country);
+
                             if($city!="")
                             {
                                 print("$city");
@@ -173,74 +134,59 @@ $dated = strtotime($date);
                     </div>
 					<div class="socialInfo">
 						<div class="socialMediaLinks">
-							<? if($fb!=""){ print("<a href='$fb' rel='me' target='_blank'><img src='img/facebook.png' /></a>"); }?>						
-							<? if($twitter!=""){ print("<a href='$twitter' rel='me' target='_blank'><img src='img/twitter.png' /></a>"); }?>						
-							<? if($web!=""){ print("<a href='$web' rel='me' target='_blank'><img src='img/web.png' /></a>"); }?>
+                            <?php 
+                                $fb = (json_decode($_POST['json'])->fb);
+                                $twitter = (json_decode($_POST['json'])->twitter);
+                                $web = (json_decode($_POST['json'])->web);
+                            ?>
+							<? if($fb!="")
+                                { print("<a href='$fb' rel='me' target='_blank'><img src='img/facebook.png' /></a>"); }?>						
+							<? if($twitter!="")
+                                { print("<a href='$twitter' rel='me' target='_blank'><img src='img/twitter.png' /></a>"); }?>						
+							<? if($web!="")
+                                { print("<a href='$web' rel='me' target='_blank'><img src='img/web.png' /></a>"); }?>
 						</div>
 					</div>
                     <div class="medals" style="width:35%; height: auto; float:right; position:relative; top:30%; margin-top:-35px;">
                         <div id="gigStatus" style="width:auto; height:auto; margin:20px auto; position:relative;">
 						<center>
-                        <?
-                        $yes=0;
-						
-						$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
-						$resultsa = mysql_query($SQLsa);
-						if (!$resultsa)
-							die("Database query failed: " . mysql_error());
-						$pl = mysql_fetch_assoc($resultsa);
-						$prolink=$pl["link"];
-
-                        $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
-                        $result_set4 = mysql_query($q4);	
-                        if (mysql_num_rows($result_set4) == 1) 
+                        <?	
+                        if ($gigStatus == 1) 
                         {
-                            $found = mysql_fetch_array($result_set4);
-                            $yes=1;
-							$artist_booked_id=$found["artist_id"];
-							$artist_booked_name=$found["artist_name"];
+                            $artist_booked_id = (json_decode($_POST['json'])->artist_booked_id);
+                            $artist_booked_name = (json_decode($_POST['json'])->artist_booked_name);
+
 							print("<h2>Artist:</h2>");
                             print("<a href='javascript:;' onClick=showProfile('$artist_booked_id'); class='whiteHoverRef'>$artist_booked_name</a>");
                         }
-						elseif($promoter==$prolink)
+						elseif($gigStatus == 2)
 						{
 							print("<a  href='javascript:;' onClick=loadframe('updategig=$link'); class='whiteHoverRef'>Edit Gig</a>");
 						}
-                        elseif(isset($_SESSION["username_artist"]))
+                        elseif($gigSession == 1)
                         { 
-                            $q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$_SESSION[username_artist]'";
-                            $result_set2 = mysql_query($q2);	
-                            if (mysql_num_rows($result_set2) == 1) 
-                            {
-                                $found = mysql_fetch_array($result_set2);
-                                $artist_id=$found["link"];
-                            }
-                            $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
-                            $result_set4 = mysql_query($q4);	
-                            if (mysql_num_rows($result_set4) == 1) 
-                            {                    
-								$found = mysql_fetch_array($result_set4);
-                                $statuss=$found["status"];
-                                if($statuss==1){print("<a href='#' id='addnew' style='background: #0a0;'>Accepted</a>");}
-                                elseif($statuss==2){print("<a href='#' id='addnew' style='background: #a00'>Rejected</a>");}
-                                elseif($statuss==4){print("<a href='#' id='addnew' style='background: #282828;'>Pending</a>");}
-                            }
-							elseif($todayTime > $dated)
-							{
-								print("<a href='javascript:;' class='dibStatusRef' style='background:#666;'>Closed</a>");
-							}
-                            else
-                            {                       
-                                if($yes!=1)
-                                {   ?>
-                                    <form  action="dib_action.php"  method="post">
-                                        <input type="hidden" name="gig" value="<? print($link);?>">
-                                        <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="return confirmSubmit()">
-                                    </form>
-                                    <?
-                                }
+                            $statuss=$found["status"];
+                            if($gigStatus == 3){print("<a href='#' id='addnew' style='background: #0a0;'>Accepted</a>");}
+                            elseif($gigStatus == 4){print("<a href='#' id='addnew' style='background: #a00'>Rejected</a>");}
+                            elseif($gigStatus == 5){print("<a href='#' id='addnew' style='background: #282828;'>Pending</a>");}
+                        }
+						elseif($gigStatus == 6)
+						{
+							print("<a href='javascript:;' class='dibStatusRef' style='background:#666;'>Closed</a>");
+						}
+                        else
+                        {                       
+                            if($gigStatus == 7)
+                            {   ?>
+                                <?php $link = (json_decode($_POST['json'])->link); ?>
+                                <form  action="dib_action.php"  method="post">
+                                    <input type="hidden" name="gig" value="<? print($link);?>">
+                                    <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="return confirmSubmit()">
+                                </form>
+                                <?
                             }
                         }
+                    
                         /*
                         print("<p"); if(isset($_SESSION["username_artist"])){ print(" style='margin-top:25px;' ");}
                         print("><b>Description:-</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  $desc</p>");
@@ -282,13 +228,15 @@ $dated = strtotime($date);
                             </tr>
                             <tr style="color: #000; width:10%" >
                                 <td style="width:10%; background: #ffcc00;"><h2>Description</h2></td>
-                                <td style="color: #000; background: #fff; padding:5px;"><?
-																							/*convert to URL*/
-																							$descStr = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\" style='color:#000;'>\\0</a>", $desc);
-																							/*format newlines*/
-																							$descStr = nl2br("$descStr");
-																							print ("$descStr"); 
-																						?>
+                                <td style="color: #000; background: #fff; padding:5px;">
+                                    <?
+                                        $desc = (json_decode($_POST['json'])->desc); 
+										/*convert to URL*/
+										$descStr = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\" style='color:#000;'>\\0</a>", $desc);
+										/*format newlines*/
+										$descStr = nl2br("$descStr");
+										print ("$descStr"); 
+									?>
 								</td>
                             </tr>
                         </table>

@@ -112,11 +112,18 @@
       $("#lefty").load("include/profile.php", {json: JSON.stringify(a)}); 
     }
 
-    function gig(a) 
+    function gigProfileCallback(a) 
     {
 		  $("#loading-indicator").show();      
-		  $("#lefty").load("include/gigs.php?gig="+a);
+		  console.log("Data: ", JSON.stringify(a));
+      $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
     }
+    function gigProfile(id) 
+    {
+      $("#loading-indicator").show();      
+      $.post('artist/gigProfilePage',{id: user_id},showProfileCallback,'json');
+    }
+
     </script>
     
     <script type="text/javascript">
