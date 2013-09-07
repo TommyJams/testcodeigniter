@@ -270,7 +270,7 @@ class Artist extends CI_Controller{
 		{
 			$searchGigs = $this->session->userdata('findGigsString');	//Search string present in session?
 
-			if(!isset($searchGigs))										
+			if($searchGigs === FALSE)
 				$searchGigs = NULL;										//Empty search string
 		}
 
@@ -281,7 +281,7 @@ class Artist extends CI_Controller{
 		{
 			$nPage = $this->session->userdata('findGigsPage');		//Page present in session?
 
-			if(!isset($nPage))										
+			if($nPage === FALSE)										
 				$nPage = 1;											//Fresh ask for find gigs
 		}
 		//$this->session->userdata('session_id');
@@ -371,13 +371,13 @@ class Artist extends CI_Controller{
 
             if($v<=($nPage*6) && $v>($nPage*6)-6)
             {
-                $yes=0;										// Gig is open
+                $gigStatus=0;										// Gig is open
                 $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
                 $result_set4 = mysql_query($q4);	
                 if (mysql_num_rows($result_set4) == 1) 		//Gig is Booked
                 {
                     $found = mysql_fetch_array($result_set4);
-                    $yes=1;
+                    $gigStatus=1;
                 }
                 
             	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$_SESSION[username_artist]'";
@@ -395,17 +395,16 @@ class Artist extends CI_Controller{
                     $found = mysql_fetch_array($result_set4);
                     $statuss=$found["status"];
                     
-                    if($statuss==2){$yes = 2;}				//Dib Rejected
-                    elseif($statuss==4){$yes = 4;}			//Dib Pending
+                    if($statuss==2){$gigStatus = 2;}				//Dib Rejected
+                    elseif($statuss==4){$gigStatus = 4;}			//Dib Pending
                 }
             	elseif($todayTime > $dated)
 				{
-					$yes = -1;								//Gig expired
+					$gigStatus = -1;								//Gig expired
 				}
-				
-				$a["gigStatus"] = $yes;
 
-				$response["foundGigs"][] = $a;
+				$gigRow = array($gig, $link, $pid, $promoter_name, $city, $formattedDate, $time, $gigStatus);
+				$response["foundGigs"][] = $gigRow;
             }
 
         }
