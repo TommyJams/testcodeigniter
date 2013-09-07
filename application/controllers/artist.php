@@ -426,7 +426,7 @@ class Artist extends CI_Controller{
 					}
 				}
 
-				//$gigRow = array($gig, $link, $pid, $promoter_name, $city, $formattedDate, $time, $gigStatus);
+				$gigRow = array($gig, $link, $pid, $promoter_name, $city, $formattedDate, $time, $gigStatus);
 				//$response["foundGigs"][] = $gigRow;
             }
         }
