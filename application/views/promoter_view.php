@@ -136,6 +136,12 @@
       $("#loading-indicator").show();      
       $.post('promoter/lauchGigFunc',$('#signUpForm').serialize(),launchGigCallback,'json');
     }
+    function showLaunchGig() 
+    {
+      $("#loading-indicator").show();      
+      $("#lefty").load("include/gig.php");
+    }
+
 
     </script>
     
@@ -195,7 +201,7 @@
         <div id="menuFooter" style="background:#000;">
           <ul>
             <li>
-              <a  href="javascript:;" onClick="include/gig.php"><h3>Launch Gig</h3></a>
+              <a  href="javascript:;" onClick="showLaunchGig()"><h3>Launch Gig</h3></a>
             </li>
             <li>
               <!--<a  href="javascript:;" onClick="loadframe('gigs');"><h3>My Gigs</h3></a> -->
