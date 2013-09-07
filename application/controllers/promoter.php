@@ -377,7 +377,7 @@ public function gigProfilePage(){
 
 }
 
-public function lauchGigFunc(){
+public function launchGigFunc(){
 
 	ob_start();
 
@@ -470,6 +470,8 @@ public function lauchGigFunc(){
 	$to = "alerts@tommyjams.com";
 	$this->load->helper('mail');
     send_email($to, $sender, $subject, $mess);
+
+    $status = 1;
 
     $response['gigData'] = array($gig, $cat, $budget_min, $budget_max, $date, $time, $duration, $venue_add, 
 									$venue_city, $venue_state, $venue_country, $venue_pin, $fb, $web, $twitter, 

@@ -134,7 +134,7 @@
     function launchGig() 
     {
       $("#loading-indicator").show();      
-      $.post('promoter/lauchGigFunc',$('#signUpForm').serialize(),launchGigCallback,'json');
+      $.post('promoter/launchGigFunc',$('#signUpForm').serialize(),launchGigCallback,'json');
     }
     function showLaunchGig() 
     {
