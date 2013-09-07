@@ -284,6 +284,8 @@ class Artist extends CI_Controller{
 			if($nPage === FALSE)										
 				$nPage = 1;											//Fresh ask for find gigs
 		}
+		
+		error_log("Find Gigs: ".$searchGigs);
 		//$this->session->userdata('session_id');
 
 		/*$scity=$_POST["city"];$scity=$_POST["city"];$scity=$_POST["city"];
