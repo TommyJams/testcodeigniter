@@ -471,11 +471,26 @@ public function launchGigFunc(){
 	$this->load->helper('mail');
     send_email($to, $sender, $subject, $mess);
 
-    $status = 1;
+    $gigStatus = 2;
 
-    $response['gigData'] = array($gig, $cat, $budget_min, $budget_max, $date, $time, $duration, $venue_add, 
-									$venue_city, $venue_state, $venue_country, $venue_pin, $fb, $web, $twitter, 
-									$desc, $pid, $name, $ida, $status); 
+    $response['gig'] = $gig; 
+    $response['cat'] = $cat;   
+	$response['budget_min'] = $budget_min;
+	$response['budget_max'] = $budget_max;
+	$response['formattedDate'] =  $date;
+	$response['vtime'] = $time;
+	$response['duration'] = $duration;
+	$response['fb'] = $fb;
+	$response['web'] = $web;
+	$response['twitter'] = $twitter;
+	$response['desc'] = $desc;
+	$response['promoter_name'] = $name;
+	$response['city'] = $venue_city;
+	$response['state'] = $venue_state;
+	$response['country'] = $venue_country;
+	$response['gigStatus'] = $gigStatus;
+	$response['add'] = $venue_add;
+	$response['pincode'] = $venue_pin;
 
 	$this->load->helper('functions');
 	createResponse($response);

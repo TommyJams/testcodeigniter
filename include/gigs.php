@@ -103,16 +103,14 @@
 				<div class="data">
                     <div style=" width:35%; height:100%; float:left;">
                         <div id="userName">
-                            <?php $gig = (json_decode($_POST['json'])->gigData['gig']);?>
+                            <?php $gig = (json_decode($_POST['json'])->gig);?>
 							<h1 style="display:inline-block;"><? print ("$gig"); ?></h1>
 						</div>
                         <?php $promoter_name = (json_decode($_POST['json'])->promoter_name);?>
                         <h2 id='gigHostName'>Hosted by: <? print ("<a href='javascript:;' onClick=showProfile('$promoter');>$promoter_name</a>"); ?></h2>
-                        <h2><?php
-                            $city = (json_decode($_POST['json'])->city);
-                            $state = (json_decode($_POST['json'])->state);
-                            $country = (json_decode($_POST['json'])->country);
-                            ?>
+                        <h2><?php $city = (json_decode($_POST['json'])->city); ?>
+                            <?php $state = (json_decode($_POST['json'])->state); ?>
+                            <?php $country = (json_decode($_POST['json'])->country); ?>
                             <?
                             if($city!="")
                             {
@@ -136,11 +134,10 @@
                     </div>
 					<div class="socialInfo">
 						<div class="socialMediaLinks">
-                            <?php 
-                                $fb = (json_decode($_POST['json'])->fb);
-                                $twitter = (json_decode($_POST['json'])->twitter);
-                                $web = (json_decode($_POST['json'])->web);
-                            ?>
+                            <?php $fb = (json_decode($_POST['json'])->fb); ?>
+                            <?php $twitter = (json_decode($_POST['json'])->twitter); ?>
+                            <?php $web = (json_decode($_POST['json'])->web); ?>
+                            
 							<? if($fb!="")
                                 { print("<a href='$fb' rel='me' target='_blank'><img src='img/facebook.png' /></a>"); }?>						
 							<? if($twitter!="")
@@ -231,13 +228,12 @@
                                 <td style="color: #000; background: #fff; padding:5px;"><?  if($budget_min == -1){print("Undefined");}else{print("INR $budget_min - $budget_max");} ?></td>
                             </tr>
                             <tr style="color: #000; width:10%" >
-                                <?php 
-                                    $add = (json_decode($_POST['json'])->add);
-                                    $city = (json_decode($_POST['json'])->city);
-                                    $state = (json_decode($_POST['json'])->state);
-                                    $country = (json_decode($_POST['json'])->country);
-                                    $pincode = (json_decode($_POST['json'])->pincode); 
-                                ?>
+                                <?php $add = (json_decode($_POST['json'])->add); ?>
+                                <?php $city = (json_decode($_POST['json'])->city); ?>
+                                <?php $state = (json_decode($_POST['json'])->state); ?>
+                                <?php $country = (json_decode($_POST['json'])->country); ?>
+                                <?php $pincode = (json_decode($_POST['json'])->pincode); ?>
+        
                                 <td style="width:10%; background: #ffcc00;"><h2>Venue</h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  print ("$add, $city, $state, $country, $pincode"); ?></td>
                             </tr>
