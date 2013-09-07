@@ -256,7 +256,7 @@ public function gigProfilePage($id){
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
-	$userId = id;
+	$userId = $id;
 
 	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$userId'";
 	$results = mysql_query($SQLs);
