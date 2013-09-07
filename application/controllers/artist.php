@@ -427,7 +427,7 @@ class Artist extends CI_Controller{
 				}
 
 				$gigRow = array($gig, $link, $pid, $promoter_name, $city, $formattedDate, $time, $gigStatus);
-				//$response["foundGigs"][] = $gigRow;
+				$response['foundGigs'][] = $gigRow;
             }
         }
 
@@ -438,8 +438,8 @@ class Artist extends CI_Controller{
 		$this->session->set_userdata($sessionData);
 
 		//Save some page level data in response
-		$response["nPage"] = $nPage;
-		$response["total_pages"] = $total_pages;
+		$response['nPage'] = $nPage;
+		$response['total_pages'] = $total_pages;
 		
 		$this->load->helper('functions');
 		createResponse($response);
