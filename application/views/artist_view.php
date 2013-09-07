@@ -95,10 +95,10 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/profile.php?edit=1");
     }
-	function findGigsPage(searchString,nPage)
+	function findGigsPage()
     {
     	$("#loading-indicator").show();
-		$.post('artist/findGigs',{searchString: searchString, nPage: nPage},findGigsPageCallback,'json');
+		$.post('artist/findGigs',,findGigsPageCallback,'json');
     }
     function findGigsPageCallback(a)
     {

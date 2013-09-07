@@ -259,6 +259,8 @@ class Artist extends CI_Controller{
 
 	public function findGigs()
 	{
+		$database = 'tommyjam_test';
+
 		$todayTime = strtotime(date("Y-m-d"));
 
 		//What is the query string
@@ -278,6 +280,7 @@ class Artist extends CI_Controller{
 		else
 		{
 			$nPage = $this->session->userdata('findGigsPage');		//Page present in session?
+
 			if(!isset($nPage))										
 				$nPage = 1;											//Fresh ask for find gigs
 		}
