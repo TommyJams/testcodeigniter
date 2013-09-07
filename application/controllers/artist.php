@@ -355,10 +355,6 @@ class Artist extends CI_Controller{
 		{
 			$city=$a["venue_city"];
 			$response['cityList'][] = $city;
-			/*if(isset($_SESSION["scity"]) & $_SESSION["scity"]!="all" & $city==$_SESSION["scity"])
-				print("<option value='$city' selected='selected'>$city</option>");
-			else
-				print("<option value='$city'>$city</option>");*/
 		}
 
 
@@ -368,16 +364,6 @@ class Artist extends CI_Controller{
 		{
 			$date=$a["venue_date"];
 			$response['dateList'][] = $date;
-			/*
-			$formattedDate = date('d-m-Y',strtotime($date));
-			if(isset($_SESSION["sdate"]) & $_SESSION["sdate"]!="all" & $date==$_SESSION["sdate"])
-			{
-				print("<option value='$date' selected='selected'>$formattedDate</option>");
-			}
-			else
-			{
-				print("<option value='$date'>$formattedDate</option>");
-			}*/
 		}
 
 		$que = "SELECT DISTINCT category FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
@@ -386,14 +372,6 @@ class Artist extends CI_Controller{
 		{
 			$cat=$a["category"];
 			$response['catList'][] = $cat;
-			/*
-			if(!strpos($cat,"/"))
-			{
-				if(isset($_SESSION["scat"]) & $_SESSION["scat"]!="all" & $cat==$_SESSION["scat"])
-					print("<option value='$cat' selected='selected'>$cat</option>");
-				else
-					print("<option value='$cat'>$cat</option>");
-			}*/
 		}
 
 		$que = "SELECT DISTINCT budget_min FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2 ORDER BY budget_min DESC";
@@ -402,21 +380,14 @@ class Artist extends CI_Controller{
 		{	
 			$min=$a["budget_min"];
 			$response['budgetList'][] = $min;
-			/*if($min>=0)
-			{
-				if(isset($_SESSION["sbudget"]) & $_SESSION["sbudget"]!="all" & $_SESSION["sbudget"]==$min)
-					print("<option value='$min' selected='selected'>$min</option>");
-				else
-					print("<option value='$min'>$min</option>");
-			}*/
 		}
 
 		$query = "SELECT COUNT(*) as num FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$que   = "SELECT               * FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
-		/*if(isset($_SESSION["scity"]) & $_SESSION["scity"]!="all"){$searchCity = $_SESSION["scity"]; $query.=" AND `venue_city` = '$searchCity'";  $que.=" AND `venue_city` = '$searchCity'";}
-		if(isset($_SESSION["sdate"]) & $_SESSION["sdate"]!="all"){$searchDate = $_SESSION["sdate"]; $query.=" AND `venue_date` = '$searchDate'";  $que.=" AND `venue_date` = '$searchDate'";}
-		if(isset($_SESSION["scat"] ) & $_SESSION["scat"] !="all"){$searchCat  = $_SESSION["scat"];  $query.=" AND `category` LIKE '%$searchCat%'"; $que.=" AND `category` LIKE '%$searchCat%'";}
-		if(isset($_SESSION["sbudget"]) & $_SESSION["sbudget"]!="all"){$searchBudget = $_SESSION["sbudget"]; $query.=" AND `budget_min` >= '$searchBudget'"; $que.=" AND `budget_min` >= '$searchBudget'";}*/
+		if(isset($sCity)   && $sCity!="all")  {$query.=" AND `venue_city` = '$sCity'";  $que.=" AND `venue_city` = '$sCity'";}
+		if(isset($sDate)   && $sDate!="all")  {$query.=" AND `venue_date` = '$sDate'";  $que.=" AND `venue_date` = '$sDate'";}
+		if(isset($sCat)    && $scat !="all")  {$query.=" AND `category` LIKE '%$sCat%'"; $que.=" AND `category` LIKE '%$sCat%'";}
+		if(isset($sBudget) && $sbudget!="all"){$query.=" AND `budget_min` >= '$sBudget'"; $que.=" AND `budget_min` >= '$sBudget'";}
 		$que.= " ORDER BY venue_date DESC";
 		
 		$total_pages = mysql_fetch_array(mysql_query($query));
