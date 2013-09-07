@@ -618,6 +618,7 @@ class Artist extends CI_Controller{
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 
+			$this->load->helper('functions');
 			$response['status']="ok";
 			createResponse($response);
 		}
