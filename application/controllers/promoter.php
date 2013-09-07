@@ -377,7 +377,112 @@ public function gigProfilePage(){
 
 }
 
-public function lauchGigPage(){
+public function lauchGigFunc(){
+
+	ob_start();
+
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
+
+	if (!isset($sessionArray['session_id'])){
+		session_start();
+	}
+
+	if(isset($sessionArray['username']))
+	{
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
+		$actual_type = 'venue';
+	}
+
+	elseif(isset($sessionArray['username_artist']))
+	{
+		$username=$sessionArray['username_artist'];
+		$password=$sessionArray['password_artist'];
+		$actual_type = 'artist';
+	}
+
+	$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+	$result_set1 = mysql_query($q1);	
+	if (mysql_num_rows($result_set1) == 1) 
+	{
+		$founded = mysql_fetch_array($result_set1);
+		$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
+	}
+
+	$SQLs = "SELECT id FROM `$database`.`shop`";
+	$results = mysql_query($SQLs);
+	while ($a = mysql_fetch_assoc($results))
+	{
+		$id=$a["id"];
+	}
+
+	$totalSlots=$_POST["slotNum"];
+	for($iSlot=1;$iSlot<=$totalSlots;$iSlot++)
+	{
+		$id=$id+1;
+		$ida=$id*16993; /*changed to 16993 wiz. prime number so that profile id should never match gig id*/
+
+		$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){	$fb='http://'.$fb;}
+		$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){	$twitter='http://'.$twitter;}
+		$web=$_POST['web'];if($web && !startsWith($web,'http')){	$web='http://'.$web;}
+
+		if($totalSlots>1)
+			$gig=$_POST['gig'].': Slot '.$iSlot;
+		else
+			$gig=$_POST['gig'];
+
+		$cat=$_POST['cat'];
+		$budget_min=$_POST['budget_min'];
+		$budget_max=$_POST['budget_max'];
+		$date=$_POST['year'].'-'.$_POST['month'].'-'.$_POST['date'];
+		$time=$_POST['hours'].':'.$_POST['minute'].' '.$_POST['am'];
+		$duration=$_POST['duration'];
+		$venue_add=$_POST['add'];
+		$venue_city=$_POST['city'];
+		$venue_state=$_POST['state'];
+		$venue_country=$_POST['country'];
+		$venue_pin=$_POST['pincode'];
+		$desc=$_POST['desc'];
+			
+		$q2 = "INSERT INTO `$database`.`shop` (`gig`, `category`, `budget_min`, `budget_max`, `venue_date`, `venue_time`, `duration`, `venue_add`, `venue_city`, `venue_state`, `venue_country`, `venue_pin`, `fb`, `web`, `twitter`, `desc`, `promoter`, `promoter_name`, `link`, `status`) 
+				VALUES('$gig', '$cat', '$budget_min', '$budget_max', '$date', '$time', '$duration', '$venue_add', '$venue_city', '$venue_state', '$venue_country',  '$venue_pin',  '$fb',  '$web',  '$twitter', '$desc', '$pid', '$name', '$ida', '1')";
+		$result_set2 = mysql_query($q2);
+		if (!$result_set2)
+		{
+				die("Database query failed: " . mysql_error());
+		}
+	}
+		
+/*	if($totalSlots>1)
+		$gig=$_POST['gig'];*/
+
+	$to = $email;
+	$sender = "alerts@tommyjams.com";
+	$subject = "Launched Gig: $gig";
+	$mess="<p style='text-align:left;'> Dear $name,<br><br>Congratulations!<br>Your gig '$gig' has been launched successfully on TommyJams.
+				<br>We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.
+				<br>We wish you all the very best for the gig.<br><br>Happy Jamming,<br>Team TommyJams<br><br></p>";
+		
+	$this->load->helper('mail');
+    send_email($to, $sender, $subject, $mess);
+
+	$to = "alerts@tommyjams.com";
+	$this->load->helper('mail');
+    send_email($to, $sender, $subject, $mess);
+
+    $response['gigData'] = array($gig, $cat, $budget_min, $budget_max, $date, $time, $duration, $venue_add, 
+									$venue_city, $venue_state, $venue_country, $venue_pin, $fb, $web, $twitter, 
+									$desc, $pid, $name, $ida, $status); 
+
+	$this->load->helper('functions');
+	createResponse($response);
+}
+
+public function updateGigPage(){
+
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
 
 	if(isset($sessionArray['username']))
 	{
@@ -396,7 +501,6 @@ public function lauchGigPage(){
 		$resultsa = mysql_query($SQLsa);
 		if (!$resultsa)
 			die("Database query failed: " . mysql_error());
-		
 		$pl = mysql_fetch_assoc($resultsa);
 		$plink=$pl["link"];
 		$link=$_GET["updategig"];

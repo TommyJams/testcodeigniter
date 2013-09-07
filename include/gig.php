@@ -2,6 +2,13 @@
 <head>
 	<link rel='stylesheet' href='css/edit.css'>
 	<!-- Include the JS files -->
+	<script> 
+		$('#signUpForm').bind('submit',function(e) 
+		{
+			e.preventDefault();
+			launchGig();
+		});
+	</script>
 
 </head>
  <body>
@@ -13,48 +20,7 @@
             <section id="left" style=" width:100%;">
                 <div class="gcontent">
                     <div id="signUp" class="sign" style="overflow-y:auto">
-                    <? 
-						if(isset($_GET["updategig"]))
-						{
-							$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
-							$resultsa = mysql_query($SQLsa);
-							if (!$resultsa)
-								die("Database query failed: " . mysql_error());
-							$pl = mysql_fetch_assoc($resultsa);
-							$plink=$pl["link"];
-							$link=$_GET["updategig"];
-
-							$SQLs = "SELECT * FROM `$database`.`shop` WHERE `link`=$link AND `promoter`=$plink";
-							$results = mysql_query($SQLs);
-							if (!$results)
-								die("Database query failed: " . mysql_error());
-
-							$a = mysql_fetch_assoc($results);
-							$do="updategig&id=$link";
-							$show=0;
-							$ok="Update Gig";
-
-							$durationSaved = $a['duration'];
-							$timeSaved = $a['venue_time'];
-							$tempExplode1 = explode(":",$timeSaved);
-							$hourSaved = $tempExplode1[0];
-							$tempExplode2 = explode(" ",$tempExplode1);
-							$minSaved = $tempExplode2[0];
-							$amSaved = $tempExplode2[1];
-
-						}
-						else
-						{
-							$do="add";
-							$show=1;
-							$ok="Launch Gig";
-							
-							$todayDate = intval(date("d"));
-							$todayMonth = intval(date("m"));
-							$todayYear = intval(date("Y"));
-						}
-					?>
-                        <form action="update.php?gig=<? echo $do; ?>" method="POST" class="cleanForm" id="signUpForm" style="height:100%; margin-top:10px; min-width:800px;">
+                        <form action="" name="signUpForm" method="POST" class="cleanForm" id="signUpForm" style="height:100%; margin-top:10px; min-width:800px;">
 						<div id="launchContainer">
                             <fieldset id="details" style = "height:auto; float:left">
                                 <p>

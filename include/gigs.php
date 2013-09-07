@@ -205,7 +205,7 @@
                     <div class="boxy" style = "height:auto; margin:20px 0px;">
                         <table width="100%" style="text-align:left;">
                             <tr>
-                                <?php $formattedDate = (json_decode($_POST['json'])->date); ?>
+                                <?php $formattedDate = (json_decode($_POST['json'])->formattedDate); ?>
                                 <td style="width:10%; background: #ffcc00;"><h2>Date<h2></td>
                                 <td style="color: #000; background: #fff; padding:5px;"><?  print ("$formattedDate"); ?><td>
                             </tr>

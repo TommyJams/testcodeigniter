@@ -114,8 +114,8 @@
 
     function gigProfileCallback(a) 
     {
-		  $("#loading-indicator").show();      
-		  console.log("Data: ", JSON.stringify(a));
+      $("#loading-indicator").show();      
+      console.log("Data: ", JSON.stringify(a));
       $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
     }
     function gigProfile(user_id) 
@@ -123,6 +123,18 @@
       console.log("id: ", user_id);
       $("#loading-indicator").show();      
       $.post('promoter/gigProfilePage',{id: user_id},gigProfileCallback,'json');
+    }
+
+    function launchGigCallback(a) 
+    {
+		  $("#loading-indicator").show();      
+		  console.log("Data: ", JSON.stringify(a));
+      $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
+    }
+    function launchGig() 
+    {
+      $("#loading-indicator").show();      
+      $.post('promoter/lauchGigFunc',$('#signUpForm').serialize(),lauchGigCallback,'json');
     }
 
     </script>
