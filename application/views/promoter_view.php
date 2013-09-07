@@ -134,7 +134,7 @@
     function launchGig() 
     {
       $("#loading-indicator").show();      
-      $.post('promoter/lauchGigFunc',$('#signUpForm').serialize(),lauchGigCallback,'json');
+      $.post('promoter/lauchGigFunc',$('#signUpForm').serialize(),launchGigCallback,'json');
     }
 
     </script>
