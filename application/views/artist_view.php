@@ -97,15 +97,25 @@
     }
     function findGigsPageCallback(a)
     {
-    	console.log("Data: ", JSON.stringify(a));
-		$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
+    	$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
     }
 	function findGigsPage(searchString,page,city,date,category,budget_min)
     {
     	$("#loading-indicator").show();
-    	console.log('searchString: ',searchString,'page: ',page,'city: ',city,'date: ',date,'category: ',category,'budget_min: ',budget_min);
 		$.post('artist/findGigs',{'searchString': searchString,'nPage': page,'sCity': city,'sDate': date,'sCat': category,'sBudget': budget_min},findGigsPageCallback,'json');
     }
+    function dibActionCallback(a)
+    {
+    	obj = JSON.parse(a);
+    	if(obj.status != 'error')
+    		alert('Congratulations! You have successfully applied for the gig. Please await our email for more details.');
+    }
+    function dibAction(link)
+    {
+    	$("#loading-indicator").show();
+		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
+    }
+
     </script>
 
 	<script type="text/javascript">
