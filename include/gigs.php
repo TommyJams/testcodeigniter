@@ -149,6 +149,7 @@
                     <div class="medals" style="width:35%; height: auto; float:right; position:relative; top:30%; margin-top:-35px;">
                         <div id="gigStatus" style="width:auto; height:auto; margin:20px auto; position:relative;">
 						<center>
+                        <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
                         <?	
                         if ($gigStatus == 1) 
                         {
