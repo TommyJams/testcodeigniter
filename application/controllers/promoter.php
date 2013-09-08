@@ -209,6 +209,10 @@ public function mygigs(){
 		exit;
 	}
 
+	$artist_name = "";
+	$num_rows = "";
+	$contact = "";
+
 	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
     $result_set2 = mysql_query($q2);	
     if (mysql_num_rows($result_set2) == 1) 

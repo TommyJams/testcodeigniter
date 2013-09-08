@@ -47,7 +47,7 @@
                                         if ($num_rows == 1) 
                                         {
 										  print("<td>");
-										  print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
+										  print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $contact");
 										  print("</td></tr></table></div>");
                                         }
                                         else
