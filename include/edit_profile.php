@@ -41,32 +41,32 @@
                         <form action="update.php" method="POST" class="cleanForm" id="signUpForm">
                             <fieldset>
                                 <p>
-                                    <? if(isset($_SESSION['username_artist'])) { print("<label for='designation'>Your Role:</label>");}
-                                       elseif(isset($_SESSION['username']))    { print("<label for='designation'>Designation:</label>");}
+                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<label for='designation'>Your Role:</label>");}
+                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='designation'>Designation:</label>");}
                                     ?>
                                     
-                                    <input type="text" id="full-name" name="designation" value="<? print($designation); ?>"  pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" autofocus />
+                                    <input type="text" id="full-name" name="designation" value="<? print(json_decode($_POST['json'])->designation); ?>"  pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" autofocus />
                                     <br>
-                                    <? if(isset($_SESSION['username_artist'])) { print("<em>e.g. Guitar, Vocals</em>");}
-                                       elseif(isset($_SESSION['username']))    { print("<em>e.g. Manager</em>");}
+                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<em>e.g. Guitar, Vocals</em>");}
+                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<em>e.g. Manager</em>");}
                                     ?>
                                 </p>
                                 <p>
-                                    <? if(isset($_SESSION['username_artist'])) { print("<label for='organization'>Band Name: <span class='requiredField'>*</span></label>");}
-                                       elseif(isset($_SESSION['username']))    { print("<label for='organization'>Organization: <span class='requiredField'>*</span></label>");}
+                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<label for='organization'>Band Name: <span class='requiredField'>*</span></label>");}
+                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='organization'>Organization: <span class='requiredField'>*</span></label>");}
                                     ?>
-                                    <input type="text" id="username" name="organization" pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" value="<? print($name); ?>" required />
+                                    <input type="text" id="username" name="organization" pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" value="<? print (json_decode($_POST['json'])->name); ?>" required />
                                     <br>
                                     <em></em>
                                 </p>
                                 <p>
-                                    <? if(isset($_SESSION['username_artist'])) { print("<label for='genre'>Genre: </label>");}
-                                       elseif(isset($_SESSION['username']))    { print("<label for='genre'>Style: </label>");}
+                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<label for='genre'>Genre: </label>");}
+                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='genre'>Style: </label>");}
                                     ?>
-                                    <input type="text" id="genrename" name="genre" pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" value="<? print($genre); ?>"/>
+                                    <input type="text" id="genrename" name="genre" pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" value="<? print (json_decode($_POST['json'])->genre); ?>"/>
                                     <br>
-                                    <? if(isset($_SESSION['username_artist'])) { print("<em>e.g. Acoustic, Progressive Rock</em>");}
-                                       elseif(isset($_SESSION['username']))    { print("<em>e.g. Cafe, Lounge or Rock, Electronic</em>");}
+                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<em>e.g. Acoustic, Progressive Rock</em>");}
+                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<em>e.g. Cafe, Lounge or Rock, Electronic</em>");}
                                     ?>
                                 </p>
                                 <center>
@@ -85,32 +85,32 @@
                             <fieldset>
                                 <p>
                                     <label for="social">Facebook: <span class="requiredField">*</span></label>
-                                    <input type="text" id="fb" name="fb" value="<? print($fb); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" required />
+                                    <input type="text" id="fb" name="fb" value="<? print (json_decode($_POST['json'])->fb); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" required />
                                     <br>                                <em>Profile link on Facebook.</em>
                                 </p>
                                 <p>
                                     <label for="social">Twitter: </label>
-                                    <input type="text" id="twiter" name="twitter" value="<? print($twitter); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="twiter" name="twitter" value="<? print (json_decode($_POST['json'])->twitter); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on Twitter.</em>
                                 </p>
                                 <p>
                                     <label for="social">Reverbnation:</label>
-                                    <input type="text" id="reverbnation" name="rever" value="<? print($rever); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="reverbnation" name="rever" value="<? print (json_decode($_POST['json'])->rever); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on Reverbnation.</em>
                                 </p>
                                 <p>
                                     <label for="social">Youtube:</label>
-                                    <input type="text" id="youtube" name="youtube" value="<? print($youtube); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="youtube" name="youtube" value="<? print (json_decode($_POST['json'])->youtube); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on youtube.</em>
                                 </p>
                                 <p>
                                     <label for="social">MySpace:</label>
-                                    <input type="text" id="myspace" name="myspace" value="<? print($myspace); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="myspace" name="myspace" value="<? print (json_decode($_POST['json'])->myspace); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on MySpace.</em>
                                 </p>
                                 <p>
                                     <label for="social">Google plus:</label>
-                                    <input type="text" id="gplus" name="gplus" value="<? print($gplus); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="gplus" name="gplus" value="<? print (json_decode($_POST['json'])->gplus); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on Google+.</em>
                                 </p>
                                 <center>
@@ -129,39 +129,39 @@
                             <fieldset>
                                 <p>
                                     <label for="phone">Mobile Number: <span class="requiredField">*</span></label>
-                                    <input type="tel" id="phone" name="mobile" value="<? print($mobile); ?>" pattern="^[0-9]{10,10}$" required/>
+                                    <input type="tel" id="phone" name="mobile" value="<? print (json_decode($_POST['json'])->mobile); ?>" pattern="^[0-9]{10,10}$" required/>
                                     <br>
                                     <em>10 digits</em>
                                 </p>
 
                                 <p>
                                     <label for="email">Email: <span class="requiredField">*</span></label>
-                                    <input type="email" id="email" name="email" value="<? print($email); ?>" pattern="^[0-9a-zA-Z-,/@_.: ]{3,100}$" required/>
+                                    <input type="email" id="email" name="email" value="<? print (json_decode($_POST['json'])->email); ?>" pattern="^[0-9a-zA-Z-,/@_.: ]{3,100}$" required/>
                                     <br>
                                     <em></em>
                                 </p>
 
                                 <p>
                                     <label for="add">Address:</label>
-                                    <input type="text" id="add" name="add" value="<? print($street); ?>" pattern="^[0-9a-zA-Z-,/ ]{3,100}$"/>
+                                    <input type="text" id="add" name="add" value="<? print (json_decode($_POST['json'])->street); ?>" pattern="^[0-9a-zA-Z-,/ ]{3,100}$"/>
                                     <br>                                <em>Number, Street, Locality</em>
                                 </p>
                                 
                                 <p>
                                     <label for="city">City: <span class="requiredField">*</span></label>
-                                    <input type="text" id="city" name="city" value="<? print($city); ?>" pattern="^[a-zA-Z ]{3,20}$" required/>
+                                    <input type="text" id="city" name="city" value="<? print (json_decode($_POST['json'])->city); ?>" pattern="^[a-zA-Z ]{3,20}$" required/>
                                     <br>                                <em></em>
                                 </p>
                                 <p>
                                     <label for="state">State:</label>
-                                    <input type="text" id="state" name="state" value="<? print($state); ?>" pattern="^[a-zA-Z ]{3,20}$"/>
+                                    <input type="text" id="state" name="state" value="<? print (json_decode($_POST['json'])->state); ?>" pattern="^[a-zA-Z ]{3,20}$"/>
                                     <br>                                <em></em>
                                 </p>
                                 
                                 <p>
                                     <label for="Country">Country: <span class="requiredField">*</span></label>
-                                    <input type="text" id="country" name="country" value="<? print($country); ?>" pattern="^[a-zA-Z ]{3,20}$" required/>
-                                    <input type="text" id="pincode" name="pincode" value="<? if($pincode!=0){print($pincode);} ?>" pattern="^[0-9]{6,6}$"/>
+                                    <input type="text" id="country" name="country" value="<? print (json_decode($_POST['json'])->country); ?>" pattern="^[a-zA-Z ]{3,20}$" required/>
+                                    <input type="text" id="pincode" name="pincode" value="<? if(json_decode($_POST['json'])->pincode!=0){print (json_decode($_POST['json'])->pincode);} ?>" pattern="^[0-9]{6,6}$"/>
                                     <br>                                <em>Country & PinCode</em>
                                 </p>
                                 <center>
@@ -180,7 +180,7 @@
                             <fieldset>
                                 <p>
                                     <label for="fb">About: <span class="requiredField">*</span></label>
-                                    <textarea cols="60" rows="14"  id="about" name="about"  pattern="^[a-zA-Z0-9/ ,-_.:;&?']{25,20000}$"  required><? print($about); ?></textarea>
+                                    <textarea cols="60" rows="14"  id="about" name="about"  pattern="^[a-zA-Z0-9/ ,-_.:;&?']{25,20000}$"  required><? print (json_decode($_POST['json'])->about); ?></textarea>
                                     <br>
                                     <em>About yourself</em>
                                 </p>
