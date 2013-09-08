@@ -244,6 +244,7 @@ public function mygigs(){
             $found = mysql_fetch_array($result_set2);
             $artist_id=$found["artist_id"];
             $artist_name=$found["artist_name"];
+            $response['artist_name'] = $artist_name;
 
             $SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
             $resulte = mysql_query($SQLe);

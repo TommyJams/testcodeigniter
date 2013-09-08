@@ -30,6 +30,7 @@
                                     <? $f = (json_decode($_POST['json'])->f); ?>
                                     <? $link = (json_decode($_POST['json'])->link); ?>
                                     <? $linker = (json_decode($_POST['json'])->linker); ?>
+                                    <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>
                                     <?                                                                         
 									if($status==1)
                                     {
@@ -46,7 +47,7 @@
 											print("<td>");
 											while($f)
 											{
-												print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f[mobile]");
+												print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
 											}
 											print("</td></tr></table></div>");
                                         }
