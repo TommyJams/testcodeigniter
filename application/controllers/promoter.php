@@ -247,7 +247,7 @@ public function mygigs(){
         	$linker=15999*$link;	
         }  		 	
 
-		$response = $a; 
+		$response['gigData'][] = $a; 
 	}
 
 	$response['num_rows'] = $num_rows;
