@@ -18,7 +18,7 @@
 
             var obj = {
                     designation:    document.getElementById('full-name').value,
-                    organization:   document.getElementById('organization').value,
+                    organization:   document.getElementById('username').value,
                     genre:          document.getElementById('genrename').value
                 };
 
