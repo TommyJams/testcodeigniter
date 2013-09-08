@@ -41,32 +41,32 @@
                         <form action="update.php" method="POST" class="cleanForm" id="signUpForm">
                             <fieldset>
                                 <p>
-                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<label for='designation'>Your Role:</label>");}
-                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='designation'>Designation:</label>");}
+                                    <? if(json_decode($_POST['json'])->type == 'Artist') { print("<label for='designation'>Your Role:</label>");}
+                                       elseif(json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='designation'>Designation:</label>");}
                                     ?>
                                     
                                     <input type="text" id="full-name" name="designation" value="<? print(json_decode($_POST['json'])->designation); ?>"  pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" autofocus />
                                     <br>
-                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<em>e.g. Guitar, Vocals</em>");}
-                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<em>e.g. Manager</em>");}
+                                    <? if(json_decode($_POST['json'])->type == 'Artist') { print("<em>e.g. Guitar, Vocals</em>");}
+                                       elseif(json_decode($_POST['json'])->type == 'Promoter')    { print("<em>e.g. Manager</em>");}
                                     ?>
                                 </p>
                                 <p>
-                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<label for='organization'>Band Name: <span class='requiredField'>*</span></label>");}
-                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='organization'>Organization: <span class='requiredField'>*</span></label>");}
+                                    <? if(json_decode($_POST['json'])->type == 'Artist') { print("<label for='organization'>Band Name: <span class='requiredField'>*</span></label>");}
+                                       elseif(json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='organization'>Organization: <span class='requiredField'>*</span></label>");}
                                     ?>
                                     <input type="text" id="username" name="organization" pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" value="<? print (json_decode($_POST['json'])->name); ?>" required />
                                     <br>
                                     <em></em>
                                 </p>
                                 <p>
-                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<label for='genre'>Genre: </label>");}
-                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='genre'>Style: </label>");}
+                                    <? if(json_decode($_POST['json'])->type == 'Artist') { print("<label for='genre'>Genre: </label>");}
+                                       elseif(json_decode($_POST['json'])->type == 'Promoter')    { print("<label for='genre'>Style: </label>");}
                                     ?>
                                     <input type="text" id="genrename" name="genre" pattern="^[a-zA-Z0-9/ ,-_.:;?]{3,50}$" value="<? print (json_decode($_POST['json'])->genre); ?>"/>
                                     <br>
-                                    <? if((json_decode($_POST['json'])->type == 'Artist') { print("<em>e.g. Acoustic, Progressive Rock</em>");}
-                                       elseif((json_decode($_POST['json'])->type == 'Promoter')    { print("<em>e.g. Cafe, Lounge or Rock, Electronic</em>");}
+                                    <? if(json_decode($_POST['json'])->type == 'Artist') { print("<em>e.g. Acoustic, Progressive Rock</em>");}
+                                       elseif(json_decode($_POST['json'])->type == 'Promoter')    { print("<em>e.g. Cafe, Lounge or Rock, Electronic</em>");}
                                     ?>
                                 </p>
                                 <center>
