@@ -720,11 +720,6 @@ class Artist extends CI_Controller{
 			$password=md5($sessionArray['password']);
 			$actual_type = 'Venue';
 		}
-		else
-		{
-			$this->sessionlogout();
-			exit;
-		}
 
 		//What is the query string
 		if(isset($_POST['searchString']))								//Search string passed in query?
