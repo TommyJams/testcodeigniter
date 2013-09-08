@@ -153,7 +153,7 @@
                                 </p>
                                 <p>
                                     <label for="social">Reverbnation:</label>
-                                    <input type="text" id="reverbnation" name="rever" value="<? print (json_decode($_POST['json'])->rever); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="reverbnation" name="rever" value="<? print (json_decode($_POST['json'])->reverbnation); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on Reverbnation.</em>
                                 </p>
                                 <p>
@@ -201,7 +201,7 @@
 
                                 <p>
                                     <label for="add">Address:</label>
-                                    <input type="text" id="add" name="add" value="<? print (json_decode($_POST['json'])->street); ?>" pattern="^[0-9a-zA-Z-,/ ]{3,100}$"/>
+                                    <input type="text" id="add" name="add" value="<? print (json_decode($_POST['json'])->add); ?>" pattern="^[0-9a-zA-Z-,/ ]{3,100}$"/>
                                     <br>                                <em>Number, Street, Locality</em>
                                 </p>
                                 
