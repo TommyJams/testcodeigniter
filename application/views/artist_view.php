@@ -109,7 +109,7 @@
     	//obj = JSON.parse(a);
     	//console.log("Dib Status:",obj.status);
     	//if(obj.status != 'error')
-    	console.log("Dib Action Callback: ");
+    	console.log("Dib Action Callback: ",a.status);
     	//alert('Congratulations! You have successfully applied for the gig. Please await our email for more details.');
     	//findGigsPage();
     }
