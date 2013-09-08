@@ -232,22 +232,29 @@ public function mygigs(){
     	$response = $a;                    
 	}
 
-	$q2 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
-    $result_set2 = mysql_query($q2);	
-    if (mysql_num_rows($result_set2) == 1) 
+	if($status==1)
     {
-        $found = mysql_fetch_array($result_set2);
-        $artist_id=$found["artist_id"];
-        $artist_name=$found["artist_name"];
+        $q2 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
+        $result_set2 = mysql_query($q2);    
+        if (mysql_num_rows($result_set2) == 1) 
+        {
+        	$num_rows = 1;
+        	$response['num_rows'] = $num_rows;
 
-        $SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
-		$resulte = mysql_query($SQLe);
-		while($f = mysql_fetch_assoc($resulte))
-		{
-		}
-	}
+            $found = mysql_fetch_array($result_set2);
+            $artist_id=$found["artist_id"];
+            $artist_name=$found["artist_name"];
+
+            $SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
+            $resulte = mysql_query($SQLe);
+			$f = mysql_fetch_assoc($resulte)
+			$response['f'] = $f;			
+        }
+        
+		$linker=15999*$link;
+		$response['linker'] = $linker;    
+    }
 		
-
 	$this->load->helper('functions');
 	createResponse($response);
 }

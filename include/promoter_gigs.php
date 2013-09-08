@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel='stylesheet' href='css/edit.css'>
+	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
 
 </head>
@@ -26,6 +26,10 @@
                                     <? $city = (json_decode($_POST['json'])->venue_city); ?>
                                     <? $formattedDate = (json_decode($_POST['json'])->venue_date); ?>
                                     <? $vtime = (json_decode($_POST['json'])->venue_time); ?>
+                                    <? $num_rows = (json_decode($_POST['json'])->num_rows); ?>
+                                    <? $f = (json_decode($_POST['json'])->f); ?>
+                                    <? $link = (json_decode($_POST['json'])->link); ?>
+                                    <? $linker = (json_decode($_POST['json'])->linker); ?>
                                     <?                                                                         
 									if($status==1)
                                     {
@@ -36,18 +40,18 @@
 														<td width=25%>$city</td> 
 														<td width=10%>$formattedDate </td>
 														<td width=10%>$vtime </td>
-                                            ");
-                                        
+                                            ");   
+                                        if ($num_rows == 1) 
+                                        {
 											print("<td>");
-											while($f = mysql_fetch_assoc($resulte))
+											while($f)
 											{
 												print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f[mobile]");
 											}
 											print("</td></tr></table></div>");
-                                        
+                                        }
                                         else
                                         {
-											$linker=15999*$link;
                                             print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
                                                     <center><iframe id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
                                         }
