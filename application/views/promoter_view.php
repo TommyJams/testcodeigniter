@@ -82,7 +82,7 @@
 
     function promoterGigsCallback(a)
     {
-      console.log("All Gig Data: ", JSON.stringify(a));
+      console.log("All Gigs Data: ", JSON.stringify(a));
       $("#lefty").load("include/promoter_gigs.php", {json: JSON.stringify(a)});
     }
     function promoterGigs()
