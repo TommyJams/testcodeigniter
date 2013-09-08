@@ -931,7 +931,7 @@ public function showDibs(){
 	$link=$_POST["link"]/15999;
 	$linker=$_POST["link"];
 
-	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=4";
+	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$linker AND status=4";
 	$result = mysql_query($SQL);
 	while ($b = mysql_fetch_assoc($result))
 	{
@@ -941,8 +941,6 @@ public function showDibs(){
 		$dibLists = array($artist_name, $artist_id, $dibs_exist, $linker);
 		$response[] = $dibLists;	
 	}
-
-	error_log($artist_name);
 
 	$this->load->helper('functions');
 	createResponse($response);
