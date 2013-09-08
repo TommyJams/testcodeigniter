@@ -240,20 +240,18 @@ public function mygigs(){
         
         	$SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
         	$resulte = mysql_query($SQLe);
-			$f = mysql_fetch_assoc($resulte);			
+			$f = mysql_fetch_assoc($resulte);
+			$contact = $f['mobile']			
         }
         else
         {
         	$linker=15999*$link;	
         }  		 	
 
-		$response['gigData'][] = $a; 
-	}
+		$gigRow = array($gig, $city, $formattedDate, $time, $status, $artist_name, $contact, $link, $linker, $num_rows);
 
-	$response['num_rows'] = $num_rows;
-	$response['artist_name'] = $artist_name;
-	$response['f'] = $f['mobile'];
-	$response['linker'] = $linker;
+		$response['gigHistory'][] = $gigRow; 
+	}
 	
 	$this->load->helper('functions');
 	createResponse($response);

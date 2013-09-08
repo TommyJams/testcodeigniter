@@ -21,37 +21,40 @@
 								</tr>
 							</table>					
                                     <span class="gigs" style="padding:10px;" >
-                                    <? $status = (json_decode($_POST['json'])->status); ?>
-                                    <? $gig = (json_decode($_POST['json'])->gig); ?>
-                                    <? $city = (json_decode($_POST['json'])->venue_city); ?>
-                                    <? $formattedDate = (json_decode($_POST['json'])->venue_date); ?>
-                                    <? $vtime = (json_decode($_POST['json'])->venue_time); ?>
-                                    <? $num_rows = (json_decode($_POST['json'])->num_rows); ?>
-                                    <? $f = (json_decode($_POST['json'])->f); ?>
-                                    <? $link = (json_decode($_POST['json'])->link); ?>
-                                    <? $linker = (json_decode($_POST['json'])->linker); ?>
-                                    <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>
-                                    <?                                                                         
-                                    if($status == 1){   
-                                    print("<div class='gigsTableItemContainer'>
+                                    <?php 
+                                    $gigsHistory = (json_decode($_POST['json'])->gigHistory);
+                                    foreach($gigsHistory as $row){ ?>
+                                    <?
+                                        $gig=$row[0];
+                                        $city=$row[1];
+                                        $formattedDate=$row[2];
+                                        $vtime=$row[3];
+                                        $status=$row[4];
+                                        $artist_name=$row[5];
+                                        $contact=$row[6]; 
+                                        $link=$row[7]; 
+                                        $linker=$row[8]; 
+                                        $num_rows=$row[9];           
+                                      
+                                        print("<div class='gigsTableItemContainer'>
 											<table width=100% style='text-align:center;'>
 												<tr>
 													<td width=25%><a href='javascript:;' onClick=gig('$link'); class='highlightRef'><h3>$gig</h3></a></td>
 													<td width=25%>$city</td> 
 													<td width=10%>$formattedDate </td>
 													<td width=10%>$vtime </td>
-                                        ");   
-                                    if ($num_rows == 1) 
-                                    {
-										print("<td>");
-										print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
-										print("</td></tr></table></div>");
-                                    }
-                                    else
-                                    {
-                                        print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
+                                            ");   
+                                        if ($num_rows == 1) 
+                                        {
+										  print("<td>");
+										  print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
+										  print("</td></tr></table></div>");
+                                        }
+                                        else
+                                        {
+                                            print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
                                                 <center><iframe id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
-                                    }
+                                        }                                    
                                     }
                                     ?>
                                     </span>
