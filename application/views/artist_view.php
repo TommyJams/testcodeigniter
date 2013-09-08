@@ -142,6 +142,16 @@
 		$.post('artist/findGigs',{'searchString': searchString,'nPage': page,'sCity': city,'sDate': date,'sCat': category,'sBudget': budget_min},findGigsPageCallback,'json');
     }
 
+    function searchProfilesPageCallback(a)
+    {
+        $("#lefty").load("include/profile_search.php", {json: JSON.stringify(a)}); 
+    }
+    function searchProfilesPage(searchString,page)
+    {
+        $("#loading-indicator").show();
+        $.post('artist/searchProfiles',{'searchString': searchString,'nPage': page},searchProfilesPageCallback,'json');
+    }
+
     function dibActionCallback(a)
     {
     	if(a.status != '0')

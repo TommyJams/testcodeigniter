@@ -1,6 +1,15 @@
 <!-- -------------------------------------------------------------- -->
 <!-- Header		 											   	    -->
 <!-- -------------------------------------------------------------- -->
+
+<script> 
+    $('#searchProfilesForm').bind('submit',function(e) 
+    {
+        e.preventDefault();
+        searchProfilesPage(document.getElementById('searchTextBox').value,1);
+    });
+</script>
+
 <div id="headerBox" class="box">
 	<div class="boxTop">
 		<ul id="tabMenu">
@@ -26,35 +35,10 @@
 		</div>
 
 		<div id="searchBox" class="parent">
-		<?php
-			//Need to redirect to logged_in_page?profile=search or index.php?profile=search from any other page.
-			$url = $_SERVER['PHP_SELF'];
-			$parts = parse_url($url);
-			$filepath = explode('/',$parts['path']);
-			$filepath = end($filepath);
-			if($filepath!="index.php" && $filepath!="artist.php" && $filepath!="promoter.php")
-			{
-				if(isset($_SESSION['username']))
-				{
-					$filepath = "promoter.php";
-				}
-
-				elseif(isset($_SESSION['username_artist']))
-				{
-					$filepath = "artist.php";
-				}
-				
-				else
-				{
-					$filepath = "index.php";
-				}
-			}
-			print(" <form action='$filepath?profile=search' method='post'>
-						<input type='text1' name='profile' value='Search Profiles' id='searchTextBox' onfocus='blank(this)' onblur='unblank(this)'  />
-						<input type='submit' value='Go'>
-					</form>
-				");
-		?>
+			<form action='' method='post' id='searchProfilesForm'>
+				<input type='text1' name='profile' value='Search Profiles' id='searchTextBox' onfocus='blank(this)' onblur='unblank(this)'  />
+				<input type='submit' value='Go'>
+			</form>
 		</div>
 
 		<div id="loginBox" class="parent">
