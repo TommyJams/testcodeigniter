@@ -19,7 +19,7 @@
             var obj = {
                     designation:    document.getElementById('designation').value,
                     organization:   document.getElementById('organization').value,
-                    genre:          document.getElementById('genre').value
+                    genre:          document.getElementById('genrename').value
                 };
 
             editProfile("professionalForm",obj);
