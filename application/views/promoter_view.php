@@ -146,7 +146,7 @@
     {
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      $("#" + link).load("include/show_dibs.php", {json: JSON.stringify(a)});
+      $("#link" + link).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
     {
