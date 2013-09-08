@@ -931,6 +931,8 @@ public function showDibs(){
 	$link=$_POST["link"]/15999;
 	$linker=$_POST["link"];
 
+	$response = "";
+
 	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=4";
 	$result = mysql_query($SQL);
 	while ($b = mysql_fetch_assoc($result))
