@@ -256,6 +256,8 @@ public function mygigs(){
 		$linker=15999*$link;
 		$response['linker'] = $linker;    
 		
+		error_log("Gig Data".$response);
+
 	$this->load->helper('functions');
 	createResponse($response);
 }
