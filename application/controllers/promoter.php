@@ -942,6 +942,8 @@ public function showDibs(){
 		$response[] = $dibLists;	
 	}
 
+	error_log($artist_name);
+
 	$this->load->helper('functions');
 	createResponse($response);
 }
