@@ -150,6 +150,7 @@
     }
     function showDib(linker) 
     {
+      console.log("Linker: ", JSON.stringify(linker));
       $("#loading-indicator").show();      
       $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
     }
