@@ -53,13 +53,13 @@ function confirmSubmit()
 <body>
 	<span class="dibsList" style="width:96% padding-left:2% padding-right:2%">
 	<?
- 		$dibList = (json_decode($_POST['json'])->dibList);
+ 		$dibList = (json_decode($_POST['json']));
         foreach($dibList as $row){ ?>
     <?
-    		$artist_name=$row[1];
-           	$artist_id=$row[2]; 
-            $dibs_exist=$row[3];
-            $linker=$row[4]; 
+    		$artist_name=$row[0];
+           	$artist_id=$row[1]; 
+            $dibs_exist=$row[2];
+            $linker=$row[3]; 
 
 			print("<div style='width:50%; margin-top: 10px; height:18px; text-align: center; float:left;'><a href='promoter.php?id=$artist_id' target='_top' class='whiteHoverRef' style='font-size: 16px;'>$artist_name</a></div>"); 
 	?>
