@@ -31,7 +31,9 @@
                                     <? $link = (json_decode($_POST['json'])->link); ?>
                                     <? $linker = (json_decode($_POST['json'])->linker); ?>
                                     <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>
+                                    <? $id = (json_decode($_POST['json'])->id); ?>
                                     <?                                                                         
+                                    while($id){   
                                     print("<div class='gigsTableItemContainer'>
 											<table width=100% style='text-align:center;'>
 												<tr>
@@ -51,7 +53,7 @@
                                         print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
                                                 <center><iframe id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
                                     }
-                                    
+                                    }
                                     ?>
                                     </span>
                         </div> <!--boxy--> </div> <!--gcontent--><!--
