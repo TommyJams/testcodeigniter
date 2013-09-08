@@ -79,13 +79,22 @@
     {
       $.post('artist/profilepage','',artistProfileCallback,'json');
     }
-
 	function showProfile(user_id)
     {
     	$("#loading-indicator").show();
 		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
     }
     function showProfileCallback(a)
+    {
+		console.log("Data: ", JSON.stringify(a));
+		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
+    }
+    function editProfile()
+    {
+    	$("#loading-indicator").show();
+		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
+    }
+    function editProfileCallback(a)
     {
 		console.log("Data: ", JSON.stringify(a));
 		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
@@ -204,10 +213,10 @@
 				<a  href="javascript:;" onClick="artistDibs()"><h3>Dibs Status</h3></a>
 			  </li>
 			  <li>
-				<a href="javascript:;" onClick="artistProfile()"><h3>Profile</h3></a>
+				<a href="javascript:;" onClick="showProfile()"><h3>Profile</h3></a>
 			  </li>
 			  <li>
-				<a href="javascript:;" onClick="loadfram();"><h3>Edit Profile</h3></a>
+				<a href="javascript:;" onClick="editProfile();"><h3>Edit Profile</h3></a>
 			  </li>
 			</ul>
 		</div>
