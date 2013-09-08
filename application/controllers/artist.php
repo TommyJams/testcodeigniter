@@ -275,7 +275,7 @@ class Artist extends CI_Controller{
 
 		$this->load->helper('functions');
 
-		if(isset($_POST['type'])
+		if(isset($_POST['type']))
 			$type = $_POST['type'];
 
 		if($type == "contactForm")
