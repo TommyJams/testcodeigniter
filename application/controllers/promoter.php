@@ -241,7 +241,7 @@ public function mygigs(){
         	$SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
         	$resulte = mysql_query($SQLe);
 			$f = mysql_fetch_assoc($resulte);
-			$contact = $f['mobile']			
+			$contact = $f['mobile'];			
         }
         else
         {
