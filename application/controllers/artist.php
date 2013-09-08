@@ -620,7 +620,7 @@ class Artist extends CI_Controller{
 
 			$this->load->helper('functions');
 			$response['status']=1;
-			error_log($response['status']);
+			error_log("Hello: ".$response['status']);
 			createResponse($response);
 		}
 
