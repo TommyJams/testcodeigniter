@@ -11,7 +11,65 @@
     		document.getElementById('framesocial').style.display="none";	
     		document.getElementById(d).style.display="block";	
     	}
-    	</script>
+
+        $('#professionalForm').bind('submit',function(e) 
+        {
+            e.preventDefault();
+
+            var obj = {
+                    designation:    document.getElementById('designation').value,
+                    organization:   document.getElementById('organization').value,
+                    genre:          document.getElementById('genre').value
+                };
+
+            editProfile("professionalForm",obj);
+        });
+
+
+        $('#socialForm').bind('submit',function(e) 
+        {
+            e.preventDefault();
+
+            var obj = {
+                    fb:             document.getElementById('fb').value,
+                    twitter:        document.getElementById('twitter').value,
+                    reverbnation:   document.getElementById('reverbnation').value,
+                    youtube:        document.getElementById('youtube').value,
+                    myspace:        document.getElementById('myspace').value,
+                    gplus:          document.getElementById('gplus').value
+                };
+
+            editProfile("socialForm",obj);
+        });
+
+        $('#contactForm').bind('submit',function(e) 
+        {
+            e.preventDefault();
+
+            var obj = {
+                    phone:      document.getElementById('phone').value,
+                    email:      document.getElementById('email').value,
+                    add:        document.getElementById('add').value,
+                    city:       document.getElementById('city').value,
+                    state:      document.getElementById('state').value,
+                    country:    document.getElementById('country').value,
+                    pincode:    document.getElementById('pincode').value
+                };
+
+            editProfile("contactForm",obj);
+        });
+
+        $('#aboutForm').bind('submit',function(e) 
+        {
+            e.preventDefault();
+
+            var obj = {
+                    about:    document.getElementById('about').value
+                };
+
+            editProfile("aboutForm",obj);
+        });
+        </script>
 
     </head>
     <body>
@@ -38,7 +96,7 @@
                             <tr>
                     </table>
                     <div id="frameprofessional">
-                        <form action="update.php" method="POST" class="cleanForm" id="signUpForm">
+                        <form action="" method="POST" class="cleanForm" id="professionalForm" >
                             <fieldset>
                                 <p>
                                     <? if(json_decode($_POST['json'])->type == 'Artist') { print("<label for='designation'>Your Role:</label>");}
@@ -81,7 +139,7 @@
                         </form>
                     </div>
                     <div id="framesocial">
-                        <form action="update.php" method="POST" class="cleanForm" id="signUpForm">
+                        <form action="" method="POST" class="cleanForm" id="socialForm">
                             <fieldset>
                                 <p>
                                     <label for="social">Facebook: <span class="requiredField">*</span></label>
@@ -90,7 +148,7 @@
                                 </p>
                                 <p>
                                     <label for="social">Twitter: </label>
-                                    <input type="text" id="twiter" name="twitter" value="<? print (json_decode($_POST['json'])->twitter); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="twitter" name="twitter" value="<? print (json_decode($_POST['json'])->twitter); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <br>                                <em>Profile link on Twitter.</em>
                                 </p>
                                 <p>
@@ -125,7 +183,7 @@
                         </form>
                     </div>
                     <div id="framecontact">
-                        <form action="update.php" method="POST" class="cleanForm" id="signUpForm">
+                        <form action="" method="POST" class="cleanForm" id="contactForm">
                             <fieldset>
                                 <p>
                                     <label for="phone">Mobile Number: <span class="requiredField">*</span></label>
@@ -176,7 +234,7 @@
                         </form>
                     </div>
                     <div id="frameabout">
-                        <form action="update.php" method="POST" class="cleanForm" id="signUpForm">
+                        <form action="" method="POST" class="cleanForm" id="aboutForm">
                             <fieldset>
                                 <p>
                                     <label for="fb">About: <span class="requiredField">*</span></label>

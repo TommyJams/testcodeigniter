@@ -89,15 +89,39 @@
 		console.log("Data: ", JSON.stringify(a));
 		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
     }
-    function editProfile()
+    function showEditProfile()
     {
     	$("#loading-indicator").show();
-		$.post('artist/editProfilePage','',editProfileCallback,'json');
+		$.post('artist/editProfilePage','',showEditProfileCallback,'json');
     }
-    function editProfileCallback(a)
+    function showEditProfileCallback(a)
     {
 		console.log("Data: ", JSON.stringify(a));
 		$("#lefty").load("include/edit_profile.php", {json: JSON.stringify(a)});
+    }
+    function editProfile(type,obj)
+    {
+    	$("#loading-indicator").show();
+    	if(type == "professionalForm")
+			$.post('artist/editProfile',{'type': type, 'designation': obj.designation, 'organization': obj.organization, 'genre': obj.genre},editProfileCallback,'json');
+		else if(type == "socialForm")
+			$.post('artist/editProfile',{'type': type, 'fb': obj.fb, 'twitter': obj.twitter, 'rever': obj.reverbnation, 'youtube': obj.youtube, 'myspace': obj.myspace, 'gplus': obj.gplus},editProfileCallback,'json');
+		else if(type == "contactForm")
+			$.post('artist/editProfile',{'type': type, 'phone': obj.phone, 'email': obj.email, 'add': obj.add, 'city': obj.city, 'state': obj.state, 'country': obj.country, 'pincode': obj.pincode},editProfileCallback,'json');
+		else if(type == "aboutForm")
+			$.post('artist/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
+    }
+    function editProfileCallback(a)
+    {
+		if(a.error != '1')
+    	{
+    		alert('Your changes have been submitted successfully.');
+    	}
+    	else
+    	{
+    		alert('Sorry! There was some error while processing your request. Please try again.');
+    	}
+    	showEditProfile();
     }
     function loadfram(a) 
     {
@@ -216,7 +240,7 @@
 				<a href="javascript:;" onClick="showProfile()"><h3>Profile</h3></a>
 			  </li>
 			  <li>
-				<a href="javascript:;" onClick="editProfile();"><h3>Edit Profile</h3></a>
+				<a href="javascript:;" onClick="showEditProfile();"><h3>Edit Profile</h3></a>
 			  </li>
 			</ul>
 		</div>

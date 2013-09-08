@@ -251,6 +251,180 @@ class Artist extends CI_Controller{
 		createResponse($response);
 	}
 
+	public function editProfile(){
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+		
+		if(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+			$actual_type = 'artist';
+		}
+		else if(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+			$actual_type = 'venue';
+		}
+		else
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+		}
+
+		$this->load->helper('functions');
+
+		if(isset($_POST['type'])
+			$type = $_POST['type'];
+
+		if($type == "contactForm")
+		{
+			$add=$_POST["add"];
+			$city=$_POST["city"];
+			$state=$_POST["state"];
+			$country=$_POST["country"];
+			$pincode=$_POST["pincode"];
+			$mobile=$_POST["phone"];
+			$email=$_POST["email"];
+
+			$query = "UPDATE `$database`.`members` SET `mobile`='$mobile', `email`='$email', `add`='$add', `city`='$city', `state`='$state', `country`='$country', `pincode`='$pincode' WHERE fb_id='$username'";
+			$ress = mysql_query($query);
+			if (!$ress)
+			{
+				$response['error']=1;
+				createResponse($response);
+			}
+
+				/************* This code is for MailChimp Integration ****************/
+        		$config = array(
+	    				'apikey' => '4b1d3dfd9a40c3a47861fa481d644505-us5' );
+
+				$this->load->library('mailchimp/MCAPI', $config, 'mail_chimp');
+
+        		// API Key: http://admin.mailchimp.com/account/api/
+        		// $api = new MCAPI('4b1d3dfd9a40c3a47861fa481d644505-us5');
+
+        		// List's Id: http://admin.mailchimp.com/lists/
+        		$list_id = "a29827c7a6";
+
+				// List Parameters
+				$email_type = 'html';
+				$double_optin=true;
+				$update_existing=true;
+				$replace_interests=true;
+				$send_welcome=false;
+				switch($city)
+				{
+					case 'Delhi':
+					case 'Bangalore':
+					case 'Goa':
+					case 'Mumbai':
+						$listCity = $city;
+						break;
+					default:
+						$listCity = 'Others';
+						break;
+				}
+				switch($actual_type)
+				{
+					case 'artist':
+						$listType = 'Artist';
+						break;
+					case 'venue':
+						$listType = 'Venue';
+						break;
+					case 'promoter':
+						$listType = 'Promoter';
+						break;
+					default:
+						$listType = 'Artist';
+						break;
+				}
+				$merge_vars = array('NAME'=>'',
+									'GROUPINGS'=>array(
+										array('name'=>'User Type', 'groups'=>$listType),
+										array('name'=>'Location', 'groups'=>$listCity),
+										)
+									);
+
+				if($this->mail_chimp->listSubscribe($list_id, $email, $merge_vars, $email_type, $double_optin, $update_existing, $replace_interests, $send_welcome) === false) 
+				{
+					//'Error: ' . $mcapi->errorMessage;
+					// We don't want to stop registration just because mailchimp did not work.
+					// Let's just send an email to alerts@tommyjams.com to notify admin.
+					$errorMsg = $this->mail_chimp->errorMessage;
+
+					$to = "alerts@tommyjams.com";
+					$sender = "alerts@tommyjams.com";
+					$subject = "Mailchimp TJ Profile failure: $email, Error: $errorMsg";
+					$message = "$email could not be added/updated in the current mailchimp list on edit profile. Please try manually. Error being faced: $errorMsg";
+
+					$this->load->helper('mail');
+    				send_email($to, $sender, $subject, $mess);
+
+					//'Error: ' . $api->errorMessage;
+            		$response['error']=1;
+            		createResponse($response);
+				}
+		}
+	  
+		elseif($type == "professionalForm")
+		{
+			$designation=$_POST["designation"];
+			$organizationName=$_POST["organization"];
+			$genre=$_POST["genre"];
+			 
+			$query = "UPDATE `$database`.`members` SET `designation`='$designation', `name`='$organizationName', `genre`='$genre' WHERE fb_id='$username'";
+			$ress = mysql_query($query);
+			if (!$ress)
+			{
+				$response['error']=1;
+				createResponse($response);
+			}
+		}
+
+		elseif($type == "socialForm")
+		{
+			$fb=$_POST["fb"];	if($fb && !startsWith($fb,'http'))	{		$fb='http://'.$fb;	}
+			$twitter=$_POST["twitter"];	if($twitter && !startsWith($twitter,'http'))	{		$twitter='http://'.$twitter;	}
+			$myspace=$_POST["myspace"];	if($myspace && !startsWith($myspace,'http'))	{		$myspace='http://'.$myspace;	}
+			$rever=$_POST["rever"];	if($rever && !startsWith($rever,'http'))	{		$rever='http://'.$rever;	}
+			$youtube=$_POST["youtube"];	if($youtube && !startsWith($youtube,'http'))	{		$youtube='http://'.$youtube;	}
+
+			$query = "UPDATE `$database`.`members` SET `fb`='$fb', `twitter`='$twitter', `reverbnation`='$rever', `youtube`='$youtube', `myspace`='$myspace' WHERE fb_id='$username'";
+			$ress = mysql_query($query);
+			if (!$ress)
+			{
+				$response['error']=1;
+				createResponse($response);
+			}
+		}
+	 
+		elseif($type == "aboutForm")
+		{
+			$about=$_POST["about"];
+			$about=str_replace("'", " ", $about);
+			
+			$query = "UPDATE `$database`.`members` SET `about`='{$about}' WHERE fb_id='$username'";
+			$ress = mysql_query($query);
+			if (!$ress)
+			{
+				$response['error']=1;
+				createResponse($response);
+			}
+		}
+
+		else
+		{
+			$response['error']=1;
+			createResponse($response);
+		}
+
+		$response['error']=0;
+		createResponse($response);
+	}
+
 	public function mydibs(){
 		ob_start();
 
