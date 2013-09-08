@@ -59,45 +59,65 @@
 		$("#loading-indicator").show();
 		$("#lefty").load("include/gigs.php?gig="+a);
     }
+    function loadfram(a) 
+    {
+		$("#loading-indicator").show();
+		$("#lefty").load("include/profile.php?edit=1");
+    }
 
     function artistDibsCallback(a)
     {
-      console.log("Dib Data: ", JSON.stringify(a));
-      $("#lefty").load("include/dib.php", {json: JSON.stringify(a)});
+		$("#lefty").load("include/dib.php", {json: JSON.stringify(a)});
     }
     function artistDibs()
     {
-      $.post('artist/mydibs','',artistDibsCallback,'json');
+    	$("#loading-indicator").show();
+      	$.post('artist/mydibs','',artistDibsCallback,'json');
     }
 
     function artistProfileCallback(a)
     {
-      console.log("Profile Data: ", JSON.stringify(a));
-      $("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
+      	$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
     }
     function artistProfile()
     {
-      $.post('artist/profilepage','',artistProfileCallback,'json');
+      	$("#loading-indicator").show();
+      	$.post('artist/profilepage','',artistProfileCallback,'json');
+    }
+
+    function showProfileCallback(a)
+    {
+		console.log("Data: ", JSON.stringify(a));
+		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
     }
 	function showProfile(user_id)
     {
     	$("#loading-indicator").show();
 		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
     }
-    function showProfileCallback(a)
+
+    function showEditProfileCallback(a)
     {
 		console.log("Data: ", JSON.stringify(a));
-		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
+		$("#lefty").load("include/edit_profile.php", {json: JSON.stringify(a)});
     }
     function showEditProfile()
     {
     	$("#loading-indicator").show();
 		$.post('artist/editProfilePage','',showEditProfileCallback,'json');
     }
-    function showEditProfileCallback(a)
+
+    function editProfileCallback(a)
     {
-		console.log("Data: ", JSON.stringify(a));
-		$("#lefty").load("include/edit_profile.php", {json: JSON.stringify(a)});
+		if(a.error != '1')
+    	{
+    		alert('Your changes have been submitted successfully.');
+    	}
+    	else
+    	{
+    		alert('Sorry! There was some error while processing your request. Please try again.');
+    	}
+    	showEditProfile();
     }
     function editProfile(type,obj)
     {
@@ -111,23 +131,7 @@
 		else if(type == "aboutForm")
 			$.post('artist/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
     }
-    function editProfileCallback(a)
-    {
-		if(a.error != '1')
-    	{
-    		alert('Your changes have been submitted successfully.');
-    	}
-    	else
-    	{
-    		alert('Sorry! There was some error while processing your request. Please try again.');
-    	}
-    	showEditProfile();
-    }
-    function loadfram(a) 
-    {
-		$("#loading-indicator").show();
-		$("#lefty").load("include/profile.php?edit=1");
-    }
+
     function findGigsPageCallback(a)
     {
     	$("#lefty").load("include/artist_gigs.php", {json: JSON.stringify(a)});	
@@ -137,6 +141,7 @@
     	$("#loading-indicator").show();
 		$.post('artist/findGigs',{'searchString': searchString,'nPage': page,'sCity': city,'sDate': date,'sCat': category,'sBudget': budget_min},findGigsPageCallback,'json');
     }
+
     function dibActionCallback(a)
     {
     	if(a.status != '0')
@@ -147,12 +152,10 @@
     	else
     	{
     		alert('Sorry! There was some error while processing your request. Please try again.');
-    	}
-    	
+    	}    	
     }
     function dibAction(link)
     {
-    	console.log("Dib Action: ",link);
     	$("#loading-indicator").show();
 		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
     }
