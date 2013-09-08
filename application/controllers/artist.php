@@ -189,6 +189,68 @@ class Artist extends CI_Controller{
 		//$this->load->view('profile_subview');
 	}
 
+	public function editProfilePage(){
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+		
+		if(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$results = mysql_query($SQLs);
+
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
+				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
+				$mobile=$a["mobile"];
+				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];
+				$gplus=$a["gplus"];$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
+				$job=$a["job"];$designation=$a["designation"];
+				$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
+				$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+
+				$response=$a;
+			}
+		}
+		else if(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$results = mysql_query($SQLs);
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
+				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
+				$mobile=$a["mobile"];
+				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];$gplus=$a["gplus"];
+				$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
+				$job=$a["job"];$designation=$a["designation"];
+				$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
+				$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+
+				$response=$a;
+			}
+		}
+		else
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+		}
+
+		if($about=="")
+			$about="Add details for this section by editing your profile";
+
+		$response['about'] = $about;
+
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
 	public function mydibs(){
 		ob_start();
 

@@ -18,7 +18,7 @@
         <section id="left" >
             <div id="pageContainer" style = "width:100%; height:100%;">
                 <?                                 
-                if(isset($_GET['success']) && $_GET['success']==1)
+                /*if(isset($_GET['success']) && $_GET['success']==1)
                 {
                     print("Change Done Successfullly");
                 }
@@ -27,7 +27,7 @@
                     if(isset($_GET['error']) && $_GET['error']==1)
                     {print("Error!!! Fields left blank");}
                     elseif(isset($_GET['error']) && $_GET['error']==2)
-                    {print("Error!!! Username or email already exist");}
+                    {print("Error!!! Username or email already exist");}*/
                 ?>
                     <table id="framemenu" >
                             <tr>
@@ -195,7 +195,7 @@
                             </fieldset>
                         </form>
                     </div>
-                <? } ?>
+                <? /*}*/ ?>
             </div> <!-- end pageContainer -->
         </section> 
 

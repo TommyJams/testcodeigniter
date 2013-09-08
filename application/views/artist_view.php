@@ -92,12 +92,12 @@
     function editProfile()
     {
     	$("#loading-indicator").show();
-		$.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
+		$.post('artist/editProfilePage','',editProfileCallback,'json');
     }
     function editProfileCallback(a)
     {
 		console.log("Data: ", JSON.stringify(a));
-		$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});	
+		$("#lefty").load("include/edit_profile.php", {json: JSON.stringify(a)});
     }
     function loadfram(a) 
     {

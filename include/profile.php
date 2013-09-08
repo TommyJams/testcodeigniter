@@ -3,16 +3,6 @@
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
 
-	<script type="text/JavaScript">
-	function show(d)
-	{ document.getElementById('frameprofessional').style.display="none";
-		document.getElementById('frameabout').style.display="none";
-		document.getElementById('framecontact').style.display="none";
-		document.getElementById('framesocial').style.display="none";	
-		document.getElementById(d).style.display="block";	
-	}
-	</script>
-
 	<!--<script type="text/javascript">
 		function init() {
 		document.getElementById('loading').style.display = 'none';
