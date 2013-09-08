@@ -23,9 +23,9 @@
                                     <span class="gigs" style="padding:10px;" >
                                     <? $status = (json_decode($_POST['json'])->status); ?>
                                     <? $gig = (json_decode($_POST['json'])->gig); ?>
-                                    <? $city = (json_decode($_POST['json'])->venue_city); ?>
-                                    <? $formattedDate = (json_decode($_POST['json'])->venue_date); ?>
-                                    <? $vtime = (json_decode($_POST['json'])->venue_time); ?>
+                                    <? $city = (json_decode($_POST['json'])->city); ?>
+                                    <? $formattedDate = (json_decode($_POST['json'])->formattedDate); ?>
+                                    <? $vtime = (json_decode($_POST['json'])->vtime); ?>
                                     <? $num_rows = (json_decode($_POST['json'])->num_rows); ?>
                                     <? $f = (json_decode($_POST['json'])->f); ?>
                                     <? $link = (json_decode($_POST['json'])->link); ?>

@@ -236,28 +236,37 @@ public function mygigs(){
         if (mysql_num_rows($result_set2) == 1) 
         {
         	$num_rows = 1;
-        	$response['num_rows'] = $num_rows;
+        	//$response['num_rows'] = $num_rows;
 
             $found = mysql_fetch_array($result_set2);
             
         	$artist_id=$found["artist_id"];
-        	$response['artist_id'] = $artist_id;
+        	//$response['artist_id'] = $artist_id;
 
         	$artist_name=$found["artist_name"];
-        	$response['artist_name'] = $artist_name;
+        	//$response['artist_name'] = $artist_name;
 
         	$SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
         	$resulte = mysql_query($SQLe);
 			$f = mysql_fetch_assoc($resulte);
-			$response['f'] = $f;			
+			//$response['f'] = $f;			
         }
         
 		$linker=15999*$link;
-		$response['linker'] = $linker;  		 
+		//$response['linker'] = $linker;  		 
 	}	
 	
-	error_log("Gig Data: ".$response['linker']);
-
+	$response['status'] = $status; 
+	$response['gig'] = $gig; 
+	$response['formattedDate'] =  $date;
+	$response['vtime'] = $time;
+	$response['city'] = $city;
+	$response['f'] = $f;
+	$response['artist_id'] = $artist_id;
+	$response['artist_name'] = $artist_name;
+	$response['num_rows'] = $num_rows;
+	$response['linker'] = $linker; 
+	
 	$this->load->helper('functions');
 	createResponse($response);
 }
