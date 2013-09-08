@@ -33,42 +33,26 @@
                                     <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>
                                     <? $artist_id = (json_decode($_POST['json'])->artist_id); ?>
                                     <?                                                                         
-									if($status==1)
+                                    print("<div class='gigsTableItemContainer'>
+											<table width=100% style='text-align:center;'>
+												<tr>
+													<td width=25%><a href='javascript:;' onClick=gig('$link'); class='highlightRef'><h3>$gig</h3></a></td>
+													<td width=25%>$city</td> 
+													<td width=10%>$formattedDate </td>
+													<td width=10%>$vtime </td>
+                                        ");   
+                                    if ($num_rows == 1) 
                                     {
-                                        print("<div class='gigsTableItemContainer'>
-												<table width=100% style='text-align:center;'>
-													<tr>
-														<td width=25%><a href='javascript:;' onClick=gig('$link'); class='highlightRef'><h3>$gig</h3></a></td>
-														<td width=25%>$city</td> 
-														<td width=10%>$formattedDate </td>
-														<td width=10%>$vtime </td>
-                                            ");   
-                                        if ($num_rows == 1) 
-                                        {
-											print("<td>");
-											print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
-											print("</td></tr></table></div>");
-                                        }
-                                        else
-                                        {
-                                            print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
-                                                    <center><iframe id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
-                                        }
+										print("<td>");
+										print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
+										print("</td></tr></table></div>");
                                     }
-                                    elseif($status==2)
+                                    else
                                     {
-                                        print("<div class='gigsTableItemContainer'>
-                                                <table width=100% style='text-align:center;'>
-                                                    <tr>
-                                                        <td width=25%><a href='javascript:;' onClick=gig('$link');><font size='+2'>$gig </font></a></td>
-                                                        <td width=25%>$city</td> 
-                                                        <td width=10%>$formattedDate </td>
-                                                        <td width=10%>$vtime </td>
-                                                        <td><font color=#a00 >Awaiting Email Verification</font></td>  
-                                                    </tr> 
-                                                </table>   
-                                                </div>");                                   
+                                        print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
+                                                <center><iframe id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
                                     }
+                                    
                                     ?>
                                     </span>
                         </div> <!--boxy--> </div> <!--gcontent--><!--
