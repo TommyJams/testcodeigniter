@@ -252,7 +252,7 @@ public function mygigs(){
         	$linker=15999*$link;	
         }  		 	
 
-		$gigRow = array($gig, $city, $formattedDate, $time, $status, $artist_name, $contact, $link, $linker, $num_rows);
+		$gigRow = array($gig, $city, $formattedDate, $vtime, $status, $artist_name, $contact, $link, $linker, $num_rows);
 
 		$response['gigHistory'][] = $gigRow; 
 	}
