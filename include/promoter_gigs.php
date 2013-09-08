@@ -46,10 +46,7 @@
                                         if ($num_rows == 1) 
                                         {
 											print("<td>");
-											while($f)
-											{
-												print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
-											}
+											print("<a href='javascript:;' onClick=showProfile('$artist_id'); class ='greenRef'>$artist_name</a><br>Contact: $f");
 											print("</td></tr></table></div>");
                                         }
                                         else
@@ -67,7 +64,11 @@
                                                         <td width=25%>$city</td> 
                                                         <td width=10%>$formattedDate </td>
                                                         <td width=10%>$vtime </td>
-                                                        <td><font color=#a00 >Awaiting Email Verification</font></td>                                                                                                            </tr>                                                </table>                                            </div>");                                    }
+                                                        <td><font color=#a00 >Awaiting Email Verification</font></td>  
+                                                    </tr> 
+                                                </table>   
+                                                </div>");                                   
+                                    }
                                     ?>
                                     </span>
                         </div> <!--boxy--> </div> <!--gcontent--><!--
