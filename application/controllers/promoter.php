@@ -234,21 +234,21 @@ public function mygigs(){
         if (mysql_num_rows($result_set2) == 1) 
         {
         	$num_rows = 1;
-        	$response['num_rows'] = $num_rows;
+        	//$response['num_rows'] = $num_rows;
             $found = mysql_fetch_array($result_set2);
         	$artist_id=$found["artist_id"];
         	$artist_name=$found["artist_name"];
-        	$response['artist_name'] = $artist_name;
+        	//$response['artist_name'] = $artist_name;
         
         	$SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
         	$resulte = mysql_query($SQLe);
 			$f = mysql_fetch_assoc($resulte);
-			$response['f'] = $f['mobile'];			
+			//$response['f'] = $f['mobile'];			
         }
         else
         {
         	$linker=15999*$link;
-        	$response['linker'] = $linker; 	
+        	//$response['linker'] = $linker; 	
         }  		 	
 
 		$response = $a; 
