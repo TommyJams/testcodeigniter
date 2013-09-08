@@ -579,10 +579,10 @@ class Artist extends CI_Controller{
 			</table>
 			</center>";
 			$this->load->helper('mail');
-    		send_email($to, $sender, $subject, $mess);
+    		//send_email($to, $sender, $subject, $mess);
 			
 			$to = "alerts@tommyjams.com";
-			send_email($to, $sender, $subject, $mess);
+			//send_email($to, $sender, $subject, $mess);
 
 			$to = $promoter_email;
 			$subject = "Dib Received for $gig";
@@ -613,10 +613,10 @@ class Artist extends CI_Controller{
 				</tr>
 			</table>
 			</center>";
-			send_email($to, $sender, $subject, $mess);
+			//send_email($to, $sender, $subject, $mess);
 
 			$to = "alerts@tommyjams.com";
-			send_email($to, $sender, $subject, $mess);
+			//send_email($to, $sender, $subject, $mess);
 
 			$this->load->helper('functions');
 			$response['status']=1;
