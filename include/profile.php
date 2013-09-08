@@ -1,6 +1,6 @@
 <html>
  <head>
-	<link rel='stylesheet' href='css/edit.css'>
+	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
 
 	<script type="text/JavaScript">
