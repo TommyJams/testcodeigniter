@@ -245,19 +245,19 @@ public function mygigs(){
         else
         {
         	$linker=15999*$link;	
-        }  		 
-	}	
+        }  		 	
 	
-	$response['status'] = $status; 
-	$response['gig'] = $gig; 
-	$response['formattedDate'] =  $formattedDate;
-	$response['vtime'] = $time;
-	$response['city'] = $city;
-	$response['f'] = $f['mobile'];
-	$response['artist_id'] = $artist_id;
-	$response['artist_name'] = $artist_name;
-	$response['num_rows'] = $num_rows;
-	$response['linker'] = $linker; 
+		$response['status'] = $status; 
+		$response['gig'] = $gig; 
+		$response['formattedDate'] =  $formattedDate;
+		$response['vtime'] = $vtime;
+		$response['city'] = $city;
+		$response['f'] = $f['mobile'];
+		$response['artist_id'] = $artist_id;
+		$response['artist_name'] = $artist_name;
+		$response['num_rows'] = $num_rows;
+		$response['linker'] = $linker; 
+	}
 	
 	$this->load->helper('functions');
 	createResponse($response);
