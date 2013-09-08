@@ -909,5 +909,43 @@ public function dibReaction(){
 	$this->mygigs();
 }
 
+public function showDibs(){
+
+	ob_start();
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
+
+	if (!isset($sessionArray['session_id()'])) {
+		session_start();
+	}
+
+	if(!isset($sessionArray['username']))
+	{
+		redirect('http://testcodeigniter.azurewebsites.net/index');
+		exit;
+	}	
+
+	$username=$sessionArray['username'];
+	$password=md5($sessionArray['password']);
+
+	$link=$_POST["linker"]/15999;
+	$linker=$_POST["linker"];
+
+	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=4";
+	$result = mysql_query($SQL);
+	while ($b = mysql_fetch_assoc($result))
+	{
+		$dibs_exist = 1;
+		$artist_id=$b["artist_id"];$artist_name=$b["artist_name"];
+
+		$dibList = array($artist_name, $artist_id, $dibs_exist, $linker);
+		$response['dibList'][] = $dibList;	
+	}
+
+	$this->load->helper('functions');
+	createResponse($response);
+}
+
+
 }
 ?>	

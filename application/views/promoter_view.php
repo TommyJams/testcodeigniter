@@ -142,6 +142,17 @@
       $("#lefty").load("include/gig.php");
     }
 
+    function showDibCallback(a) 
+    {
+      $("#loading-indicator").show();      
+      console.log("All Data: ", JSON.stringify(a));
+      $("#".link).load("include/show_dibs.php", {json: JSON.stringify(a)});
+    }
+    function showDib(linker) 
+    {
+      $("#loading-indicator").show();      
+      $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
+    }
 
     </script>
     

@@ -2,6 +2,13 @@
 <head>
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
+    <script>
+        function loadslide(a) 
+        {
+            toggleSlide(a);
+            showDib(a);
+        }
+    </script>
 
 </head>
 <body>
@@ -52,7 +59,7 @@
                                         }
                                         else
                                         {
-                                            print("<td><a href='reaction.php?linker=$linker' target='$link' onClick=toggleSlide($link); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
+                                            print("<td><a href='javascript:;' onClick=loadslide('$link'); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
                                                 <center><iframe id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
                                         }                                    
                                     }
