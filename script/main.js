@@ -126,6 +126,13 @@
 
 			return false;
 		});
+
+	    $('#searchProfilesForm').bind('submit',function(e) 
+	    {
+	        e.preventDefault();
+	        searchProfilesPage(document.getElementById('searchTextBox').value,1);
+	    });
+
 	}
 
     function initLeftSidebar() {

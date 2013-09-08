@@ -2,14 +2,6 @@
 <!-- Header		 											   	    -->
 <!-- -------------------------------------------------------------- -->
 
-<script> 
-    $('#searchProfilesForm').bind('submit',function(e) 
-    {
-        e.preventDefault();
-        searchProfilesPage(document.getElementById('searchTextBox').value,1);
-    });
-</script>
-
 <div id="headerBox" class="box">
 	<div class="boxTop">
 		<ul id="tabMenu">
@@ -36,9 +28,9 @@
 
 		<div id="searchBox" class="parent">
 			<form action='' method='post' id='searchProfilesForm'>
-				<input type='text1' name='profile' value='Search Profiles' id='searchTextBox' onfocus='blank(this)' onblur='unblank(this)'  />
+				<forminput type='text1' name='profile' value='Search Profiles' id='searchTextBox' onfocus='blank(this)' onblur='unblank(this)'  />
 				<input type='submit' value='Go'>
-			</form>
+			</>
 		</div>
 
 		<div id="loginBox" class="parent">
