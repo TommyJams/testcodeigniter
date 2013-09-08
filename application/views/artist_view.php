@@ -106,16 +106,21 @@
     }
     function dibActionCallback(a)
     {
-    	//obj = JSON.parse(a);
-    	//console.log("Dib Status:",obj.status);
-    	//if(obj.status != 'error')
-    	alert('Congratulations! You have successfully applied for the gig. Please monitor your status from the dibs status section.');
-    	console.log("Dib Action Callback: ",a.status);
-    	//findGigsPage();
+    	if(a.status != '0')
+    	{
+    		alert('Congratulations! You have successfully applied for the gig. Please monitor your status from the dibs status section.');
+    		findGigsPage();
+    	}
+    	else
+    	{
+    		alert('Sorry! There was some error while processing your request. Please try again.');
+    	}
+    	
     }
     function dibAction(link)
     {
     	console.log("Dib Action: ",link);
+    	$("#loading-indicator").show();
 		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
     }
 
