@@ -506,7 +506,7 @@ class Artist extends CI_Controller{
 						$gig=$found["gig"];
 						$date=$found["venue_date"];
 						$formattedDate=date('d-m-Y',strtotime($date));
-						$add=$found["add"];
+						$add=$found["venue_add"];
 						$city=$found["venue_city"];
 						$state=$found["venue_state"];
 						$country=$found["venue_country"];
