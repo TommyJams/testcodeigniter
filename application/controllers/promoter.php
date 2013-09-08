@@ -232,8 +232,6 @@ public function mygigs(){
     	$response = $a;                    
 	}
 
-	if($status==1)
-    {
         $q2 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
         $result_set2 = mysql_query($q2);    
         if (mysql_num_rows($result_set2) == 1) 
@@ -242,7 +240,10 @@ public function mygigs(){
         	$response['num_rows'] = $num_rows;
 
             $found = mysql_fetch_array($result_set2);
+            
             $artist_id=$found["artist_id"];
+            $response['artist_id'] = $artist_id;
+
             $artist_name=$found["artist_name"];
             $response['artist_name'] = $artist_name;
 
@@ -254,7 +255,6 @@ public function mygigs(){
         
 		$linker=15999*$link;
 		$response['linker'] = $linker;    
-    }
 		
 	$this->load->helper('functions');
 	createResponse($response);

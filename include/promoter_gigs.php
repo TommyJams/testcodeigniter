@@ -31,6 +31,7 @@
                                     <? $link = (json_decode($_POST['json'])->link); ?>
                                     <? $linker = (json_decode($_POST['json'])->linker); ?>
                                     <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>
+                                    <? $artist_id = (json_decode($_POST['json'])->artist_id); ?>
                                     <?                                                                         
 									if($status==1)
                                     {
