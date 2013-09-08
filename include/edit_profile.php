@@ -17,7 +17,7 @@
             e.preventDefault();
 
             var obj = {
-                    designation:    document.getElementById('designation').value,
+                    designation:    document.getElementById('full-name').value,
                     organization:   document.getElementById('organization').value,
                     genre:          document.getElementById('genrename').value
                 };
