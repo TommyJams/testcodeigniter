@@ -27,7 +27,7 @@
                                     <? $formattedDate = (json_decode($_POST['json'])->formattedDate); ?>
                                     <? $vtime = (json_decode($_POST['json'])->vtime); ?>
                                     <? $num_rows = (json_decode($_POST['json'])->num_rows); ?>
-                                    <? $f = (json_decode($_POST['json'])->f['mobile']); ?>
+    
                                     <? $link = (json_decode($_POST['json'])->link); ?>
                                     <? $linker = (json_decode($_POST['json'])->linker); ?>
                                     <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>

@@ -261,7 +261,7 @@ public function mygigs(){
 	$response['formattedDate'] =  $date;
 	$response['vtime'] = $time;
 	$response['city'] = $city;
-	$response['f'] = $f;
+	//$response['f'] = $f;
 	$response['artist_id'] = $artist_id;
 	$response['artist_name'] = $artist_name;
 	$response['num_rows'] = $num_rows;
