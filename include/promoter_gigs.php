@@ -31,9 +31,8 @@
                                     <? $link = (json_decode($_POST['json'])->link); ?>
                                     <? $linker = (json_decode($_POST['json'])->linker); ?>
                                     <? $artist_name = (json_decode($_POST['json'])->artist_name); ?>
-                                    <? $id = (json_decode($_POST['json'])->id); ?>
                                     <?                                                                         
-                                    while($id){   
+                                    if($status == 1){   
                                     print("<div class='gigsTableItemContainer'>
 											<table width=100% style='text-align:center;'>
 												<tr>
