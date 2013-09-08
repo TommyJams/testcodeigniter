@@ -928,8 +928,8 @@ public function showDibs(){
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
-	$link=$_POST["linker"]/15999;
-	$linker=$_POST["linker"];
+	$link=$_POST["link"]/15999;
+	$linker=$_POST["link"];
 
 	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=4";
 	$result = mysql_query($SQL);
