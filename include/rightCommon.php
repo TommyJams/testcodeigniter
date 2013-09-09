@@ -28,7 +28,7 @@
 
 		<div id="searchBox" class="parent">
 			<form action='' method='post' id='searchProfilesForm'>
-				<forminput type='text1' name='profile' value='Search Profiles' id='searchTextBox' onfocus='blank(this)' onblur='unblank(this)'  />
+				<input type='text1' name='profile' value='Search Profiles' id='searchTextBox' onfocus='blank(this)' onblur='unblank(this)'  />
 				<input type='submit' value='Go'>
 			</>
 		</div>
