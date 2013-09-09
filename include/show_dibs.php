@@ -78,7 +78,7 @@ function confirmSubmit()
 		{
 		?>
 			<div style="width:100%; height: 40px; margin-top: 10px; text-align: center; float:left;">
-				<a  href="javascript:;" style="color:#FFF; background-color:#000;" onClick="recommendArtist('$linker')";><h3>Recommend Artist</h3></a>
+				<a  href="javascript:;" style="color:#FFF; background-color:#000;" onClick="recommendArtist('$linker')"><h3>Recommend Artist</h3></a>
 			</div>
 		<?
 		}
