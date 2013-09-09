@@ -166,6 +166,58 @@
       $.post('promoter/recommendArtist',{link: id},recommendArtistCallback,'json');
     }
 
+    function updateGigCallback(a) 
+    {
+      $("#loading-indicator").show();      
+      console.log("All Gig Data: ", JSON.stringify(a));
+      $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
+    }
+    function updateGig() 
+    {
+      $("#loading-indicator").show();      
+      $.post('promoter/updateGigProfile',$('#signUpForm').serialize(),updateGigCallback,'json');
+    }
+    function showUpdateGig(a) 
+    {
+      $("#loading-indicator").show();      
+      $("#lefty").load("include/gig.php", {json: JSON.stringify(a)});
+    }
+
+    function showEditProfileCallback(a)
+    {
+      console.log("Data: ", JSON.stringify(a));
+      $("#lefty").load("include/edit_profile.php", {json: JSON.stringify(a)});
+    }
+    function showEditProfile()
+    {
+      $("#loading-indicator").show();
+      $.post('promoter/editProfilePage','',showEditProfileCallback,'json');
+    }
+    function editProfileCallback(a)
+    {
+    if(a.error != '1')
+      {
+        alert('Your changes have been submitted successfully.');
+      }
+      else
+      {
+        alert('Sorry! There was some error while processing your request. Please try again.');
+      }
+      showEditProfile();
+    }
+    function editProfile(type,obj)
+    {
+      $("#loading-indicator").show();
+      if(type == "professionalForm")
+      $.post('promoter/editProfile',{'type': type, 'designation': obj.designation, 'organization': obj.organization, 'genre': obj.genre},editProfileCallback,'json');
+    else if(type == "socialForm")
+      $.post('promoter/editProfile',{'type': type, 'fb': obj.fb, 'twitter': obj.twitter, 'rever': obj.reverbnation, 'youtube': obj.youtube, 'myspace': obj.myspace, 'gplus': obj.gplus},editProfileCallback,'json');
+    else if(type == "contactForm")
+      $.post('promoter/editProfile',{'type': type, 'phone': obj.phone, 'email': obj.email, 'add': obj.add, 'city': obj.city, 'state': obj.state, 'country': obj.country, 'pincode': obj.pincode},editProfileCallback,'json');
+    else if(type == "aboutForm")
+      $.post('promoter/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
+    }
+
     </script>
     
     <script type="text/javascript">
@@ -234,7 +286,7 @@
               <a href="javascript:;" onClick="promoterProfile()"><h3>Profile</h3></a>
             </li>
             <li>
-              <a href="javascript:;" onClick="loadfram();"><h3>Edit Profile</h3></a>
+              <a href="javascript:;" onClick="showEditProfile();"><h3>Edit Profile</h3></a>
             </li>
           </ul>
         </div>
