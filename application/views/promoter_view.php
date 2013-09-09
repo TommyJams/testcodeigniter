@@ -162,7 +162,7 @@
     }
     function recommendArtist(link)
     {
-      console.log("Link Value: ", JSON.stringify(linker));
+      console.log("Link Value: ", JSON.stringify(link));
       $.post('promoter/recommendArtist',{link: link},recommendArtistCallback,'json');
     }
 
