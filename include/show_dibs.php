@@ -52,37 +52,37 @@ function confirmSubmit()
 
 <body>
 	<span class="dibsList" style="width:96% padding-left:2% padding-right:2%">
-	<?
+		<?
  		$dibList = (json_decode($_POST['json']));
         foreach($dibList as $row){ ?>
-    <?
+    	<?
     		$artist_name=$row[0];
            	$artist_id=$row[1]; 
             $dibs_exist=$row[2];
             $linker=$row[3]; 
 
 			print("<div style='width:50%; margin-top: 10px; height:18px; text-align: center; float:left;'><a href='promoter.php?id=$artist_id' target='_top' class='whiteHoverRef' style='font-size: 16px;'>$artist_name</a></div>"); 
-	?>
+		?>
 			<form action="dib_reaction.php" method="post">        
 				<input type="hidden" name="gig" value="<? print($linker); ?>">
 				<input type="hidden" name="giger" value="<? print($artist_id); ?>">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
 					<input type="submit" value="Accept" name="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="return confirmSubmit()">
 					<input type="submit" value="Reject" name="reject" style="width: 48%; background:#FF3C35; float:right;">
-				</div>
-			</form>
-	<?
+				</div>			
+		<?
 		} 
 
 		if($dibs_exist == 1)
 		{
-	?>
+		?>
 			<div style="width:100%; height: 40px; margin-top: 10px; float:left;">
 				<a  href="javascript:;" style="width: 200px; color:#FFF; background:#000; margin-left:-100px; left:50%; position:absolute;" onClick="recommendArtist($linker)"><h3>Recommend Artist</h3></a>
 			</div>
-	<?
+		<?
 		}
-	?>
+		?>
+		</form>
 	</span>
 </body>
 </html>
