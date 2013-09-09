@@ -42,7 +42,8 @@
                                         $contact=$row[6]; 
                                         $link=$row[7]; 
                                         $linker=$row[8]; 
-                                        $num_rows=$row[9];           
+                                        $num_rows=$row[9]; 
+                                        $artist_id=$row[10];          
                                       
                                         print("<div class='gigsTableItemContainer'>
 											<table width=100% style='text-align:center;'>
