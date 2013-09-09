@@ -6,7 +6,7 @@
         function loadslide(a) 
         {
             console.log("Value: ", JSON.stringify(a));
-            toggleSlide(a);
+            toggleSlide(JSON.stringify(a));
             showDib(a);
         }
     </script>
