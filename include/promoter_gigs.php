@@ -5,8 +5,8 @@
     <script>
         function loadslide(a) 
         {
-            console.log("Value: ", JSON.stringify(a));
-            toggleSlide(JSON.stringify(a));
+            //console.log("Value: ", JSON.stringify(a));
+            toggleSlide(diblink);
             showDib(a);
         }
     </script>
