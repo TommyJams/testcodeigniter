@@ -77,12 +77,9 @@ function confirmSubmit()
 		if($dibs_exist == 1)
 		{
 	?>
-			<form action="dib_reaction.php" method="post">        
-				<input type="hidden" name="gig" value="<? print($linker); ?>">
-				<div style="width:100%; height: 40px; margin-top: 10px; float:left;">
-					<input type="submit" value="Recommend Artist" id="recommendArtist" name="recommendArtist" style="width: 200px; color:#FFF; background:#000; margin-left:-100px; left:50%; position:absolute;" onClick="showMessageTip('#recommendArtist','We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.');">
-				</div>
-			</form>
+			<div style="width:100%; height: 40px; margin-top: 10px; float:left;">
+				<a  href="javascript:;" style="width: 200px; color:#FFF; background:#000; margin-left:-100px; left:50%; position:absolute;" onClick="recommendArtist($linker)"><h3>Recommend Artist</h3></a>
+			</div>
 	<?
 		}
 	?>

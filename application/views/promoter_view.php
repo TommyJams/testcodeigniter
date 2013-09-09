@@ -146,13 +146,24 @@
     {
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      $("#diblink").load("include/show_dibs.php", {json: JSON.stringify(a)});
+      $("#".link).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
     {
       console.log("Linker: ", JSON.stringify(linker));
       $("#loading-indicator").show();      
       $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
+    }
+
+    function recommendArtistCallback(a)
+    {
+      console.log("Alert Message: ", JSON.stringify(a));
+      alert(a);
+    }
+    function recommendArtist(link)
+    {
+      console.log("Link Value: ", JSON.stringify(linker));
+      $.post('promoter/recommendArtist',{link: link},recommendArtistCallback,'json');
     }
 
     </script>

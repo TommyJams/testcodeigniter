@@ -6,7 +6,7 @@
         function loadslide(a) 
         {
             console.log("Value: ", JSON.stringify(a));
-            toggleSlide("diblink");
+            toggleSlide(a);
             showDib(a);
         }
     </script>
@@ -61,7 +61,7 @@
                                         else
                                         {
                                             print("<td><a href='javascript:;' onClick=loadslide('$link'); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
-                                                <center><div id='diblink' name='diblink' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></div></center>");
+                                                <center><div id='$link' name='$link' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></div></center>");
                                         }                                    
                                     }
                                     ?>

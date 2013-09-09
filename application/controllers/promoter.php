@@ -859,16 +859,21 @@ public function dibReaction(){
 		}
 	}
 
-	elseif($_POST["recommendArtist"])
+	$this->mygigs();
+}
+
+public function recommendArtist(){
+
+	$link = $_POST('link');
+
+	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
+	$results = mysql_query($SQLs);
+	$a = mysql_fetch_array($results);
 	{
-		$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
-		$results = mysql_query($SQLs);
-		$a = mysql_fetch_array($results);
-		{
-			$gig=$a["gig"];
-			$date=$a["venue_date"];
-			$promoter_name=$a["promoter_name"];
-		}
+		$gig=$a["gig"];
+		$date=$a["venue_date"];
+		$promoter_name=$a["promoter_name"];
+	}
 
 		$to = "contact@tommyjams.com";
 		$subject = "Artist recommendation wanted for $gig";
@@ -905,9 +910,11 @@ public function dibReaction(){
 			
 		$to = "alerts@tommyjams.com";
 		send_email($to, $sender, $subject, $mess);
-	}
-
-	$this->mygigs();
+		
+	$response = "We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.";
+	
+	$this->load->helper('functions');
+	createResponse($response);
 }
 
 public function showDibs(){
