@@ -745,7 +745,7 @@ class Artist extends CI_Controller{
 		
 		{
 
-			$query = "SELECT COUNT(*) as num FROM `$database`.`members` WHERE (`name` LIKE '%$searchProfile%' OR `username` LIKE '%$searchProfile%' OR `about` LIKE '%$searchProfile%'  OR `email` LIKE '%$searchProfile%'  OR `mobile` LIKE '%$searchProfile%')  AND status!=2";
+			$query = "SELECT COUNT(*) as num FROM `$database`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%')  AND status!=2";
 
 			$total_pages = mysql_fetch_array(mysql_query($query));
 
@@ -755,7 +755,7 @@ class Artist extends CI_Controller{
 
 			$v=0;
 
-			$que = "SELECT * FROM `$database`.`members` WHERE (`name` LIKE '%$searchProfile%' OR `username` LIKE '%$searchProfile%' OR `about` LIKE '%$searchProfile%'  OR `email` LIKE '%$searchProfile%'  OR `mobile` LIKE '%$searchProfile%') AND status!=2";
+			$que = "SELECT * FROM `$database`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%') AND status!=2";
 
 			$sea=mysql_query($que);
 
