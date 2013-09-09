@@ -71,12 +71,13 @@
                                 $name=$row[2];
                                 $usernam=$row[3];
                                 $type=$row[4];
-                                $fb=$row[5];
-                                $twitter=$row[6];
-                                $rever=$row[7];
-                                $youtube=$row[8];
-                                $myspace=$row[9];
-                                $gplus=$row[10];
+                                $city=$row[5]
+                                $fb=$row[6];
+                                $twitter=$row[7];
+                                $rever=$row[8];
+                                $youtube=$row[9];
+                                $myspace=$row[10];
+                                $gplus=$row[11];
                             ?>
 
 								<tr height='20px' bgcolor='#000'>
