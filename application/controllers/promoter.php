@@ -864,7 +864,7 @@ public function dibReaction(){
 
 public function recommendArtist(){
 
-	$link = $_POST("link");
+	$link = $_POST('link');
 
 	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
 	$results = mysql_query($SQLs);
