@@ -911,8 +911,10 @@ public function recommendArtist(){
 		$to = "alerts@tommyjams.com";
 		send_email($to, $sender, $subject, $mess);
 		
-	$response = "We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.";
+	$alertMessage = "We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.";
 	
+	$response = $alertMessage;
+
 	$this->load->helper('functions');
 	createResponse($response);
 }

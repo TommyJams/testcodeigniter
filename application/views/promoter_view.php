@@ -160,10 +160,10 @@
       console.log("Alert Message: ", JSON.stringify(a));
       alert(a);
     }
-    function recommendArtist(link)
+    function recommendArtist(id)
     {
-      console.log("Link Value: ", JSON.stringify(link));
-      $.post('promoter/recommendArtist',{link: link},recommendArtistCallback,'json');
+      console.log("Link Value: ", JSON.stringify(id));
+      $.post('promoter/recommendArtist',{link: id},recommendArtistCallback,'json');
     }
 
     </script>
