@@ -69,7 +69,8 @@ function confirmSubmit()
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
 					<input type="submit" value="Accept" name="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="return confirmSubmit()">
 					<input type="submit" value="Reject" name="reject" style="width: 48%; background:#FF3C35; float:right;">
-				</div>			
+				</div>
+			</form>			
 		<?
 		} 
 
@@ -77,12 +78,11 @@ function confirmSubmit()
 		{
 		?>
 			<div style="width:100%; height: 40px; margin-top: 10px; float:left;">
-				<a  href="javascript:;" style="width: 200px; color:#FFF; background:#000; margin-left:-100px; left:50%; position:absolute;" onClick="recommendArtist($linker)"><h3>Recommend Artist</h3></a>
+				<a  href="javascript:;" onClick="recommendArtist($linker)"><h3>Recommend Artist</h3></a>
 			</div>
 		<?
 		}
 		?>
-		</form>
 	</span>
 </body>
 </html>

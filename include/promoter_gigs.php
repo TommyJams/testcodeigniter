@@ -47,7 +47,7 @@
                                         print("<div class='gigsTableItemContainer'>
 											<table width=100% style='text-align:center;'>
 												<tr>
-													<td width=25%><a href='javascript:;' onClick=gig('$link'); class='highlightRef'><h3>$gig</h3></a></td>
+													<td width=25%><a href='javascript:;' onClick=gigProfile('$link'); class='highlightRef'><h3>$gig</h3></a></td>
 													<td width=25%>$city</td> 
 													<td width=10%>$formattedDate </td>
 													<td width=10%>$vtime </td>
