@@ -464,7 +464,7 @@
 
 	function verify_login(link)
     {
-        if(link == NULL)
+        if(link == null)
 			alert("Sorry, you need to login first. Please login with your facebook id.");
 		else
 			showProfile(link);
