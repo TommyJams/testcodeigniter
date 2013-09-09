@@ -151,7 +151,6 @@
                         <div id="gigStatus" style="width:auto; height:auto; margin:20px auto; position:relative;">
 						<center>
                         <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
-                        <?php $show = 2; ?>
                         <?	
                         if ($gigStatus == 1) 
                         {
@@ -163,7 +162,7 @@
                         }
 						elseif($gigStatus == 2)
 						{    
-							print("<a  href='javascript:;' onClick=showUpdateGig('$show'); class='whiteHoverRef'>Edit Gig</a>");
+							print("<a  href='javascript:;' onClick=showUpdateGig(); class='whiteHoverRef'>Edit Gig</a>");
 						}
                         elseif($gigSession == 1)
                         { 

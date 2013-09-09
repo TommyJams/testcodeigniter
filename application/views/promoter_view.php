@@ -166,22 +166,40 @@
       $.post('promoter/recommendArtist',{link: id},recommendArtistCallback,'json');
     }
 
-    function updateGigCallback(a) 
-    {
-      $("#loading-indicator").show();      
-      console.log("All Gig Data: ", JSON.stringify(a));
-      $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
-    }
-    function updateGig() 
-    {
-      $("#loading-indicator").show();      
-      $.post('promoter/updateGigProfile',$('#signUpForm').serialize(),updateGigCallback,'json');
-    }
-    function showUpdateGig(a) 
+
+
+
+
+
+    
+    function updateGig(a) 
     {
       $("#loading-indicator").show();      
       $("#lefty").load("include/gig.php", {json: JSON.stringify(a)});
     }
+
+    function showUpdateGigCallback(a) 
+    {
+      $("#loading-indicator").show();      
+      console.log("All Gig Data: ", JSON.stringify(a));
+      $("#lefty").load("include/update_gig.php", {json: JSON.stringify(a)});
+    }
+    
+    function showUpdateGig() 
+    {
+      $("#loading-indicator").show();      
+      $.post('promoter/updateGigPage', showUpdateGigCallback,'json');
+    }
+
+    function updateGigProfile(obj)
+    {
+      $("#loading-indicator").show();
+      $.post('promoter/editProfile',
+        {'gig': obj.gig, 'web': obj.web, 'fb': obj.fb, 'twitter': obj.twitter, 'add': obj.add, 'desc': obj.desc},
+        editProfileCallback,'json');
+    }
+
+
 
     function showEditProfileCallback(a)
     {

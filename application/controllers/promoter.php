@@ -543,7 +543,7 @@ public function launchGigFunc(){
 	createResponse($response);
 }
 
-public function updateGigProfile(){
+public function updateGigPage(){
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
@@ -559,14 +559,15 @@ public function updateGigProfile(){
 		exit;
 	}
 
-	if(isset($_GET["updategig"]))
-	{
 		$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
 		$resultsa = mysql_query($SQLsa);
 		if (!$resultsa)
 			die("Database query failed: " . mysql_error());
+		
 		$pl = mysql_fetch_assoc($resultsa);
 		$plink=$pl["link"];
+		
+		// need to see this $link
 		$link=$_GET["updategig"];
 
 		$SQLs = "SELECT * FROM `$database`.`shop` WHERE `link`=$link AND `promoter`=$plink";
@@ -575,6 +576,7 @@ public function updateGigProfile(){
 			die("Database query failed: " . mysql_error());
 
 		$a = mysql_fetch_assoc($results);
+		
 		$do="updategig&id=$link";
 		$show=0;
 		$ok="Update Gig";
@@ -586,16 +588,6 @@ public function updateGigProfile(){
 		$tempExplode2 = explode(" ",$tempExplode1);
 		$minSaved = $tempExplode2[0];
 		$amSaved = $tempExplode2[1];
-	}
-	else
-	{
-		$do="add";
-		$show=1;
-		$ok="Launch Gig";
-							
-		$todayDate = intval(date("d"));
-		$todayMonth = intval(date("m"));
-		$todayYear = intval(date("Y"));
 	}
 }
 
