@@ -61,7 +61,7 @@
                                         else
                                         {
                                             print("<td><a href='javascript:;' onClick=loadslide('$link'); class ='highlightRef'><img src='images/plus.gif' align='right'></a></td></tr></table></div>
-                                                <center><iframe id='diblink' name='diblink' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></iframe></center>");
+                                                <center><div id='diblink' name='diblink' style='display:none; height:200px; width:50%; background:#ffcc00; overflow-y: auto;'></div></center>");
                                         }                                    
                                     }
                                     ?>
