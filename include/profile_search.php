@@ -146,6 +146,12 @@
 
     </div>
 
+    <script type="text/javascript">
+
+        $('#loading-indicator').hide();
+
+    </script>
+
 </body>
 
 </html>
