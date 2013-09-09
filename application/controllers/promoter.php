@@ -864,6 +864,7 @@ public function dibReaction(){
 
 public function recommendArtist(){
 
+	$database = 'tommyjam_test';
 	$link = $_POST["link"]; 
 
 	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
