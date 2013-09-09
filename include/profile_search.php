@@ -81,21 +81,21 @@
 
 								<tr height='20px' bgcolor='#000'>
 
-									<td width=10%><img src='$users' width=50px height=50px></td>
+									<td width=10%><img src='<? print($users); ?>' width=50px height=50px></td>
 
-									<td width=20%><a href='$goto' onClick=verify_login('$goto');>$name</a></td>
+									<td width=20%><a href='<? print($goto); ?>' onClick=verify_login('<? print($goto); ?>');><? print($name); ?></a></td>
 									
-									<td width=20%><a href='$goto' onClick=verify_login('$goto');>$usernam</a></td>
+									<td width=20%><a href='<? print($goto); ?>' onClick=verify_login('<? print($goto); ?>');><? print($usernam); ?></a></td>
 
-									<td width=10%>$type</td>
+									<td width=10%><? print($type); ?></td>
 
-									<td width=15%>$city</td>
+									<td width=15%><? print($city); ?></td>
 
 									<td width=25%>
 
 									<?
 
-										if($fb!=""){ print("<a href='$fb' rel='me' target='_blank'><img src='img/facebook.png' /></a>"); }						
+										if($fb!=""){ print("<a href='$fb' rel='me' target='_blank'><img src='img/facebook.png' /></a>"); }
 
 										if($twitter!=""){ print("<a href='$twitter' rel='me' target='_blank'><img src='img/twitter.png' /></a>"); }					
 
