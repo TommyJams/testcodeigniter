@@ -37,13 +37,12 @@
                                         $city=$row[1];
                                         $formattedDate=$row[2];
                                         $vtime=$row[3];
-                                        $status=$row[4];
+                                        $artist_id=$row[4];
                                         $artist_name=$row[5];
                                         $contact=$row[6]; 
                                         $link=$row[7]; 
                                         $linker=$row[8]; 
-                                        $num_rows=$row[9]; 
-                                        $artist_id=$row[10];          
+                                        $num_rows=$row[9];          
                                       
                                         print("<div class='gigsTableItemContainer'>
 											<table width=100% style='text-align:center;'>
