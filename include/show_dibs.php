@@ -78,7 +78,7 @@ function confirmSubmit()
 		{
 		?>
 			<div style="width:100%; height: 40px; margin-top: 10px; text-align: center; float:left;">
-				<input type="submit" value="Recommend Artist" name="recommendartist" style="width: 200px; color:#fff; background:#000; float:center;" onClick="recommendArtist('$linker')">
+				<input type="submit" value="Recommend Artist" name="recommendartist" style="width: 200px; color:#fff; background:#000; float:center;" onClick="recommendArtist(<? print('$linker'); ?>)">
 			</div>
 		<?
 		}

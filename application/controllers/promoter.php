@@ -943,7 +943,6 @@ public function showDibs(){
 	$result = mysql_query($SQL);
 	while ($b = mysql_fetch_assoc($result))
 	{
-		$linker=$_POST["link"];
 		$dibs_exist = 1;
 		$artist_id=$b["artist_id"];$artist_name=$b["artist_name"];
 
