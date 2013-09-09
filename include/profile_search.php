@@ -71,7 +71,7 @@
                                 $name=$row[2];
                                 $usernam=$row[3];
                                 $type=$row[4];
-                                $city=$row[5]
+                                $city=$row[5];
                                 $fb=$row[6];
                                 $twitter=$row[7];
                                 $rever=$row[8];
