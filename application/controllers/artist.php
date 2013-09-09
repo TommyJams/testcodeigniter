@@ -785,15 +785,15 @@ class Artist extends CI_Controller{
 										
 					if(!file_exists($usersa)&& $user==""){$users="images/profile.jpg";}
 
-					else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture";}
+					else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=square";}
 
 					$linker=$link*15999;
 
-					if(isset($username) && $actual_type == 'Venue'){$goto="promoter.php?id=$link";}
+					if(isset($username) && $actual_type == 'Venue'){$goto="$link";}
 
-					else if(isset($username) && $actual_type == 'Artist'){$goto="artist.php?id=$link";}
+					else if(isset($username) && $actual_type == 'Artist'){$goto="$link";}
 
-					else{$goto="fbconnect.php";}
+					else{$goto=NULL;}
 
 					$profileRow = array($users, $goto, $name, $usernam, $type, $city, $fb, $twitter, $rever, $youtube, $myspace, $gplus);
 

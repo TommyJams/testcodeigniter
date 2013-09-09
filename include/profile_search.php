@@ -83,9 +83,9 @@
 
 									<td width=10%><img src='<? print($users); ?>' width=50px height=50px></td>
 
-									<td width=20%><a href='<? print($goto); ?>' onClick=verify_login('<? print($goto); ?>');><? print($name); ?></a></td>
+									<td width=20%><a href='javscript:;' onClick=verify_login('<? print($goto); ?>');><? print($name); ?></a></td>
 									
-									<td width=20%><a href='<? print($goto); ?>' onClick=verify_login('<? print($goto); ?>');><? print($usernam); ?></a></td>
+									<td width=20%><a href='javscript:;' onClick=verify_login('<? print($goto); ?>');><? print($usernam); ?></a></td>
 
 									<td width=10%><? print($type); ?></td>
 

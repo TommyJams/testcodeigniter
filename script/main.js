@@ -462,10 +462,12 @@
 		alert(message);
 	}
 
-	function verify_login(path)
+	function verify_login(link)
     {
-        if(path == "#")
-			jsMsgBox("Sorry, you need to login first. Please login with your facebook id.");
+        if(link == NULL)
+			alert("Sorry, you need to login first. Please login with your facebook id.");
+		else
+			showProfile(link);
     }
 
 	function facebookLoginCallback()
