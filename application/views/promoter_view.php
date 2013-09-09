@@ -144,9 +144,11 @@
 
     function showDibCallback(a) 
     {
+      b = JSON.stringify(a.linker);
+      console.log("Value of b: ", b);
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      $("#(a.link)").load("include/show_dibs.php", {json: JSON.stringify(a)});
+      $("#b").load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
     {
