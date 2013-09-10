@@ -584,7 +584,7 @@ public function updateGigPage(){
 			$tempExplode1 = explode(":",$timeSaved);
 			list($hour, $min_am) = explode(":", $timeSaved);
 			$hourSaved = $hour;
-			list($min, $am) = explode("", $min_am);
+			list($min, $am) = explode(" ", $min_am);
 
 			$minSaved = $min;
 			$amSaved = $am; 
