@@ -53,8 +53,8 @@ $('#dibReaction').bind('submit',function(e)
     e.preventDefault();
 
     var obj = {
-            	artistLink:   	document.getElementById('linker').value,
-                artistId:   	document.getElementById('artist_id').value,
+            	linker:   		document.getElementById('linker').value,
+                artist_id:   	document.getElementById('artist_id').value,
                 acceptDib: 		document.getElementById('accept').value, 
                 rejectDib: 		document.getElementById('reject').value  
               };
@@ -80,16 +80,13 @@ $('#dibReaction').bind('submit',function(e)
 			<form action="" name="dibReaction" id="dibReaction" method="post">        
 				<input type="hidden" name="gig" value="<? print($linker); ?>">
 				<input type="hidden" name="giger" value="<? print($artist_id); ?>">
+				
+				<input type="hidden" name="artist_id" id="artist_id" value="<? print($artist_id);?>">  
+                <input type="hidden" name="linker" id="linker" value="<? print($linker);?>">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
 					<input type="submit" value="Accept" name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="return confirmSubmit()">
 					<input type="submit" value="Reject" name="reject" style="width: 48%; background:#FF3C35; float:right;">
-				</div>
-				<div>
-                    <input type="hidden" name="artist_id" id="artist_id" value="<? print($artist_id);?>">
-                </div> 
-                <div>
-                    <input type="hidden" name="linker" id="linker" value="<? print($linker);?>">
-                </div>
+				</div>           
 			</form>			
 		<?
 		} 
@@ -97,7 +94,7 @@ $('#dibReaction').bind('submit',function(e)
 		if($dibs_exist == 1)
 		{
 		?>
-			<div style="width:100%; height: 40px; margin-top: 10px; text-align: center; float:left; class='whiteHoverRef'">
+			<div style="width:100%; height: 40px; margin-top: 10px; text-align: center; float:left;">
 				<input type="submit" value="Recommend Artist" name="recommendartist" style="width: 200px; color:#fff; background:#000; float:center;" onClick="recommendArtist('<? print("$linker"); ?>')">
 			</div>
 		<?

@@ -142,9 +142,6 @@
       $("#lefty").load("include/gig.php");
     }
 
-
-
-
     function showDibCallback(a) 
     {
       $("#loading-indicator").show();      
@@ -160,13 +157,37 @@
       $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
     }
 
+
+
+    function dibReactionCallback(a)
+    {
+      if(a.error != '1')
+      {
+        if(a.accept == 1)
+        {
+          alert('Gig has been booked. Please contact artist against the mentioned contact number.');
+          promoterGigs();
+        }
+        else
+        {
+          alert('Artist has been rejected for this gig.');
+          showDib(a.linker);
+        }
+      }
+      else
+      {
+        alert('Sorry! There was some error while processing your request. Please try again.');
+      }   
+    }
     function dibReaction()
     {
       console.log("Linker: ", JSON.stringify(linker));
       $("#loading-indicator").show();      
       $.post('promoter/dibReaction',
-        {'artistLink': obj.artistLink, 'artistId': obj.artistId, 'accept': obj.acceptDib, 'reject': obj.rejectDib}, dibReactionCallback,'json');   
+        {'artistLink': obj.linker, 'artistId': obj.artist_id, 'accept': obj.acceptDib, 'reject': obj.rejectDib}, dibReactionCallback,'json');   
     }
+
+
 
 
 

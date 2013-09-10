@@ -726,7 +726,9 @@ public function dibReaction(){
 		$results = mysql_query($SQLs);
 		if(!$results)
 		{
-			die("Database query failed: " . mysql_error());
+			$response['error'] = 1;
+			$this->load->helper('functions');
+			createResponse($response);
 		}
 	
 		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link'";
@@ -764,7 +766,9 @@ public function dibReaction(){
 				$result_set8 = mysql_query($q8);
 				if (!$result_set8)
 				{
-					die("Database query failed: " . mysql_error());
+					$response['error'] = 1;
+					$this->load->helper('functions');
+					createResponse($response);
 				}
 				$acceptedArtist=$artist_name;
 				$subject = "Dib Accepted for $gig";
@@ -894,6 +898,12 @@ public function dibReaction(){
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 		}
+		
+		$response['linker'] = $link;
+		$response['error'] = 0;
+		$response['accept'] = 1;
+		$this->load->helper('functions');
+		createResponse($response);
 	}
 
 	elseif($_POST["reject"])
@@ -956,9 +966,13 @@ public function dibReaction(){
 			$to = "alerts@tommyjams.com";
 			send_email($to, $sender, $subject, $mess);
 		}
-	}
 
-	$this->mygigs();
+		$response['linker'] = $link;
+		$response['error'] = 0;
+		$response['accept'] = 0;
+		$this->load->helper('functions');
+		createResponse($response);
+	}
 }
 
 public function recommendArtist(){
