@@ -142,11 +142,14 @@
       $("#lefty").load("include/gig.php");
     }
 
+
+
+
     function showDibCallback(a) 
     {
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      $('<div>', {id: link}).load("include/show_dibs.php", {json: JSON.stringify(a)});
+      $('<div>', {id: a.linker}).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
     {
@@ -154,6 +157,10 @@
       $("#loading-indicator").show();      
       $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
     }
+
+
+
+
 
     function recommendArtistCallback(a)
     {
