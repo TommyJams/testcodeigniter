@@ -103,5 +103,9 @@ $('#dibReaction').bind('submit',function(e)
 		<?
 		}
 		?>
+<script type="text/javascript">
+	$('#loading-indicator').hide();
+</script>
+		
 </body>
 </html>
