@@ -63,7 +63,7 @@ function confirmSubmit()
 
 			print("<div style='width:50%; margin-top: 10px; height:18px; text-align: center; float:left;'><a href='promoter.php?id=$artist_id' target='_top' class='whiteHoverRef' style='font-size: 16px;'>$artist_name</a></div>"); 
 		?>
-			<form action="promoter/dib_reaction" method="post">        
+			<form action="promoter/dibReaction" method="post">        
 				<input type="hidden" name="gig" value="<? print($linker); ?>">
 				<input type="hidden" name="giger" value="<? print($artist_id); ?>">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
