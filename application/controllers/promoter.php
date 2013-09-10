@@ -1040,6 +1040,7 @@ public function showDibs(){
 
 	//$link=$_POST["link"]/15999;
 	$linker=$_POST["link"];
+	$dibs_exist = 0;
 
 	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$linker AND status=4";
 	$result = mysql_query($SQL);
@@ -1052,13 +1053,7 @@ public function showDibs(){
 		$response['dibLists'][] = $dibLists;	
 	}
 
-	if($dibs_exist == 1)
-		$response['dibs_exist'] = $dibs_exist;
-	else
-	{
-		$dibs_exist = 2;
-		$response['dibs_exist'] = $dibs_exist;
-	}
+	$response['dibs_exist'] = $dibs_exist;
 
 	$response['linker'] = $linker;
 
