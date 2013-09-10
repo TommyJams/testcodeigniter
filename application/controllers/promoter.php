@@ -582,10 +582,16 @@ public function updateGigPage(){
 			
 			$timeSaved = $a['venue_time'];
 			$tempExplode1 = explode(":",$timeSaved);
-			$hourSaved = $tempExplode1[0];
+			list($hour, $min, $blank, $am) = explode(":", $timeSaved);
+			
+			$hourSaved = $hour;
+			$minSaved = $min;
+			$amSaved = $am; 
+
+		/*	$hourSaved = $tempExplode1[0];
 			$tempExplode2 = explode(" ",$tempExplode1);
 			$minSaved = $tempExplode2[0];
-			$amSaved = $tempExplode2[1];
+			$amSaved = $tempExplode2[1]; */
 			
 			$duration = $a['duration'];
 			$web = $a['web'];
