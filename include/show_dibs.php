@@ -68,8 +68,8 @@ $('#dibReaction').bind('submit',function(e)
 <body>
 	<span class="dibsList" style="width:96% padding-left:2% padding-right:2%">
 		<?
-		$dibs_exist = (json_decode($_POST['json']->dibs_exist);
-        $linker = (json_decode($_POST['json']->linker); 
+		$dibs_exist = (json_decode($_POST['json'])->dibs_exist);
+        $linker = (json_decode($_POST['json'])->linker); 
  		$dibList = (json_decode($_POST['json'])->dibLists);
         foreach($dibList as $row){ ?>
     	<?
