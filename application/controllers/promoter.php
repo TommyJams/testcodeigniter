@@ -697,7 +697,7 @@ public function updateGigProfile(){
 	createResponse($response);
 }
 
-public function dibReaction(){
+public function dibReactionFunc(){
 
 	error_log(1);
 
@@ -705,7 +705,8 @@ public function dibReaction(){
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
-	if (!isset($sessionArray['session_id()'])) {
+	if (!isset($sessionArray['session_id()'])) 
+	{
 		session_start();
 	}
 
@@ -916,7 +917,7 @@ public function dibReaction(){
 		createResponse($response);
 	}
 
-	elseif($accepted == 0)
+	else($accepted == 0)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
