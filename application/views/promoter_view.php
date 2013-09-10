@@ -179,9 +179,9 @@
         alert('Sorry! There was some error while processing your request. Please try again.');
       }   
     }
-    function dibReaction()
+    function dibReaction(obj)
     {
-      console.log("Linker: ", JSON.stringify(linker));
+      console.log("Linker: ", obj.linker);
       $("#loading-indicator").show();      
       $.post('promoter/dibReaction',
         {'artistLink': obj.linker, 'artistId': obj.artist_id, 'accept': obj.acceptDib, 'reject': obj.rejectDib}, dibReactionCallback,'json');   
