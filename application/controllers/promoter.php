@@ -1052,7 +1052,14 @@ public function showDibs(){
 		$response['dibLists'][] = $dibLists;	
 	}
 
-	$response['dibs_exist'] = $dibs_exist;
+	if($dibs_exist == 1)
+		$response['dibs_exist'] = $dibs_exist;
+	else
+	{
+		$dibs_exist = 2;
+		$response['dibs_exist'] = $dibs_exist;
+	}
+
 	$response['linker'] = $linker;
 
 	$this->load->helper('functions');
