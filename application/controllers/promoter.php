@@ -577,7 +577,40 @@ public function updateGigPage(){
 			die("Database query failed: " . mysql_error());
 
 		$a = mysql_fetch_assoc($results);
-		
+		{
+			$gig = $a['gig'];
+			
+			$timeSaved = $a['venue_time'];
+			$tempExplode1 = explode(":",$timeSaved);
+			$hourSaved = $tempExplode1[0];
+			$tempExplode2 = explode(" ",$tempExplode1);
+			$minSaved = $tempExplode2[0];
+			$amSaved = $tempExplode2[1];
+			
+			$duration = $a['duration'];
+			$web = $a['web'];
+			$fb = $a['fb'];
+			$twitter = $a['twitter'];
+			$add = $a['venue_add'];
+			$desc = $a['desc'];
+
+			$response['link'] = $link;
+			$response['gig'] = $gig;
+			$response['hourSaved'] = $hourSaved;
+			$response['minSaved'] = $minSaved;
+			$response['amSaved'] = $amSaved
+			$response['durationSaved'] = $duration;
+			$response['web'] = $web;
+			$response['fb'] = $fb;
+			$response['twitter'] = $twitter;
+			$response['add'] = $add;
+			$response['desc'] = $desc;
+		}
+
+		$this->load->helper('functions');
+		createResponse($response);
+
+		/*
 		$do="updategig&id=$link";
 		$show=0;
 		$ok="Update Gig";
@@ -588,9 +621,74 @@ public function updateGigPage(){
 		$hourSaved = $tempExplode1[0];
 		$tempExplode2 = explode(" ",$tempExplode1);
 		$minSaved = $tempExplode2[0];
-		$amSaved = $tempExplode2[1];
+		$amSaved = $tempExplode2[1]; */
 	}
 
+public function updateGigProfile(){
+
+	ob_start();
+	$sessionArray = $this->session->all_userdata();
+	$database = 'tommyjam_test';
+
+	if (!isset($sessionArray['session_id()'])) {
+		session_start();
+	}
+
+	if(!isset($sessionArray['username']))
+	{
+		redirect('http://testcodeigniter.azurewebsites.net/index');
+		exit;
+	}	
+
+	$username=$sessionArray['username'];
+	$password=md5($sessionArray['password']);
+
+	$id = $_POST['link'];
+
+	$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+	$result_set1 = mysql_query($q1);
+	if (mysql_num_rows($result_set1) == 1) 
+	{
+		$founded = mysql_fetch_array($result_set1);
+		$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
+	}
+
+	$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){$fb='http://'.$fb;}
+	$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){$twitter='http://'.$twitter;}
+	$web=$_POST['web'];if($web && !startsWith($web,'http')){$web='http://'.$web;}
+	$gig=$_POST['gig'];
+	$venue_add=addslashes($_POST['add']);
+	$desc=addslashes($_POST['desc']);
+
+	$q2 = "UPDATE `$database`.`shop` SET `gig`='$gig', `venue_add`='$venue_add', `fb`='$fb', `web`='$web', `twitter`='$twitter', `desc`='$desc' WHERE `link`='$id'";
+
+	$result_set2 = mysql_query($q2);
+	if (!$result_set2)
+	{
+		$error = 1;
+	}
+	else
+	{
+		$error = 2;
+	}
+
+	$to = $email;
+	$subject = "Udpated Gig: $gig";
+	$mess="<p style='text-align:left;'>Dear $name,<br><br>Your gig '$gig' has been Updated successfully on TommyJams.		<br>		We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.		<br>		We wish you all the very best for the gig.		<br><br>		Happy Jamming,		<br>		Team TommyJams		<br><br>		</p>		";
+	$sender = "alerts@tommyjams.com";
+			
+	$this->load->helper('mail');
+    send_email($to, $sender, $subject, $mess);
+			
+	$to = "alerts@tommyjams.com";
+	send_email($to, $sender, $subject, $mess);
+	
+	$response = $id;
+	$response = $error;
+
+	$this->load->helper('functions');
+	createResponse($response);
+}
 
 public function dibReaction(){
 

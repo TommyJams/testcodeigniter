@@ -172,31 +172,35 @@
 
 
     
-    function updateGig(a) 
-    {
-      $("#loading-indicator").show();      
-      $("#lefty").load("include/gig.php", {json: JSON.stringify(a)});
-    }
-
     function showUpdateGigCallback(a) 
     {
       $("#loading-indicator").show();      
-      console.log("All Gig Data: ", JSON.stringify(a));
+      console.log("Edit Gig Data: ", JSON.stringify(a));
       $("#lefty").load("include/update_gig.php", {json: JSON.stringify(a)});
     }
-    
-    function showUpdateGig() 
+    function showUpdateGig(link) 
     {
       $("#loading-indicator").show();      
-      $.post('promoter/updateGigPage', showUpdateGigCallback,'json');
+      $.post('promoter/updateGigPage',{link: link},showUpdateGigCallback,'json');
     }
-
+    function updateGigProfileCallback(a)
+    {
+    if(a.error != '1')
+      {
+        alert('Your changes have been submitted successfully.');
+      }
+      else
+      {
+        alert('Sorry! There was some error while processing your request. Please try again.');
+      }
+      gigProfile(a.id);
+    }
     function updateGigProfile(obj)
     {
       $("#loading-indicator").show();
-      $.post('promoter/editProfile',
-        {'gig': obj.gig, 'web': obj.web, 'fb': obj.fb, 'twitter': obj.twitter, 'add': obj.add, 'desc': obj.desc},
-        editProfileCallback,'json');
+      $.post('promoter/updateGigProfile',
+        {'gig': obj.gig, 'web': obj.web, 'fb': obj.fb, 'twitter': obj.twitter, 'add': obj.add, 'desc': obj.desc, 'link': obj.link},
+        updateGigProfileCallback,'json');
     }
 
 

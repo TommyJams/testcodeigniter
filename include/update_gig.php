@@ -3,13 +3,7 @@
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
 	<script> 
-		$('#signUpForm').bind('submit',function(e) 
-		{
-			e.preventDefault();
-			launchGig();
-		});
-
-		$('#signUpForm').bind('submit',function(e) 
+		$('#UpdateGigForm').bind('submit',function(e) 
         {
             e.preventDefault();
 
@@ -20,8 +14,7 @@
                     twitter:    document.getElementById('twitter').value,
                     add:    	document.getElementById('add').value,
                     desc:    	document.getElementById('about').value,
-
-
+                    link:       document.getElementById('link').value
                 };
 
             updateGigProfile(obj);
@@ -32,15 +25,7 @@
 
 </head>
  <body>
- 	<?php 
-		$do="add";
-		$show=1;
-		$ok="Launch Gig";
-							
-		$todayDate = intval(date("d"));
-		$todayMonth = intval(date("m"));
-		$todayYear = intval(date("Y"));
- 	?>
+ 	<?php $ok="Update Gig"; ?>
     <div class="head">
 		<h1>LAUNCH GIG</h1>
 	</div>
@@ -49,7 +34,7 @@
             <section id="left" style=" width:100%;">
                 <div class="gcontent">
                     <div id="signUp" class="sign" style="overflow-y:auto">
-                        <form action="" name="signUpForm" method="POST" class="cleanForm" id="signUpForm" style="height:100%; margin-top:10px; min-width:800px;">
+                        <form action="" name="UpdateGigForm" method="POST" class="cleanForm" id="UpdateGigForm" style="height:100%; margin-top:10px; min-width:800px;">
 						<div id="launchContainer">
                             <fieldset id="details" style = "height:auto; float:left">
                                 <p>
@@ -60,16 +45,21 @@
                                 </p> 
                                 <p>
                                     <label for="gig">Time: <span class="requiredField">*</span></label>
-                                    <select id="select"  style="width:60px; float:left;" name="hours">
+                                    <select id="select"  disabled="disabled" style="width:60px; float:left;" name="hours">
                                     <?
+                                        $hourSaved = (json_decode($_POST['json'])->hourSaved);
                                         for($i=01;$i<=12;$i++){ if( ($a && $hourSaved==$i) || $i==8 ) print("<option value='$i' selected='selected'>$i</option>"); else print("<option value='$i'>$i</option>"); }
                                     ?>      
                                     </select>
-                                    <select id="select"  style="width:80px; margin-left: 5px; float:left;" name="minute">
+                                    <?
+                                        $minSaved = (json_decode($_POST['json'])->minSaved);
+                                        $amSaved = (json_decode($_POST['json'])->amSaved);
+                                    ?>
+                                    <select id="select" disabled="disabled" style="width:80px; margin-left: 5px; float:left;" name="minute">
 										<option value='00' <? if($a && $minSaved=='00') print("selected='selected'"); ?> >00</option>
 										<option value='30' <? if($a && $minSaved=='30') print("selected='selected'"); ?> >30</option>
                                     </select>                            
-                                    <select id="select" style="width:60px; margin-left: 5px; float:left;" name="am">
+                                    <select id="select" disabled="disabled" style="width:60px; margin-left: 5px; float:left;" name="am">
                                         <option value='PM' <? if($a && $amSaved=='PM') print("selected='selected'"); ?> >PM</option>
 										<option value='AM' <? if($a && $amSaved=='AM') print("selected='selected'"); ?> >AM</option>
                                     </select>
@@ -79,6 +69,7 @@
 									<label for="gig">Duration: <span class="requiredField">*</span></label>
                                     <select id="select"  style="width:60px; float:left;" name="duration">
                                     <?
+                                        $durationSaved = (json_decode($_POST['json'])->durationSaved);
                                         for($i=0.5;$i<=24;$i = $i + 0.5){ if($a && $i == $durationSaved) print("<option value='$i' selected='selected'>$i</option>"); else print("<option value='$i'>$i</option>"); }
                                     ?>
                                     </select>
@@ -116,6 +107,10 @@
                                 <!--I don't know why margin-left, right set to auto does not work here, hence the -50 :(-->
                                 <input type="submit" value="<? echo $ok; ?>" style="height:45px; width: 100px; left:50%; margin-left:-50px; position:relative; padding: 5px 5px;"/>
                             </div>
+                            <div>
+                                <?php $link = (json_decode($_POST['json'])->link); ?>
+                                <input type="hidden" name="link" id="link" value="<? print($link);?>">
+                            </div>    
 							<div class="formExtra" style=" width:60%; position:relative; margin-top:20px; margin-left:auto; margin-right: auto;">
                                 <p><strong>Note: </strong> Fields marked with <span class="requiredField">*</span> are required.</p>
                             </div>
