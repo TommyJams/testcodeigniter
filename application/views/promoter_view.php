@@ -146,7 +146,7 @@
     {
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      $("#diblink").load("include/show_dibs.php", {json: JSON.stringify(a)});
+      $('<div>', {id: link}).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
     {
@@ -166,12 +166,6 @@
       $.post('promoter/recommendArtist',{link: id},recommendArtistCallback,'json');
     }
 
-
-
-
-
-
-    
     function showUpdateGigCallback(a) 
     {
       $("#loading-indicator").show();      
@@ -202,8 +196,6 @@
         {'gig': obj.gig, 'web': obj.web, 'fb': obj.fb, 'twitter': obj.twitter, 'add': obj.add, 'desc': obj.desc, 'gigLink': obj.gigLink},
         updateGigProfileCallback,'json');
     }
-
-
 
     function showEditProfileCallback(a)
     {
