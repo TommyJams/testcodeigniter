@@ -727,7 +727,7 @@ public function dibReaction(){
 		$results = mysql_query($SQLs);
 		if(!$results)
 		{
-			$error = 1
+			$error = 1;
 			$response['error'] = $error;
 			$this->load->helper('functions');
 			createResponse($response);
@@ -768,7 +768,7 @@ public function dibReaction(){
 				$result_set8 = mysql_query($q8);
 				if (!$result_set8)
 				{
-					$error = 1
+					$error = 1;
 					$response['error'] = $error;
 					$this->load->helper('functions');
 					createResponse($response);
