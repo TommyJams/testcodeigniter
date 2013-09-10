@@ -699,6 +699,8 @@ public function updateGigProfile(){
 
 public function dibReaction(){
 
+	error_log(1);
+
 	ob_start();
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
@@ -707,12 +709,14 @@ public function dibReaction(){
 		session_start();
 	}
 
-	/*if(!isset($sessionArray['username']))
+	if(!isset($sessionArray['username']))
 	{
 		redirect('http://testcodeigniter.azurewebsites.net/index');
 		exit;
 	}	
-*/
+
+	error_log(2);
+
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
@@ -720,6 +724,8 @@ public function dibReaction(){
 	$link=$_POST['link'];
 	$artist_id=$_POST['artist_id'];
 	$accepted=$_POST['accepted'];
+
+	error_log(3);
 	
 	if($accepted == 1)
 	{
@@ -733,6 +739,7 @@ public function dibReaction(){
 			createResponse($response);
 		}
 	
+		error_log(4);
 		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link'";
 		$results = mysql_query($SQLs);
 		while ($a = mysql_fetch_assoc($results))
