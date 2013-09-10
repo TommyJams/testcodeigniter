@@ -47,6 +47,21 @@ function confirmSubmit()
     else
         return false ;
 }
+
+$('#dibReaction').bind('submit',function(e) 
+{
+    e.preventDefault();
+
+    var obj = {
+            	artistLink:   	document.getElementById('linker').value,
+                artistId:   	document.getElementById('artist_id').value,
+                acceptDib: 		document.getElementById('accept').value, 
+                rejectDib: 		document.getElementById('reject').value  
+              };
+			
+			dibReaction(obj);
+});
+
 </script>
 </head>
 
@@ -63,13 +78,19 @@ function confirmSubmit()
 
 			print("<div style='width:50%; margin-top: 10px; height:18px; text-align: center; float:left;'><a href='promoter.php?id=$artist_id' target='_top' class='whiteHoverRef' style='font-size: 16px;'>$artist_name</a></div>"); 
 		?>
-			<form action="promoter/dibReaction" method="post">        
+			<form action="" name="dibReaction" id="dibReaction" method="post">        
 				<input type="hidden" name="gig" value="<? print($linker); ?>">
 				<input type="hidden" name="giger" value="<? print($artist_id); ?>">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
-					<input type="submit" value="Accept" name="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="return confirmSubmit()">
+					<input type="submit" value="Accept" name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="return confirmSubmit()">
 					<input type="submit" value="Reject" name="reject" style="width: 48%; background:#FF3C35; float:right;">
 				</div>
+				<div>
+                    <input type="hidden" name="artist_id" id="artist_id" value="<? print($artist_id);?>">
+                </div> 
+                <div>
+                    <input type="hidden" name="linker" id="linker" value="<? print($linker);?>">
+                </div>
 			</form>			
 		<?
 		} 

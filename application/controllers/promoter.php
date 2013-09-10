@@ -716,12 +716,13 @@ public function dibReaction(){
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
-	$link=$_POST["gig"]/15999;
-	$artist_id=$_POST["giger"];
+	//$link=$_POST["gig"]/15999;
+	$link=$_POST['artistLink'];
+	$artist_id=$_POST['artistId'];
 	
 	if($_POST["accept"])
 	{
-		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id=$artist_id";
+		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 		if(!$results)
 		{
@@ -897,10 +898,10 @@ public function dibReaction(){
 
 	elseif($_POST["reject"])
 	{
-		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id=$artist_id";
+		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 
-		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id=$artist_id";
+		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 
 		if (mysql_num_rows($results) == 1) 
@@ -1037,7 +1038,7 @@ public function showDibs(){
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
-	$link=$_POST["link"]/15999;
+	//$link=$_POST["link"]/15999;
 	$linker=$_POST["link"];
 
 	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$linker AND status=4";

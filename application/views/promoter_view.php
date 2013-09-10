@@ -149,17 +149,25 @@
     {
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      console.log("Linker value: ", JSON.stringify(a.linker));
-      $('<div>', {id: a['linker']}).load("include/show_dibs.php", {json: JSON.stringify(a)});
+
+      var array = $.parseJSON(a);
+      console.log("Linker value: ", array[3]);
+      $('<div>', {id: array[3]}).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
     {
-      console.log("Linker: ", JSON.stringify(linker));
+      console.log("Linker: ", linker);
       $("#loading-indicator").show();      
       $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
     }
 
-
+    function dibReaction()
+    {
+      console.log("Linker: ", JSON.stringify(linker));
+      $("#loading-indicator").show();      
+      $.post('promoter/dibReaction',
+        {'artistLink': obj.artistLink, 'artistId': obj.artistId, 'accept': obj.acceptDib, 'reject': obj.rejectDib}, dibReactionCallback,'json');   
+    }
 
 
 

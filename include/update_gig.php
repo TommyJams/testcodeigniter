@@ -19,8 +19,6 @@
 
             updateGigProfile(obj);
         });
-
-
 	</script>
 
 </head>
