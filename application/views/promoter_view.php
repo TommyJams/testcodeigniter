@@ -149,7 +149,7 @@
     {
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
-      console.log("Linker value: ", JSON.stringify(a[].linker));
+      console.log("Linker value: ", JSON.stringify(a.linker));
       $('<div>', {id: a['linker']}).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }
     function showDib(linker) 
