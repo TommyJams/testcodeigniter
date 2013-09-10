@@ -394,7 +394,8 @@ public function gigProfilePage(){
         	}
         }
     }    
-       
+    
+	$response['link'] = $link;
     $response['gig'] = $gig; 
     $response['cat'] = $cat;   
 	$response['budget_min'] = $budget_min;
@@ -568,7 +569,7 @@ public function updateGigPage(){
 		$plink=$pl["link"];
 		
 		// need to see this $link
-		$link=$_GET["updategig"];
+		$link=$_POST["link"];
 
 		$SQLs = "SELECT * FROM `$database`.`shop` WHERE `link`=$link AND `promoter`=$plink";
 		$results = mysql_query($SQLs);
@@ -589,7 +590,7 @@ public function updateGigPage(){
 		$minSaved = $tempExplode2[0];
 		$amSaved = $tempExplode2[1];
 	}
-}
+
 
 public function dibReaction(){
 
