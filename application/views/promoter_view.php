@@ -163,7 +163,7 @@
     {
       if(a.error != '1')
       {
-        if(a.accept == 1)
+        if(a.accept == '1')
         {
           alert('Gig has been booked. Please contact artist against the mentioned contact number.');
           promoterGigs();
@@ -177,14 +177,20 @@
       else
       {
         alert('Sorry! There was some error while processing your request. Please try again.');
+        promoterGigs();
       }   
     }
-    function dibReaction(obj)
+    function dibReaction(linker, artist_id, accepted)
     {
-      console.log("Linker: ", obj.linker);
-      $("#loading-indicator").show();      
-      $.post('promoter/dibReaction',
-        {'artistLink': obj.linker, 'artistId': obj.artist_id, 'accept': obj.acceptDib, 'reject': obj.rejectDib}, dibReactionCallback,'json');   
+      $("#loading-indicator").show();
+      console.log("Linker Value: ", linker);
+      console.log("Artist ID: ", artist_id);
+      console.log("Accepted: ", accepted);
+
+      alert("Are you sure you wish to accept this Artist's Dib? 
+        The gig will be booked and all other artists will automatically get rejected for this gig.");
+
+      $.post('promoter/dibReaction',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, dibReactionCallback,'json');          
     }
 
 

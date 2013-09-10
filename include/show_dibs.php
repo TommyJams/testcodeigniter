@@ -48,7 +48,7 @@ function confirmSubmit()
         return false ;
 }
 
-$('#dibReaction').bind('submit',function(e) 
+/*$('#dibReaction').bind('submit',function(e) 
 {
     e.preventDefault();
 
@@ -60,7 +60,7 @@ $('#dibReaction').bind('submit',function(e)
               };
 			
 			dibReaction(obj);
-});
+}); */
 
 </script>
 </head>
@@ -84,8 +84,8 @@ $('#dibReaction').bind('submit',function(e)
 				<input type="hidden" name="artist_id" id="artist_id" value="<? print($artist_id);?>">  
                 <input type="hidden" name="linker" id="linker" value="<? print($linker);?>">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
-					<input type="submit" value="Accept" name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="return confirmSubmit()">
-					<input type="submit" value="Reject" name="reject" id="reject" style="width: 48%; background:#FF3C35; float:right;">
+					<input type="submit" value="Accept" name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="dibReaction('<? print("$linker", "$artist_id", 1); ?>')">
+					<input type="submit" value="Reject" name="reject" id="reject" style="width: 48%; background:#FF3C35; float:right;" onClick="dibReaction('<? print("$linker", "$artist_id", 0); ?>')">
 				</div>           
 			</form>			
 		<?

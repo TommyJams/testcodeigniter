@@ -717,16 +717,18 @@ public function dibReaction(){
 	$password=md5($sessionArray['password']);
 
 	//$link=$_POST["gig"]/15999;
-	$link=$_POST['artistLink'];
-	$artist_id=$_POST['artistId'];
+	$link=$_POST['link'];
+	$artist_id=$_POST['artist_id'];
+	$accepted=$_POST['accepted'];
 	
-	if($_POST["accept"])
+	if($accepted == 1)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 		if(!$results)
 		{
-			$response['error'] = 1;
+			$error = 1
+			$response['error'] = $error;
 			$this->load->helper('functions');
 			createResponse($response);
 		}
@@ -766,7 +768,8 @@ public function dibReaction(){
 				$result_set8 = mysql_query($q8);
 				if (!$result_set8)
 				{
-					$response['error'] = 1;
+					$error = 1
+					$response['error'] = $error;
 					$this->load->helper('functions');
 					createResponse($response);
 				}
@@ -906,7 +909,7 @@ public function dibReaction(){
 		createResponse($response);
 	}
 
-	elseif($_POST["reject"])
+	elseif($accepted == 0)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
