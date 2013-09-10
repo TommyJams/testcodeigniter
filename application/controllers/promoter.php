@@ -650,7 +650,7 @@ public function updateGigProfile(){
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
-	$id = $_POST['link'];
+	$id = $_POST['gigLink'];
 
 	$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 	$result_set1 = mysql_query($q1);
@@ -690,8 +690,8 @@ public function updateGigProfile(){
 	$to = "alerts@tommyjams.com";
 	send_email($to, $sender, $subject, $mess);
 	
-	$response = $id;
-	$response = $error;
+	$response['id'] = $id;
+	$response['error'] = $error;
 
 	$this->load->helper('functions');
 	createResponse($response);
