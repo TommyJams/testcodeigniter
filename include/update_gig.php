@@ -87,7 +87,7 @@
                                 </p>
                                 <p>
                                     <label for="social">Twitter: </label>
-                                    <input type="text" id="twiter" name="twitter" style="width:200px;" value="<? print(json_decode($_POST['json'])->twitter); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="twitter" name="twitter" style="width:200px;" value="<? print(json_decode($_POST['json'])->twitter); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <em>Gig's link on Twitter.</em>
                                 </p>
                             </fieldset>
