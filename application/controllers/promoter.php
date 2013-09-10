@@ -707,12 +707,12 @@ public function dibReaction(){
 		session_start();
 	}
 
-	if(!isset($sessionArray['username']))
+	/*if(!isset($sessionArray['username']))
 	{
 		redirect('http://testcodeigniter.azurewebsites.net/index');
 		exit;
 	}	
-
+*/
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
