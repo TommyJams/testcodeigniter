@@ -44,7 +44,7 @@
                                     <em>Name of Gig</em>
                                 </p> 
                                 <p>
-                                    <label for="gig">Time: <span class="requiredField">*</span></label>
+                                    <label for="gig">Time:</label>
                                     <select id="select"  disabled="disabled" style="width:60px; float:left;" name="hours">
                                     <?
                                         $hourSaved = (json_decode($_POST['json'])->hourSaved);
@@ -66,8 +66,8 @@
                                     <em>Time of Gig</em>
                                 </p>
 								<p>
-									<label for="gig">Duration: <span class="requiredField">*</span></label>
-                                    <select id="select"  style="width:60px; float:left;" name="duration">
+									<label for="gig">Duration:</span></label>
+                                    <select id="select"  disabled="disabled" style="width:60px; float:left;" name="duration">
                                     <?
                                         $durationSaved = (json_decode($_POST['json'])->durationSaved);
                                         for($i=0.5;$i<=24;$i = $i + 0.5){ if($a && $i == $durationSaved) print("<option value='$i' selected='selected'>$i</option>"); else print("<option value='$i'>$i</option>"); }
