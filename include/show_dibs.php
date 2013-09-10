@@ -97,7 +97,7 @@ $('#dibReaction').bind('submit',function(e)
 		if($dibs_exist == 1)
 		{
 		?>
-			<div style="width:100%; height: 40px; margin-top: 10px; text-align: center; float:left;">
+			<div style="width:100%; height: 40px; margin-top: 10px; text-align: center; float:left; class='whiteHoverRef'">
 				<input type="submit" value="Recommend Artist" name="recommendartist" style="width: 200px; color:#fff; background:#000; float:center;" onClick="recommendArtist('<? print("$linker"); ?>')">
 			</div>
 		<?
@@ -106,6 +106,6 @@ $('#dibReaction').bind('submit',function(e)
 <script type="text/javascript">
 	$('#loading-indicator').hide();
 </script>
-		
+
 </body>
 </html>
