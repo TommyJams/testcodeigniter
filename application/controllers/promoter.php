@@ -598,7 +598,7 @@ public function updateGigPage(){
 			$response['gig'] = $gig;
 			$response['hourSaved'] = $hourSaved;
 			$response['minSaved'] = $minSaved;
-			$response['amSaved'] = $amSaved
+			$response['amSaved'] = $amSaved;
 			$response['durationSaved'] = $duration;
 			$response['web'] = $web;
 			$response['fb'] = $fb;
