@@ -199,7 +199,7 @@
     {
       $("#loading-indicator").show();
       $.post('promoter/updateGigProfile',
-        {'gig': obj.gig, 'web': obj.web, 'fb': obj.fb, 'twitter': obj.twitter, 'add': obj.add, 'desc': obj.desc, 'link': obj.link},
+        {'gig': obj.gig, 'web': obj.web, 'fb': obj.fb, 'twitter': obj.twitter, 'add': obj.add, 'desc': obj.desc, 'link': obj.gigLink},
         updateGigProfileCallback,'json');
     }
 

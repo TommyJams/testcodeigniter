@@ -14,7 +14,7 @@
                     twitter:    document.getElementById('twitter').value,
                     add:    	document.getElementById('add').value,
                     desc:    	document.getElementById('about').value,
-                    link:       document.getElementById('link').value
+                    gigLink:       document.getElementById('gigLink').value
                 };
 
             updateGigProfile(obj);
@@ -109,7 +109,7 @@
                             </div>
                             <div>
                                 <?php $link = (json_decode($_POST['json'])->link); ?>
-                                <input type="hidden" name="link" id="link" value="<? print($link);?>">
+                                <input type="hidden" name="gigLink" id="gigLink" value="<? print($link);?>">
                             </div>    
 							<div class="formExtra" style=" width:60%; position:relative; margin-top:20px; margin-left:auto; margin-right: auto;">
                                 <p><strong>Note: </strong> Fields marked with <span class="requiredField">*</span> are required.</p>
