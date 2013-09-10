@@ -150,7 +150,7 @@
       $("#loading-indicator").show();      
       console.log("All Data: ", JSON.stringify(a));
 
-      var array = JSON.parse(a);
+      var array = JSON.parse(a.dibLists);
       console.log("Linker value: ", array[3]);
       $('<div>', {id: array[3]}).load("include/show_dibs.php", {json: JSON.stringify(a)});
     }

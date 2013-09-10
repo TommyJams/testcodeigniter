@@ -1049,7 +1049,7 @@ public function showDibs(){
 		$artist_id=$b["artist_id"];$artist_name=$b["artist_name"];
 
 		$dibLists = array($artist_name, $artist_id, $dibs_exist, $linker);
-		$response[] = $dibLists;	
+		$response['dibLists'][] = $dibLists;	
 	}
 
 	$this->load->helper('functions');
