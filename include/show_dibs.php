@@ -78,8 +78,8 @@ function confirmSubmit()
 			print("<div style='width:50%; margin-top: 10px; height:18px; text-align: center; float:left;'><a href='promoter.php?id=$artist_id' target='_top' class='whiteHoverRef' style='font-size: 16px;'>$artist_name</a></div>"); 
 		?>
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
-					<a href='javascript:;' name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;"  onClick="showDibReaction('<?print("$linker");?>', '<?print("$artist_id");?>', 1);">ACCEPT</a>
-					<a href='javascript:;' name="reject" id="reject" style="width: 48%; background:#FF3C35; float:right;" onClick="showDibReaction('<?print("$linker");?>', '<?print("$artist_id");?>', 0);">REJECT</a>
+					<a href='javascript:;' name="accept" id="accept" style="width: 45%; background:#B4F62F; float:left;"  onClick="showDibReaction('<?print("$linker");?>', '<?print("$artist_id");?>', 1);">ACCEPT</a>
+					<a href='javascript:;' name="reject" id="reject" style="width: 45%; background:#FF3C35; float:right;" onClick="showDibReaction('<?print("$linker");?>', '<?print("$artist_id");?>', 0);">REJECT</a>
 				</div>           
 		<?
 		} 
