@@ -187,7 +187,7 @@
     {
       $("#loading-indicator").show();
 
-      if(accepted == '1')
+      /*if(accepted == '1')
       {
         alert("Are you sure you wish to accept this Artist's Dib? The gig will be booked and all other artists will automatically get rejected for this gig.");
         $.post('promoter/dummyFunc',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');          
@@ -196,7 +196,8 @@
       {
         alert("Are you sure you wish to reject this Artist's Dib?");
         $.post('promoter/dummyFunc',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');
-      }
+      }*/
+      $.post('promoter/dummyFunc','',recommendArtistCallback,'json');
     }
 
 
