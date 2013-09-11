@@ -49,515 +49,515 @@ class Promoter extends CI_Controller{
 		$this->load->view('promoter_view');
 	}
 
-public function profilepage(){
+	public function profilepage(){
 
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
 
-	// Initializing variables. 
-	// Codeigniter throws "undefined variable" error on un-intialized variables.
-	$type = "";
-	$user = "";
-	$nsilver = "";
-	//$id = "";
-	
-	if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
-	{
-		$username=$sessionArray['username_artist'];
-		$password=md5($sessionArray['password_artist']);
+		// Initializing variables. 
+		// Codeigniter throws "undefined variable" error on un-intialized variables.
+		$type = "";
+		$user = "";
+		$nsilver = "";
+		//$id = "";
+		
+		if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
 
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
-		$results = mysql_query($SQLs);
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$results = mysql_query($SQLs);
+
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
+				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
+				$mobile=$a["mobile"];
+				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];
+				$gplus=$a["gplus"];$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
+				$job=$a["job"];$designation=$a["designation"];
+				$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
+				$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+
+				$response=$a;
+			}
+		}
+		else if(isset($sessionArray['username'])  && !isset($_POST["id"]))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$results = mysql_query($SQLs);
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
+				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
+				$mobile=$a["mobile"];
+				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];$gplus=$a["gplus"];
+				$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
+				$job=$a["job"];$designation=$a["designation"];
+				$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
+				$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+
+				$response=$a;
+			}
+		}
+		else
+		{
+			$link = $_POST['id'];
+
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
+			$results = mysql_query($SQLs);
+
+			if (mysql_num_rows($results) == 1) 
+			{
+				$a = mysql_fetch_array($results);
+				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
+				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
+				$mobile=$a["mobile"];
+				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];$gplus=$a["gplus"];
+				$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
+				$job=$a["job"];$designation=$a["designation"];
+				$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
+				$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+
+				$response=$a;
+			}
+			else {
+				error_log('No user Exist');
+				exit;
+			}
+		}
+
+		// Initializing variables before they are used. 
+		// Codeigniter throws "undefined" error on un-intialized variables.
+		$userRating = "";
+		$users = "";
+
+		if($nsilver>0)
+			{$userRating=round(($gold/2+$silver/2),1);}
+		else
+			{$userRating=$gold;}
+
+		if($about=="")
+			{$about="Add details for this section by editing your profile";}
+
+		if($type=="Promoter"){     $users="images/promoter/$user";$usersa="../images/promoter/$user";; }
+	 	elseif($type=="Artist"){     $users="images/artist/$user";$usersa="../images/artist/$user"; }
+
+		if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
+		else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
+
+		$response['userRating'] = $userRating;
+		$response['about'] = $about;
+		$response['users'] = $users;
+
+	    if($type=="Promoter"){   
+	        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$link AND status=1 ORDER BY id DESC"; 
+	    }
+	    else if($type=="Artist"){   
+	        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
+	    }
+	    $results = mysql_query($SQLs);
 
 		while ($a = mysql_fetch_assoc($results))
-		{
-			$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
-			$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
-			$mobile=$a["mobile"];
-			$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];
-			$gplus=$a["gplus"];$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
-			$job=$a["job"];$designation=$a["designation"];
-			$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
-			$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+	    {
+	        $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
+	        $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
+	                               
+	        $SQL = "SELECT * FROM `$database`.`shop` WHERE link=$gig_id";
+	        $result = mysql_query($SQL);
+	        
+	        while ($b = mysql_fetch_assoc($result))
+	        {
+	        	$gig_name=$b["gig"];$v_state=$b["venue_state"];$v_city=$b["venue_city"];$v_date=$b["venue_date"];
+	        }
+			
+			$formattedDate = date('d-m-Y',strtotime($v_date));
 
-			$response=$a;
-		}
+			$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city, $gig_id);
+
+			$response['gigHistory'][] = $gigRow;
+		}	
+
+		$this->load->helper('functions');
+		createResponse($response);
+
+		//$this->load->view('profile_subview');
 	}
-	else if(isset($sessionArray['username'])  && !isset($_POST["id"]))
-	{
-		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
 
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
-		$results = mysql_query($SQLs);
-		while ($a = mysql_fetch_assoc($results))
-		{
-			$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
-			$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
-			$mobile=$a["mobile"];
-			$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];$gplus=$a["gplus"];
-			$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
-			$job=$a["job"];$designation=$a["designation"];
-			$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
-			$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
+	public function mygigs(){
+		ob_start();
 
-			$response=$a;
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
 		}
-	}
-	else
-	{
-		$link = $_POST['id'];
-
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
-		$results = mysql_query($SQLs);
-
-		if (mysql_num_rows($results) == 1) 
+		if(isset($sessionArray['username']))
 		{
-			$a = mysql_fetch_array($results);
-			$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
-			$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
-			$mobile=$a["mobile"];
-			$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];$gplus=$a["gplus"];
-			$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
-			$job=$a["job"];$designation=$a["designation"];
-			$artistrate=$a["artistrate"];$adminrate=$a["adminrate"];$about=$a["about"];
-			$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
-
-			$response=$a;
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
 		}
-		else {
-			error_log('No user Exist');
+		else
+		{
+			$this->sessionlogout();
 			exit;
 		}
-	}
 
-	// Initializing variables before they are used. 
-	// Codeigniter throws "undefined" error on un-intialized variables.
-	$userRating = "";
-	$users = "";
+		$artist_id = "";
+		$artist_name = "";
+		$num_rows = "";
+		$contact = "";
 
-	if($nsilver>0)
-		{$userRating=round(($gold/2+$silver/2),1);}
-	else
-		{$userRating=$gold;}
+		$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
+	    $result_set2 = mysql_query($q2);	
+	    if (mysql_num_rows($result_set2) == 1) 
+	    {
+	        $found = mysql_fetch_array($result_set2);
+	        $promoter_id=$found["link"];
+	    } 
+	    $SQLs = "SELECT * FROM `$database`.`shop`  WHERE promoter=$promoter_id ORDER BY id DESC";
+	    $results = mysql_query($SQLs);                                                                
 
-	if($about=="")
-		{$about="Add details for this section by editing your profile";}
+	    while ($a = mysql_fetch_assoc($results))
+	    {
+	        $id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
+	        $add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];$country=$a["venue_country"];
+	        $pincode=$a["venue_pin"];
+	        $date=$a["venue_date"];$vtime=$a["venue_time"]; $formattedDate = date('d-m-Y',strtotime($date));
+	        $period=$a["period"];
+	        $status=$a["status"];$link=$a["link"];
+	    	$desc=$a["desc"];$budget_min=$a["budget_min"];$budget_max=$a["budget_max"];$time=$a["time"];   
 
-	if($type=="Promoter"){     $users="images/promoter/$user";$usersa="../images/promoter/$user";; }
- 	elseif($type=="Artist"){     $users="images/artist/$user";$usersa="../images/artist/$user"; }
+	        $q2 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
+	        $result_set2 = mysql_query($q2);    
+	        if (mysql_num_rows($result_set2) == 1) 
+	        {
+	        	$num_rows = 1;
+	            $found = mysql_fetch_array($result_set2);
+	        	$artist_id=$found["artist_id"];
+	        	$artist_name=$found["artist_name"];
+	        
+	        	$SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
+	        	$resulte = mysql_query($SQLe);
+				$f = mysql_fetch_assoc($resulte);
+				$contact = $f['mobile'];			
+	        }
+	        else
+	        {
+	        	$linker=15999*$link;	
+	        }  		 	
 
-	if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
-	else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
+			$gigRow = array($gig, $city, $formattedDate, $vtime, $artist_id, $artist_name, $contact, $link, $linker, $num_rows);
 
-	$response['userRating'] = $userRating;
-	$response['about'] = $about;
-	$response['users'] = $users;
-
-    if($type=="Promoter"){   
-        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$link AND status=1 ORDER BY id DESC"; 
-    }
-    else if($type=="Artist"){   
-        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
-    }
-    $results = mysql_query($SQLs);
-
-	while ($a = mysql_fetch_assoc($results))
-    {
-        $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
-        $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
-                               
-        $SQL = "SELECT * FROM `$database`.`shop` WHERE link=$gig_id";
-        $result = mysql_query($SQL);
-        
-        while ($b = mysql_fetch_assoc($result))
-        {
-        	$gig_name=$b["gig"];$v_state=$b["venue_state"];$v_city=$b["venue_city"];$v_date=$b["venue_date"];
-        }
-		
-		$formattedDate = date('d-m-Y',strtotime($v_date));
-
-		$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city, $gig_id);
-
-		$response['gigHistory'][] = $gigRow;
-	}	
-
-	$this->load->helper('functions');
-	createResponse($response);
-
-	//$this->load->view('profile_subview');
-	}
-
-public function mygigs(){
-	ob_start();
-
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
-	if (!isset($sessionArray['session_id'])) {
-		session_start();
-	}
-	if(isset($sessionArray['username']))
-	{
-		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
-	}
-	else
-	{
-		$this->sessionlogout();
-		exit;
-	}
-
-	$artist_id = "";
-	$artist_name = "";
-	$num_rows = "";
-	$contact = "";
-
-	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
-    $result_set2 = mysql_query($q2);	
-    if (mysql_num_rows($result_set2) == 1) 
-    {
-        $found = mysql_fetch_array($result_set2);
-        $promoter_id=$found["link"];
-    } 
-    $SQLs = "SELECT * FROM `$database`.`shop`  WHERE promoter=$promoter_id ORDER BY id DESC";
-    $results = mysql_query($SQLs);                                                                
-
-    while ($a = mysql_fetch_assoc($results))
-    {
-        $id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
-        $add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];$country=$a["venue_country"];
-        $pincode=$a["venue_pin"];
-        $date=$a["venue_date"];$vtime=$a["venue_time"]; $formattedDate = date('d-m-Y',strtotime($date));
-        $period=$a["period"];
-        $status=$a["status"];$link=$a["link"];
-    	$desc=$a["desc"];$budget_min=$a["budget_min"];$budget_max=$a["budget_max"];$time=$a["time"];   
-
-        $q2 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
-        $result_set2 = mysql_query($q2);    
-        if (mysql_num_rows($result_set2) == 1) 
-        {
-        	$num_rows = 1;
-            $found = mysql_fetch_array($result_set2);
-        	$artist_id=$found["artist_id"];
-        	$artist_name=$found["artist_name"];
-        
-        	$SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$artist_id";
-        	$resulte = mysql_query($SQLe);
-			$f = mysql_fetch_assoc($resulte);
-			$contact = $f['mobile'];			
-        }
-        else
-        {
-        	$linker=15999*$link;	
-        }  		 	
-
-		$gigRow = array($gig, $city, $formattedDate, $vtime, $artist_id, $artist_name, $contact, $link, $linker, $num_rows);
-
-		$response['gigHistory'][] = $gigRow; 
-	}
-	
-	$this->load->helper('functions');
-	createResponse($response);
-}
-
-public function sessionlogout(){
-
-	ob_start();
-	$sessionArray = $this->session->all_userdata();
-	
-	if (!isset($sessionArray['session_id'])) {
-		session_start();
-	}
-
-	$username=$sessionArray['username'];
-	$this->session->sess_destroy();
-	redirect('http://testcodeigniter.azurewebsites.net/index');
-	exit;
-}
-
-public function gigProfilePage(){
-
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
-	$user_id = $_POST['id']; 
-	error_log($user_id);
-
-	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$user_id'";
-	$results = mysql_query($SQLs);
-	$a = mysql_fetch_array($results);
-	{
-		$id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
-		$add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];
-		$country=$a["venue_country"];$pincode=$a["venue_pin"];
-		$fb=$a["fb"];$twitter=$a["twitter"];$web=$a["web"];
-		$date=$a["venue_date"];$vtime=$a["venue_time"];$duration=$a["duration"];
-		$formattedDate = date('d-m-Y',strtotime($date));
-		$period=$a["period"];$promoter_name=$a["promoter_name"];$promoter=$a["promoter"];
-	
-		/*$SQLs = "SELECT mobile FROM `$database`.`members` WHERE link='$promoter'";
-		$result = mysql_query($SQLs);
-		$b = mysql_fetch_array($result);
-		{$mobile=$b["mobile"];}*/
-	
-		//if(!isset($_SESSION["username"])){$mobile=$mobile[0]." * * * * * * * *";}
-			
-		$status=$a["status"];$link=$a["link"];$image=$a["image"];
-		$desc=$a["desc"];$budget_min=$a["budget_min"];
-		$budget_max=$a["budget_min"]+$a["budget_min"]*$a["budget_max"]/100;$time=$a["time"];
-
-		//$response = $a;
-	}
-
-	if($image=="")
-	{
-		$image="gigs.jpg";
-	}
-
-	$gigs="images/gig/$image";
-	$response['gigs'] = $gigs;
-
-	$todayTime = strtotime(date("Y-m-d"));
-	$dated = strtotime($date); 
-
-	$username = $sessionArray['username']; 
-
-	$yes=0;
-
-	$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
-	$resultsa = mysql_query($SQLsa);
-	if (!$resultsa)
-		die("Database query failed: " . mysql_error());
-	$pl = mysql_fetch_assoc($resultsa);
-	$prolink=$pl["link"];
-
-    $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
-    $result_set4 = mysql_query($q4);	
-	if (mysql_num_rows($result_set4) == 1) 
-    {
-        $found = mysql_fetch_array($result_set4);
-        $yes=1;
-		$artist_booked_id=$found["artist_id"];
-		$artist_booked_name=$found["artist_name"];
-
-		$response['artist_booked_id'] = $artist_booked_id;
-		$response['artist_booked_name'] = $artist_booked_name;
-
-		$gigStatus = 1;
-		$response['gigStatus'] = $gigStatus;	
-		$yes = 1;	
-    }
-
-    //$promoter = $response["promoter"];
-	elseif($promoter==$prolink)
-	{
-		$gigStatus = 2;
-		$response['gigStatus'] = $gigStatus;
-	}
-    
-    elseif(isset($sessionArray['username_artist']))
-    { 
-    	$gigSession = 1;
-    	$username_artist = $sessionArray['username_artist'];
-    	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username_artist'";
-        $result_set2 = mysql_query($q2);	    
-        if (mysql_num_rows($result_set2) == 1) 
-        {
-            $found = mysql_fetch_array($result_set2);
-            $artist_id = $found["link"];
-        }
-
-        $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
-        $result_set4 = mysql_query($q4);	
-        if (mysql_num_rows($result_set4) == 1) 
-        {                    
-			$found = mysql_fetch_array($result_set4);
-            $statuss=$found["status"];
-            if($statuss==1){$gigStatus = 3; $response['gigStatus'] = $gigStatus;}
-            elseif($statuss==2){$gigStatus = 4; $response['gigStatus'] = $gigStatus;}
-            elseif($statuss==4){$gigStatus = 5; $response['gigStatus'] = $gigStatus;}
-        }
-	
-		elseif($todayTime > $dated)
-		{
-			$gigStatus = 6;
-			$response['gigStatus'] = $gigStatus;
+			$response['gigHistory'][] = $gigRow; 
 		}
-        else
-        {                       
-            if($yes!=1)
-        	{   
-        		$gigStatus = 7;
-        		$response['gigStatus'] = $gigStatus;
-        	}
-        }
-    }    
-    
-	$response['link'] = $link;
-    $response['gig'] = $gig; 
-    $response['cat'] = $cat;   
-	$response['budget_min'] = $budget_min;
-	$response['budget_max'] = $budget_max;
-	$response['formattedDate'] =  $date;
-	$response['vtime'] = $time;
-	$response['duration'] = $duration;
-	$response['fb'] = $fb;
-	$response['web'] = $web;
-	$response['twitter'] = $twitter;
-	$response['desc'] = $desc;
-	$response['promoter_name'] = $promoter_name;
-	$response['city'] = $city;
-	$response['state'] = $state;
-	$response['country'] = $country;
-	$response['gigStatus'] = $gigStatus;
-	$response['add'] = $add;
-	$response['pincode'] = $pincode;
-                        
-	$this->load->helper('functions');
-	createResponse($response);
-
-}
-
-public function launchGigFunc(){
-
-	ob_start();
-
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
-	if (!isset($sessionArray['session_id'])){
-		session_start();
+		
+		$this->load->helper('functions');
+		createResponse($response);
 	}
 
-	if(isset($sessionArray['username']))
-	{
-		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
-		$actual_type = 'venue';
-	}
+	public function sessionlogout(){
 
-	elseif(isset($sessionArray['username_artist']))
-	{
-		$username=$sessionArray['username_artist'];
-		$password=$sessionArray['password_artist'];
-		$actual_type = 'artist';
-	}
-
-	$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
-	$result_set1 = mysql_query($q1);	
-	if (mysql_num_rows($result_set1) == 1) 
-	{
-		$founded = mysql_fetch_array($result_set1);
-		$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
-	}
-
-	$SQLs = "SELECT id FROM `$database`.`shop`";
-	$results = mysql_query($SQLs);
-	while ($a = mysql_fetch_assoc($results))
-	{
-		$id=$a["id"];
-	}
-
-	$totalSlots=$_POST["slotNum"];
-	for($iSlot=1;$iSlot<=$totalSlots;$iSlot++)
-	{
-		$id=$id+1;
-		$ida=$id*16993; /*changed to 16993 wiz. prime number so that profile id should never match gig id*/
-
-		$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){	$fb='http://'.$fb;}
-		$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){	$twitter='http://'.$twitter;}
-		$web=$_POST['web'];if($web && !startsWith($web,'http')){	$web='http://'.$web;}
-
-		if($totalSlots>1)
-			$gig=$_POST['gig'].': Slot '.$iSlot;
-		else
-			$gig=$_POST['gig'];
-
-		$cat=$_POST['cat'];
-		$budget_min=$_POST['budget_min'];
-		$budget_max=$_POST['budget_max'];
-		$date=$_POST['year'].'-'.$_POST['month'].'-'.$_POST['date'];
-		$time=$_POST['hours'].':'.$_POST['minute'].' '.$_POST['am'];
-		$duration=$_POST['duration'];
-		$venue_add=$_POST['add'];
-		$venue_city=$_POST['city'];
-		$venue_state=$_POST['state'];
-		$venue_country=$_POST['country'];
-		$venue_pin=$_POST['pincode'];
-		$desc=$_POST['desc'];
-			
-		$q2 = "INSERT INTO `$database`.`shop` (`gig`, `category`, `budget_min`, `budget_max`, `venue_date`, `venue_time`, `duration`, `venue_add`, `venue_city`, `venue_state`, `venue_country`, `venue_pin`, `fb`, `web`, `twitter`, `desc`, `promoter`, `promoter_name`, `link`, `status`) 
-				VALUES('$gig', '$cat', '$budget_min', '$budget_max', '$date', '$time', '$duration', '$venue_add', '$venue_city', '$venue_state', '$venue_country',  '$venue_pin',  '$fb',  '$web',  '$twitter', '$desc', '$pid', '$name', '$ida', '1')";
-		$result_set2 = mysql_query($q2);
-		if (!$result_set2)
-		{
-				die("Database query failed: " . mysql_error());
+		ob_start();
+		$sessionArray = $this->session->all_userdata();
+		
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
 		}
-	}
-		
-/*	if($totalSlots>1)
-		$gig=$_POST['gig'];*/
 
-	$to = $email;
-	$sender = "alerts@tommyjams.com";
-	$subject = "Launched Gig: $gig";
-	$mess="<p style='text-align:left;'> Dear $name,<br><br>Congratulations!<br>Your gig '$gig' has been launched successfully on TommyJams.
-				<br>We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.
-				<br>We wish you all the very best for the gig.<br><br>Happy Jamming,<br>Team TommyJams<br><br></p>";
-		
-	$this->load->helper('mail');
-    send_email($to, $sender, $subject, $mess);
-
-	$to = "alerts@tommyjams.com";
-	$this->load->helper('mail');
-    send_email($to, $sender, $subject, $mess);
-
-    $image="gigs.jpg";
-	
-	$gigs="images/gig/$image";
-	$response['gigs'] = $gigs;
-
-    $gigStatus = 2;
-
-    $response['gig'] = $gig; 
-    $response['cat'] = $cat;   
-	$response['budget_min'] = $budget_min;
-	$response['budget_max'] = $budget_max;
-	$response['formattedDate'] =  $date;
-	$response['vtime'] = $time;
-	$response['duration'] = $duration;
-	$response['fb'] = $fb;
-	$response['web'] = $web;
-	$response['twitter'] = $twitter;
-	$response['desc'] = $desc;
-	$response['promoter_name'] = $name;
-	$response['city'] = $venue_city;
-	$response['state'] = $venue_state;
-	$response['country'] = $venue_country;
-	$response['gigStatus'] = $gigStatus;
-	$response['add'] = $venue_add;
-	$response['pincode'] = $venue_pin;
-
-	$this->load->helper('functions');
-	createResponse($response);
-}
-
-public function updateGigPage(){
-
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
-	if(isset($sessionArray['username']))
-	{
 		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
-	}
-	else
-	{
+		$this->session->sess_destroy();
 		redirect('http://testcodeigniter.azurewebsites.net/index');
 		exit;
 	}
+
+	public function gigProfilePage(){
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		$user_id = $_POST['id']; 
+		error_log($user_id);
+
+		$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$user_id'";
+		$results = mysql_query($SQLs);
+		$a = mysql_fetch_array($results);
+		{
+			$id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
+			$add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];
+			$country=$a["venue_country"];$pincode=$a["venue_pin"];
+			$fb=$a["fb"];$twitter=$a["twitter"];$web=$a["web"];
+			$date=$a["venue_date"];$vtime=$a["venue_time"];$duration=$a["duration"];
+			$formattedDate = date('d-m-Y',strtotime($date));
+			$period=$a["period"];$promoter_name=$a["promoter_name"];$promoter=$a["promoter"];
+		
+			/*$SQLs = "SELECT mobile FROM `$database`.`members` WHERE link='$promoter'";
+			$result = mysql_query($SQLs);
+			$b = mysql_fetch_array($result);
+			{$mobile=$b["mobile"];}*/
+		
+			//if(!isset($_SESSION["username"])){$mobile=$mobile[0]." * * * * * * * *";}
+				
+			$status=$a["status"];$link=$a["link"];$image=$a["image"];
+			$desc=$a["desc"];$budget_min=$a["budget_min"];
+			$budget_max=$a["budget_min"]+$a["budget_min"]*$a["budget_max"]/100;$time=$a["time"];
+
+			//$response = $a;
+		}
+
+		if($image=="")
+		{
+			$image="gigs.jpg";
+		}
+
+		$gigs="images/gig/$image";
+		$response['gigs'] = $gigs;
+
+		$todayTime = strtotime(date("Y-m-d"));
+		$dated = strtotime($date); 
+
+		$username = $sessionArray['username']; 
+
+		$yes=0;
+
+		$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
+		$resultsa = mysql_query($SQLsa);
+		if (!$resultsa)
+			die("Database query failed: " . mysql_error());
+		$pl = mysql_fetch_assoc($resultsa);
+		$prolink=$pl["link"];
+
+	    $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
+	    $result_set4 = mysql_query($q4);	
+		if (mysql_num_rows($result_set4) == 1) 
+	    {
+	        $found = mysql_fetch_array($result_set4);
+	        $yes=1;
+			$artist_booked_id=$found["artist_id"];
+			$artist_booked_name=$found["artist_name"];
+
+			$response['artist_booked_id'] = $artist_booked_id;
+			$response['artist_booked_name'] = $artist_booked_name;
+
+			$gigStatus = 1;
+			$response['gigStatus'] = $gigStatus;	
+			$yes = 1;	
+	    }
+
+	    //$promoter = $response["promoter"];
+		elseif($promoter==$prolink)
+		{
+			$gigStatus = 2;
+			$response['gigStatus'] = $gigStatus;
+		}
+	    
+	    elseif(isset($sessionArray['username_artist']))
+	    { 
+	    	$gigSession = 1;
+	    	$username_artist = $sessionArray['username_artist'];
+	    	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username_artist'";
+	        $result_set2 = mysql_query($q2);	    
+	        if (mysql_num_rows($result_set2) == 1) 
+	        {
+	            $found = mysql_fetch_array($result_set2);
+	            $artist_id = $found["link"];
+	        }
+
+	        $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
+	        $result_set4 = mysql_query($q4);	
+	        if (mysql_num_rows($result_set4) == 1) 
+	        {                    
+				$found = mysql_fetch_array($result_set4);
+	            $statuss=$found["status"];
+	            if($statuss==1){$gigStatus = 3; $response['gigStatus'] = $gigStatus;}
+	            elseif($statuss==2){$gigStatus = 4; $response['gigStatus'] = $gigStatus;}
+	            elseif($statuss==4){$gigStatus = 5; $response['gigStatus'] = $gigStatus;}
+	        }
+		
+			elseif($todayTime > $dated)
+			{
+				$gigStatus = 6;
+				$response['gigStatus'] = $gigStatus;
+			}
+	        else
+	        {                       
+	            if($yes!=1)
+	        	{   
+	        		$gigStatus = 7;
+	        		$response['gigStatus'] = $gigStatus;
+	        	}
+	        }
+	    }    
+	    
+		$response['link'] = $link;
+	    $response['gig'] = $gig; 
+	    $response['cat'] = $cat;   
+		$response['budget_min'] = $budget_min;
+		$response['budget_max'] = $budget_max;
+		$response['formattedDate'] =  $date;
+		$response['vtime'] = $time;
+		$response['duration'] = $duration;
+		$response['fb'] = $fb;
+		$response['web'] = $web;
+		$response['twitter'] = $twitter;
+		$response['desc'] = $desc;
+		$response['promoter_name'] = $promoter_name;
+		$response['city'] = $city;
+		$response['state'] = $state;
+		$response['country'] = $country;
+		$response['gigStatus'] = $gigStatus;
+		$response['add'] = $add;
+		$response['pincode'] = $pincode;
+	                        
+		$this->load->helper('functions');
+		createResponse($response);
+
+	}
+
+	public function launchGigFunc(){
+
+		ob_start();
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id'])){
+			session_start();
+		}
+
+		if(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+			$actual_type = 'venue';
+		}
+
+		elseif(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=$sessionArray['password_artist'];
+			$actual_type = 'artist';
+		}
+
+		$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+		$result_set1 = mysql_query($q1);	
+		if (mysql_num_rows($result_set1) == 1) 
+		{
+			$founded = mysql_fetch_array($result_set1);
+			$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
+		}
+
+		$SQLs = "SELECT id FROM `$database`.`shop`";
+		$results = mysql_query($SQLs);
+		while ($a = mysql_fetch_assoc($results))
+		{
+			$id=$a["id"];
+		}
+
+		$totalSlots=$_POST["slotNum"];
+		for($iSlot=1;$iSlot<=$totalSlots;$iSlot++)
+		{
+			$id=$id+1;
+			$ida=$id*16993; /*changed to 16993 wiz. prime number so that profile id should never match gig id*/
+
+			$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){	$fb='http://'.$fb;}
+			$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){	$twitter='http://'.$twitter;}
+			$web=$_POST['web'];if($web && !startsWith($web,'http')){	$web='http://'.$web;}
+
+			if($totalSlots>1)
+				$gig=$_POST['gig'].': Slot '.$iSlot;
+			else
+				$gig=$_POST['gig'];
+
+			$cat=$_POST['cat'];
+			$budget_min=$_POST['budget_min'];
+			$budget_max=$_POST['budget_max'];
+			$date=$_POST['year'].'-'.$_POST['month'].'-'.$_POST['date'];
+			$time=$_POST['hours'].':'.$_POST['minute'].' '.$_POST['am'];
+			$duration=$_POST['duration'];
+			$venue_add=$_POST['add'];
+			$venue_city=$_POST['city'];
+			$venue_state=$_POST['state'];
+			$venue_country=$_POST['country'];
+			$venue_pin=$_POST['pincode'];
+			$desc=$_POST['desc'];
+				
+			$q2 = "INSERT INTO `$database`.`shop` (`gig`, `category`, `budget_min`, `budget_max`, `venue_date`, `venue_time`, `duration`, `venue_add`, `venue_city`, `venue_state`, `venue_country`, `venue_pin`, `fb`, `web`, `twitter`, `desc`, `promoter`, `promoter_name`, `link`, `status`) 
+					VALUES('$gig', '$cat', '$budget_min', '$budget_max', '$date', '$time', '$duration', '$venue_add', '$venue_city', '$venue_state', '$venue_country',  '$venue_pin',  '$fb',  '$web',  '$twitter', '$desc', '$pid', '$name', '$ida', '1')";
+			$result_set2 = mysql_query($q2);
+			if (!$result_set2)
+			{
+					die("Database query failed: " . mysql_error());
+			}
+		}
+			
+	/*	if($totalSlots>1)
+			$gig=$_POST['gig'];*/
+
+		$to = $email;
+		$sender = "alerts@tommyjams.com";
+		$subject = "Launched Gig: $gig";
+		$mess="<p style='text-align:left;'> Dear $name,<br><br>Congratulations!<br>Your gig '$gig' has been launched successfully on TommyJams.
+					<br>We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.
+					<br>We wish you all the very best for the gig.<br><br>Happy Jamming,<br>Team TommyJams<br><br></p>";
+			
+		$this->load->helper('mail');
+	    send_email($to, $sender, $subject, $mess);
+
+		$to = "alerts@tommyjams.com";
+		$this->load->helper('mail');
+	    send_email($to, $sender, $subject, $mess);
+
+	    $image="gigs.jpg";
+		
+		$gigs="images/gig/$image";
+		$response['gigs'] = $gigs;
+
+	    $gigStatus = 2;
+
+	    $response['gig'] = $gig; 
+	    $response['cat'] = $cat;   
+		$response['budget_min'] = $budget_min;
+		$response['budget_max'] = $budget_max;
+		$response['formattedDate'] =  $date;
+		$response['vtime'] = $time;
+		$response['duration'] = $duration;
+		$response['fb'] = $fb;
+		$response['web'] = $web;
+		$response['twitter'] = $twitter;
+		$response['desc'] = $desc;
+		$response['promoter_name'] = $name;
+		$response['city'] = $venue_city;
+		$response['state'] = $venue_state;
+		$response['country'] = $venue_country;
+		$response['gigStatus'] = $gigStatus;
+		$response['add'] = $venue_add;
+		$response['pincode'] = $venue_pin;
+
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
+	public function updateGigPage(){
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+		}
+		else
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+			exit;
+		}
 
 		$SQLsa = "SELECT link FROM `$database`.`members` WHERE `fb_id`='$username'";
 		$resultsa = mysql_query($SQLsa);
@@ -630,189 +630,312 @@ public function updateGigPage(){
 		$amSaved = $tempExplode2[1]; */
 	}
 
-public function updateGigProfile(){
+	public function updateGigProfile(){
 
-	ob_start();
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
+		ob_start();
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
 
-	if (!isset($sessionArray['session_id()'])) {
-		session_start();
-	}
+		if (!isset($sessionArray['session_id()'])) {
+			session_start();
+		}
 
-	if(!isset($sessionArray['username']))
-	{
-		redirect('http://testcodeigniter.azurewebsites.net/index');
-		exit;
-	}	
+		if(!isset($sessionArray['username']))
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+			exit;
+		}	
 
-	$username=$sessionArray['username'];
-	$password=md5($sessionArray['password']);
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
 
-	$id = $_POST['gigLink'];
+		$id = $_POST['gigLink'];
 
-	$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
-	$result_set1 = mysql_query($q1);
-	if (mysql_num_rows($result_set1) == 1) 
-	{
-		$founded = mysql_fetch_array($result_set1);
-		$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
-	}
+		$q1 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+		$result_set1 = mysql_query($q1);
+		if (mysql_num_rows($result_set1) == 1) 
+		{
+			$founded = mysql_fetch_array($result_set1);
+			$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
+		}
 
-	$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){$fb='http://'.$fb;}
-	$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){$twitter='http://'.$twitter;}
-	$web=$_POST['web'];if($web && !startsWith($web,'http')){$web='http://'.$web;}
-	$gig=$_POST['gig'];
-	$venue_add=addslashes($_POST['add']);
-	$desc=addslashes($_POST['desc']);
+		$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){$fb='http://'.$fb;}
+		$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){$twitter='http://'.$twitter;}
+		$web=$_POST['web'];if($web && !startsWith($web,'http')){$web='http://'.$web;}
+		$gig=$_POST['gig'];
+		$venue_add=addslashes($_POST['add']);
+		$desc=addslashes($_POST['desc']);
 
-	$q2 = "UPDATE `$database`.`shop` SET `gig`='$gig', `venue_add`='$venue_add', `fb`='$fb', `web`='$web', `twitter`='$twitter', `desc`='$desc' WHERE `link`='$id'";
+		$q2 = "UPDATE `$database`.`shop` SET `gig`='$gig', `venue_add`='$venue_add', `fb`='$fb', `web`='$web', `twitter`='$twitter', `desc`='$desc' WHERE `link`='$id'";
 
-	$result_set2 = mysql_query($q2);
-	if (!$result_set2)
-	{
-		$error = 1;
-	}
-	else
-	{
-		$error = 2;
-	}
-
-	$to = $email;
-	$subject = "Udpated Gig: $gig";
-	$mess="<p style='text-align:left;'>Dear $name,<br><br>Your gig '$gig' has been Updated successfully on TommyJams.		<br>		We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.		<br>		We wish you all the very best for the gig.		<br><br>		Happy Jamming,		<br>		Team TommyJams		<br><br>		</p>		";
-	$sender = "alerts@tommyjams.com";
-			
-	$this->load->helper('mail');
-    send_email($to, $sender, $subject, $mess);
-			
-	$to = "alerts@tommyjams.com";
-	send_email($to, $sender, $subject, $mess);
-	
-	$response['id'] = $id;
-	$response['error'] = $error;
-
-	$this->load->helper('functions');
-	createResponse($response);
-}
-
-public function reactionDib()
-{
-
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
-	if (!isset($sessionArray['session_id()'])) 
-	{
-		session_start();
-	}
-
-	if(!isset($sessionArray['username']))
-	{
-		redirect('http://testcodeigniter.azurewebsites.net/index');
-		exit;
-	}	
-
-	$username=$sessionArray['username'];
-	$password=md5($sessionArray['password']);
-
-	//$link=$_POST["gig"]/15999;
-	$link=$_POST['link'];
-	$artistId=$_POST['artist_id'];
-	$accepted=$_POST['accepted'];
-
-	if($accepted == 1)
-	{
-		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artistId'";
-		$results = mysql_query($SQLs);
-		if(!$results)
+		$result_set2 = mysql_query($q2);
+		if (!$result_set2)
 		{
 			$error = 1;
-			$response['error'] = $error;
-			$this->load->helper('functions');
-			createResponse($response);
 		}
-	
-		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link'";
-		$results = mysql_query($SQLs);
-		while ($a = mysql_fetch_assoc($results))
+		else
 		{
-			$status=$a["status"];
-			$gig=$a["gig_name"];
-			$artist_id=$a["artist_id"];
-			$artist_name=$a["artist_name"];
-			$promoter_name=$a["promoter_name"];
+			$error = 2;
+		}
+
+		$to = $email;
+		$subject = "Udpated Gig: $gig";
+		$mess="<p style='text-align:left;'>Dear $name,<br><br>Your gig '$gig' has been Updated successfully on TommyJams.		<br>		We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.		<br>		We wish you all the very best for the gig.		<br><br>		Happy Jamming,		<br>		Team TommyJams		<br><br>		</p>		";
+		$sender = "alerts@tommyjams.com";
+				
+		$this->load->helper('mail');
+	    send_email($to, $sender, $subject, $mess);
+				
+		$to = "alerts@tommyjams.com";
+		send_email($to, $sender, $subject, $mess);
 		
-			$q2 = "SELECT * FROM `$database`.`members` WHERE link='$artist_id'";
-			$result_set2 = mysql_query($q2);	
+		$response['id'] = $id;
+		$response['error'] = $error;
+
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
+	public function reactionDib()
+	{
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id()'])) 
+		{
+			session_start();
+		}
+
+		if(!isset($sessionArray['username']))
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+			exit;
+		}	
+
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
+
+		//$link=$_POST["gig"]/15999;
+		$link=$_POST['link'];
+		$artistId=$_POST['artist_id'];
+		$accepted=$_POST['accepted'];
+
+		if($accepted == 1)
+		{
+			$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artistId'";
+			$results = mysql_query($SQLs);
+			if(!$results)
+			{
+				$error = 1;
+				$response['error'] = $error;
+				$this->load->helper('functions');
+				createResponse($response);
+			}
+		
+			$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link'";
+			$results = mysql_query($SQLs);
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$status=$a["status"];
+				$gig=$a["gig_name"];
+				$artist_id=$a["artist_id"];
+				$artist_name=$a["artist_name"];
+				$promoter_name=$a["promoter_name"];
+			
+				$q2 = "SELECT * FROM `$database`.`members` WHERE link='$artist_id'";
+				$result_set2 = mysql_query($q2);	
+				if (mysql_num_rows($result_set2) == 1) 
+				{
+					$found = mysql_fetch_array($result_set2);
+					$artist_name=$found["name"];
+					$artist_email=$found["email"];
+				}
+				$to = $artist_email;
+				$gigname=$gig;
+
+				if($status==1)
+				{
+					$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
+					$result1 = mysql_query($SQLs);
+					$a = mysql_fetch_array($result1);
+					{
+						$gig=$a["gig"];$date=$a["venue_date"];$vtime=$a["venue_time"];
+						$promoter_name=$a["promoter_name"];$promoter=$a["promoter"];
+					}
+					$q8 = "INSERT INTO `$database`.`rating` (`id`, `event_date`, `event_time`, `status`, `artist_id`, `artist_name`, `promoter_id`, `promoter_name`, `gig_id`, `gig_name`, `promoter_rate`, `promoter_comment`, `promoter_gig_rate`, `promoter_gig_comment`, `promoter_future`, `artist_rate`, `artist_comment`, `artist_dib_comment`, `artist_future`, `time`)
+												VALUES (NULL, '$date', '$vtime', '2', '$artist_id', '$artist_name', '$promoter', '$promoter_name', '$link', '$gig', '', '', '', '', '', '', '', '', '', CURRENT_TIMESTAMP);";
+					$result_set8 = mysql_query($q8);
+					if (!$result_set8)
+					{
+						$error = 1;
+						$response['error'] = $error;
+						$this->load->helper('functions');
+						createResponse($response);
+					}
+					$acceptedArtist=$artist_name;
+					$subject = "Dib Accepted for $gig";
+
+					$mess="<p style='text-align:left;'>
+					Dear $artist_name,<br><br>
+					Congratulations! Your dib has been accepted for the gig: '$gig' on TommyJams.
+					<br>
+					Please login to your profile on TommyJams and view the host details and contact number in the 'Dibs Status' section.
+					<br>
+					We wish you all the very best for the gig.
+					<br><br>
+					Happy Jamming,
+					<br>
+					Team TommyJams
+					<br><br>
+					</p>
+					<center>
+					<table border='1'>
+						<tr>
+							<td>Gig</td>
+							<td>$gig</td>
+						</tr>
+						<tr>
+							<td>Promoter</td>
+							<td>$promoter_name</td>
+						</tr>
+						<tr>
+							<td>Rate Promoter and Gig</td>
+							<td><a href='http://www.tommyjams.com/beta/artist.php?feed=$link'>RATE</a> (enabled only after the gig)</td>
+						</tr>
+					</table>
+					</center>
+					";
+				}
+				elseif($status==2)
+				{
+					continue;
+				}
+				elseif($status==4)
+				{
+					$subject = "Dib Rejected for $gig";
+					$mess="<p style='text-align:left;'>
+					Dear $artist_name,<br><br>
+					Sorry, your dib for the gig: '$gig' has been rejected by the host.
+					<br>
+					However, there are a lot more gigs to be booked on TommyJams and you'll surely find the right ones for you. Please login to your profile on TommyJams and search for the latest gigs in the 'Find Gigs' section.
+					<br>
+					We wish you all the very best in the future.
+					<br><br>
+					Happy Jamming,
+					<br>
+					Team TommyJams
+					<br><br>
+					</p>
+					<center>
+					<table border='1'>
+						<tr>
+							<td>Gig</td>
+							<td>$gig</td>
+						</tr>
+						<tr>
+							<td>Promoter</td>
+							<td>$promoter_name</td>
+						</tr>
+					</table>
+					</center>
+					";
+				}
+			
+				$sender = "alerts@tommyjams.com";
+				
+				$this->load->helper('mail');
+	            send_email($to, $sender, $subject, $mess);
+				
+				$to = "alerts@tommyjams.com";
+				send_email($to, $sender, $subject, $mess);
+			}	
+		
+			$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND status=4";
+			$results2 = mysql_query($SQLs);
+
+			$q2 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$result_set2 = mysql_query($q2);
 			if (mysql_num_rows($result_set2) == 1) 
 			{
 				$found = mysql_fetch_array($result_set2);
-				$artist_name=$found["name"];
-				$artist_email=$found["email"];
-			}
-			$to = $artist_email;
-			$gigname=$gig;
-
-			if($status==1)
-			{
-				$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
-				$result1 = mysql_query($SQLs);
-				$a = mysql_fetch_array($result1);
-				{
-					$gig=$a["gig"];$date=$a["venue_date"];$vtime=$a["venue_time"];
-					$promoter_name=$a["promoter_name"];$promoter=$a["promoter"];
-				}
-				$q8 = "INSERT INTO `$database`.`rating` (`id`, `event_date`, `event_time`, `status`, `artist_id`, `artist_name`, `promoter_id`, `promoter_name`, `gig_id`, `gig_name`, `promoter_rate`, `promoter_comment`, `promoter_gig_rate`, `promoter_gig_comment`, `promoter_future`, `artist_rate`, `artist_comment`, `artist_dib_comment`, `artist_future`, `time`)
-											VALUES (NULL, '$date', '$vtime', '2', '$artist_id', '$artist_name', '$promoter', '$promoter_name', '$link', '$gig', '', '', '', '', '', '', '', '', '', CURRENT_TIMESTAMP);";
-				$result_set8 = mysql_query($q8);
-				if (!$result_set8)
-				{
-					$error = 1;
-					$response['error'] = $error;
-					$this->load->helper('functions');
-					createResponse($response);
-				}
-				$acceptedArtist=$artist_name;
-				$subject = "Dib Accepted for $gig";
-
+				$promoter_name=$found["name"];
+				$promoter_email=$found["email"];
+				$to = $promoter_email;
+				$subject = "Booked Gig: $gigname";
 				$mess="<p style='text-align:left;'>
-				Dear $artist_name,<br><br>
-				Congratulations! Your dib has been accepted for the gig: '$gig' on TommyJams.
-				<br>
-				Please login to your profile on TommyJams and view the host details and contact number in the 'Dibs Status' section.
-				<br>
-				We wish you all the very best for the gig.
-				<br><br>
-				Happy Jamming,
-				<br>
-				Team TommyJams
-				<br><br>
-				</p>
-				<center>
-				<table border='1'>
-					<tr>
-						<td>Gig</td>
-						<td>$gig</td>
-					</tr>
-					<tr>
-						<td>Promoter</td>
-						<td>$promoter_name</td>
-					</tr>
-					<tr>
-						<td>Rate Promoter and Gig</td>
-						<td><a href='http://www.tommyjams.com/beta/artist.php?feed=$link'>RATE</a> (enabled only after the gig)</td>
-					</tr>
-				</table>
-				</center>
-				";
+					Dear $promoter_name,<br><br>
+					Congratulations! Your gig: '$gigname' is now booked on TommyJams.
+					<br>
+					Please login to your profile on TommyJams and view the artist details and contact number in the 'My Gigs' section.
+					<br>
+					We wish you all the very best for the gig.
+					<br><br>
+					Happy Jamming,
+					<br>
+					Team TommyJams
+					<br><br>
+					</p>
+					<center>
+					<table border='1'>
+						<tr>
+							<td>Gig</td>
+							<td>$gig</td>
+						</tr>
+						<tr>
+							<td>Artist</td>
+							<td>$acceptedArtist</td>
+						</tr>
+						<tr>
+							<td>Rate Artist and Gig</td>
+							<td><a href='http://www.tommyjams.com/beta/promoter.php?feed=$link'>RATE</a> (enabled only after the gig)</td>
+						</tr>
+					</table>
+					</center>
+					";
+				$sender = "alerts@tommyjams.com";
+				
+				$this->load->helper('mail');
+	            send_email($to, $sender, $subject, $mess);
+				
+				$to = "alerts@tommyjams.com";
+				send_email($to, $sender, $subject, $mess);
 			}
-			elseif($status==2)
+			
+			$response['linker'] = $link;
+			$response['error'] = 0;
+			$response['accept'] = 1;
+			$this->load->helper('functions');
+			createResponse($response);
+		} 
+
+		//elseif($accepted == '0')
+		else
+		{
+
+			$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
+			$results = mysql_query($SQLs);
+
+			$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artist_id'";
+			$results = mysql_query($SQLs);
+
+			if (mysql_num_rows($results) == 1) 
 			{
-				continue;
-			}
-			elseif($status==4)
-			{
+				$found = mysql_fetch_array($results);
+				$artist_name=$found["artist_name"];
+			
+				$gig=$found["gig_name"];
+				$promoter_name=$found["promoter_name"];
+			
+				$q2 = "SELECT * FROM `$database`.`members` WHERE link='$artist_id'";
+				$result_set2 = mysql_query($q2);	
+				if (mysql_num_rows($result_set2) == 1) 
+				{
+					$found = mysql_fetch_array($result_set2);
+					$artist_email=$found["email"];
+				}
+			
+				$to = $artist_email;
 				$subject = "Dib Rejected for $gig";
 				$mess="<p style='text-align:left;'>
 				Dear $artist_name,<br><br>
@@ -840,160 +963,37 @@ public function reactionDib()
 				</table>
 				</center>
 				";
+				$sender = "alerts@tommyjams.com";
+				
+				$this->load->helper('mail');
+	        	send_email($to, $sender, $subject, $mess);
+				
+				$to = "alerts@tommyjams.com";
+				send_email($to, $sender, $subject, $mess);
 			}
-		
-			$sender = "alerts@tommyjams.com";
-			
-			$this->load->helper('mail');
-            send_email($to, $sender, $subject, $mess);
-			
-			$to = "alerts@tommyjams.com";
-			send_email($to, $sender, $subject, $mess);
-		}	
-	
-		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND status=4";
-		$results2 = mysql_query($SQLs);
 
-		$q2 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
-		$result_set2 = mysql_query($q2);
-		if (mysql_num_rows($result_set2) == 1) 
-		{
-			$found = mysql_fetch_array($result_set2);
-			$promoter_name=$found["name"];
-			$promoter_email=$found["email"];
-			$to = $promoter_email;
-			$subject = "Booked Gig: $gigname";
-			$mess="<p style='text-align:left;'>
-				Dear $promoter_name,<br><br>
-				Congratulations! Your gig: '$gigname' is now booked on TommyJams.
-				<br>
-				Please login to your profile on TommyJams and view the artist details and contact number in the 'My Gigs' section.
-				<br>
-				We wish you all the very best for the gig.
-				<br><br>
-				Happy Jamming,
-				<br>
-				Team TommyJams
-				<br><br>
-				</p>
-				<center>
-				<table border='1'>
-					<tr>
-						<td>Gig</td>
-						<td>$gig</td>
-					</tr>
-					<tr>
-						<td>Artist</td>
-						<td>$acceptedArtist</td>
-					</tr>
-					<tr>
-						<td>Rate Artist and Gig</td>
-						<td><a href='http://www.tommyjams.com/beta/promoter.php?feed=$link'>RATE</a> (enabled only after the gig)</td>
-					</tr>
-				</table>
-				</center>
-				";
-			$sender = "alerts@tommyjams.com";
-			
-			$this->load->helper('mail');
-            send_email($to, $sender, $subject, $mess);
-			
-			$to = "alerts@tommyjams.com";
-			send_email($to, $sender, $subject, $mess);
-		}
-		
-		$response['linker'] = $link;
-		$response['error'] = 0;
-		$response['accept'] = 1;
-		$this->load->helper('functions');
-		createResponse($response);
-	} 
-
-	//elseif($accepted == '0')
-	if($accepted == '0')
-	{
-
-		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
-		$results = mysql_query($SQLs);
-
-		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artist_id'";
-		$results = mysql_query($SQLs);
-
-		if (mysql_num_rows($results) == 1) 
-		{
-			$found = mysql_fetch_array($results);
-			$artist_name=$found["artist_name"];
-		
-			$gig=$found["gig_name"];
-			$promoter_name=$found["promoter_name"];
-		
-			$q2 = "SELECT * FROM `$database`.`members` WHERE link='$artist_id'";
-			$result_set2 = mysql_query($q2);	
-			if (mysql_num_rows($result_set2) == 1) 
-			{
-				$found = mysql_fetch_array($result_set2);
-				$artist_email=$found["email"];
-			}
-		
-			$to = $artist_email;
-			$subject = "Dib Rejected for $gig";
-			$mess="<p style='text-align:left;'>
-			Dear $artist_name,<br><br>
-			Sorry, your dib for the gig: '$gig' has been rejected by the host.
-			<br>
-			However, there are a lot more gigs to be booked on TommyJams and you'll surely find the right ones for you. Please login to your profile on TommyJams and search for the latest gigs in the 'Find Gigs' section.
-			<br>
-			We wish you all the very best in the future.
-			<br><br>
-			Happy Jamming,
-			<br>
-			Team TommyJams
-			<br><br>
-			</p>
-			<center>
-			<table border='1'>
-				<tr>
-					<td>Gig</td>
-					<td>$gig</td>
-				</tr>
-				<tr>
-					<td>Promoter</td>
-					<td>$promoter_name</td>
-				</tr>
-			</table>
-			</center>
-			";
-			$sender = "alerts@tommyjams.com";
-			
-			$this->load->helper('mail');
-        	send_email($to, $sender, $subject, $mess);
-			
-			$to = "alerts@tommyjams.com";
-			send_email($to, $sender, $subject, $mess);
+			$response['linker'] = $link;
+			$response['error'] = 0;
+			$response['accept'] = 0;
+			$this->load->helper('functions');
+			createResponse($response);
 		}
 
-		$response['linker'] = $link;
-		$response['error'] = 0;
-		$response['accept'] = 0;
-		$this->load->helper('functions');
-		createResponse($response);
 	}
-
-}
 
 	public function recommendArtist(){
 
-	$database = 'tommyjam_test';
-	$link = $_POST["link"]; 
+		$database = 'tommyjam_test';
+		$link = $_POST["link"]; 
 
-	$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
-	$results = mysql_query($SQLs);
-	$a = mysql_fetch_array($results);
-	{
-		$gig=$a["gig"];
-		$date=$a["venue_date"];
-		$promoter_name=$a["promoter_name"];
-	}
+		$SQLs = "SELECT * FROM `$database`.`shop` WHERE link='$link'";
+		$results = mysql_query($SQLs);
+		$a = mysql_fetch_array($results);
+		{
+			$gig=$a["gig"];
+			$date=$a["venue_date"];
+			$promoter_name=$a["promoter_name"];
+		}
 
 		$to = "contact@tommyjams.com";
 		$subject = "Artist recommendation wanted for $gig";
@@ -1031,55 +1031,55 @@ public function reactionDib()
 		$to = "alerts@tommyjams.com";
 		send_email($to, $sender, $subject, $mess);
 		
-	$alertMessage = "We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.";
-	
-	$response = $alertMessage;
+		$alertMessage = "We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.";
+		
+		$response = $alertMessage;
 
-	$this->load->helper('functions');
-	createResponse($response);
-}
-
-public function showDibs(){
-
-	ob_start();
-	$sessionArray = $this->session->all_userdata();
-	$database = 'tommyjam_test';
-
-	if (!isset($sessionArray['session_id()'])) {
-		session_start();
+		$this->load->helper('functions');
+		createResponse($response);
 	}
 
-	if(!isset($sessionArray['username']))
-	{
-		redirect('http://testcodeigniter.azurewebsites.net/index');
-		exit;
-	}	
+	public function showDibs(){
 
-	$username=$sessionArray['username'];
-	$password=md5($sessionArray['password']);
+		ob_start();
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
 
-	//$link=$_POST["link"]/15999;
-	$linker=$_POST["link"];
-	$dibs_exist = 0;
+		if (!isset($sessionArray['session_id()'])) {
+			session_start();
+		}
 
-	$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$linker AND status=4";
-	$result = mysql_query($SQL);
-	while ($b = mysql_fetch_assoc($result))
-	{
-		$dibs_exist = 1;
-		$artist_id=$b["artist_id"];$artist_name=$b["artist_name"];
+		if(!isset($sessionArray['username']))
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+			exit;
+		}	
 
-		$dibLists = array($artist_name, $artist_id);
-		$response['dibLists'][] = $dibLists;	
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
+
+		//$link=$_POST["link"]/15999;
+		$linker=$_POST["link"];
+		$dibs_exist = 0;
+
+		$SQL = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$linker AND status=4";
+		$result = mysql_query($SQL);
+		while ($b = mysql_fetch_assoc($result))
+		{
+			$dibs_exist = 1;
+			$artist_id=$b["artist_id"];$artist_name=$b["artist_name"];
+
+			$dibLists = array($artist_name, $artist_id);
+			$response['dibLists'][] = $dibLists;	
+		}
+
+		$response['dibs_exist'] = $dibs_exist;
+
+		$response['linker'] = $linker;
+
+		$this->load->helper('functions');
+		createResponse($response);
 	}
-
-	$response['dibs_exist'] = $dibs_exist;
-
-	$response['linker'] = $linker;
-
-	$this->load->helper('functions');
-	createResponse($response);
-}
 
 	public function editProfilePage(){
 
