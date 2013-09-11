@@ -979,6 +979,8 @@ public function reactionDib()
 		createResponse($response);
 	}
 
+}
+
 	public function recommendArtist(){
 
 	$database = 'tommyjam_test';
