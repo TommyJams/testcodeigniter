@@ -107,7 +107,6 @@ public function profilepage(){
 	else
 	{
 		$link = $_POST['id'];
-		error_log("Post ID: ".$link);
 
 		$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
 		$results = mysql_query($SQLs);
@@ -697,18 +696,8 @@ public function updateGigProfile(){
 	createResponse($response);
 }
 
-public function reaction(){
-
-	error_log("hello");
-	$response = 'ok';
-	$this->load->helper('functions');
-	createResponse($response);
-}
-
-/*
-	ob_start();
-	error_log(1);
-	error_log('1');
+public function reactionDib()
+{
 
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
@@ -724,9 +713,6 @@ public function reaction(){
 		exit;
 	}	
 
-	error_log('2');
-	error_log(2);
-
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
 
@@ -735,10 +721,7 @@ public function reaction(){
 	$artistId=$_POST['artist_id'];
 	$accepted=$_POST['accepted'];
 
-	error_log('3');
-	error_log(3); */
-
-/*	if($accepted == 1)
+	if($accepted == 1)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artistId'";
 		$results = mysql_query($SQLs);
@@ -750,7 +733,6 @@ public function reaction(){
 			createResponse($response);
 		}
 	
-		error_log('4');
 		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link'";
 		$results = mysql_query($SQLs);
 		while ($a = mysql_fetch_assoc($results))
@@ -931,8 +913,6 @@ public function reaction(){
 	if($accepted == '0')
 	{
 
-		error_log('5');
-		error_log(5);
 		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 
@@ -998,8 +978,6 @@ public function reaction(){
 		$this->load->helper('functions');
 		createResponse($response);
 	}
-	*/
-
 
 	public function recommendArtist(){
 

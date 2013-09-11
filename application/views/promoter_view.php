@@ -162,7 +162,8 @@
     function showDibReactionCallback(a)
     {
       $("#loading-indicator").show();
-      if(a.error == '0')
+      alert('hello');
+      /*if(a.error == '0')
       {
         if(a.accept == '1')
         {
@@ -180,14 +181,11 @@
       {
         alert('Sorry! There was some error while processing your request. Please try again.');
         promoterGigs();
-      }   
+      } */  
     }
     function showDibReaction(linker, artist_id, accepted)
     {
       $("#loading-indicator").show();
-      console.log("Linker Value: ", linker);
-      console.log("Artist ID: ", artist_id);
-      console.log("Accepted: ", accepted);
 
       if(accepted == '1')
       {
@@ -197,8 +195,7 @@
       else if(accepted == '0')
       {
         alert("Are you sure you wish to reject this Artist's Dib?");
-        //$.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');          
-        $.post('promoter/reaction','', showDibReactionCallback,'json');          
+        $.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');
       }
     }
 
