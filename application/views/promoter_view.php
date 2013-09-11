@@ -166,6 +166,7 @@
         if(a.accept == '1')
         {
           alert('Gig has been booked. Please contact artist against the mentioned contact number.');
+          console.log("Linker Value: ", a.linker);
           promoterGigs();
         }
         else if(a.accept == '0')

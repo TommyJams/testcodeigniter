@@ -249,10 +249,13 @@ class Promoter extends CI_Controller{
 	        }
 	        else
 	        {
-	        	$linker=15999*$link;	
+	        	$num_rows = 0;
+	        	$artist_id = "";
+	        	$artist_name ="";	
+	        	$contact = "";
 	        }  		 	
 
-			$gigRow = array($gig, $city, $formattedDate, $vtime, $artist_id, $artist_name, $contact, $link, $linker, $num_rows);
+			$gigRow = array($gig, $city, $formattedDate, $vtime, $artist_id, $artist_name, $contact, $link, $num_rows);
 
 			$response['gigHistory'][] = $gigRow; 
 		}
@@ -910,7 +913,6 @@ class Promoter extends CI_Controller{
 			createResponse($response);
 		} 
 
-		//elseif($accepted == '0')
 		else
 		{
 			$artist_id = $artistId;
