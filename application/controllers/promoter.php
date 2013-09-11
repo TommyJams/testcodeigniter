@@ -699,8 +699,9 @@ public function updateGigProfile(){
 
 public function dibReactionFunc(){
 
-	error_log('1');
 	error_log(1);
+	error_log('1');
+	
 
 	//ob_start();
 	$sessionArray = $this->session->all_userdata();
