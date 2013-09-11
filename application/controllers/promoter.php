@@ -5,10 +5,6 @@ class Promoter extends CI_Controller{
 	public function dummyFunc(){
 		ob_start();		
 		error_log('dummyFunc: 1');
-
-		$response['error'] = 0;
-		$this->load->helper('functions');
-		createResponse($response);
 	}
 
 
