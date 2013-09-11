@@ -699,7 +699,7 @@ public function updateGigProfile(){
 
 public function dibReactionFunc(){
 
-	error_log(1);
+	error_log('1');
 
 	//ob_start();
 	$sessionArray = $this->session->all_userdata();
@@ -716,7 +716,7 @@ public function dibReactionFunc(){
 		exit;
 	}	*/
 
-	error_log(2);
+	error_log('2');
 
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
@@ -726,7 +726,7 @@ public function dibReactionFunc(){
 	$artistId=$_POST['artist_id'];
 	$accepted=$_POST['accepted'];
 
-	error_log(3);
+	error_log('3');
 	
 	if($accepted == 1)
 	{
@@ -919,6 +919,8 @@ public function dibReactionFunc(){
 
 	elseif($accepted == 0)
 	{
+
+		error_log('5');
 		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 
