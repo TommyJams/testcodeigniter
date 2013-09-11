@@ -161,20 +161,20 @@
 
     function showDibReactionCallback(a)
     {
-      if(a.error != '1')
+      if(a.error == '0')
       {
         if(a.accept == '1')
         {
           alert('Gig has been booked. Please contact artist against the mentioned contact number.');
           promoterGigs();
         }
-        else
+        else if(a.accept == '0')
         {
           alert('Artist has been rejected for this gig.');
           showDib(a.linker);
         }
       }
-      else
+      else if(a.error == '1')
       {
         alert('Sorry! There was some error while processing your request. Please try again.');
         promoterGigs();
