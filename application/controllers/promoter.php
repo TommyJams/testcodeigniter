@@ -49,6 +49,16 @@ class Promoter extends CI_Controller{
 		$this->load->view('promoter_view');
 	}
 
+	public function dummyFunc(){
+		
+		error_log('dummyFunc: 1');
+
+		$response['error'] = 0;
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
+
 	public function profilepage(){
 
 		$sessionArray = $this->session->all_userdata();
@@ -692,15 +702,6 @@ class Promoter extends CI_Controller{
 		$response['id'] = $id;
 		$response['error'] = $error;
 
-		$this->load->helper('functions');
-		createResponse($response);
-	}
-
-	public function dummyFunc(){
-		
-		error_log('dummyFunc: 1');
-
-		$response['error'] = 0;
 		$this->load->helper('functions');
 		createResponse($response);
 	}
