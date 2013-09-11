@@ -699,8 +699,8 @@ public function updateGigProfile(){
 
 public function reactionDib(){
 
-	error_log(1);
-	error_log('1');
+	//error_log(1);
+	error_log('Hello');
 	
 }
 /*
