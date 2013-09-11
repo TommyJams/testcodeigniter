@@ -914,10 +914,10 @@ class Promoter extends CI_Controller{
 		else
 		{
 
-			$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
+			$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artistId'";
 			$results = mysql_query($SQLs);
 
-			$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artist_id'";
+			$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artistId'";
 			$results = mysql_query($SQLs);
 
 			if (mysql_num_rows($results) == 1) 
