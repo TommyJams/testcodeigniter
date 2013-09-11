@@ -697,13 +697,17 @@ public function updateGigProfile(){
 	createResponse($response);
 }
 
-public function dibReactionFunc(){
+public function reactionDib(){
 
 	error_log(1);
 	error_log('1');
 	
+}
+/*
+	ob_start();
+	error_log(1);
+	error_log('1');
 
-	//ob_start();
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
@@ -730,8 +734,8 @@ public function dibReactionFunc(){
 	$accepted=$_POST['accepted'];
 
 	error_log('3');
-	error_log(3);
-	
+	error_log(3); */
+
 /*	if($accepted == 1)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artistId'";
@@ -919,7 +923,7 @@ public function dibReactionFunc(){
 		$response['accept'] = 1;
 		$this->load->helper('functions');
 		createResponse($response);
-	} */
+	} 
 
 	//elseif($accepted == '0')
 	if($accepted == '0')
@@ -992,9 +996,10 @@ public function dibReactionFunc(){
 		$this->load->helper('functions');
 		createResponse($response);
 	}
-}
+	*/
 
-public function recommendArtist(){
+
+	public function recommendArtist(){
 
 	$database = 'tommyjam_test';
 	$link = $_POST["link"]; 
