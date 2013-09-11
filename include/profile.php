@@ -56,6 +56,7 @@
 					</tr>
 					<tr>
 						<td align="center" style="width: 100%;">
+                            <? $username = (json_decode($_POST['json'])->usernam); ?>
 							<img src="<? echo'https://graph.facebook.com/'.$username.'/picture'; ?>" style="vertical-align:bottom">
 							<input name="submit" id="upload" type="submit" value="Use Facebook Picture"/>
                         </td>
@@ -141,8 +142,8 @@
 								print("<a href='$twitter' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/twitter.png' /></a>"); 
 							}
 						?>
-                        <? $rever = (json_decode($_POST['json'])->rever); ?>
 						<? 
+                            $rever = (json_decode($_POST['json'])->rever);
 							if($rever!="")
 							{
 								print("<a href='$rever' rel='me' target='_blank' style='float:left; width:auto; height:auto;'><img src='img/reverbnation.png' /></a>"); 
