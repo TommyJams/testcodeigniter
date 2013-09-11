@@ -920,7 +920,8 @@ public function dibReactionFunc(){
 		createResponse($response);
 	} */
 
-	elseif($accepted == '0')
+	//elseif($accepted == '0')
+	if($accepted == '0')
 	{
 
 		error_log('5');
