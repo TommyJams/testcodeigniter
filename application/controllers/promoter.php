@@ -701,11 +701,11 @@ public function dibReactionFunc(){
 
 	error_log(1);
 
-	ob_start();
+	//ob_start();
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
-	if (!isset($sessionArray['session_id()'])) 
+	/*if (!isset($sessionArray['session_id()'])) 
 	{
 		session_start();
 	}
@@ -714,7 +714,7 @@ public function dibReactionFunc(){
 	{
 		redirect('http://testcodeigniter.azurewebsites.net/index');
 		exit;
-	}	
+	}	*/
 
 	error_log(2);
 
