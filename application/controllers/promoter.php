@@ -698,8 +698,11 @@ public function updateGigProfile(){
 }
 
 public function reaction(){
-	
+
 	error_log("hello");
+	$response = 'ok';
+	$this->load->helper('functions');
+	createResponse($response);
 }
 
 /*
