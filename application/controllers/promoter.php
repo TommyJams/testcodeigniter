@@ -917,7 +917,7 @@ public function dibReactionFunc(){
 		createResponse($response);
 	}
 
-	else($accepted == 0)
+	elseif($accepted == 0)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
