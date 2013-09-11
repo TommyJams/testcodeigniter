@@ -913,11 +913,11 @@ class Promoter extends CI_Controller{
 		//elseif($accepted == '0')
 		else
 		{
-
-			$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artistId'";
+			$artist_id = $$artistId;
+			$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 			$results = mysql_query($SQLs);
 
-			$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artistId'";
+			$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link' AND artist_id='$artist_id'";
 			$results = mysql_query($SQLs);
 
 			if (mysql_num_rows($results) == 1) 
