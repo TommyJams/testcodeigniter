@@ -696,6 +696,15 @@ class Promoter extends CI_Controller{
 		createResponse($response);
 	}
 
+	public function dummyFunc(){
+		
+		error_log('dummyFunc: 1');
+
+		$response['error'] = 0;
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
 	public function reactionDib(){
 
 		$sessionArray = $this->session->all_userdata();
@@ -716,10 +725,6 @@ class Promoter extends CI_Controller{
 		$password=md5($sessionArray['password']);
 
 		error_log('reactionDib: 1');
-
-		$response['error'] = 0;
-		$this->load->helper('functions');
-		createResponse($response);
 
 		//$link=$_POST["gig"]/15999;
 		$link=$_POST['link'];
