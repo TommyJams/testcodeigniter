@@ -4,7 +4,7 @@ class Promoter extends CI_Controller{
 
 	public function dummyFunc(){
 		ob_start();		
-		error_log('dummyFunc: 1');
+		
 
 	}
 
@@ -24,7 +24,7 @@ class Promoter extends CI_Controller{
 			redirect('http://testcodeigniter.azurewebsites.net/index');
 			exit;
 		}
-		
+		error_log('hellopromoterpage: 1');
 		$username=$sessionArray['username'];
 		$password=md5($sessionArray['password']);
 
