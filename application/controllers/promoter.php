@@ -723,14 +723,14 @@ public function dibReactionFunc(){
 
 	//$link=$_POST["gig"]/15999;
 	$link=$_POST['link'];
-	$artist_id=$_POST['artist_id'];
+	$artistId=$_POST['artist_id'];
 	$accepted=$_POST['accepted'];
 
 	error_log(3);
 	
 	if($accepted == 1)
 	{
-		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artist_id'";
+		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artistId'";
 		$results = mysql_query($SQLs);
 		if(!$results)
 		{
