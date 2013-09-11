@@ -2,15 +2,6 @@
 
 class Promoter extends CI_Controller{
 
-	public function dummyFunc(){
-		ob_start();		
-		error_log('hellodummyfunc: 1');		
-		$response = 1;
-		$this->load->helper('functions');
-		createResponse($response);
-	}
-
-
 	public function promoterpage(){
 		ob_start();
 
@@ -26,7 +17,7 @@ class Promoter extends CI_Controller{
 			redirect('http://testcodeigniter.azurewebsites.net/index');
 			exit;
 		}
-		error_log('hellopromoterpage: 1');		
+		
 		$username=$sessionArray['username'];
 		$password=md5($sessionArray['password']);
 
@@ -703,6 +694,35 @@ class Promoter extends CI_Controller{
 
 		$this->load->helper('functions');
 		createResponse($response);
+	}
+
+	public function reactionDib(){
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id()'])) 
+		{
+			session_start();
+		}
+
+		if(!isset($sessionArray['username']))
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+			exit;
+		}	
+
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
+
+		error_log('reactionDib: 1');
+
+		{
+			$response['accept'] = 0;
+			$this->load->helper('functions');
+			createResponse($response);
+		}
+
 	}
 
 	public function recommendArtist(){
