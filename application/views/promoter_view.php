@@ -191,7 +191,7 @@
         alert("Are you sure you wish to accept this Artist's Dib? The gig will be booked and all other artists will automatically get rejected for this gig.");
         $.post('promoter/profilepage',{id: artist_id}, showDibReactionCallback,'json');          
       }
-      else if(accepted == '0')
+      else
       {
         alert("Are you sure you wish to reject this Artist's Dib?");
         $.post('promoter/profilepage',{id: artist_id}, showDibReactionCallback,'json');
