@@ -697,6 +697,10 @@ public function updateGigProfile(){
 	createResponse($response);
 }
 
+public function reaction(){
+	error_log("hello");
+}
+
 /*
 	ob_start();
 	error_log(1);
