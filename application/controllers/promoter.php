@@ -496,8 +496,8 @@ class Promoter extends CI_Controller{
 			}
 		}
 			
-	/*	if($totalSlots>1)
-			$gig=$_POST['gig'];*/
+		//	if($totalSlots>1)
+		//		$gig=$_POST['gig'];
 
 		$to = $email;
 		$sender = "alerts@tommyjams.com";
@@ -696,8 +696,7 @@ class Promoter extends CI_Controller{
 		createResponse($response);
 	}
 
-	public function reactionDib()
-	{
+	public function reactionDib(){
 
 		$sessionArray = $this->session->all_userdata();
 		$database = 'tommyjam_test';
@@ -715,6 +714,12 @@ class Promoter extends CI_Controller{
 
 		$username=$sessionArray['username'];
 		$password=md5($sessionArray['password']);
+
+		error_log('reactionDib: 1');
+
+		$response['error'] = 0;
+		$this->load->helper('functions');
+		createResponse($response);
 
 		//$link=$_POST["gig"]/15999;
 		$link=$_POST['link'];
