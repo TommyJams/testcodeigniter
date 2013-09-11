@@ -161,6 +161,7 @@
 
     function showDibReactionCallback(a)
     {
+      $("#loading-indicator").show();
       if(a.error == '0')
       {
         if(a.accept == '1')
@@ -171,6 +172,7 @@
         else if(a.accept == '0')
         {
           alert('Artist has been rejected for this gig.');
+          console.log("Linker Value: ", a.linker);
           showDib(a.linker);
         }
       }
