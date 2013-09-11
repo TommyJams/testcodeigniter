@@ -77,14 +77,9 @@ function confirmSubmit()
            	$artist_id=$row[1]; 
 			print("<div style='width:50%; margin-top: 10px; height:18px; text-align: center; float:left;'><a href='promoter.php?id=$artist_id' target='_top' class='whiteHoverRef' style='font-size: 16px;'>$artist_name</a></div>"); 
 		?>
-			<form action="" name="dibReaction" id="dibReaction" method="post">        
-				<input type="hidden" name="gig" value="<? print($linker); ?>">
-				<input type="hidden" name="giger" value="<? print($artist_id); ?>">
-				 
-				<input type="hidden" name="artist_id" id="artist_id" value="<? print($artist_id);?>">  
-                <input type="hidden" name="linker" id="linker" value="<? print($linker);?>">
+			<form action="" name="dibReaction" id="dibReaction" method="post">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
-					<input type="submit" value="Accept" name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="showDibReaction('1631328', '1135503', 1)">
+					<input type="submit" value="Accept" name="accept" id="accept" style="width: 48%; background:#B4F62F; float:left;" onClick="showDibReaction('1631327', '1135503', 1)">
 					<input type="submit" value="Reject" name="reject" id="reject" style="width: 48%; background:#FF3C35; float:right;" onClick="showDibReaction('<?print("$linker");?>', '<?print("$artist_id");?>', 0)">
 				</div>           
 			</form>			
