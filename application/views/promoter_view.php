@@ -197,7 +197,8 @@
       else if(accepted == '0')
       {
         alert("Are you sure you wish to reject this Artist's Dib?");
-        $.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');          
+        //$.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');          
+        $.post('promoter/reactionDib','', showDibReactionCallback,'json');          
       }
     }
 
