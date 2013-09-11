@@ -71,7 +71,7 @@ class Artist extends CI_Controller{
 			{
 				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
 				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
-				$mobile=$a["mobile"];
+				$mobile=$a["mobile"]; $fb_username=$a["fb_username"];
 				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];
 				$gplus=$a["gplus"];$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
 				$job=$a["job"];$designation=$a["designation"];
@@ -115,7 +115,7 @@ class Artist extends CI_Controller{
 				$a = mysql_fetch_array($results);
 				$id=$a["id"];$idaa=$id;$usernam=$a["username"];$name=$a["name"];$_SESSION['name']=$name;$email=$a["email"];
 				$street=$a["add"];$city=$a["city"];$state=$a["state"];$country=$a["country"];$pincode=$a["pincode"];
-				$mobile=$a["mobile"];
+				$mobile=$a["mobile"]; 
 				$fb=$a["fb"];$twitter=$a["twitter"];$youtube=$a["youtube"];$myspace=$a["myspace"];$rever=$a["reverbnation"];$gplus=$a["gplus"];
 				$display=$a["display"];$user=$a["user"];$type=$a["type"];$genre=$a["genre"];
 				$job=$a["job"];$designation=$a["designation"];
@@ -177,7 +177,7 @@ class Artist extends CI_Controller{
 			
 			$formattedDate = date('d-m-Y',strtotime($v_date));
 
-			$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city);
+			$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city, $gig_id);
 
 			$response['gigHistory'][] = $gigRow;
 
