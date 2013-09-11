@@ -161,8 +161,7 @@
 
     function showDibReactionCallback(a)
     {
-      alert('hello');
-      /*if(a.error == '0')
+      if(a.error == '0')
       {
         if(a.accept == '1')
         {
@@ -180,7 +179,7 @@
       {
         alert('Sorry! There was some error while processing your request. Please try again.');
         promoterGigs();
-      } */  
+      }
     }
     function showDibReaction(linker, artist_id, accepted)
     {
@@ -189,12 +188,12 @@
       if(accepted == '1')
       {
         alert("Are you sure you wish to accept this Artist's Dib? The gig will be booked and all other artists will automatically get rejected for this gig.");
-        $.post('promoter/profilepage',{id: artist_id}, showProfileCallback,'json');          
+        $.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');          
       }
-      else
+      else if(accepted == '0')
       {
         alert("Are you sure you wish to reject this Artist's Dib?");
-        $.post('promoter/profilepage',{id: artist_id}, showProfileCallback,'json');
+        $.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');
       }
     }
 
