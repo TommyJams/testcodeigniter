@@ -700,12 +700,13 @@ public function updateGigProfile(){
 public function dibReactionFunc(){
 
 	error_log('1');
+	error_log(1);
 
 	//ob_start();
 	$sessionArray = $this->session->all_userdata();
 	$database = 'tommyjam_test';
 
-	/*if (!isset($sessionArray['session_id()'])) 
+	if (!isset($sessionArray['session_id()'])) 
 	{
 		session_start();
 	}
@@ -714,9 +715,10 @@ public function dibReactionFunc(){
 	{
 		redirect('http://testcodeigniter.azurewebsites.net/index');
 		exit;
-	}	*/
+	}	
 
 	error_log('2');
+	error_log(2);
 
 	$username=$sessionArray['username'];
 	$password=md5($sessionArray['password']);
@@ -727,8 +729,9 @@ public function dibReactionFunc(){
 	$accepted=$_POST['accepted'];
 
 	error_log('3');
+	error_log(3);
 	
-	if($accepted == 1)
+/*	if($accepted == 1)
 	{
 		$SQLs = "UPDATE `$database`.`transaction` SET status=1 WHERE gig_id='$link' AND artist_id='$artistId'";
 		$results = mysql_query($SQLs);
@@ -740,7 +743,7 @@ public function dibReactionFunc(){
 			createResponse($response);
 		}
 	
-		error_log(4);
+		error_log('4');
 		$SQLs = "SELECT * FROM `$database`.`transaction` WHERE gig_id='$link'";
 		$results = mysql_query($SQLs);
 		while ($a = mysql_fetch_assoc($results))
@@ -915,12 +918,13 @@ public function dibReactionFunc(){
 		$response['accept'] = 1;
 		$this->load->helper('functions');
 		createResponse($response);
-	}
+	} */
 
-	elseif($accepted == 0)
+	elseif($accepted == '0')
 	{
 
 		error_log('5');
+		error_log(5);
 		$SQLs = "UPDATE `$database`.`transaction` SET status=2 WHERE gig_id='$link' AND artist_id='$artist_id'";
 		$results = mysql_query($SQLs);
 

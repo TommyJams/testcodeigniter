@@ -80,7 +80,7 @@ function confirmSubmit()
 			<form action="" name="dibReaction" id="dibReaction" method="post">        
 				<input type="hidden" name="gig" value="<? print($linker); ?>">
 				<input type="hidden" name="giger" value="<? print($artist_id); ?>">
-				
+				 
 				<input type="hidden" name="artist_id" id="artist_id" value="<? print($artist_id);?>">  
                 <input type="hidden" name="linker" id="linker" value="<? print($linker);?>">
 				<div style="width:45%; float:left; padding-top:10px; padding-right:5px; height:33px;">
