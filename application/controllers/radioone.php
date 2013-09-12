@@ -24,8 +24,6 @@ class Radioone extends CI_Controller{
 			$data['image'] = $a['image'];
 		}
 
-		error_log('radioLandingPage: '.$data['urlyear'].$data['urlmonth'].$data['urlday']);
-
 		$this->load->view('radioone_view', $data);
 
 	}
@@ -37,20 +35,21 @@ class Radioone extends CI_Controller{
 		if(isset($_POST["day"]))
 		{
 			$thisDate = $_POST["day"];
+			error_log(1);
 		}
 
 		if(isset($_POST["month"]) && isset($_POST["year"]))
 		{
 			$thisMonth = $_POST["month"];
 			$thisYear = $_POST["year"];
+			error_log(2);
 		}
 		else
 		{
 			$thisMonth = date("m");
 			$thisYear = date("Y");
+			error_log(3);
 		}
-
-		error_log('loadTiles: '.$thisMonth.$thisYear);
 
 		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
 		if(isset($thisDate))
