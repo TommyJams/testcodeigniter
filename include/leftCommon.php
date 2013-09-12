@@ -51,7 +51,7 @@
 
 <div id="leftSidebarBox">
     <ul>
-        <li><a href="aboutus.php" 	target="_blank" title="About Us" 		alt="About Us"><img src="/images/icons/sidebar/about_1.png"/></a></li>
+        <li><a href="/application/views/links/aboutus.php" 	target="_blank" title="About Us" 		alt="About Us"><img src="/images/icons/sidebar/about_1.png"/></a></li>
         <li><a href="terms.php" 	target="_blank" title="Terms of Use" 	alt="Terms of Use"><img src="/images/icons/sidebar/terms_1.png"/></a></li>
         <!--<li><a href="faq.php" title="FAQ" alt="FAQ"><img src="images/icons/sidebar/faq_1.png" style="width:100%; height:100%;"/></a></li>-->
         <li><a href="careers.php" 	target="_blank" title="Careers" 		alt="Careers"><img src="/images/icons/sidebar/careers_1.png"/></a></li>
