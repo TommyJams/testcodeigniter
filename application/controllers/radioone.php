@@ -30,12 +30,12 @@ class Radioone extends CI_Controller{
 
 	public function loadTiles() {
 
-		if($_POST["day"])
+		if(isset($_POST["day"]))
 		{
 			$thisDate = $_POST["day"];
 		}
 
-		if($_POST["month"] && $_POST["year"])
+		if(isset($_POST["month"]) && isset($_POST["year"]))
 		{
 			$thisMonth = $_POST["month"];
 			$thisYear = $_POST["year"];
@@ -47,7 +47,7 @@ class Radioone extends CI_Controller{
 		}
 
 		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
-		if($thisDate)
+		if(isset($thisDate))
 		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";
 
 		$results = mysql_query($SQLs);
