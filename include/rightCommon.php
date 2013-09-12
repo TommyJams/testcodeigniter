@@ -61,6 +61,7 @@
 			<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 			-->
 			<?
+			$sessionArray = $this->session->all_userdata();
 			if(isset($sessionArray['username']) || isset($sessionArray['username_artist'])) {
 				print( "<a class='loginWidgetRef' href='logout.php'>
 							<img src='images/icons/fb_logout.jpg'/>
