@@ -30,13 +30,13 @@
   
   <link href="css/videoTiles.css" rel="stylesheet" type="text/css"/>
 
-  <script type="text/javascript" src="js/jquery.min.js" ></script>
+  <script type="text/javascript" src="script/jquery.min.js" ></script>
 
-  <script type="text/javascript" src="js/jquery.supersized.min.js"></script>
+  <script type="text/javascript" src="script/jquery.supersized.min.js"></script>
   
-  <script type="text/javascript" src="js/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="script/jquery.fancybox.js"></script>
 
-  <script type="text/javascript" src="js/main.js"></script> <!--contains document ready function-->
+  <script type="text/javascript" src="script/main.js"></script> <!--contains document ready function-->
 
   <script language="javascript"> 
 
