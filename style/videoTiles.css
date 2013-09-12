@@ -100,7 +100,7 @@
 		.bigListSize #imageBox a span {
 			height: 210px;
 			width: 280px;
-			background-image: url("../images/radioone/icon/image_overlay_grey.png");
+			background-image: url("/image/radioone/icon/image_overlay_grey.png");
 			background-repeat:no-repeat;
 			background-position:50% 50%;
 			display: block;
@@ -108,7 +108,7 @@
 		}
 
 		.bigListSize #imageBox a span:hover {
-			background-image: url("../images/radioone/icon/image_overlay_blue.png");
+			background-image: url("/image/radioone/icon/image_overlay_blue.png");
 		}
 
 		.smallListSize #imageBox a {
@@ -134,7 +134,7 @@
 		.smallListSize #imageBox a span {
 			height: 145px;
 			width: 193px;
-			background-image: url("../images/radioone/icon/image_overlay_grey.png");
+			background-image: url("/image/radioone/icon/image_overlay_grey.png");
 			background-repeat:no-repeat;
 			background-position:50% 50%;
 			display: block;
@@ -142,11 +142,11 @@
 		}
 		
 		.smallListSize #imageBox a span:hover {
-			background-image: url("../images/radioone/icon/image_overlay_blue.png");
+			background-image: url("/image/radioone/icon/image_overlay_blue.png");
 		}
 
 	.imageBoxCaption{
-		background-image: url('../images/icons/icon_plus_white.png');
+		background-image: url('/image/icons/icon_plus_white.png');
 		background-position: right center;
 		background-repeat: no-repeat;
 		margin: 0;
