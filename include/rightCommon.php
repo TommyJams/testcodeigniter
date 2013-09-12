@@ -63,7 +63,7 @@
 			<?
 			$sessionArray = $this->session->all_userdata();
 			if(isset($sessionArray['username']) || isset($sessionArray['username_artist'])) {
-				print( "<a class='loginWidgetRef' href='logout.php'>
+				print( "<a class='loginWidgetRef' href='<?php echo base_url();?>index'>
 							<img src='images/icons/fb_logout.jpg'/>
 						</a>");
 			}
