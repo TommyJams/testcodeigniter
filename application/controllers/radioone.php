@@ -4,9 +4,9 @@ class Radioone extends CI_Controller{
 
 	public function radioLandingPage(){
 
-		$data['urlyear'] = $this->uri->segment(1);
-		$data['urlmonth'] = $this->uri->segment(2);
-		$data['urlday'] = $this->uri->segment(3);
+		$data['urlyear'] = $this->uri->segment(2);
+		$data['urlmonth'] = $this->uri->segment(3);
+		$data['urlday'] = $this->uri->segment(4);
 
 		$sessionArray = $this->session->all_userdata();
 		$database = 'tommyjam_test';
