@@ -44,7 +44,7 @@ class Links extends CI_Controller{
 	    else
 	    	$err = 1;
 
-	    $response['error'] = $error;
+	    $response['error'] = $err;
 
 	    $this->load->helper('functions');
 		createResponse($response);

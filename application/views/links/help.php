@@ -44,7 +44,7 @@
         alert('Sorry! There was some error while processing your request. Please try again.');
         window.location.assign("http://testcodeigniter.azurewebsites.net/help") 
       }
-      else if(a.error == 0)
+      else
       {
 		alert('Your request has been received. We will contact you shortly.');
 		window.location.assign("http://testcodeigniter.azurewebsites.net/help")  	
