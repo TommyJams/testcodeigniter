@@ -8,15 +8,15 @@
 
     <title>TommyJams - Terms of Use</title>
 
-    <link href="style/style.css" rel="stylesheet" type="text/css" />
+    <link href="/style/style.css" rel="stylesheet" type="text/css" />
 
-    <link href="style/supersized/supersized.css" rel="stylesheet" type="text/css" />
+    <link href="/style/supersized/supersized.css" rel="stylesheet" type="text/css" />
 
-    <script type="text/javascript" src="script/jquery.min.js" ></script>
+    <script type="text/javascript" src="/script/jquery.min.js" ></script>
 
-    <script type="text/javascript" src="script/jquery.supersized.min.js"></script>
+    <script type="text/javascript" src="/script/jquery.supersized.min.js"></script>
 
-    <script type="text/javascript" src="script/main.js"></script> <!--contains document ready function-->
+    <script type="text/javascript" src="/script/main.js"></script> <!--contains document ready function-->
 
 </head>
 
