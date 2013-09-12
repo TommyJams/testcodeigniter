@@ -84,12 +84,6 @@
             </div>
 
         </div>
-    
-    <script>    
-
-    loadTiles();
-
-    </script>
 
   </div> <!--main-container-->
 
@@ -98,5 +92,11 @@
   ?>
 
 </body>
+
+<script language="javascript">    
+
+  loadTiles();
+
+</script>
 
 </html>
