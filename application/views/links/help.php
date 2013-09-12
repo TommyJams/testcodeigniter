@@ -56,8 +56,8 @@
                     cf_message:    	document.getElementById('cf_message').value
                 };
 			
-			contactHelp(obj);
-		});
+		contactHelp(obj);
+	});
 
 	</script>
 
@@ -89,25 +89,25 @@
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your name-->
-                                <input type="text" id="cf_name" value="Your name" name="cf_name" style="width:50%; margin-top:10px;">
+                                <input type="text" id="cf_name" value="Your name" name="cf_name" style="width:50%; margin-top:10px;"/>
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your e-mail-->
-                                <input type="text" id="cf_email" value="Your e-mail" name="cf_email" style="width:50%; margin-top:10px;">
+                                <input type="text" id="cf_email" value="Your e-mail" name="cf_email" style="width:50%; margin-top:10px;"/>
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your Requirement-->
-                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;">
+                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;"/>
                                <!-- <textarea name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">Your requirement</textarea> -->
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
-                                <input type="submit" value="Send" style="width:auto; margin: 10px auto;">
+                                <input type="submit" value="Send" style="width:auto; margin: 10px auto;"/>
                             </td>
                         </tr>
                     </table>
