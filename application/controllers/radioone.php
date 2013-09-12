@@ -71,7 +71,7 @@ class Radioone extends CI_Controller{
 		$response['numTiles'] = mysql_num_rows($results);
 
 
-		error_log('numTiles: '.$response['numTiles'])
+		error_log('numTiles: '.$response['numTiles']);
 		$this->load->helper('functions');
 		createResponse($response);
 	}
