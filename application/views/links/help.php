@@ -26,9 +26,10 @@
 			e.preventDefault();
 			
 			var obj = {
-                    cf_name:   		document.getElementById('cf_name').value,
-                    cf_email:   		document.getElementById('cf_email').value,
-                    cf_message:    		document.getElementById('cf_message').value,
+                    	cf_name:   		document.getElementById('cf_name').value,
+                    	cf_email:   	document.getElementById('cf_email').value,
+                    	cf_message:    	document.getElementById('cf_message').value
+                	  }
 			
 			contactHelp(obj);
 		});
