@@ -99,7 +99,7 @@
 <script language="javascript">    
 <?
   if($urlyear && $urlmonth && $urlday)
-    print("loadTiles($urlyear,$urlmonth,$urlday");
+    print("loadTiles($urlyear,$urlmonth,$urlday);");
   else
     print("loadTiles();");
 ?>
