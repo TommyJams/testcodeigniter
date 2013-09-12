@@ -157,8 +157,6 @@
       $.post('promoter/showDibs',{link: linker},showDibCallback,'json');
     }
 
-
-
     function showDibReactionCallback(a)
     {
       if(a.error == '0')
@@ -197,8 +195,6 @@
         $.post('promoter/reactionDib',{'link': linker, 'artist_id': artist_id, 'accepted': accepted}, showDibReactionCallback,'json');
       }
     }
-
-
 
     function recommendArtistCallback(a)
     {

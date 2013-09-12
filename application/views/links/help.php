@@ -20,6 +20,39 @@
 
     <script type="text/javascript" src="/script/main.js"></script> <!--contains document ready function-->
 
+    <script> 
+		$('#contactFormHelp').bind('submit',function(e) 
+		{
+			e.preventDefault();
+			contactHelp();
+		});
+	
+	function contactHelpCallback(a) 
+    {
+      $("#loading-indicator").show();      
+      console.log("Error: ", JSON.stringify(a));
+      
+      if(a.error == 1)
+      {
+        alert('Sorry! There was some error while processing your request. Please try again.');
+        window.location.assign("http://testcodeigniter.azurewebsites.net/help") 
+      }
+      else if(a.error == 0)
+      {
+		alert('Your request has been received. We will contact you shortly.');
+		window.location.assign("http://testcodeigniter.azurewebsites.net/help")  	
+  	  }
+    }
+    
+    function contactHelp() 
+    {
+      $("#loading-indicator").show();      
+      $.post('links/contactHelpFunc',$('#contactFormHelp').serialize(),contactHelpCallback,'json');
+    }
+
+	</script>
+
+
 </head>
 
 <body>
@@ -42,24 +75,25 @@
 				<p>
 					In case of any questions, queries, requests, issues or complaints, kindly use the below provided form to contact us, and we shall get back to you shortly.
                 </p>
-                <form action="contactform.php" method="post" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
+                <form action="" method="post" id="contactFormHelp" name="contactForm" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
                     <table style="border:0px; width:100%;">
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your name-->
-                                <input type="text" value="Your name" name="cf_name" style="width:50%; margin-top:10px;">
+                                <input type="text" id="cf_name" value="Your name" name="cf_name" style="width:50%; margin-top:10px;">
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your e-mail-->
-                                <input type="text" value="Your e-mail" name="cf_email" style="width:50%; margin-top:10px;">
+                                <input type="text" id="cf_email" value="Your e-mail" name="cf_email" style="width:50%; margin-top:10px;">
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your Requirement-->
-                                <textarea name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">Your requirement</textarea>
+                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">
+                               <!-- <textarea name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">Your requirement</textarea> -->
                             </td>
                         </tr>
                         <tr style="width:100%;">

@@ -26,4 +26,27 @@ class Links extends CI_Controller{
 		$this->load->view('links/help');
 	}
 
+	public function contactHelpFunc(){
+
+		$to = "alerts@tommyjams.com";
+		$message = $_POST['cf_message'];
+		$name = $_POST['cf_name'];
+
+		$sender = $_POST['cf_email'];
+		$subject = "Query received";
+		$mess="<p style='text-align:left;'> $name has send you following message: $message </p>";
+			
+		$this->load->helper('mail');
+	    $error = send_email($to, $sender, $subject, $mess);
+
+	    if($error)
+	    	$err = 0;
+	    else
+	    	$err = 1;
+
+	    $response['error'] = $error;
+
+	    $this->load->helper('functions');
+		createResponse($response);
+	}
 }
