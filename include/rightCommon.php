@@ -62,12 +62,19 @@
 			-->
 			<?
 			$sessionArray = $this->session->all_userdata();
-			if(isset($sessionArray['username']) || isset($sessionArray['username_artist'])) {
+			if(isset($sessionArray['username']))
+			{
 				print( "<a class='loginWidgetRef' href='promoter/sessionlogout'>
 							<img src='images/icons/fb_logout.jpg'/>
 						</a>");
 			}
-			else {
+			elseif(isset($sessionArray['username_artist'])) 
+			{
+				print( "<a class='loginWidgetRef' href='artist/sessionlogout'>
+							<img src='images/icons/fb_logout.jpg'/>
+						</a>");
+			}
+			else{
 				/*old facebook login system
 				<table>
 					<tr>

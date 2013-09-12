@@ -994,6 +994,20 @@ class Artist extends CI_Controller{
 		createResponse($response);
 	}
 
+	public function sessionlogout(){
+
+		ob_start();
+		$sessionArray = $this->session->all_userdata();
+		
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+
+		$username=$sessionArray['username_artist'];
+		$this->session->sess_destroy();
+		redirect('http://testcodeigniter.azurewebsites.net/index');
+		exit;
+	}
 }
 ?>
 
