@@ -60,7 +60,7 @@
 					<li class='bigListSize'>
 						<div id='imageBox'>
 							<a href='$epAudio' class='preloader overlay-video fancybox-audio-mixcloud'>
-								<img src='images/radioone/artists/$epImage' alt=''/>
+								<img src='/images/radioone/artists/$epImage' alt=''/>
 								<span></span>
 							</a>
 							<p class='imageBoxCaption'>$epName</p>
@@ -74,7 +74,7 @@
 					<li class='smallListSize'>
 						<div id='imageBox'>
 							<a href='$epAudio' class='preloader overlay-video fancybox-audio-mixcloud'>
-								<img src='images/radioone/artists/$epImage' alt=''/>
+								<img src='/images/radioone/artists/$epImage' alt=''/>
 								<span></span>
 							</a>
 							<p class='imageBoxCaption'>$epName</p>
