@@ -21,20 +21,8 @@
     <script type="text/javascript" src="/script/main.js"></script> <!--contains document ready function-->
 
     <script> 
-		$('#contactFormHelp').bind('submit',function(e) 
-		{
-			e.preventDefault();
-			
-			var obj = {
-                    	cf_name:   		document.getElementById('cf_name').value,
-                    	cf_email:   	document.getElementById('cf_email').value,
-                    	cf_message:    	document.getElementById('cf_message').value
-                	  };
-			
-			contactHelp(obj);
-		});
 
-	function contactHelpCallback(a) 
+    function contactHelpCallback(a) 
     {
       $("#loading-indicator").show();      
       console.log("Error: ", JSON.stringify(a));
@@ -57,6 +45,19 @@
       	$("#loading-indicator").show();      
       	$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
     }
+
+	$('#contactFormHelp').bind('submit',function(e) 
+	{
+		e.preventDefault();
+			
+		var obj = {
+                    cf_name:   		document.getElementById('cf_name').value,
+                    cf_email:   	document.getElementById('cf_email').value,
+                    cf_message:    	document.getElementById('cf_message').value
+                };
+			
+			contactHelp(obj);
+		});
 
 	</script>
 
