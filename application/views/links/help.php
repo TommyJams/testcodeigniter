@@ -107,7 +107,7 @@
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
-                                <input type="submit" value="Send" style="width:auto; margin: 10px auto;"/>
+                                <input type="submit" value="Send" id="contact-form-send" name="contact-form-send" class="button" style="width:auto; margin: 10px auto;"/>
                             </td>
                         </tr>
                     </table>
