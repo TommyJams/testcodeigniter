@@ -86,9 +86,9 @@
         </div>
     
     <script>    
-    <?
-      loadTiles($urlyear, $urlmonth, $urlday);
-    ?>
+
+    loadTiles();
+
     </script>
 
   </div> <!--main-container-->
