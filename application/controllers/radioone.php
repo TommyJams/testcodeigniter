@@ -72,7 +72,8 @@ class Radioone extends CI_Controller{
 			$response['error'] = 0;
 			$response['year']  = $thisYear;
 			$response['month'] = $thisMonth;
-			$response['day']   = $thisDay;
+			if(isset($thisDate))
+				$response['day']   = $thisDate;
 		}
 
 		$response['numTiles'] = mysql_num_rows($results);
