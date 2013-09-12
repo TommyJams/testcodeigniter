@@ -46,7 +46,7 @@
       	$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
     }
 
-	$("#contactForm-Help").bind("submit",function(e) 
+	$("#formHelp").bind("submit",function(e) 
 	{
 		e.preventDefault();
 			
@@ -84,7 +84,7 @@
 				<p>
 					In case of any questions, queries, requests, issues or complaints, kindly use the below provided form to contact us, and we shall get back to you shortly.
                 </p>
-                <form action="" method="post" id="contactForm-Help" name="contactForm-Help" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
+                <form action="" method="POST" id="formHelp" name="formHelp" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
                     <table style="border:0px; width:100%;">
                         <tr style="width:100%;">
                             <td style="width:100%;">
