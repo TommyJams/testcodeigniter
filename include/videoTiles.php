@@ -1,10 +1,11 @@
 <?
 
-	$streams = (json_decode($_POST['json'])->streams);
 	$numTiles = (json_decode($_POST['json'])->numTiles);
 	$thisYear = (json_decode($_POST['json'])->year);
 	$thisMonth = (json_decode($_POST['json'])->month);
-	$thisDay = (json_decode($_POST['json'])->day);
+
+	if($numTiles > 0 )
+		$streams = (json_decode($_POST['json'])->streams);
 
 	switch($thisMonth) {
 			case '01': $thisMonthName = "January"; break;
