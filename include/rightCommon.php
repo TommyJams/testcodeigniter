@@ -63,7 +63,7 @@
 			<?
 			$sessionArray = $this->session->all_userdata();
 			if(isset($sessionArray['username']) || isset($sessionArray['username_artist'])) {
-				print( "<a class='loginWidgetRef' href='http://testcodeigniter.azurewebsites.net/index'>
+				print( "<a class='loginWidgetRef' href='promoter/sessionlogout'>
 							<img src='images/icons/fb_logout.jpg'/>
 						</a>");
 			}
