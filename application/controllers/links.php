@@ -3,7 +3,7 @@
 class Links extends CI_Controller{
 
 	public function aboutus(){
-		$this->load->view('links/aboutus');
+		$this->load->view('aboutus');
 	}
 
 	public function terms(){
