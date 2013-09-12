@@ -62,13 +62,12 @@ class Radioone extends CI_Controller{
 				$streamRow = array($epName, $epImage, $epAudio, $epDate, $epDesc);
 				$response['streams'][] = $streamRow;
 			}
-
-			$response['year']  = $thisYear;
-			$response['month'] = $thisMonth;
-			if(isset($thisDate))
-				$response['day']   = $thisDate;
 		}
 
+		$response['year']  = $thisYear;
+		$response['month'] = $thisMonth;
+		if(isset($thisDate))
+			$response['day']   = $thisDate;
 		$response['numTiles'] = mysql_num_rows($results);
 
 		$this->load->helper('functions');
