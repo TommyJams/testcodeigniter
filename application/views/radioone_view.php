@@ -92,7 +92,7 @@
 
 <script language="javascript">    
 
-  loadTiles();
+  loadTiles(<?print($urlyear);?>,<?print($urlmonth);?>,<?print($urlday);?>);
 
 </script>
 
