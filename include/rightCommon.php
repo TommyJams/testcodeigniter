@@ -61,7 +61,7 @@
 			<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 			-->
 			<?
-			if(isset($_SESSION["username"]) || isset($_SESSION["username_artist"])) {
+			if(isset($sessionArray['username']) || isset($sessionArray['username_artist'])) {
 				print( "<a class='loginWidgetRef' href='logout.php'>
 							<img src='images/icons/fb_logout.jpg'/>
 						</a>");
@@ -104,7 +104,7 @@
 						</td>
 					</tr>
 				</table>*/
-				print("<div class='fb-login-button' size='large' onlogin=facebookLoginCallback(); registration-url='http://tommyjams.com/beta/fbconnect.php?registered=no'>
+				print("<div class='fb-login-button' size='large' onlogin=facebookLoginCallback(); registration-url='http://testcodeigniter.azurewebsites.net/fbconnect/registerMethod/noregister'>
 				</div>");
 			}
 			?>
