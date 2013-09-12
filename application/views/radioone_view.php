@@ -49,13 +49,13 @@
     function loadTiles(year,month,day) 
     {
       $("#loading-indicator").show();
-      $.post('/radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
+      $.post('radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
     }
 
     function loadTiles() 
     {
       $("#loading-indicator").show();
-      $.post('/radioone/loadTiles', '', loadTilesCallback, 'json');
+      $.post('radioone/loadTiles', '', loadTilesCallback, 'json');
     }
 
   </script>
