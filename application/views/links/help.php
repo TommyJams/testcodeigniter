@@ -24,9 +24,15 @@
 		$('#contactFormHelp').bind('submit',function(e) 
 		{
 			e.preventDefault();
-			contactHelp();
+			
+			var obj = {
+                    cf_name:   		document.getElementById('cf_name').value,
+                    cf_email:   		document.getElementById('cf_email').value,
+                    cf_message:    		document.getElementById('cf_message').value,
+			
+			contactHelp(obj);
 		});
-	
+
 	function contactHelpCallback(a) 
     {
       $("#loading-indicator").show();      
@@ -44,10 +50,10 @@
   	  }
     }
     
-    function contactHelp() 
+    function contactHelp(obj) 
     {
       $("#loading-indicator").show();      
-      $.post('links/contactHelpFunc',$('#contactFormHelp').serialize(),contactHelpCallback,'json');
+      $.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
     }
 
 	</script>
