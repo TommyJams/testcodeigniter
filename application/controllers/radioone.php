@@ -53,13 +53,7 @@ class Radioone extends CI_Controller{
 		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";
 
 		$results = mysql_query($SQLs);
-		if(mysql_num_rows($results) == 0)
-		{
-			//No episodes seem to have come in yet, try previous month
-			//$thisMonth = $thisMonth - 1;
-			$response['error'] = 1;
-		}
-		else
+		if(mysql_num_rows($results) > 0)
 		{
 			while ($a = mysql_fetch_assoc($results))
 			{
@@ -69,7 +63,6 @@ class Radioone extends CI_Controller{
 				$response['streams'][] = $streamRow;
 			}
 
-			$response['error'] = 0;
 			$response['year']  = $thisYear;
 			$response['month'] = $thisMonth;
 			if(isset($thisDate))
@@ -78,7 +71,6 @@ class Radioone extends CI_Controller{
 
 		$response['numTiles'] = mysql_num_rows($results);
 
-		error_log('numTiles: '.$response['numTiles']);
 		$this->load->helper('functions');
 		createResponse($response);
 	}

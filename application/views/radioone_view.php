@@ -42,11 +42,8 @@
 
     function loadTilesCallback(a) 
     {
-      console.log(JSON.stringify(a));
-      if(a.error == 0)
-        $('#videoTilesContainer').load("include/videoTiles.php", {json: JSON.stringify(a)});
-      else
-        alert('Sorry, no listing found!');
+      //console.log(JSON.stringify(a));
+      $('#videoTilesContainer').load("include/videoTiles.php", {json: JSON.stringify(a)});
     }
 
     function loadTiles(year,month,day) 
