@@ -28,6 +28,7 @@ class Links extends CI_Controller{
 
 	public function contactHelpFunc(){
 
+		error_log("hello");
 		$to = "alerts@tommyjams.com";
 		$message = $_POST['cf_message'];
 		$name = $_POST['cf_name'];

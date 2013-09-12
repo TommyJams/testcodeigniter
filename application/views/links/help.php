@@ -99,7 +99,7 @@
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your Requirement-->
-                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; position:top; margin-top:10px; font-family: Arial; font-size: 14px;">
+                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;">
                                <!-- <textarea name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">Your requirement</textarea> -->
                             </td>
                         </tr>
