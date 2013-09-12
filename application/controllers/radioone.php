@@ -50,6 +50,8 @@ class Radioone extends CI_Controller{
 			$thisYear = date("Y");
 		}
 
+		error_log('loadTiles: '.$thisMonth.$thisYear);
+
 		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
 		if(isset($thisDate))
 		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";
