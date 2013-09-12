@@ -46,7 +46,7 @@
       	$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
     }
 
-	$('#contactFormHelp').bind('submit',function(e) 
+	$('#contactFormHelp').unbind('submit').bind('submit',function(e) 
 	{
 		e.preventDefault();
 			
