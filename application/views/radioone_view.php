@@ -52,12 +52,6 @@
       $.post('radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
     }
 
-    function loadTiles() 
-    {
-      $("#loading-indicator").show();
-      $.post('radioone/loadTiles', '', loadTilesCallback, 'json');
-    }
-
   </script>
 
 </head>
