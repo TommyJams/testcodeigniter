@@ -91,13 +91,12 @@
 </body>
 
 <script language="javascript">    
-
-  loadTiles(
-    <?
-    if($urlyear && $urlmonth && $urlday)
-      print($urlyear.",".$urlmonth.",".$urlday);
-    ?>);
-
+<?
+  if($urlyear && $urlmonth && $urlday)
+    print("loadTiles($urlyear,$urlmonth,$urlday");
+  else
+    print("loadTiles();");
+?>
 </script>
 
 </html>
