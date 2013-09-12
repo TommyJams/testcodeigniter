@@ -101,7 +101,7 @@
   if($urlyear && $urlmonth && $urlday)
     print("loadTiles($urlyear,$urlmonth,$urlday");
   else
-    print("loadTiles(undefined,undefined,undefined);");
+    print("loadTiles();");
 ?>
 </script>
 
