@@ -24,6 +24,8 @@ class Radioone extends CI_Controller{
 			$data['image'] = $a['image'];
 		}
 
+		error_log('radioLandingPage: '.$data['urlyear'].$data['urlmonth'].$data['urlday']);
+
 		$this->load->view('radioone_view', $data);
 
 	}
@@ -70,8 +72,6 @@ class Radioone extends CI_Controller{
 			$response['day']   = $thisDate;
 		$response['numTiles'] = mysql_num_rows($results);
 
-
-		error_log('numTiles: '.$response['numTiles']);
 		$this->load->helper('functions');
 		createResponse($response);
 	}
