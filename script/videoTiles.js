@@ -11,13 +11,7 @@ function initMonthWidget() {
 	
 	$("#monthWidgetContainer ul li").click(function() {
 		listIndex = $(this).index() + 1;
-		if(listIndex<10)
-			innerPhplink = 'include/videoTiles.php?month=0'+listIndex;
-		else
-			innerPhplink = 'include/videoTiles.php?month='+listIndex;
-		
-		$("#loading-indicator").show();
-		$("#videoTilesContainer").load(innerPhplink);
+		loadTiles('2013',listIndex,undefined);
 	});
 }
 

@@ -1,0 +1,82 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Radioone extends CI_Controller{
+
+	public function radioLandingPage(){
+
+		$data['urlyear'] = $this->uri->segment(1);
+		$data['urlmonth'] = $this->uri->segment(2);
+		$data['urlday'] = $this->uri->segment(3);
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+
+		$SQLs = "SELECT * FROM `$database`.`radioone` ORDER BY streamdate desc";
+		$results = mysql_query($SQLs);
+		
+		if($a = mysql_fetch_assoc($results))
+		{
+			$data['name'] = $a['name'];
+			$data['image'] = $a['image'];
+		}
+
+		$this->load->view('radioone_view', $data);
+
+	}
+
+	public function loadTiles() {
+
+		if($_POST["day"])
+		{
+			$thisDate = $_POST["day"];
+		}
+
+		if($_POST["month"] && $_POST["year"])
+		{
+			$thisMonth = $_POST["month"];
+			$thisYear = $_POST["year"];
+		}
+		else
+		{
+			$thisMonth = date("m");
+			$thisYear = date("Y");
+		}
+
+		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
+		if($thisDate)
+		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";
+
+		$results = mysql_query($SQLs);
+		if(mysql_num_rows($results) == 0)
+		{
+			//No episodes seem to have come in yet, try previous month
+			//$thisMonth = $thisMonth - 1;
+			$response['error'] = 1;
+		}
+		else
+		{
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$epName = $a["name"]; $epImage = $a["image"]; $epAudio = $a["audiolink"]; $epDate = date('jS M, Y',strtotime($a["streamdate"])); $epDesc = $a["desc"];
+
+				$streamRow = array($epName, $epImage, $epAudio, $epDate, $epDesc);
+				$response['streams'][] = $streamRow;
+			}
+
+			$response['error'] = 0;
+			$response['year']  = $thisYear;
+			$response['month'] = $thisMonth;
+			$response['day']   = $thisDay;
+		}
+
+		$response['numTiles'] = mysql_num_rows($results);
+
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+}
+?>

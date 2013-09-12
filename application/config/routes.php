@@ -50,8 +50,7 @@ $route['careers'] = "links/careers";
 $route['press'] = "links/press";
 $route['advertise'] = "links/advertise";
 $route['help'] = "links/help";
-
-
+$route['radioone'] = "radioone/radioLandingPage";
 
 // $route['fbconnect'] = "fbconnect/connectFb";
 
