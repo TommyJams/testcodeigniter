@@ -45,13 +45,13 @@ $route['index'] = "index/betalandingpage";
 $route['promoter'] = "promoter/promoterpage";
 $route['artist'] = "artist/artistpage";
 
-$route['aboutus'] = "/links/aboutus";
-$route['terms'] = "/links/terms";
-$route['careers'] = "/links/careers";
-$route['press'] = "/links/press";
-$route['advertise'] = "/links/advertise";
-$route['help'] = "/links/help";
-$route['presskit'] = "/links/press_kit";
+$route['/aboutus'] = "links/aboutus";
+$route['terms'] = "links/terms";
+$route['careers'] = "links/careers";
+$route['press'] = "links/press";
+$route['advertise'] = "links/advertise";
+$route['help'] = "links/help";
+$route['presskit'] = "links/press_kit";
 
 $route['radioone'] = "radioone/episode";
 
