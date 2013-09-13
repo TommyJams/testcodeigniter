@@ -15,7 +15,7 @@ class Links extends CI_Controller{
 	}
 
 	public function press(){
-		$this->load->view('links/advertise');
+		$this->load->view('links/press');
 	}
 
 	public function advertise(){
