@@ -24,8 +24,9 @@
 
     function contactHelpCallback(a) 
     {
-      $("#loading-indicator").show();      
-      console.log("Error: ", JSON.stringify(a));
+        blockForm('contact-form','block');
+        $("#loading-indicator").show();      
+        console.log("Error: ", JSON.stringify(a));
       
       /*if(a == 1)
       {
@@ -41,15 +42,19 @@
     
     function contactHelp() 
     {
+        blockForm('contact-form','block');
     	console.log("Error");
       	$("#loading-indicator").show();      
       	//$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
         $.post('links/contactHelpFunc',$('#help-form').serialize(),contactHelpCallback,'json');
     }
 
-	$("#help-form").bind("submit",function(e) 
-	{
-		e.preventDefault();
+    $("#help-form").bind("submit", function(e)
+    {
+        e.preventDefault();
+        contactHelp();
+
+    });
 	   /*		
 		var obj = {
                     cf_name:   		document.getElementById('cf_name').value,
@@ -57,12 +62,7 @@
                     cf_message:    	document.getElementById('cf_message').value
                 };
 		*/
-		contactHelp();
-	}); 
-
 	</script>
-
-
 </head>
 
 <body>
