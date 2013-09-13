@@ -72,7 +72,8 @@
 	?>
 
 	<div id="main-container">
-
+<div id="lefty" style="display:none;">
+        </div>
         <div id="inner-container">
 
             <div class="head">
