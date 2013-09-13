@@ -50,7 +50,7 @@
     {
       $("#loading-indicator").show();
       console.log('year:',year,'month:',month,'day:',day);
-      $.post('radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
+      $.post('/radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
     }
 
   </script>
