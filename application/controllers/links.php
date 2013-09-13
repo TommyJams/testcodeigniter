@@ -27,8 +27,14 @@ class Links extends CI_Controller{
 	}
 
 	public function presskit(){
-		$this->load->library('zip');
-		$this->zip->download('press_kit.zip');
+		$this->load->helper('download');
+		$data = file_get_contents("/press_kit.zip"); // Read the file's contents
+		$name = 'press_kit.zip';
+
+		force_download($name, $data);
+		
+	//	$this->load->library('zip');
+	//	$this->zip->download('press_kit.zip');
 	}
 
 	public function contactFunc(){
