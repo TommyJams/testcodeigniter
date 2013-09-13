@@ -20,6 +20,30 @@
 
     <script type="text/javascript" src="/script/main.js"></script> <!--contains document ready function-->
 
+    <script type="text/javascript">
+    
+    function careersCallback(a) 
+    {
+        $("#loading-indicator").show();      
+        if(a == 1)
+        {
+            alert('Sorry! There was some error while processing your request. Please try again.');
+            window.location.assign("http://testcodeigniter.azurewebsites.net/help") 
+        }
+        else
+        {
+           alert('Your request has been received. We will contact you shortly.');
+           window.location.assign("http://testcodeigniter.azurewebsites.net/help")      
+        }
+    }
+    
+    function careers() 
+    {
+        $("#loading-indicator").show();      
+        $.post('links/contactFunc',$('#careers-form').serialize(),careersCallback,'json');
+    }
+
+    </script>
 </head>
 
 <body>
@@ -46,7 +70,7 @@
                 using the form below with a small introduction and we shall be happy to consider your inclusion in the TommyJams family.
                 </p>
                 
-                <form action="contactform.php" method="post" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
+                <form action="" id="careers-form" name="careers-form" method="post" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
                     <table style="border:0px; width:100%;">
                         <tr style="width:100%;">
                             <td style="width:100%;">
@@ -85,5 +109,14 @@
 	?>
 
 </body>
+
+<script> 
+    $("#careers-form").bind("submit", function(e)
+    {
+        e.preventDefault();
+        careers();
+    });
+
+</script>
 
 </html>
