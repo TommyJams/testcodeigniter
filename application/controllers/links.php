@@ -35,8 +35,6 @@ class Links extends CI_Controller{
 				'contact-form-message'					=> $_POST['cf_message']
 			);
 
-		error_log("hello");
-
 		$to = "contact@tommyjams.com";
 		$sender = "alerts@tommyjams.com";
 		$subject = "Query received";
@@ -46,11 +44,11 @@ class Links extends CI_Controller{
 		$body=$Template->output();
 			
 		$this->load->helper('contactmail');
-	    send_email($to, $sender, $subject, $body);
+	    $error = send_email($to, $sender, $subject, $body);
 
-	  /*  if($error)
+	   	if($error)
 	    	$err = 0;
-	    else */
+	    else 
 	    	$err = 0;
 
 	    $response['error'] = $err;
