@@ -129,7 +129,7 @@
     {
 		  $("#loading-indicator").show();      
 		  console.log("All Gig Data: ", JSON.stringify(a));
-      alert('Gig Launched","Please visit the My Gigs section to see updates on the gig. You can also change the gig logo by clicking on the gig profile picture.');
+      alert('Gig Launched, Please visit the My Gigs section to see updates on the gig. You can also change the gig logo by clicking on the gig profile picture.');
       $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
     }
     function launchGig() 
@@ -223,7 +223,7 @@
     {
     if(a.error != '1')
       {
-        alert('Gig Updated. Your changes have been submitted successfully.');
+        alert('Gig Updated, Your changes have been submitted successfully.');
       }
       else
       {
