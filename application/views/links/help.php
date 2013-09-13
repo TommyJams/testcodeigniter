@@ -42,7 +42,6 @@
     
     function contactHelp() 
     {
-        blockForm('help-form','block');
     	console.log("Error");
       	$("#loading-indicator").show();      
       	//$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
