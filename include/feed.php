@@ -13,6 +13,10 @@
 	<link rel='stylesheet' href='/style/edit.css'>
 	<!-- Include the JS files -->
 	<script type="text/javascript">
+		<?
+		if(!$error)
+		{
+		?>
 		$('#ratingForm').bind('submit',function(e) 
 	        {
 	            e.preventDefault();
@@ -31,6 +35,7 @@
 
 	            enterGigFeedback(obj);
 	        });
+		<?}?>
 	</script>
 </head>
 <body>
@@ -61,7 +66,7 @@
 						{
 							print("<div class='gcontent' style='margin-bottom:6px; margin-top:10px;'>
 								<div class='head'><h1>Ineligible for rating '$gig_name'</h1></div></div>");
-						}
+ 						}
 					}
 					else
 					{
