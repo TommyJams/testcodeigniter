@@ -45,7 +45,7 @@
 						if($reason == 'premature')
 						{
 							print("<div class='gcontent' style='margin-bottom:6px; margin-top:10px;'>
-							<div class='head'><h1>You may rate after the gig is over on: $edate</h1></div></div>");
+							<div class='head'><h1>You may rate after the gig is over on: $eDate</h1></div></div>");
 						}
 						elseif($reason == 'already')
 						{
