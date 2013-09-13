@@ -545,7 +545,7 @@
 
 								<div class="obomButtonContainer">
 
-									<a href="beta/radioone.php" target="_blank" class="button-black clear-fix">
+									<a href="/radioone" target="_blank" class="button-black clear-fix">
 
 										Archives
 
