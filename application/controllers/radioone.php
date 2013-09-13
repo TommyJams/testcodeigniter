@@ -30,28 +30,30 @@ class Radioone extends CI_Controller{
 
 	public function loadTiles() {
 
-		error_log(1);
 		$database = 'tommyjam_test';
-		
-		//$thisDate = $_POST["day"];
-		$thisMonth = $_POST["month"];
-		$thisYear = $_POST["year"];
-		
-		if(!isset($thisMonth))
+
+		if(isset($_POST["day"]))
 		{
-			$thisMonth = date("m");
+			$thisDate = $_POST["day"];
+			error_log(1);
+		}
+
+		if(isset($_POST["month"]) && isset($_POST["year"]))
+		{
+			$thisMonth = $_POST["month"];
+			$thisYear = $_POST["year"];
 			error_log(2);
 		}
-		
-		if(!isset($thisYear))
+		else
 		{
+			$thisMonth = date("m");
 			$thisYear = date("Y");
 			error_log(3);
 		}
 
 		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
-		/*if(isset($thisDate))
-		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";*/
+		if(isset($thisDate))
+		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";
 
 		$results = mysql_query($SQLs);
 		if(mysql_num_rows($results) > 0)
@@ -67,8 +69,8 @@ class Radioone extends CI_Controller{
 
 		$response['year']  = $thisYear;
 		$response['month'] = $thisMonth;
-		/*if(isset($thisDate))
-			$response['day']   = $thisDate;*/
+		if(isset($thisDate))
+			$response['day']   = $thisDate;
 		$response['numTiles'] = mysql_num_rows($results);
 
 		$this->load->helper('functions');
