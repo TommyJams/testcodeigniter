@@ -33,7 +33,7 @@
         else
         {
 	   	   alert('Your request has been received. We will contact you shortly.');
-		  window.location.assign("http://testcodeigniter.azurewebsites.net/help")  	
+		   window.location.assign("http://testcodeigniter.azurewebsites.net/help")  	
   	    }
     }
     
