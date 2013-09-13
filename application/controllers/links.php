@@ -17,11 +17,11 @@ class Links extends CI_Controller{
 	public function presskit(){
 
 		error_log("message");
-	/*	$this->load->helper('download');
+		$this->load->helper('download');
 		$data = file_get_contents("presskit/press_kit.zip"); // Read the file's contents
 		$name = 'press_kit.zip';
 
-		force_download($name, $data);*/
+		force_download($name, $data);
 
 		$this->load->library('zip');
 		$this->zip->download('press_kit.zip'); 
