@@ -20,7 +20,7 @@ class Links extends CI_Controller{
 		$name = 'press_kit.zip';
 
 		force_download($name, $data);
-		redirect('http://testcodeigniter.azurewebsites.net/index');
+		//redirect('http://testcodeigniter.azurewebsites.net/index');
 	}
 
 	public function press(){
