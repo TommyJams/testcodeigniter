@@ -46,7 +46,7 @@
       $('#videoTilesContainer').load("include/videoTiles.php", {json: JSON.stringify(a)});
     }
 
-    function loadTiles(year,month,day) 
+    function loadTiles(year, month, day)
     {
       $("#loading-indicator").show();
       $.post('radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
@@ -93,7 +93,7 @@
 <script language="javascript">    
 <?
   if($urlyear && $urlmonth && $urlday)
-    print("loadTiles($urlyear,$urlmonth,$urlday);");
+    print("loadTiles('2013','08','08');");
   else
     print("loadTiles();");
 ?>
