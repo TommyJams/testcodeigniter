@@ -49,12 +49,7 @@
         $.post('links/contactHelpFunc',$('#help-form').serialize(),contactHelpCallback,'json');
     }
 
-    $("#help-form").bind("submit", function(e)
-    {
-        e.preventDefault();
-        contactHelp();
 
-    });
 	   /*		
 		var obj = {
                     cf_name:   		document.getElementById('cf_name').value,
@@ -167,5 +162,17 @@
 	?>    
 
 </body>
+
+<script> 
+
+
+    $("#help-form").bind("submit", function(e)
+    {
+        e.preventDefault();
+        contactHelp();
+
+    });
+
+</script>
 
 </html>
