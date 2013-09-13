@@ -14,24 +14,6 @@
 
 </head>
  <body>
-    <?
-    if(isset($_GET["added"]) && $_GET["added"]=="new")
-    {
-        echo('
-                <script type="text/javascript">
-                    messageBoxUp("Gig Launched","Please visit the My Gigs section to see updates on the gig. You can also change the gig logo by clicking on the gig profile picture.");
-                </script>
-            ');
-    }
-	elseif(isset($_GET["edited"]) && $_GET["edited"]=="new")
-    {
-        echo('
-                <script type="text/javascript">
-                    messageBoxUp("Gig Updated","Your changes have been updated successfully!");
-                </script>
-            ');
-    }
-    ?>
     <div id="blanket" style="display:none;
                             background-color:#111;
                             opacity: 0.65;
