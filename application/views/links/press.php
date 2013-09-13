@@ -46,7 +46,7 @@
 					<br>
 					Email: contact@tommyjams.com
 					<br><br>
-					<a href="/presskit">Download Press Kit</a>
+					<a href="presskit">Download Press Kit</a>
 				</p>
                 
             </div>
