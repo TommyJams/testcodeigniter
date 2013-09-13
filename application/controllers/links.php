@@ -27,6 +27,7 @@ class Links extends CI_Controller{
 	}
 
 	public function pressKit(){
+		$this->load->library('zip');
 		$this->zip->download('press/press_kit.zip');
 	}
 
