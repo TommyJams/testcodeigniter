@@ -48,9 +48,7 @@
                     <br>
                     <br>
                     For advertising with us, please drop a message using the form below and we shall get in touch with you.
-                </p>
-            </div>
-            <div>    
+                </p>    
                 <form name="contact-form" id="contact-form" action="" method="post" class="clear-fix">
                     <div class="clear-fix">
                         <ul class="no-list form-line">

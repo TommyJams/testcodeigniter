@@ -84,24 +84,24 @@
 				<p>
 					In case of any questions, queries, requests, issues or complaints, kindly use the below provided form to contact us, and we shall get back to you shortly.
                 </p>
-                <form action="" method="POST" id="formHelp" name="formHelp" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
+                <form name="contact-form" id="contact-form" action="" method="post" class="clear-fix" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
                     <table style="border:0px; width:100%;">
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your name-->
-                                <input type="text" id="cf_name" value="Your name" name="cf_name" style="width:50%; margin-top:10px;"/>
+                                <input type="text" id="contact-form-name" value="Your name" name="contact-form-name" style="width:50%; margin-top:10px;"/>
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your e-mail-->
-                                <input type="text" id="cf_email" value="Your e-mail" name="cf_email" style="width:50%; margin-top:10px;"/>
+                                <input type="text" id="contact-form-mail" value="Your e-mail" name="contact-form-mail" style="width:50%; margin-top:10px;"/>
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your Requirement-->
-                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;"/>
+                                <input type="text" id="contact-form-message" value="Your requirement" name="contact-form-message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;"/>
                                <!-- <textarea name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">Your requirement</textarea> -->
                             </td>
                         </tr>
