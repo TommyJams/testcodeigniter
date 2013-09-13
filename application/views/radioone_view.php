@@ -93,7 +93,7 @@
 <script language="javascript">    
 <?
   if($urlyear && $urlmonth && $urlday)
-    print("loadTiles('2013','08','08');");
+    print("loadTiles(2013,08,08);");
   else
     print("loadTiles();");
 ?>
