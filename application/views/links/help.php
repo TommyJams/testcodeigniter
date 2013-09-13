@@ -27,16 +27,16 @@
       $("#loading-indicator").show();      
       console.log("Error: ", JSON.stringify(a));
       
-      if(a == 1)
+      /*if(a == 1)
       {
         alert('Sorry! There was some error while processing your request. Please try again.');
         window.location.assign("http://testcodeigniter.azurewebsites.net/help") 
       }
       else
-      {
+      {*/
 		alert('Your request has been received. We will contact you shortly.');
 		window.location.assign("http://testcodeigniter.azurewebsites.net/help")  	
-  	  }
+  	 // }
     }
     
     function contactHelp() 
