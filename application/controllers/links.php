@@ -26,6 +26,10 @@ class Links extends CI_Controller{
 		$this->load->view('links/help');
 	}
 
+	public function pressKit(){
+		$this->zip->download('press/press_kit.zip');
+	}
+
 	public function contactFunc(){
 
 		$values=array
@@ -45,7 +49,7 @@ class Links extends CI_Controller{
 			
 		$this->load->helper('contactmail');
 	    $error = send_email($to, $sender, $subject, $body);
-	    
+
 	   	if($error)
 	    	$err = 0;
 	    else 
