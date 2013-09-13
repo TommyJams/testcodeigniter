@@ -29,17 +29,11 @@
 	?>
 
 	<div id="main-container">
-
         <div id="inner-container">
-
             <div class="head">
-
                 <h1>Advertise</h1>
-
             </div>
-
-            <div id="textContainer">
-                
+            <div id="textContainer">              
                 <p>
                     TommyJams is a fast growing community of Artists, Venues and Fans.
                     <br>
@@ -55,38 +49,31 @@
                     <br>
                     For advertising with us, please drop a message using the form below and we shall get in touch with you.
                 </p>
-                
-                <form name="contact-form" id="contact-form" action="" method="post" class="clear-fix">
-
-                                    <div class="clear-fix">
-
-                                        <ul class="no-list form-line">
-
-                                            <li class="clear-fix block">
-                                                <label for="contact-form-name">Your name</label>
-                                                <input type="text" name="contact-form-name" id="contact-form-name" value=""/>
-                                            </li>
-                                            <li class="clear-fix block">
-                                                <label for="contact-form-mail">Your e-mail</label>
-                                                <input type="text" name="contact-form-mail" id="contact-form-mail" value=""/>
-                                            </li>
-                                            <li class="clear-fix block">
-                                                <label for="contact-form-message">Your message</label>
-                                                <textarea name="contact-form-message" id="contact-form-message" rows="1" cols="1"></textarea>   
-                                            </li>
-                                            <li class="clear-fix block">
-                                                <input type="submit" id="contact-form-send" name="contact-form-send" class="button" value="Send"/>
-                                            </li>
-                                            
-                                        </ul>
-                                            
-                                    </div>
-
-                                </form>
             </div>
-        
+            <div>    
+                <form name="contact-form" id="contact-form" action="" method="post" class="clear-fix">
+                    <div class="clear-fix">
+                        <ul class="no-list form-line">
+                            <li class="clear-fix block">
+                                <label for="contact-form-name">Your name</label>
+                                <input type="text" name="contact-form-name" id="contact-form-name" value=""/>
+                            </li>
+                            <li class="clear-fix block">
+                                <label for="contact-form-mail">Your e-mail</label>
+                                <input type="text" name="contact-form-mail" id="contact-form-mail" value=""/>
+                            </li>
+                            <li class="clear-fix block">
+                                <label for="contact-form-message">Your message</label>
+                                <textarea name="contact-form-message" id="contact-form-message" rows="1" cols="1"></textarea>   
+                            </li>
+                            <li class="clear-fix block">
+                                <input type="submit" id="contact-form-send" name="contact-form-send" class="button" value="Send"/>
+                            </li>                    
+                        </ul>
+                     </div>
+                </form>
+            </div>
         </div>
-
     </div> <!--main-container-->
 
 	<?
