@@ -39,6 +39,7 @@
 			<section id="left" style=" width:100%;">
 
 				<?
+					error_log('error'.$error_log.'reason'.$reason);
 					if($error)
 					{
 						if($reason == 'premature')
