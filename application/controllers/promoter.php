@@ -805,7 +805,7 @@ class Promoter extends CI_Controller{
 						</tr>
 						<tr>
 							<td>Rate Promoter and Gig</td>
-							<td><a href='http://www.tommyjams.com/beta/artist.php?feed=$link'>RATE</a> (enabled only after the gig)</td>
+							<td><a href='/artist/feedback/$link'>RATE</a> (enabled only after the gig)</td>
 						</tr>
 					</table>
 					</center>
@@ -892,7 +892,7 @@ class Promoter extends CI_Controller{
 						</tr>
 						<tr>
 							<td>Rate Artist and Gig</td>
-							<td><a href='http://www.tommyjams.com/beta/promoter.php?feed=$link'>RATE</a> (enabled only after the gig)</td>
+							<td><a href='/promoter/feedback/$link'>RATE</a> (enabled only after the gig)</td>
 						</tr>
 					</table>
 					</center>

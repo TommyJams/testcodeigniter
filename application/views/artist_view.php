@@ -172,6 +172,32 @@
 		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
     }
 
+    function showGigFeedbackCallback(a)
+    {
+        console.log("Data: ", JSON.stringify(a));
+        $("#lefty").load("include/feed.php", {json: JSON.stringify(a)});
+    }
+    function showGigFeedback(link)
+    {
+        $("#loading-indicator").show();
+        $.post('/artist/showGigFeedback',{'gigLink': link},showGigFeedbackCallback,'json');      
+    }
+
+    function enterGigFeedbackCallback(a)
+    {
+        console.log("Data: ", JSON.stringify(a));
+        if(!a.error)
+            alert('Thank you for taking the time out to rate the host');
+        else
+            alert('Sorry, there has been some error!');
+    }
+    function enterGigFeedback(obj)
+    {
+        $("#loading-indicator").show();   
+        console.log('gigLink',obj.gigLink,'arate',obj.rate,'acomment',obj.comment,'gig',obj.gigRate,'gigc',obj.gigComment,'future',obj.future);
+        $.post('/artist/enterGigFeedback',{'gigLink': obj.gigLink, 'arate': obj.rate, 'acomment': obj.comment, 'gig': obj.gigRate, 'gigc': obj.gigComment, 'future': obj.future},enterGigFeedbackCallback,'json');
+    }
+
     </script>
 
 	<script type="text/javascript">
@@ -199,7 +225,9 @@
 			<iframe name="leftframe" id="leftframe1" width="100%" height="100%" frameborder="0"></iframe>
 		</div>
 		<script>
-			<? if(isset($_GET["gigs"]) && $_GET["gigs"]=="search")
+			<? 
+            /*
+            if(isset($_GET["gigs"]) && $_GET["gigs"]=="search")
 			{ 
 				if(isset($_GET["page"])){$_SESSION["page"]=$_GET["page"];}
 				else{
@@ -229,7 +257,11 @@
 				}
 				else if(isset($_GET["id"])){ print("$('#lefty').load('include/profile.php?id=$_GET[id]');");}
 				else if(isset($_GET["gig"])){ print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]');");}
-			}
+			}*/
+                if($gig_id)
+                    print("showGigFeedback();");
+                else
+                    print("$.post('artist/profilepage','',showProfileCallback,'json');");
 			?>
 		</script>
 		<!--
