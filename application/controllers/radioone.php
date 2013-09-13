@@ -30,12 +30,12 @@ class Radioone extends CI_Controller{
 
 	public function loadTiles() {
 
+		error_log(1);
 		$database = 'tommyjam_test';
 		
 		$thisDate = $_POST["day"];
 		$thisMonth = $_POST["month"];
 		$thisYear = $_POST["year"];
-		error_log(1);
 		
 		if(!isset($thisMonth))
 		{
