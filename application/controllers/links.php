@@ -18,7 +18,7 @@ class Links extends CI_Controller{
 
 		error_log("message");
 		$this->load->helper('download');
-		$data = file_get_contents("/presskit/press_kit.zip"); // Read the file's contents
+		$data = file_get_contents("press_kit.zip"); // Read the file's contents
 		$name = 'press_kit.zip';
 
 		force_download($name, $data);
