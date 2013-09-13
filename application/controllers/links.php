@@ -18,8 +18,8 @@ class Links extends CI_Controller{
 
 		error_log("message");
 		$this->load->helper('download');
-		$data = file_get_contents("kit/TommyJams-Press.pdf"); // Read the file's contents
-		$name = 'press_kit.pdf';
+		$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
+		$name = 'press_kit.zip';
 
 		//$data = 'Here is some text!';
 		//$name = 'press_kit.txt';
