@@ -56,13 +56,11 @@
 	 					{
 							print("<div class='gcontent' style='margin-bottom:6px; margin-top:10px;'>
 									<div class='head'><h1>No such gig to rate</h1></div></div>");
-							exit;
 						}
 						elseif($reason == 'ineligible')
 						{
 							print("<div class='gcontent' style='margin-bottom:6px; margin-top:10px;'>
 								<div class='head'><h1>Ineligible for rating '$gig_name'</h1></div></div>");
-							exit;
 						}
 					}
 					else

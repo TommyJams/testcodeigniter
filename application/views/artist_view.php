@@ -186,6 +186,7 @@
     function enterGigFeedbackCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
+        $("#loading-indicator").hide();
         if(!a.error)
             alert('Thank you for taking the time out to rate the host');
         else
