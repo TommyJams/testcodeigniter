@@ -2,7 +2,7 @@
 
 class Radioone extends CI_Controller{
 
-	public function radioLandingPage(){
+	public function episode(){
 
 		$data['urlyear'] = $this->uri->segment(3);
 		$data['urlmonth'] = $this->uri->segment(4);
