@@ -38,6 +38,8 @@
 
   <script type="text/javascript" src="/script/main.js"></script> <!--contains document ready function-->
 
+  <script type="text/javascript" src="/script/videoTiles.js"></script> <!--contains document ready function-->
+
   <script language="javascript"> 
 
     function loadTilesCallback(a) 

@@ -106,10 +106,6 @@
 
 </a>
 
-<script src="script/videoTiles.js">
-
-</script>
-
 <script type="text/javascript">
 
 	initMonthWidget();
