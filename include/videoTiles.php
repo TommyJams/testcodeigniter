@@ -102,7 +102,7 @@
 <!-- Radio One Logo-->
 <a href="http://www.facebook.com/pages/ONE-Bengaluru-ONE-Music/128804727178554" target="_blank" id="radioOneLogo">
 
-	<img src="image/icon/radioonelogo.png" width="100%">
+	<img src="/image/icon/radioonelogo.png" width="100%">
 
 </a>
 
