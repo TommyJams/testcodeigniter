@@ -55,7 +55,7 @@ class Radioone extends CI_Controller{
 
 		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
 		if(isset($thisDate))
-		 	$SQLs = $SQLs."AND DATE(streamdate) = '".$thisDate."'";
+		 	$SQLs = $SQLs."AND DAY(streamdate) = '".$thisDate."'";
 
 		$results = mysql_query($SQLs);
 		if(mysql_num_rows($results) > 0)
