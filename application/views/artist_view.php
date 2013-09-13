@@ -175,7 +175,7 @@
     function showGigFeedbackCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
-        $("#lefty").load("include/feed.php", {json: JSON.stringify(a)});
+        $("#lefty").load("/include/feed.php", {json: JSON.stringify(a)});
     }
     function showGigFeedback(link)
     {
