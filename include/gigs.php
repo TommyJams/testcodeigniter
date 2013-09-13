@@ -25,19 +25,6 @@
                             height:100%;
                             "/>
 
-    <div id="messageBox" style="display:none;">
-        <a id="msgBoxClose" href="javascript:;" onClick="messageBoxClose()">
-        </a>
-        <center>
-            <h1 id="msgBoxTitle">
-                Message Box
-            </h1>
-            <p id="msgBoxDetails">
-                This is a generic Message Box. If you are getting this, then something went wrong.
-            </p>
-        </center>
-    </div>
-
 	<div id="profil" style="display:none; ">
         <a id="loginBoxClose" href="#" onClick="popup('profil')">
 		</a>
