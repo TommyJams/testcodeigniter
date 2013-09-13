@@ -14,7 +14,7 @@ class Links extends CI_Controller{
 		$this->load->view('links/careers');
 	}
 
-	public function press_kit(){
+	public function presskit(){
 		$this->load->helper('download');
 		$data = file_get_contents("presskit/press_kit.zip"); // Read the file's contents
 		$name = 'press_kit.zip';
