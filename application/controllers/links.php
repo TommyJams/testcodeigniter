@@ -28,7 +28,7 @@ class Links extends CI_Controller{
 
 	public function presskit(){
 		$this->load->helper('download');
-		$data = file_get_contents("press/press_kit.zip"); // Read the file's contents
+		$data = file_get_contents("press_kit.zip"); // Read the file's contents
 		$name = 'press_kit.zip';
 
 		force_download($name, $data);
