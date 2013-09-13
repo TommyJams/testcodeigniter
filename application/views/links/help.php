@@ -25,7 +25,6 @@
     function contactHelpCallback(a) 
     {
         $("#loading-indicator").show();      
-        console.log("Error: ", JSON.stringify(a));
         if(a == 1)
         {
             alert('Sorry! There was some error while processing your request. Please try again.');
@@ -40,9 +39,8 @@
     
     function contactHelp() 
     {
-    	console.log("Error");
       	$("#loading-indicator").show();      
-        $.post('links/contactHelpFunc',$('#help-form').serialize(),contactHelpCallback,'json');
+        $.post('links/contactFunc',$('#help-form').serialize(),contactHelpCallback,'json');
     }
 
 	</script>

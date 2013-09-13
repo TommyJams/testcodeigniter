@@ -25,7 +25,6 @@
     function advertiseCallback(a) 
     {
         $("#loading-indicator").show();      
-        console.log("Error: ", JSON.stringify(a));
         if(a == 1)
         {
             alert('Sorry! There was some error while processing your request. Please try again.');
