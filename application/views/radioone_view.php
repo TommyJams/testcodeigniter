@@ -49,6 +49,7 @@
     function loadTiles(year, month, day)
     {
       $("#loading-indicator").show();
+      console.log('year:',year,'month:',month,'day:',day);
       $.post('radioone/loadTiles', {'year': year, 'month': month, 'day': day}, loadTilesCallback, 'json');
     }
 

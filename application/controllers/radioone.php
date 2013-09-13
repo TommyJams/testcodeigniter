@@ -32,6 +32,8 @@ class Radioone extends CI_Controller{
 
 		$database = 'tommyjam_test';
 
+		error_log(0);
+
 		if(isset($_POST["day"]))
 		{
 			$thisDate = $_POST["day"];
