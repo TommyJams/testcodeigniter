@@ -24,7 +24,6 @@
 
     function contactHelpCallback(a) 
     {
-        blockForm('contact-form','block');
         $("#loading-indicator").show();      
         console.log("Error: ", JSON.stringify(a));
       
