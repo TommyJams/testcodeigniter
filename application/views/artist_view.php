@@ -258,8 +258,8 @@
 				else if(isset($_GET["id"])){ print("$('#lefty').load('include/profile.php?id=$_GET[id]');");}
 				else if(isset($_GET["gig"])){ print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]');");}
 			}*/
-                if($gig_id)
-                    print("showGigFeedback();");
+                if(isset($gig_id))
+                    print("showGigFeedback($gig_id);");
                 else
                     print("$.post('artist/profilepage','',showProfileCallback,'json');");
 			?>
