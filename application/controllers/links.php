@@ -45,9 +45,7 @@ class Links extends CI_Controller{
 			
 		$this->load->helper('contactmail');
 	    $error = send_email($to, $sender, $subject, $body);
-
-	    error_log("Error Value: ".$error);
-
+	    
 	   	if($error)
 	    	$err = 0;
 	    else 
