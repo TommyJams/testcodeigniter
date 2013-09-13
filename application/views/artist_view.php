@@ -193,9 +193,9 @@
     }
     function enterGigFeedback(obj)
     {
-        /*$("#loading-indicator").show();   
+        $("#loading-indicator").show();   
         console.log('gigLink',obj.gigLink,'arate',obj.rate,'acomment',obj.comment,'gig',obj.gigRate,'gigc',obj.gigComment,'future',obj.future);
-        $.post('/artist/enterGigFeedback',{'gigLink': obj.gigLink, 'arate': obj.rate, 'acomment': obj.comment, 'gig': obj.gigRate, 'gigc': obj.gigComment, 'future': obj.future},enterGigFeedbackCallback,'json');*/
+        $.post('/artist/enterGigFeedback',{'gigLink': obj.gigLink, 'arate': obj.rate, 'acomment': obj.comment, 'gig': obj.gigRate, 'gigc': obj.gigComment, 'future': obj.future},enterGigFeedbackCallback,'json');
     }
 
     </script>
