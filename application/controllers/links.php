@@ -26,7 +26,7 @@ class Links extends CI_Controller{
 		$this->load->view('links/help');
 	}
 
-	public function contactHelpFunc(){
+	public function contactFunc(){
 
 		$values=array
 			(
