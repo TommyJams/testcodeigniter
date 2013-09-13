@@ -28,22 +28,30 @@ class Links extends CI_Controller{
 
 	public function contactHelpFunc(){
 
+		$values=array
+			(
+				'contact-form-name'						=> $_POST['cf_name'],
+				'contact-form-mail'						=> $_POST['cf_email'],
+				'contact-form-message'					=> $_POST['cf_message']
+			);
+
 		error_log("hello");
-		$to = "alerts@tommyjams.com";
-		$message = $_POST['cf_message'];
-		$name = $_POST['cf_name'];
 
-		$sender = $_POST['cf_email'];
+		$to = "contact@tommyjams.com";
+		$sender = "alerts@tommyjams.com";
 		$subject = "Query received";
-		$mess="<p style='text-align:left;'> $name has send you following message: $message </p>";
-			
-		$this->load->helper('mail');
-	    $error = send_email($to, $sender, $subject, $mess);
 
-	    if($error)
+		$this->load->library('contactform/Template');
+		$Template=new Template($values,'default.php');
+		$body=$Template->output();
+			
+		$this->load->helper('contactmail');
+	    send_email($to, $sender, $subject, $body);
+
+	  /*  if($error)
 	    	$err = 0;
-	    else
-	    	$err = 1;
+	    else */
+	    	$err = 0;
 
 	    $response['error'] = $err;
 

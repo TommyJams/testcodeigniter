@@ -27,7 +27,7 @@
       $("#loading-indicator").show();      
       console.log("Error: ", JSON.stringify(a));
       
-      if(a.error == 1)
+      if(a == 1)
       {
         alert('Sorry! There was some error while processing your request. Please try again.');
         window.location.assign("http://testcodeigniter.azurewebsites.net/help") 
@@ -39,25 +39,26 @@
   	  }
     }
     
-    function contactHelp(obj) 
+    function contactHelp() 
     {
     	console.log("Error");
       	$("#loading-indicator").show();      
-      	$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
+      	//$.post('links/contactHelpFunc',{'cf_name': obj.cf_name, 'cf_email': obj.cf_email, 'cf_message': obj.cf_message}, contactHelpCallback,'json');
+        $.post('links/contactHelpFunc',$('#help-form').serialize(),contactHelpCallback,'json');
     }
 
-	$("#formHelp").bind("submit",function(e) 
+	$("#help-form").bind("submit",function(e) 
 	{
 		e.preventDefault();
-			
+	   /*		
 		var obj = {
                     cf_name:   		document.getElementById('cf_name').value,
                     cf_email:   	document.getElementById('cf_email').value,
                     cf_message:    	document.getElementById('cf_message').value
                 };
-			
-		contactHelp(obj);
-	});
+		*/
+		contactHelp();
+	}); 
 
 	</script>
 
@@ -84,30 +85,30 @@
 				<p>
 					In case of any questions, queries, requests, issues or complaints, kindly use the below provided form to contact us, and we shall get back to you shortly.
                 </p>
-                <form name="contact-form" id="contact-form" action="" method="post" class="clear-fix" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
+                <form action="" method="POST" id="help-form" name="help-form" style="width:50%; margin-top:20px; left:50%; margin-left:25%;">
                     <table style="border:0px; width:100%;">
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your name-->
-                                <input type="text" id="contact-form-name" value="Your name" name="contact-form-name" style="width:50%; margin-top:10px;"/>
+                                <input type="text" id="cf_name" value="Your name" name="cf_name" style="width:50%; margin-top:10px;"/>
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your e-mail-->
-                                <input type="text" id="contact-form-mail" value="Your e-mail" name="contact-form-mail" style="width:50%; margin-top:10px;"/>
+                                <input type="text" id="cf_email" value="Your e-mail" name="cf_email" style="width:50%; margin-top:10px;"/>
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
                                 <!--Your Requirement-->
-                                <input type="text" id="contact-form-message" value="Your requirement" name="contact-form-message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;"/>
+                                <input type="text" id="cf_message" value="Your requirement" name="cf_message" style="height:200px; width:100%; position:relative; margin-top:10px; font-family: Arial; font-size: 14px;"/>
                                <!-- <textarea name="cf_message" style="height:200px; width:100%; margin-top:10px; font-family: Arial; font-size: 14px;">Your requirement</textarea> -->
                             </td>
                         </tr>
                         <tr style="width:100%;">
                             <td style="width:100%;">
-                                <input type="submit" value="Send" id="contact-form-send" name="contact-form-send" class="button" style="width:auto; margin: 10px auto;"/>
+                                <input type="submit" value="Send" id="help-send" name="help-send" class="button" style="width:auto; margin: 10px auto;"/>
                             </td>
                         </tr>
                     </table>
