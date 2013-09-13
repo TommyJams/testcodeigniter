@@ -1126,7 +1126,10 @@ class Artist extends CI_Controller{
 		$response['gig_id'] = $gig_id;
 		$response['gig_name'] = $gig_name;
 		$response['role'] = 'a';
+		$response['eventDate'] = $edate;
+		$response['artist_name'] = $promoter_name;
 		$response['artist_name'] = $artist_name;
+
 
 		$this->load->helper('functions');
 		createResponse($response);		
