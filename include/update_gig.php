@@ -75,7 +75,7 @@
 								</p>
                                 <p>
                                     <label for="Website">Website:</label>
-                                    <input type="text" id="website" name="web" style="width:200px;" value="<? print(json_decode($_POST['json'])->website); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
+                                    <input type="text" id="website" name="web" style="width:200px;" value="<? print(json_decode($_POST['json'])->web); ?>" pattern="^[a-zA-Z0-9/ ,-_.:;&?]{20,150}$" />
                                     <em>Gig's Website</em>
                                 </p>
                                 <p>
