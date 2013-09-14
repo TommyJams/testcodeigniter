@@ -75,7 +75,9 @@
                             <?php $gig = (json_decode($_POST['json'])->gig);?>
 							<h1 style="display:inline-block;"><? print ("$gig"); ?></h1>
 						</div>
-                        <?php $promoter_name = (json_decode($_POST['json'])->promoter_name);?>
+                        <?php   $promoter_name = (json_decode($_POST['json'])->promoter_name);
+                                $promoter = (json_decode($_POST['json'])->promoter);
+                        ?>
                         <h2 id='gigHostName'>Hosted by: <? print ("<a href='javascript:;' onClick=showProfile('$promoter');>$promoter_name</a>"); ?></h2>
                         <h2><?php $city = (json_decode($_POST['json'])->city); ?>
                             <?php $state = (json_decode($_POST['json'])->state); ?>
@@ -119,7 +121,7 @@
                     <div class="medals" style="width:35%; height: auto; float:right; position:relative; top:30%; margin-top:-35px;">
                         <div id="gigStatus" style="width:auto; height:auto; margin:20px auto; position:relative;">
 						<center>
-                        <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
+                        <?php   $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
                         <?	
                         if ($gigStatus == 1) // Gig is booked
                         {
