@@ -67,7 +67,6 @@ $db['default']['stricton'] = FALSE;
 //If there is a local config file, overwrite the settings with that..
 if (is_readable(FCPATH . 'config.local.php'))
 {
-    error_log('FOUND: '.FCPATH . 'config.local.php');
     include_once(FCPATH . 'config.local.php');
     foreach($db['default'] as $key => $val)
         $db['default'][$key] = (isset($config['db'][$key])) ? $config['db'][$key] : $val;
