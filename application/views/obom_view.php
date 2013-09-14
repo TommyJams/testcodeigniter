@@ -13,7 +13,10 @@
 		<meta property="og:url" content="http://tommyjams.com/" />
 		<meta property="og:site_name" content="TommyJams" />
 		<meta property="og:description" content="Congratulations on getting the RadioOne Gate Pass" />
-		<meta property="fb:app_id" content="484562291630345" />
+		<!--	<meta property="fb:app_id" content="484562291630345" /> -->
+		<meta property="fb:app_id" content="217493645081899" />
+
+			
 		
 		<link rel="stylesheet" type="text/css" href="style/jquery.qtip.css"/>
 		<link rel="stylesheet" type="text/css" href="style/jquery-ui/jquery-ui.css"/>
