@@ -59,7 +59,6 @@ class Fbconnect extends CI_Controller{
 		ob_start();
 		// Path to PHP-SDK
 		require 'src/facebook.php';
-    $database = 'tommyjam_test';
     $sessionArray = $this->session->all_userdata();
 		/*define('FACEBOOK_APP_ID', '566516890030362');
 		define('FACEBOOK_SECRET', '731fb276b0e0e1a8a77ecbdf72e2591b'); */
@@ -131,7 +130,7 @@ class Fbconnect extends CI_Controller{
 
                 //  $this->load->database('databaseCheck');
                // include("connect.php");
-                $query_check1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
+                $query_check1 = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id = '$fbid'";
                 $result_check1 = mysql_query($query_check1);  
 
                 //if user is logged in on facebook but has never registered on tommyjams
@@ -226,7 +225,7 @@ class Fbconnect extends CI_Controller{
                /*   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 */
-                  $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)
+                  $query = "INSERT INTO `".DATABASE."`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender','$fb', '1', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 
                   $ress = mysql_query($query);
@@ -337,7 +336,7 @@ class Fbconnect extends CI_Controller{
                     send_email($to, $sender, $subject, $message);
                   } 
                   
-                  $q_link = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid'";
+                  $q_link = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id = '$fbid'";
                   $result_set_link = mysql_query($q_link);
                   
                   if (!$result_set_link)
@@ -349,7 +348,7 @@ class Fbconnect extends CI_Controller{
                     $id=$found_user["id"];
                     $ida=$id*15993;
                     $link="$ida";
-                    $query_insert = "UPDATE `$database`.`members` SET link='$link' WHERE id='$id'";
+                    $query_insert = "UPDATE `".DATABASE."`.`members` SET link='$link' WHERE id='$id'";
                     $res_insert = mysql_query($query_insert);
                     if (!$res_insert)
                       echo 'Database query failed:'. mysql_error();
@@ -415,7 +414,7 @@ class Fbconnect extends CI_Controller{
                 if($_GET["what"]==1){$what="Promoter";}else{$what="Artist";}*/
                 // include("connect.php");
                 
-                $q1 = "SELECT * FROM `$database`.`members` WHERE fb_id = '$fbid' AND status=1";
+                $q1 = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id = '$fbid' AND status=1";
                 $result_set1 = mysql_query($q1);  
 
                 if (!$result_set1)
@@ -426,7 +425,7 @@ class Fbconnect extends CI_Controller{
                   $found_admin = mysql_fetch_array($result_set1);
                   $type=$found_admin["type"];
                   
-                  $q2 = "UPDATE `$database`.`members` SET loginTime=now() WHERE fb_id = '$fbid'";
+                  $q2 = "UPDATE `".DATABASE."`.`members` SET loginTime=now() WHERE fb_id = '$fbid'";
                   mysql_query($q2);
                   
                   if($type=="Promoter")
