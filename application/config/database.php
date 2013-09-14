@@ -44,15 +44,15 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-include_once(FCPATH . 'config.local.php');   //Upload from local file
 
 $active_group = 'default';
 $active_record = TRUE;
 
+include_once(FCPATH . 'config.local.php');
 $db['default']['hostname'] = DATABASE_HOSTNAME;
-$db['default']['username'] = DATABASE_USERNAME;
-$db['default']['password'] = DATABASE_PASSWORD;
-$db['default']['database'] = DATABASE;
+$db['default']['username'] = DATABASE_USERNAME; //Upload from local file
+$db['default']['password'] = DATABASE_PASSWORD; //Upload from local file
+$db['default']['database'] = 'tommyjam_test';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -66,10 +66,19 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 //If there is a local config file, overwrite the settings with that..
-foreach($db['default'] as $key => $val)
+if (is_readable(FCPATH . 'config.local.php'))
 {
-    //$db['default'][$key] = (isset($config["db"][$key])) ? $config["db"][$key] : $val;
-    error_log('KEY: '.$key.'VALUE: '.$db['default'][$key]);
+    //include_once(FCPATH . 'config.local.php');
+    //error_log($config["db"]["username"]);
+    foreach($db['default'] as $key => $val)
+    {
+        //$db['default'][$key] = (isset($config["db"][$key])) ? $config["db"][$key] : $val;
+        error_log('KEY: '.$key.'VALUE: '.$db['default'][$key]);
+    }
+}
+else
+{
+    error_log('NOTFOUND: '.FCPATH . 'config.local.php');
 }
 
 /* End of file database.php */
