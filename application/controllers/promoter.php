@@ -1340,6 +1340,8 @@ class Promoter extends CI_Controller{
 
 		$data['gig_id'] = $this->uri->segment(3);
 
+		error_log($data);
+
 		$this->load->view('promoter_view', $data);
 	}
 
