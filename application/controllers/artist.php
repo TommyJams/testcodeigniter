@@ -6,7 +6,6 @@ class Artist extends CI_Controller{
 		ob_start();
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 		session_start();
@@ -21,7 +20,6 @@ class Artist extends CI_Controller{
 		$username=$sessionArray['username_artist'];
 		$password=md5($sessionArray['password_artist']);
 
-		error_log('DATABASE: '.DATABASE);
 		$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 		$results = mysql_query($SQLs);
 		$type = "";
@@ -51,7 +49,6 @@ class Artist extends CI_Controller{
 	public function profilepage(){
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		// Initializing variables. 
 		// Codeigniter throws "undefined variable" error on un-intialized variables.
@@ -65,7 +62,7 @@ class Artist extends CI_Controller{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 
 			while ($a = mysql_fetch_assoc($results))
@@ -108,7 +105,7 @@ class Artist extends CI_Controller{
 			$link = $_POST['id'];
 			error_log("Post ID: ".$link);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE link='$link'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE link='$link'";
 			$results = mysql_query($SQLs);
 
 			if (mysql_num_rows($results) == 1) 
@@ -155,10 +152,10 @@ class Artist extends CI_Controller{
 		$response['users'] = $users;
 
 	    if($type=="Promoter"){   
-	        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$link AND status=1 ORDER BY id DESC"; 
+	        $SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE promoter_id=$link AND status=1 ORDER BY id DESC"; 
 	    }
 	    else if($type=="Artist"){   
-	        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
+	        $SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE artist_id=$link AND status=1 ORDER BY id DESC"; 
 	    }
 	    $results = mysql_query($SQLs);
 
@@ -168,7 +165,7 @@ class Artist extends CI_Controller{
 	        $gig_id=$a["gig_id"];$ar_name=$a["artist_name"];$pr_name=$a["promoter_name"];
 	        $ar_id=$a["artist_id"];$pr_id=$a["promoter_id"];
 	                               
-	        $SQL = "SELECT * FROM `$database`.`shop` WHERE link=$gig_id";
+	        $SQL = "SELECT * FROM `".DATABASE."`.`shop` WHERE link=$gig_id";
 	        $result = mysql_query($SQL);
 	        
 	        while ($b = mysql_fetch_assoc($result))
@@ -193,14 +190,13 @@ class Artist extends CI_Controller{
 	public function editProfilePage(){
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
-		
+
 		if(isset($sessionArray['username_artist']))
 		{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 
 			while ($a = mysql_fetch_assoc($results))
@@ -222,7 +218,7 @@ class Artist extends CI_Controller{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
 			{
@@ -255,8 +251,7 @@ class Artist extends CI_Controller{
 	public function editProfile(){
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
-		
+
 		if(isset($sessionArray['username_artist']))
 		{
 			$username=$sessionArray['username_artist'];
@@ -289,7 +284,7 @@ class Artist extends CI_Controller{
 			$mobile=$_POST["phone"];
 			$email=$_POST["email"];
 
-			$query = "UPDATE `$database`.`members` SET `mobile`='$mobile', `email`='$email', `add`='$add', `city`='$city', `state`='$state', `country`='$country', `pincode`='$pincode' WHERE fb_id='$username'";
+			$query = "UPDATE `".DATABASE."`.`members` SET `mobile`='$mobile', `email`='$email', `add`='$add', `city`='$city', `state`='$state', `country`='$country', `pincode`='$pincode' WHERE fb_id='$username'";
 			$ress = mysql_query($query);
 			if (!$ress)
 			{
@@ -376,7 +371,7 @@ class Artist extends CI_Controller{
 			$organizationName=$_POST["organization"];
 			$genre=$_POST["genre"];
 			 
-			$query = "UPDATE `$database`.`members` SET `designation`='$designation', `name`='$organizationName', `genre`='$genre' WHERE fb_id='$username'";
+			$query = "UPDATE `".DATABASE."`.`members` SET `designation`='$designation', `name`='$organizationName', `genre`='$genre' WHERE fb_id='$username'";
 			$ress = mysql_query($query);
 			if (!$ress)
 			{
@@ -393,7 +388,7 @@ class Artist extends CI_Controller{
 			$rever=$_POST["rever"];	if($rever && !startsWith($rever,'http'))	{		$rever='http://'.$rever;	}
 			$youtube=$_POST["youtube"];	if($youtube && !startsWith($youtube,'http'))	{		$youtube='http://'.$youtube;	}
 
-			$query = "UPDATE `$database`.`members` SET `fb`='$fb', `twitter`='$twitter', `reverbnation`='$rever', `youtube`='$youtube', `myspace`='$myspace' WHERE fb_id='$username'";
+			$query = "UPDATE `".DATABASE."`.`members` SET `fb`='$fb', `twitter`='$twitter', `reverbnation`='$rever', `youtube`='$youtube', `myspace`='$myspace' WHERE fb_id='$username'";
 			$ress = mysql_query($query);
 			if (!$ress)
 			{
@@ -407,7 +402,7 @@ class Artist extends CI_Controller{
 			$about=$_POST["about"];
 			$about=str_replace("'", " ", $about);
 			
-			$query = "UPDATE `$database`.`members` SET `about`='{$about}' WHERE fb_id='$username'";
+			$query = "UPDATE `".DATABASE."`.`members` SET `about`='{$about}' WHERE fb_id='$username'";
 			$ress = mysql_query($query);
 			if (!$ress)
 			{
@@ -430,7 +425,6 @@ class Artist extends CI_Controller{
 		ob_start();
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
@@ -446,7 +440,7 @@ class Artist extends CI_Controller{
 			exit;
 		}
 
-		$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
+		$q2 = "SELECT link FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 		$result_set2 = mysql_query($q2);	
 		if (mysql_num_rows($result_set2) == 1) 
 		{
@@ -456,11 +450,11 @@ class Artist extends CI_Controller{
 
 		if(isset($sessionArray['username_artist']))
 	    {
-	    	$SQLs = "SELECT * FROM `$database`.`transaction` WHERE artist_id=$artist_id ORDER BY id DESC";
+	    	$SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE artist_id=$artist_id ORDER BY id DESC";
 	    }
 	 	elseif(isset($sessionArray['username']))
 	    {
-	        $SQLs = "SELECT * FROM `$database`.`transaction` WHERE promoter_id=$artist_id ORDER BY id DESC";
+	        $SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE promoter_id=$artist_id ORDER BY id DESC";
 	    }
 	    
 	    $results = mysql_query($SQLs);
@@ -472,7 +466,7 @@ class Artist extends CI_Controller{
 	        $artist=$a["artist_id"];$artist_name=$a["artist_name"];
 	        $link=$a["gig_id"];$statuss=$a["status"];
 
-	        $SQLe = "SELECT * FROM `$database`.`shop` WHERE link=$link";
+	        $SQLe = "SELECT * FROM `".DATABASE."`.`shop` WHERE link=$link";
 	        $resulte = mysql_query($SQLe);
 	        while ($f = mysql_fetch_assoc($resulte))
 	        {
@@ -492,7 +486,6 @@ class Artist extends CI_Controller{
 	public function findGigs()
 	{
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
@@ -577,7 +570,7 @@ class Artist extends CI_Controller{
 				$sBudget = "all";										//Reset Budget filter to all
 		}
 
-		$que = "SELECT DISTINCT venue_city FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+		$que = "SELECT DISTINCT venue_city FROM `".DATABASE."`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$sea=mysql_query($que);
         while($a = mysql_fetch_assoc($sea))
 		{
@@ -586,7 +579,7 @@ class Artist extends CI_Controller{
 		}
 
 
-		$que = "SELECT DISTINCT venue_date FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+		$que = "SELECT DISTINCT venue_date FROM `".DATABASE."`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$sea=mysql_query($que);
         while($a = mysql_fetch_assoc($sea))
 		{
@@ -594,7 +587,7 @@ class Artist extends CI_Controller{
 			$response['dateList'][] = $date;
 		}
 
-		$que = "SELECT DISTINCT category FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+		$que = "SELECT DISTINCT category FROM `".DATABASE."`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		$sea=mysql_query($que);
         while($a = mysql_fetch_assoc($sea))
 		{
@@ -602,7 +595,7 @@ class Artist extends CI_Controller{
 			$response['catList'][] = $cat;
 		}
 
-		$que = "SELECT DISTINCT budget_min FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2 ORDER BY budget_min DESC";
+		$que = "SELECT DISTINCT budget_min FROM `".DATABASE."`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2 ORDER BY budget_min DESC";
 		$sea=mysql_query($que);
         while($a = mysql_fetch_assoc($sea))
 		{	
@@ -610,8 +603,8 @@ class Artist extends CI_Controller{
 			$response['budgetList'][] = $min;
 		}
 
-		$query = "SELECT COUNT(*) as num FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
-		$que   = "SELECT               * FROM `$database`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+		$query = "SELECT COUNT(*) as num FROM `".DATABASE."`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
+		$que   = "SELECT               * FROM `".DATABASE."`.`shop` WHERE (`gig` LIKE '%$searchGigs%' OR `desc` LIKE '%$searchGigs%'  OR `venue_city` LIKE '%$searchGigs%'  OR `promoter_name` LIKE '%$searchGigs%') AND status!=2";
 		if(isset($sCity)   && $sCity!="all")  {$query.=" AND `venue_city` = '$sCity'";  $que.=" AND `venue_city` = '$sCity'";}
 		if(isset($sDate)   && $sDate!="all")  {$query.=" AND `venue_date` = '$sDate'";  $que.=" AND `venue_date` = '$sDate'";}
 		if(isset($sCat)    && $sCat !="all")  {$query.=" AND `category` LIKE '%$sCat%'"; $que.=" AND `category` LIKE '%$sCat%'";}
@@ -639,7 +632,7 @@ class Artist extends CI_Controller{
             if($v<=($nPage*6) && $v>($nPage*6)-6)
             {
                 $gigStatus=0;										// Gig is open
-                $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND status=1";
+                $q4 = "SELECT * FROM `".DATABASE."`.`transaction` WHERE gig_id=$link AND status=1";
                 $result_set4 = mysql_query($q4);	
                 if (mysql_num_rows($result_set4) == 1) 				//Gig is Booked
                 {
@@ -648,7 +641,7 @@ class Artist extends CI_Controller{
                 }
                 else
                 {
-	            	$q2 = "SELECT link FROM `$database`.`members` WHERE fb_id='$username'";
+	            	$q2 = "SELECT link FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 	                $result_set2 = mysql_query($q2);	
 	                if (mysql_num_rows($result_set2) == 1) 
 	                {
@@ -656,7 +649,7 @@ class Artist extends CI_Controller{
 	                        $artist_id=$found["link"];
 	                }
 
-	                $q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
+	                $q4 = "SELECT * FROM `".DATABASE."`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
 	                $result_set4 = mysql_query($q4);
 	                if (mysql_num_rows($result_set4) == 1) 
 	                {
@@ -704,7 +697,6 @@ class Artist extends CI_Controller{
 	public function searchProfiles()
 	{
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
@@ -746,7 +738,7 @@ class Artist extends CI_Controller{
 		
 		{
 
-			$query = "SELECT COUNT(*) as num FROM `$database`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%')  AND status!=2";
+			$query = "SELECT COUNT(*) as num FROM `".DATABASE."`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%')  AND status!=2";
 
 			$total_pages = mysql_fetch_array(mysql_query($query));
 
@@ -756,7 +748,7 @@ class Artist extends CI_Controller{
 
 			$v=0;
 
-			$que = "SELECT * FROM `$database`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%') AND status!=2";
+			$que = "SELECT * FROM `".DATABASE."`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%') AND status!=2";
 
 			$sea=mysql_query($que);
 
@@ -834,7 +826,6 @@ class Artist extends CI_Controller{
 		ob_start();
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
@@ -862,7 +853,7 @@ class Artist extends CI_Controller{
 		if($gigLink)
 		{
 			{ 
-				$q1 = "SELECT * FROM `$database`.`shop` WHERE link='$gigLink'";
+				$q1 = "SELECT * FROM `".DATABASE."`.`shop` WHERE link='$gigLink'";
 				$result_set1 = mysql_query($q1);	
 
 				{
@@ -878,7 +869,7 @@ class Artist extends CI_Controller{
 						$country=$found["venue_country"];
 				}
 
-				$q2 = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+				$q2 = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 				$result_set2 = mysql_query($q2);
 				if (mysql_num_rows($result_set2) == 1) 
 				{
@@ -888,7 +879,7 @@ class Artist extends CI_Controller{
 						$artist_email=$found["email"];
 				}
 
-				$q3 = "SELECT * FROM `$database`.`members` WHERE link=$promoter_id";
+				$q3 = "SELECT * FROM `".DATABASE."`.`members` WHERE link=$promoter_id";
 				$result_set3 = mysql_query($q3);	
 				if (mysql_num_rows($result_set3) == 1) 
 				{
@@ -897,7 +888,7 @@ class Artist extends CI_Controller{
 				}
 			}
 
-			$q4 = "SELECT * FROM `$database`.`transaction` WHERE gig_id=$gigLink AND artist_id=$artist_id";
+			$q4 = "SELECT * FROM `".DATABASE."`.`transaction` WHERE gig_id=$gigLink AND artist_id=$artist_id";
 			$result_set4 = mysql_query($q4);	
 			if (mysql_num_rows($result_set4) == 1) 
 			{
@@ -905,7 +896,7 @@ class Artist extends CI_Controller{
 				createResponse($response);
 			}
 
-			$q2 = "INSERT INTO `$database`.`transaction` (`id`, `status`, `artist_id`, `artist_name`, `promoter_id`, `promoter_name`, `gig_id`, `gig_name`, `time`) VALUES('', '4', '$artist_id', '$artist_name', '$promoter_id', '$promoter_name', '$gigLink', '$gig', 'CURRENT_TIMESTAMP')";
+			$q2 = "INSERT INTO `".DATABASE."`.`transaction` (`id`, `status`, `artist_id`, `artist_name`, `promoter_id`, `promoter_name`, `gig_id`, `gig_name`, `time`) VALUES('', '4', '$artist_id', '$artist_name', '$promoter_id', '$promoter_name', '$gigLink', '$gig', 'CURRENT_TIMESTAMP')";
 			$result_set2 = mysql_query($q2);
 			if (!$result_set2)
 			{
@@ -1013,7 +1004,6 @@ class Artist extends CI_Controller{
 	public function feedback(){
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 		session_start();
@@ -1036,7 +1026,6 @@ class Artist extends CI_Controller{
 	public function showGigFeedback()
 	{
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
@@ -1047,7 +1036,7 @@ class Artist extends CI_Controller{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
 			{
@@ -1055,7 +1044,7 @@ class Artist extends CI_Controller{
 			}
 
 			$gigLink = $_POST['gigLink'];
-			$q2 = "SELECT * FROM `$database`.`rating` WHERE gig_id=$gigLink";
+			$q2 = "SELECT * FROM `".DATABASE."`.`rating` WHERE gig_id=$gigLink";
 			$result_set2 = mysql_query($q2);
 			if (mysql_num_rows($result_set2) == 1)
 			{
@@ -1139,7 +1128,6 @@ class Artist extends CI_Controller{
 	public function enterGigFeedback()
 	{
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id']))
 		{
@@ -1151,7 +1139,7 @@ class Artist extends CI_Controller{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
 			{
@@ -1167,7 +1155,7 @@ class Artist extends CI_Controller{
 				$gigc=$_POST['gigc'];
 				$future=$_POST['future'];
 
-				$q2 = "UPDATE `$database`.`rating` SET `status` = '1', `artist_rate` = '$arate',`artist_comment` = '$acomment', `artist_dib_rate` = '$gig', `artist_dib_comment` = '$gigc', `artist_future` = '$future' WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' "; //Change for promoter
+				$q2 = "UPDATE `".DATABASE."`.`rating` SET `status` = '1', `artist_rate` = '$arate',`artist_comment` = '$acomment', `artist_dib_rate` = '$gig', `artist_dib_comment` = '$gigc', `artist_future` = '$future' WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' "; //Change for promoter
 				$result_set2 = mysql_query($q2);
 				if (!$result_set2)
 				{
@@ -1178,7 +1166,7 @@ class Artist extends CI_Controller{
 					createResponse($response);
 				}
 
-				$q3 = "SELECT * FROM `$database`.`rating` WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' "; //Change for promoter
+				$q3 = "SELECT * FROM `".DATABASE."`.`rating` WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' "; //Change for promoter
 				$result_set3 = mysql_query($q3);
 				if (!$result_set3)
 				{
@@ -1203,7 +1191,7 @@ class Artist extends CI_Controller{
 				$this->load->helper('mail');
     			send_email($to, $sender, $subject, $mess);
 
-				$q1 = "SELECT * FROM `$database`.`members` WHERE link=$promoter_id";
+				$q1 = "SELECT * FROM `".DATABASE."`.`members` WHERE link=$promoter_id";
 				$result_set1 = mysql_query($q1);
 				if (mysql_num_rows($result_set1) == 1)
 				{
@@ -1213,7 +1201,7 @@ class Artist extends CI_Controller{
 					$nsilver++;
 					$avgsilver = ((($nsilver-1) * $silver) + $arate)/($nsilver);
 					
-					$q3 = "UPDATE `$database`.`members` SET `silver` = '$avgsilver',`nsilver` = '$nsilver' WHERE link=$promoter_id";
+					$q3 = "UPDATE `".DATABASE."`.`members` SET `silver` = '$avgsilver',`nsilver` = '$nsilver' WHERE link=$promoter_id";
 					$result_set3 = mysql_query($q3);
 					if (!$result_set3)
 					{
