@@ -118,6 +118,7 @@
 						<center>
                         <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
                         <?php $link = (json_decode($_POST['json'])->link); ?>
+                        <?php $gigSession = (json_decode($_POST['json'])->gigSession); ?>
                         <?	
                         if ($gigStatus == 1) 
                         {

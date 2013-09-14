@@ -562,6 +562,8 @@ class Artist extends CI_Controller{
 		$response['gigStatus'] = $gigStatus;
 		$response['add'] = $add;
 		$response['pincode'] = $pincode;
+		$response['gigSession'] = $gigSession;
+
 	                        
 		$this->load->helper('functions');
 		createResponse($response);
