@@ -45,7 +45,7 @@
 		
 		<script type="text/javascript" src="script/script.js"></script>
 		<script type="text/javascript" src="script/gate.js"></script>
-        <script type="text/javascript" src="plugin/radio-form/radio-form.js"></script>
+        <script type="text/javascript" src="script/radio-form.js"></script>
 		<script type="text/javascript">
           var _gaq = _gaq || [];
 		  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js'; 
@@ -88,145 +88,85 @@
 		<!-- -------------------------------------------------------------- -->
 
 		<div class="main main-body">
-		                        
-								
-
-		<div id="fb-root"></div>
-		 
-		
-		 
+		<div id="fb-root"></div> 
 			<!-- Content -->
 			<div class="content clear-fix">
-
 				<ul class="no-list clear-fix section-list">
-					
 					<!-- Main -->
-					<li class="text-center clear-fix">
-												
-						<!-- Logo -->
-						
+					<li class="text-center clear-fix">											
+						<!-- Logo -->						
                         <a href="http://www.tommyjams.com" target="_blank"><img src="image/icon/tjlogo_small.png" alt="" style="margin: 0 auto; width:158px; max-width:50%;"/></a>
-
 						<!-- Radio form -->
 						<form name="radio-form" id="radio-form" action="" method="post" class="clear-fix">
-
 							<div class="clear-fix">
-
 								<p class="subtitle-paragraph margin-top-20 margin-bottom-20 clear-fix">
-
 									Please submit the form:
-
 								</p>
-
 								<div id="listContainer" class="clear-fix block box-center margin-bottom-20">
-
 									<ul class="no-list form-line">
-
 										<li class="clear-fix block">
 											<label for="radio-form-name">Enter your name*</label>
 											<input type="text" name="radio-form-name" id="radio-form-name"/>
 										</li>
-
 										<li class="clear-fix block">
 											<label for="radio-form-band">Enter your band's name*</label>
 											<input type="text" name="radio-form-band" id="radio-form-band"/>
 										</li>
-
 										<li class="clear-fix block">
 											<label for="radio-form-phone">Enter your phone number*</label>
 											<input type="text" name="radio-form-phone" id="radio-form-phone"/>
-										</li>
-										
+										</li>					
 										<li class="clear-fix block">
 											<label for="radio-form-email">Enter your email</label>
 											<input type="text" name="radio-form-email" id="radio-form-email"/>
 										</li>
-
 										<li class="clear-fix block">
 											<input type="submit" id="radio-form-send" name="radio-form-send" class="button" value="Submit"/>
-										</li>
-										
-									</ul>
-								
-								</div>								
-								
-							</div>
-							
+										</li>										
+									</ul>								
+								</div>																
+							</div>							
 						</form>
-						<!-- /Radio form -->
-						
+						<!-- /Radio form -->						
 						<a href="beta/radioone.php" target="_blank" class="button-black clear-fix">
-
 							Previous Episodes
-
 						</a>
-
 					</li>
-
 					<!-- Facebook Like Widget -->
-					<li id="likeButtonsContainer" class="text-center clear-fix" style="position:absolute; top:0; background: #000; color: #FFF; opacity:0.90; filter:alpha(opacity=90); min-height: 409px;">
-					
+					<li id="likeButtonsContainer" class="text-center clear-fix" style="position:absolute; top:0; background: #000; color: #FFF; opacity:0.90; filter:alpha(opacity=90); min-height: 409px;">					
 						<p class="subtitle-paragraph margin-top-20 margin-bottom-20 clear-fix">
-
 							<span class = "bold">
-
 								Welcome! To get started, Please Like the official Facebook pages of TommyJams and Radio One.
-							
 							</span>
-
-						</p>
-						
+						</p>						
 						<p class="subtitle-paragraph margin-top-20 margin-bottom-20 clear-fix">
-
 							TommyJams Page:
-
 						</p>
-
-						<div class="fb-like" data-href="http://www.facebook.com/tommyjams.live" data-send="false" data-width="200" data-show-faces="true" data-font="arial" data-colorscheme="dark"></div>
-						
+						<div class="fb-like" data-href="http://www.facebook.com/tommyjams.live" data-send="false" data-width="200" data-show-faces="true" data-font="arial" data-colorscheme="dark"></div>						
 						<p class="subtitle-paragraph margin-top-20 margin-bottom-20 clear-fix">
-
 							One Bengaluru One Music Page:
-
 						</p>
-
 						<div class="fb-like" data-href="http://www.facebook.com/pages/ONE-Bengaluru-ONE-Music/128804727178554" data-send="false" data-width="200" data-show-faces="true" data-font="arial" data-colorscheme="dark"></div>
-
 					</li>
 					<!-- /Facebook Like Widget -->
 					
 					<!-- /Main -->
-
 					<div  class="footer text-center clear-fix">
-
 						<p>Copyright 2013 - All Rights Reserved</p>
-
 					</div>
-
 				</ul>
-
 			</div>
-
-
 			<!-- /Content -->
-			
 			<script>
 			function myFunction()
 				{
 				//document.getElementById("demo").innerHTML="Hello World";
-
-				$("#listContainer1").hide();
-				
+				$("#listContainer1").hide();		
 				}
 			</script>
-			
-
-		</div>
-			
+		</div>			
 		<!-- Background overlay -->
 		<div id="background-overlay"></div>
 		<!-- /Background overlay -->
-
 	</body>
-
 </html>
