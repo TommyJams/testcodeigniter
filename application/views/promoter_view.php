@@ -299,7 +299,7 @@
     function enterGigFeedback(obj)
     {
         $("#loading-indicator").show();   
-        console.log('gigLink',obj.gigLink,'arate',obj.rate,'acomment',obj.comment,'gig',obj.gigRate,'gigc',obj.gigComment,'future',obj.future);
+        console.log('gigLink',obj.gigLink,'prate',obj.rate,'pcomment',obj.comment,'gig',obj.gigRate,'gigc',obj.gigComment,'future',obj.future);
         $.post('/promoter/enterGigFeedback',{'gigLink': obj.gigLink, 'prate': obj.rate, 'pcomment': obj.comment, 'gig': obj.gigRate, 'gigc': obj.gigComment, 'future': obj.future},enterGigFeedbackCallback,'json');
     }
 

@@ -1479,7 +1479,7 @@ class Promoter extends CI_Controller{
 				$gigc=$_POST['gigc'];
 				$future=$_POST['future'];
 
-				$q2 = "UPDATE `$database`.`rating` SET `status` = '1', `promoter_rate` = '$prate',`promoter_comment` = '$pcomment', `promoter_dib_rate` = '$gig', `promoter_dib_comment` = '$gigc', `promoter_future` = '$future' WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; //Change for promoter
+				$q2 = "UPDATE `$database`.`rating` SET `status` = '1', `promoter_rate` = '$prate',`promoter_comment` = '$pcomment', `promoter_gig_rate` = '$gig', `promoter_gig_comment` = '$gigc', `promoter_future` = '$future' WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; //Change for promoter
 				$result_set2 = mysql_query($q2);
 				if (!$result_set2)
 				{
