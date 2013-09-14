@@ -2,8 +2,6 @@
 
 class Fbconnect extends CI_Controller{
 
-    //public $database = 'tommyjam_test';
-
   function parse_signed_request($signed_request, $secret) {
         list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
 
@@ -209,7 +207,7 @@ class Fbconnect extends CI_Controller{
                   
                   //include("connect.php");
                   /*
-                  $SQLs = "SELECT id FROM `$database`.`members`";
+                  $SQLs = "SELECT id FROM `".DATABASE."`.`members`";
                   $results = mysql_query($SQLs);
                   while ($a = mysql_fetch_assoc($results))
                   {
@@ -222,7 +220,7 @@ class Fbconnect extends CI_Controller{
 
                   $ip=$_SERVER['REMOTE_ADDR'];
                   
-               /*   $query = "INSERT INTO `$database`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
+               /*   $query = "INSERT INTO `".DATABASE."`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `job`, `user`, `ip`, `time`)
                                      VALUES (NULL, '$what', '$actual_type', '$birth', '$organization', '$username', '$fb_username', '$password', '$email', '$phone', '$fbid', '$city', '$state', '$country', '$about', '$gender', '$fb', '1', '$job', '$fbid', '$ip', CURRENT_TIMESTAMP)";
 */
                   $query = "INSERT INTO `".DATABASE."`.`members` (`id`, `type`, `actual_type`, `dob`, `name`, `username`, `fb_username`,`password`, `email`, `mobile`, `fb_id`, `city`, `state`,`country`, `about`, `gender`, `fb`, `status`, `user`, `ip`, `time`)

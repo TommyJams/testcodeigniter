@@ -5,10 +5,7 @@ if (!$connection) {
 	die("Database connection failed: " . mysql_error());
 }
 
-$database = "tommyjam_test";
-
-
-$db_select = mysql_select_db($database,$connection);
+$db_select = mysql_select_db(DATABASE,$connection);
 if(!$db_select)
 {
 die("database selection failed".mysql_error());
