@@ -49,8 +49,13 @@
 
 			/**************************************************************************/
 
-			$SQLi = "INSERT INTO `$database`.`radioonegate` (`name`,`band`,`phone`,`email`) 
-					VALUES('".$values['radio-form-name']."','".$values['radio-form-band']."','".$values['radio-form-phone']."','".$values['radio-form-email']."')";
+			$name = $values['radio-form-name'];
+			$band = $values['radio-form-band'];
+			$phone = $values['radio-form-phone'];
+			$email = $values['radio-form-email'];
+
+			$SQLi = "INSERT INTO `$database`.`radioonegate` (`id`, `name`,`band`,`phone`,`email`) 
+					VALUES('', '$name', '$band', '$phone', '$email')";
 			$resulti = mysql_query($SQLi);
 			if(!$resulti)
 			{
@@ -63,8 +68,6 @@
 	
 			if( !isEmpty($values['radio-form-email']) )
 			{
-				require_once('../newsletter-form/MCAPI.class.php');
-
 				// API Key: http://admin.mailchimp.com/account/api/
 				$config = array(
 	    				'apikey' => '4b1d3dfd9a40c3a47861fa481d644505-us5' );
