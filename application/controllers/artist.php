@@ -22,7 +22,7 @@ class Artist extends CI_Controller{
 		$password=md5($sessionArray['password_artist']);
 
 		error_log('DATABASE: '.DATABASE);
-		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+		$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 		$results = mysql_query($SQLs);
 		$type = "";
 		$user = "";
