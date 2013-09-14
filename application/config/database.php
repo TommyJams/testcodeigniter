@@ -71,7 +71,7 @@ if (is_readable(FCPATH . 'config.local.php'))
     foreach($db['default'] as $key => $val)
     {
         $db['default'][$key] = (isset($config['db'][$key])) ? $config['db'][$key] : $val;
-        error_log('KEY: '.$key.'VALUE: '.$db['default'][$key].'configkey:'.$config['db'][$key]);
+        error_log('KEY: '.$key.'VALUE: '.$db['default'][$key]);
     }
 }
 else
