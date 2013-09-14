@@ -21,7 +21,8 @@ class Artist extends CI_Controller{
 		$username=$sessionArray['username_artist'];
 		$password=md5($sessionArray['password_artist']);
 
-		$SQLs = "SELECT * FROM `DATABASE`.`members` WHERE fb_id='$username'";
+		error_log('DATABASE: '.DATABASE);
+		$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 		$results = mysql_query($SQLs);
 		$type = "";
 		$user = "";
