@@ -19,6 +19,7 @@
         <a id="loginBoxClose" href="#" onClick="popup('profil')">
 		</a>
         <center><h2>Upload gig logo</h2></center>
+        <?php $link = (json_decode($_POST['json'])->link); ?>
         
         <form action="update.php?gig=pic&pic=<? print("$link"); ?>" method="post" enctype="multipart/form-data">
             <table style="margin-top: 30px; width: 100%;">
@@ -53,16 +54,18 @@
                 <div id="userPic" class="pic">
 
                     <?php $gigs = (json_decode($_POST['json'])->gigs);?>
-					<?  $sessionArray = $this->session->all_userdata();
+					<? 
+                        $CI =& get_instance();
+                        $sessionArray = $CI->session->all_userdata();
                         if(isset($sessionArray['username']))
                         {
                             print("<a href='#'  onclick=popup('profil')>");
                         }
-					   else 
-                       { 
+					    else 
+                        { 
                             print("<a href='#'>");
-                       }
-                       print ("<img src='$gigs' class='userStatsPic' />"); 
+                        }
+                        print ("<img src='$gigs' class='userStatsPic' />"); 
                     ?>
 					
                     </a>
