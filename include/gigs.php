@@ -97,7 +97,8 @@
 
                                 print("$country");
                             }
-                        ?></h2>
+                            ?>
+                        </h2>
                     </div>
 					<div class="socialInfo">
 						<div class="socialMediaLinks">
@@ -120,7 +121,7 @@
                         <?php $link = (json_decode($_POST['json'])->link); ?>
                         <?php $gigSession = (json_decode($_POST['json'])->gigSession); ?>
                         <?	
-                        if ($gigStatus == 1) 
+                        if ($gigStatus == 1) // Gig is booked
                         {
                             $artist_booked_id = (json_decode($_POST['json'])->artist_booked_id);
                             $artist_booked_name = (json_decode($_POST['json'])->artist_booked_name);
@@ -147,9 +148,9 @@
                             {                       
                             ?>
                                 <?php $link = (json_decode($_POST['json'])->link); ?>
-                                <form  action="dib_action.php"  method="post">
+                                <form  action=""  method="post">
                                     <input type="hidden" name="gig" value="<? print($link);?>">
-                                    <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="return confirmSubmit()">
+                                    <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="confirmSubmit($link)">
                                 </form>
                             <?
                             }
@@ -229,7 +230,6 @@
                 </div>
             </div>
         </section>
-		<? } ?>
     </div>
 
 	<script type="text/javascript">
@@ -237,11 +237,11 @@
 	</script>
 
 	<script LANGUAGE="JavaScript">
-	function confirmSubmit()
+	function confirmSubmit(link)
 	{
 		var agree=confirm("Are you sure you wish to call dibs for this gig? The host will receive the dibs and choose an artist. Please note, these dibs are not cancellable.");
 		if (agree)
-			return true ;
+			dibAction(link);
 		else
 			return false ;
 	}
