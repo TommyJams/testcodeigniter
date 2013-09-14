@@ -71,6 +71,10 @@ if (is_readable(FCPATH . 'config.local.php'))
     foreach($db['default'] as $key => $val)
         $db['default'][$key] = (isset($config['db'][$key])) ? $config['db'][$key] : $val;
 }
+else
+{
+    error_log('NOTFOUND: '.FCPATH . 'config.local.php');
+}
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
