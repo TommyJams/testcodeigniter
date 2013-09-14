@@ -84,7 +84,7 @@ class Artist extends CI_Controller{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
 
-			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
 			{
@@ -458,26 +458,50 @@ class Artist extends CI_Controller{
 	    }
 	    
 	    $results = mysql_query($SQLs);
-	            
-	    while ($a = mysql_fetch_assoc($results))
+	    
+	    if(!$results)
 	    {
-	        $gig_id=$a["gig_id"];
-	        $id=$a["id"];$gig=$a["gig_name"];$promoter=$a["promoter_id"];$promoter_name=$a["promoter_name"];
-	        $artist=$a["artist_id"];$artist_name=$a["artist_name"];
-	        $link=$a["gig_id"];$statuss=$a["status"];
+	    	$gig=""; 
+	    	$city=""; 
+	    	$formattedDate=""; 
+	    	$time=""; 
+	    	$statuss=""; 
+	    	$promoter=""; 
+	    	$promoter_name=""; 
+	    	$contact="";;
 
-	        $SQLe = "SELECT * FROM `".DATABASE."`.`shop` WHERE link=$link";
-	        $resulte = mysql_query($SQLe);
-	        while ($f = mysql_fetch_assoc($resulte))
-	        {
-	            $city=$f["venue_city"];$state=$f["venue_state"];$time=$f["venue_time"];$date=$f["venue_date"];
-	        }
-			$formattedDate = date('d-m-Y',strtotime($date));
-
-			$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name);
+	    	$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact);
 
 			$response['dibHistory'][] = $dibRow;
-		}	
+	    }
+
+	    else
+	    {        
+	    	while ($a = mysql_fetch_assoc($results))
+	    	{
+	        	$gig_id=$a["gig_id"];
+	        	$id=$a["id"];$gig=$a["gig_name"];$promoter=$a["promoter_id"];$promoter_name=$a["promoter_name"];
+	        	$artist=$a["artist_id"];$artist_name=$a["artist_name"];
+	        	$link=$a["gig_id"];$statuss=$a["status"];
+
+	        	$SQLe = "SELECT * FROM `".DATABASE."`.`shop` WHERE link=$link";
+	        	$resulte = mysql_query($SQLe);
+	        	while ($f = mysql_fetch_assoc($resulte))
+	        	{
+	            	$city=$f["venue_city"];$state=$f["venue_state"];$time=$f["venue_time"];$date=$f["venue_date"];
+	        	}
+				$formattedDate = date('d-m-Y',strtotime($date));
+
+				$SQLe = "SELECT mobile FROM `".DATABASE."`.`members` WHERE link=$promoter";
+            	$resulte = mysql_query($SQLe);
+            	$b = mysql_fetch_assoc($resulte);
+            	$contact = $b['mobile'];
+
+				$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact);
+
+				$response['dibHistory'][] = $dibRow;
+			}	
+		}
 
 		$this->load->helper('functions');
 		createResponse($response);

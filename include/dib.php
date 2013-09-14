@@ -33,11 +33,12 @@
                         $statuss=$row[4];
                         $promoter=$row[5];
                         $promoter_name=$row[6];
+                        $contact=$row[7];
 
                         print("
                         <table width=100% style='text-align:center;'>
                             <tr>
-                                <td width=25%><a href='javascript:;' class='highlightRef' onClick=gig('$link');><h3>$gig</h3></a></td>
+                                <td width=25%><a href='javascript:;' class='highlightRef' onClick=gigProfile('$link');><h3>$gig</h3></a></td>
                                 <td width=25%>$city</td>
                                 <td width=10%>$formattedDate</td>
                                 <td width=10%>$time</td>
@@ -46,16 +47,9 @@
 
                                 if($statuss==1)
                                 {
-                                    print("<a href='#' class='greenRef' style='color:#FFF;'>Accepted</a></td></tr><tr><td colspan=4></td><td><center>");
-                                    
-                                    $database = 'tommyjam_test';
+                                    print("<a href='#' class='greenRef' style='color:#FFF;'>Accepted</a></td></tr><tr><td colspan=4></td><td><center>");    
+                                    print("<a href='javascript:;' onClick=showProfile('$promoter'); class='greenRef'>$promoter_name</a><br>Contact: $contact</center>");
 
-                                    $SQLe = "SELECT mobile FROM `$database`.`members` WHERE link=$promoter";
-                                    $resulte = mysql_query($SQLe);
-                                    while ($f = mysql_fetch_assoc($resulte))
-                                    {
-                                        print("<a href='javascript:;' onClick=showProfile('$promoter'); class='greenRef'>$promoter_name</a><br>Contact: $f[mobile]</center>");
-                                    }
                                 }
                                 elseif($statuss==2)
                                 {
