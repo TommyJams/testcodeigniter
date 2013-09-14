@@ -1509,7 +1509,7 @@ class Promoter extends CI_Controller{
 
 				$to = "alerts@tommyjams.com";
 				$sender = "alerts@tommyjams.com";
-				$subject = "Gig has been rated by Artist";
+				$subject = "Gig has been rated by Promoter";
 				$mess="Gig: $gigName<br>Rating: $gig<br>Comment: $gigc";
 
 				$this->load->helper('mail');
@@ -1523,7 +1523,7 @@ class Promoter extends CI_Controller{
 					$silver = $a["silver"];
 					$nsilver = $a["nsilver"];
 					$nsilver++;
-					$avgsilver = ((($nsilver-1) * $silver) + $arate)/($nsilver);
+					$avgsilver = ((($nsilver-1) * $silver) + $prate)/($nsilver);
 					
 					$q3 = "UPDATE `$database`.`members` SET `silver` = '$avgsilver',`nsilver` = '$nsilver' WHERE link=$promoter_id";
 					$result_set3 = mysql_query($q3);
