@@ -441,6 +441,8 @@ class Promoter extends CI_Controller{
 			$actual_type = 'artist';
 		}
 
+		$this->load->helper('functions');
+
 		$q1 = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 		$result_set1 = mysql_query($q1);	
 		if (mysql_num_rows($result_set1) == 1) 
@@ -536,7 +538,6 @@ class Promoter extends CI_Controller{
 		$response['add'] = $venue_add;
 		$response['pincode'] = $venue_pin;
 
-		$this->load->helper('functions');
 		createResponse($response);
 	}
 
@@ -654,6 +655,7 @@ class Promoter extends CI_Controller{
 			$pid=$founded["link"];$name=$founded["name"];$email=$founded["email"];
 		}
 
+		$this->load->helper('functions');
 		$fb=$_POST['fb'];if($fb && !startsWith($fb,'http')){$fb='http://'.$fb;}
 		$twitter=$_POST['twitter'];if($twitter && !startsWith($twitter,'http')){$twitter='http://'.$twitter;}
 		$web=$_POST['web'];if($web && !startsWith($web,'http')){$web='http://'.$web;}
