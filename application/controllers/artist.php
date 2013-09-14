@@ -421,6 +421,147 @@ class Artist extends CI_Controller{
 		createResponse($response);
 	}
 
+	public function gigProfilePage(){
+
+		$sessionArray = $this->session->all_userdata();
+
+		$user_id = $_POST['id']; 
+		error_log($user_id);
+
+		$SQLs = "SELECT * FROM `".DATABASE."`.`shop` WHERE link='$user_id'";
+		$results = mysql_query($SQLs);
+		$a = mysql_fetch_array($results);
+		{
+			$id=$a["id"];$gig=$a["gig"];$cat=$a["category"];
+			$add=$a["venue_add"];$city=$a["venue_city"];$state=$a["venue_state"];
+			$country=$a["venue_country"];$pincode=$a["venue_pin"];
+			$fb=$a["fb"];$twitter=$a["twitter"];$web=$a["web"];
+			$date=$a["venue_date"];$vtime=$a["venue_time"];$duration=$a["duration"];
+			$formattedDate = date('d-m-Y',strtotime($date));
+			$period=$a["period"];$promoter_name=$a["promoter_name"];$promoter=$a["promoter"];
+		
+			/*$SQLs = "SELECT mobile FROM `".DATABASE."`.`members` WHERE link='$promoter'";
+			$result = mysql_query($SQLs);
+			$b = mysql_fetch_array($result);
+			{$mobile=$b["mobile"];}*/
+		
+			//if(!isset($_SESSION["username"])){$mobile=$mobile[0]." * * * * * * * *";}
+				
+			$status=$a["status"];$link=$a["link"];$image=$a["image"];
+			$desc=$a["desc"];$budget_min=$a["budget_min"];
+			$budget_max=$a["budget_min"]+$a["budget_min"]*$a["budget_max"]/100;$time=$a["time"];
+
+			//$response = $a;
+		}
+
+		if($image=="")
+		{
+			$image="gigs.jpg";
+		}
+
+		$gigs="images/gig/$image";
+		$response['gigs'] = $gigs;
+
+		$todayTime = strtotime(date("Y-m-d"));
+		$dated = strtotime($date); 
+
+		$username = $sessionArray['username']; 
+
+		$yes=0;
+
+		$SQLsa = "SELECT link FROM `".DATABASE."`.`members` WHERE `fb_id`='$username'";
+		$resultsa = mysql_query($SQLsa);
+		if (!$resultsa)
+			die("Database query failed: " . mysql_error());
+		$pl = mysql_fetch_assoc($resultsa);
+		$prolink=$pl["link"];
+
+	    $q4 = "SELECT * FROM `".DATABASE."`.`transaction` WHERE gig_id=$link AND status=1";
+	    $result_set4 = mysql_query($q4);	
+		if (mysql_num_rows($result_set4) == 1) 
+	    {
+	        $found = mysql_fetch_array($result_set4);
+	        $yes=1;
+			$artist_booked_id=$found["artist_id"];
+			$artist_booked_name=$found["artist_name"];
+
+			$response['artist_booked_id'] = $artist_booked_id;
+			$response['artist_booked_name'] = $artist_booked_name;
+
+			$gigStatus = 1;
+			$response['gigStatus'] = $gigStatus;	
+			$yes = 1;	
+	    }
+
+	    //$promoter = $response["promoter"];
+		elseif($promoter==$prolink)
+		{
+			$gigStatus = 2;
+			$response['gigStatus'] = $gigStatus;
+		}
+	    
+	    elseif(isset($sessionArray['username_artist']))
+	    { 
+	    	$gigSession = 1;
+	    	$username_artist = $sessionArray['username_artist'];
+	    	$q2 = "SELECT link FROM `".DATABASE."`.`members` WHERE fb_id='$username_artist'";
+	        $result_set2 = mysql_query($q2);	    
+	        if (mysql_num_rows($result_set2) == 1) 
+	        {
+	            $found = mysql_fetch_array($result_set2);
+	            $artist_id = $found["link"];
+	        }
+
+	        $q4 = "SELECT * FROM `".DATABASE."`.`transaction` WHERE gig_id=$link AND artist_id=$artist_id";
+	        $result_set4 = mysql_query($q4);	
+	        if (mysql_num_rows($result_set4) == 1) 
+	        {                    
+				$found = mysql_fetch_array($result_set4);
+	            $statuss=$found["status"];
+	            if($statuss==1){$gigStatus = 3; $response['gigStatus'] = $gigStatus;}
+	            elseif($statuss==2){$gigStatus = 4; $response['gigStatus'] = $gigStatus;}
+	            elseif($statuss==4){$gigStatus = 5; $response['gigStatus'] = $gigStatus;}
+	        }
+		
+			elseif($todayTime > $dated)
+			{
+				$gigStatus = 6;
+				$response['gigStatus'] = $gigStatus;
+			}
+	        else
+	        {                       
+	            if($yes!=1)
+	        	{   
+	        		$gigStatus = 7;
+	        		$response['gigStatus'] = $gigStatus;
+	        	}
+	        }
+	    }    
+	    
+		$response['link'] = $link;
+	    $response['gig'] = $gig; 
+	    $response['cat'] = $cat;   
+		$response['budget_min'] = $budget_min;
+		$response['budget_max'] = $budget_max;
+		$response['formattedDate'] =  $date;
+		$response['vtime'] = $time;
+		$response['duration'] = $duration;
+		$response['fb'] = $fb;
+		$response['web'] = $web;
+		$response['twitter'] = $twitter;
+		$response['desc'] = $desc;
+		$response['promoter_name'] = $promoter_name;
+		$response['city'] = $city;
+		$response['state'] = $state;
+		$response['country'] = $country;
+		$response['gigStatus'] = $gigStatus;
+		$response['add'] = $add;
+		$response['pincode'] = $pincode;
+	                        
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
 	public function mydibs(){
 		ob_start();
 
@@ -497,7 +638,7 @@ class Artist extends CI_Controller{
             	$b = mysql_fetch_assoc($resulte);
             	$contact = $b['mobile'];
 
-				$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact);
+				$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact, $link);
 
 				$response['dibHistory'][] = $dibRow;
 			}	

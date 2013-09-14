@@ -65,6 +65,19 @@
 		$("#lefty").load("include/profile.php?edit=1");
     }
 
+    function gigProfileCallback(a) 
+    {
+      $("#loading-indicator").show();      
+      console.log("Data: ", JSON.stringify(a));
+      $("#lefty").load("include/gigs.php", {json: JSON.stringify(a)});
+    }
+    function gigProfile(user_id) 
+    {
+      console.log("id: ", user_id);
+      $("#loading-indicator").show();      
+      $.post('artist/gigProfilePage',{id: user_id},gigProfileCallback,'json');
+    }
+
     function artistDibsCallback(a)
     {
 		$("#lefty").load("include/dib.php", {json: JSON.stringify(a)});

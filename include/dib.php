@@ -34,6 +34,7 @@
                         $promoter=$row[5];
                         $promoter_name=$row[6];
                         $contact=$row[7];
+                        $link=$row[8];
 
                         print("
                         <table width=100% style='text-align:center;'>
