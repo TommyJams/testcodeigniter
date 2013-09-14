@@ -53,7 +53,7 @@
 			$phone = $values['radio-form-phone'];
 			$email = $values['radio-form-email'];
 
-			$SQLi = "INSERT INTO `$database`.`radioonegate` (`id`, `name`,`band`,`phone`,`email`) 
+			$SQLi = "INSERT INTO `".DATABASE."`.`radioonegate` (`id`, `name`,`band`,`phone`,`email`) 
 					VALUES('', '$name', '$band', '$phone', '$email')";
 			$resulti = mysql_query($SQLi);
 			if(!$resulti)

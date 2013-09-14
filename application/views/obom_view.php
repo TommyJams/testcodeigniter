@@ -131,7 +131,7 @@
 							</div>							
 						</form>
 						<!-- /Radio form -->						
-						<a href="beta/radioone.php" target="_blank" class="button-black clear-fix">
+						<a href="/radiooone" target="_blank" class="button-black clear-fix">
 							Previous Episodes
 						</a>
 					</li>

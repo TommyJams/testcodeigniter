@@ -84,7 +84,7 @@ class Artist extends CI_Controller{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
 
-			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
 			{
