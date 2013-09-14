@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include_once(FCPATH . 'config.local.php');   //Upload from local file
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -213,6 +215,17 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 |
 */
 $config['cache_path'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Encryption Key
+|--------------------------------------------------------------------------
+|
+| If you use the Encryption class or the Session class you
+| MUST set an encryption key.  See the user guide for info.
+|
+*/
+$config['encryption_key'] = '1tommyblah';
 
 /*
 |--------------------------------------------------------------------------
