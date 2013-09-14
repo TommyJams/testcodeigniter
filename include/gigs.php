@@ -54,10 +54,9 @@
                 <div id="userPic" class="pic">
 
                     <?php $gigs = (json_decode($_POST['json'])->gigs);?>
+                    <?php $gigSession = (json_decode($_POST['json'])->gigSession); ?>
 					<? 
-                        $CI =& get_instance();
-                        $sessionArray = $CI->session->all_userdata();
-                        if(isset($sessionArray['username']))
+                        if($gigSession != 1)
                         {
                             print("<a href='#'  onclick=popup('profil')>");
                         }
@@ -121,8 +120,6 @@
                         <div id="gigStatus" style="width:auto; height:auto; margin:20px auto; position:relative;">
 						<center>
                         <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
-                        <?php $link = (json_decode($_POST['json'])->link); ?>
-                        <?php $gigSession = (json_decode($_POST['json'])->gigSession); ?>
                         <?	
                         if ($gigStatus == 1) // Gig is booked
                         {
