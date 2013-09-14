@@ -9,13 +9,12 @@ class Radioone extends CI_Controller{
 		$data['urlday'] = $this->uri->segment(5);
 
 		$sessionArray = $this->session->all_userdata();
-		$database = 'tommyjam_test';
 
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
 		}
 
-		$SQLs = "SELECT * FROM `$database`.`radioone` ORDER BY streamdate desc";
+		$SQLs = "SELECT * FROM `".DATABASE."`.`radioone` ORDER BY streamdate desc";
 		$results = mysql_query($SQLs);
 		
 		if($a = mysql_fetch_assoc($results))
@@ -30,30 +29,23 @@ class Radioone extends CI_Controller{
 
 	public function loadTiles() {
 
-		$database = 'tommyjam_test';
-
-		error_log(0);
-
 		if(isset($_POST["day"]))
 		{
 			$thisDate = $_POST["day"];
-			error_log(1);
 		}
 
 		if(isset($_POST["month"]) && isset($_POST["year"]))
 		{
 			$thisMonth = $_POST["month"];
 			$thisYear = $_POST["year"];
-			error_log(2);
 		}
 		else
 		{
 			$thisMonth = date("m");
 			$thisYear = date("Y");
-			error_log(3);
 		}
 
-		$SQLs = "SELECT * FROM `$database`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
+		$SQLs = "SELECT * FROM `".DATABASE."`.`radioone` WHERE YEAR(streamdate) = '".$thisYear."' AND MONTH(streamdate) = '".$thisMonth."'";
 		if(isset($thisDate))
 		 	$SQLs = $SQLs."AND DAY(streamdate) = '".$thisDate."'";
 

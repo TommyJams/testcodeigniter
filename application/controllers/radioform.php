@@ -5,7 +5,6 @@
 		public function validateDetails(){
 			
 			$this->load->helper('functions');
-			$database = 'tommyjam_test';
 			
 			$response=array('error'=>0,'info'=>null);
 
