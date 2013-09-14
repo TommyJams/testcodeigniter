@@ -1329,18 +1329,18 @@ class Promoter extends CI_Controller{
 		session_start();
 		}
 
-		if(!isset($sessionArray['username_artist']))
+		if(!isset($sessionArray['username']))
 		{
 			redirect('http://testcodeigniter.azurewebsites.net/index');
 			exit;
 		}
 
-		$username=$sessionArray['username_artist'];
-		$password=md5($sessionArray['password_artist']);
+		$username=$sessionArray['username'];
+		$password=md5($sessionArray['password']);
 
 		$data['gig_id'] = $this->uri->segment(3);
 
-		error_log($data);
+		error_log("Gig Id: ".$data);
 
 		$this->load->view('promoter_view', $data);
 	}
@@ -1354,10 +1354,10 @@ class Promoter extends CI_Controller{
 			session_start();
 		}
 
-		if(isset($sessionArray['username_artist']))
+		if(isset($sessionArray['username']))
 		{
-			$username=$sessionArray['username_artist'];
-			$password=md5($sessionArray['password_artist']);
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
 
 			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
@@ -1458,10 +1458,10 @@ class Promoter extends CI_Controller{
 			session_start();
 		}
 
-		if(isset($sessionArray['username_artist']))
+		if(isset($sessionArray['username']))
 		{
-			$username=$sessionArray['username_artist'];
-			$password=md5($sessionArray['password_artist']);
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
 
 			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
