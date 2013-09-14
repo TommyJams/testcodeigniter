@@ -390,7 +390,12 @@ class Promoter extends CI_Controller{
 	        		$response['gigStatus'] = $gigStatus;
 	        	}
 	        }
-	    }    
+	    } 
+	    elseif($todayTime > $dated)
+		{
+			$gigStatus = 8;
+			$response['gigStatus'] = $gigStatus;
+		}   
 	    
 		$response['link'] = $link;
 	    $response['gig'] = $gig; 

@@ -2,16 +2,6 @@
 <head>
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files --> 
-	<script type="text/JavaScript">
-	function show(d)
-	{ document.getElementById('frameprofessional').style.display="none";
-		document.getElementById('frameabout').style.display="none";
-		document.getElementById('framecontact').style.display="none";
-		document.getElementById('framesocial').style.display="none";	
-		document.getElementById(d).style.display="block";	
-	}
-	</script>
-
 </head>
  <body>
     <div id="blanket" style="display:none;
@@ -57,18 +47,25 @@
         </form>
     </div>
 
-    <div id="box" style="display:block; height:100%;">
-
-    <? if(!isset($_GET["edit"])){ ?>		
+    <div id="box" style="display:block; height:100%;">	
         <section id="left" style="width:100%; height:100%;">
 			<div id="userStats" class="clearfix">
                 <div id="userPic" class="pic">
+
                     <?php $gigs = (json_decode($_POST['json'])->gigs);?>
-					<? if(isset($_SESSION['username']))
-                    {print("<a href='#'  onclick=popup('profil')>");}
-					else {print("<a href='#'>");}
-                    print ("<img src='$gigs' class='userStatsPic' />"); ?>
-					</a>
+					<?  $sessionArray = $this->session->all_userdata();
+                        if(isset($sessionArray['username']))
+                        {
+                            print("<a href='#'  onclick=popup('profil')>");
+                        }
+					   else 
+                       { 
+                            print("<a href='#'>");
+                       }
+                       print ("<img src='$gigs' class='userStatsPic' />"); 
+                    ?>
+					
+                    </a>
 				</div>
 				<div class="data">
                     <div style=" width:35%; height:100%; float:left;">
@@ -140,22 +137,26 @@
                             if($gigStatus == 3){print("<a href='#' id='addnew' style='background: #0a0;'>Accepted</a>");}
                             elseif($gigStatus == 4){print("<a href='#' id='addnew' style='background: #a00'>Rejected</a>");}
                             elseif($gigStatus == 5){print("<a href='#' id='addnew' style='background: #282828;'>Pending</a>");}
-                        }
-						elseif($gigStatus == 6)
-						{
-							print("<a href='javascript:;' class='dibStatusRef' style='background:#666;'>Closed</a>");
-						}
-                        else
-                        {                       
-                            if($gigStatus == 7)
-                            {   ?>
+                        
+					        elseif($gigStatus == 6)
+						    {
+							    print("<a href='javascript:;' class='dibStatusRef' style='background:#666;'>Closed</a>");
+						    }
+                            elseif($gigStatus == 7)
+                            {                       
+                            ?>
                                 <?php $link = (json_decode($_POST['json'])->link); ?>
                                 <form  action="dib_action.php"  method="post">
                                     <input type="hidden" name="gig" value="<? print($link);?>">
                                     <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="return confirmSubmit()">
                                 </form>
-                                <?
+                            <?
                             }
+                        }
+                        
+                        elseif($gigStatus == 8)
+                        {
+                            print("<a href='javascript:;' class='dibStatusRef' style='background:#666;'>Closed</a>");
                         }
                     
                         /*
