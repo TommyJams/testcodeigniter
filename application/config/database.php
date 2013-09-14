@@ -70,7 +70,7 @@ if (is_readable(FCPATH . 'config.local.php'))
     include_once(FCPATH . 'config.local.php');
     foreach($db['default'] as $key => $val)
     {
-        $db['default'][$key] = (isset($config['db'][$key])) ? $config['db'][$key] : $val;
+        $db['default'][$key] = (isset($config["db"]["$key"])) ? $config["db"]["$key"] : $val;
         error_log('KEY: '.$key.'VALUE: '.$db['default'][$key]);
     }
 }
