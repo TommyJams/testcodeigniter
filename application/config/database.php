@@ -48,9 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'tommyjamstest.cloudapp.net';
-$db['default']['username'] = '*********'; //Upload from local file
-$db['default']['password'] = '*********'; //Upload from local file
+include_once(FCPATH . 'config.local.php');
+$db['default']['hostname'] = DATABASE_HOSTNAME;
+$db['default']['username'] = DATABASE_USERNAME; //Upload from local file
+$db['default']['password'] = DATABASE_PASSWORD; //Upload from local file
 $db['default']['database'] = 'tommyjam_test';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
@@ -67,11 +68,11 @@ $db['default']['stricton'] = FALSE;
 //If there is a local config file, overwrite the settings with that..
 if (is_readable(FCPATH . 'config.local.php'))
 {
-    include_once(FCPATH . 'config.local.php');
-    error_log($config["db"]["username"]);
+    //include_once(FCPATH . 'config.local.php');
+    //error_log($config["db"]["username"]);
     foreach($db['default'] as $key => $val)
     {
-        $db['default'][$key] = (isset($config["db"][$key])) ? $config["db"][$key] : $val;
+        //$db['default'][$key] = (isset($config["db"][$key])) ? $config["db"][$key] : $val;
         error_log('KEY: '.$key.'VALUE: '.$db['default'][$key]);
     }
 }
