@@ -1319,5 +1319,245 @@ class Promoter extends CI_Controller{
 		$response['error']=0;
 		createResponse($response);
 	}
+
+	public function feedback(){
+
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id'])) {
+		session_start();
+		}
+
+		if(!isset($sessionArray['username_artist']))
+		{
+			redirect('http://testcodeigniter.azurewebsites.net/index');
+			exit;
+		}
+
+		$username=$sessionArray['username_artist'];
+		$password=md5($sessionArray['password_artist']);
+
+		$data['gig_id'] = $this->uri->segment(3);
+
+		$this->load->view('promoter_view', $data);
+	}
+
+	public function showGigFeedback()
+	{
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+
+		if(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$results = mysql_query($SQLs);
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$loggedInID=$a["link"];
+			}
+
+			$gigLink = $_POST['gigLink'];
+			$q2 = "SELECT * FROM `$database`.`rating` WHERE gig_id=$gigLink";
+			$result_set2 = mysql_query($q2);
+			if (mysql_num_rows($result_set2) == 1)
+			{
+				$found = mysql_fetch_array($result_set2);
+				$status=$found["status"];
+				$prate=$found["promoter_rate"];
+				$arate=$found["artist_rate"];
+				$edate=$found["event_date"];
+				$date=date("Y-m-d");
+				$today = strtotime($date);
+				$event_date = strtotime($edate);
+				if($event_date > $today)
+				{
+					$response['error'] = 1;
+					$response['reason'] = 'premature';
+					$response['eventDate'] = $edate;
+
+					$this->load->helper('functions');
+					createResponse($response);
+				}
+
+				if($arate!=0)	//Change for promoter
+				{
+					$response['error'] = 1;
+					$response['reason'] = 'already';
+					$response['eventDate'] = $edate;
+
+					$this->load->helper('functions');
+					createResponse($response);	
+				}
+
+				$artist_id=$found["artist_id"];$artist_name=$found["artist_name"];
+				$promoter_id=$found["promoter_id"];$promoter_name=$found["promoter_name"];
+				$gig_id=$found["gig_id"];$gig_name=$found["gig_name"];
+				$p_rate=$found["promoter_rate"];$p_comment=$found["promoter_comment"];$p_gig_rate=$found["promoter_gig_rate"];$p_gig_comment=$found["promoter_gig_comment"];$p_future=$found["promoter_future"];
+				$a_rate=$found["artist_rate"];$a_comment=$found["artist_comment"];$a_dib_rate=$found["artist_dib_rate"];$a_dib_comment=$found["artist_dib_comment"];$a_future=$found["artist_future"];
+			}
+			else 
+			{
+				$response['error'] = 1;
+				$response['reason'] = 'gignotfound';
+
+				$this->load->helper('functions');
+				createResponse($response);
+			}
+
+			if($loggedInID != $artist_id)	//Change for promoter
+			{
+				$response['error'] = 1;
+				$response['reason'] = 'ineligible';
+				$response['gig_name'] = $gig_name;
+				$response['eventDate'] = $edate;
+
+				$this->load->helper('functions');
+				createResponse($response);
+			}					
+		}
+		else
+		{
+			$response['error'] = 1;
+			$response['reason'] = 'nologin';
+
+			$this->load->helper('functions');
+			createResponse($response);
+		}
+
+		$response['error'] = 0;
+		$response['reason'] = 'fine';
+		$response['gig_id'] = $gig_id;
+		$response['gig_name'] = $gig_name;
+		$response['role'] = 'p';
+		$response['eventDate'] = $edate;
+		$response['promoter_name'] = $promoter_name;
+		$response['artist_name'] = $artist_name;
+
+
+		$this->load->helper('functions');
+		createResponse($response);		
+	}
+
+	public function enterGigFeedback()
+	{
+		$sessionArray = $this->session->all_userdata();
+		$database = 'tommyjam_test';
+
+		if (!isset($sessionArray['session_id']))
+		{
+			session_start();
+		}
+
+		if(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+
+			$SQLs = "SELECT * FROM `$database`.`members` WHERE fb_id='$username'";
+			$results = mysql_query($SQLs);
+			while ($a = mysql_fetch_assoc($results))
+			{
+				$loggedInID=$a["link"];
+			}
+
+			if(isset($_POST["gig"]) && isset($_POST["prate"]))	//Change for promoter
+			{
+				$gigLink = $_POST['gigLink'];
+				$prate=$_POST['prate'];							//Change for promoter
+				$pcomment=$_POST['pcomment'];					//Change for promoter
+				$gig=$_POST['gig'];
+				$gigc=$_POST['gigc'];
+				$future=$_POST['future'];
+
+				$q2 = "UPDATE `$database`.`rating` SET `status` = '1', `promoter_rate` = '$prate',`promoter_comment` = '$pcomment', `promoter_dib_rate` = '$gig', `promoter_dib_comment` = '$gigc', `promoter_future` = '$future' WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; //Change for promoter
+				$result_set2 = mysql_query($q2);
+				if (!$result_set2)
+				{
+					$response['error'] = 1;
+					$response['reason'] = 'queryfailed';
+
+					$this->load->helper('functions');
+					createResponse($response);
+				}
+
+				$q3 = "SELECT * FROM `$database`.`rating` WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; //Change for promoter
+				$result_set3 = mysql_query($q3);
+				if (!$result_set3)
+				{
+					$response['error'] = 1;
+					$response['reason'] = 'queryfailed';
+
+					$this->load->helper('functions');
+					createResponse($response);
+				}
+
+				while ($a = mysql_fetch_assoc($result_set3))
+				{
+					$gigName=$a['gig_name'];
+					$promoter_id = $a['promoter_id'];
+				}
+
+				$to = "alerts@tommyjams.com";
+				$sender = "alerts@tommyjams.com";
+				$subject = "Gig has been rated by Artist";
+				$mess="Gig: $gigName<br>Rating: $gig<br>Comment: $gigc";
+
+				$this->load->helper('mail');
+    			send_email($to, $sender, $subject, $mess);
+
+				$q1 = "SELECT * FROM `$database`.`members` WHERE link=$promoter_id";
+				$result_set1 = mysql_query($q1);
+				if (mysql_num_rows($result_set1) == 1)
+				{
+					$a = mysql_fetch_array($result_set1);
+					$silver = $a["silver"];
+					$nsilver = $a["nsilver"];
+					$nsilver++;
+					$avgsilver = ((($nsilver-1) * $silver) + $arate)/($nsilver);
+					
+					$q3 = "UPDATE `$database`.`members` SET `silver` = '$avgsilver',`nsilver` = '$nsilver' WHERE link=$promoter_id";
+					$result_set3 = mysql_query($q3);
+					if (!$result_set3)
+					{
+						$response['error'] = 1;
+						$response['reason'] = 'queryfailed';
+
+						$this->load->helper('functions');
+						createResponse($response);
+					}
+				}
+			}
+			else
+			{
+				$response['error'] = 1;
+				$response['reason'] = 'norating';
+
+				$this->load->helper('functions');
+				createResponse($response);
+			}
+		}
+		else
+		{
+			$response['error'] = 1;
+			$response['reason'] = 'nologin';
+
+			$this->load->helper('functions');
+			createResponse($response);
+		}
+
+		$response['error'] = 0;
+		$response['reason'] = 'rated';
+
+		$this->load->helper('functions');
+		createResponse($response);
+	}
 }
 ?>	

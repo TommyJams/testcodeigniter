@@ -274,6 +274,43 @@
       $.post('promoter/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
     }
 
+
+
+    function showGigFeedbackCallback(a)
+    {
+        console.log("Data: ", JSON.stringify(a));
+        $("#lefty").load("/include/feed.php", {json: JSON.stringify(a)});
+    }
+    function showGigFeedback(link)
+    {
+        $("#loading-indicator").show();
+        $.post('/promoter/showGigFeedback',{'gigLink': link},showGigFeedbackCallback,'json');      
+    }
+
+    function enterGigFeedbackCallback(a)
+    {
+        console.log("Data: ", JSON.stringify(a));
+        $("#loading-indicator").hide();
+        if(!a.error)
+            alert('Thank you for taking the time out to rate the host');
+        else
+            alert('Sorry, there has been some error!');
+    }
+    function enterGigFeedback(obj)
+    {
+        $("#loading-indicator").show();   
+        console.log('gigLink',obj.gigLink,'arate',obj.rate,'acomment',obj.comment,'gig',obj.gigRate,'gigc',obj.gigComment,'future',obj.future);
+        $.post('/promoter/enterGigFeedback',{'gigLink': obj.gigLink, 'prate': obj.rate, 'pcomment': obj.comment, 'gig': obj.gigRate, 'gigc': obj.gigComment, 'future': obj.future},enterGigFeedbackCallback,'json');
+    }
+
+
+
+
+
+
+
+
+
     </script>
     
     <script type="text/javascript">
@@ -303,7 +340,7 @@
 
         <script>
         <?
-          if(isset($_GET["profile"]) && $_GET["profile"]=="search")
+          /*if(isset($_GET["profile"]) && $_GET["profile"]=="search")
           { 
             if(isset($_GET["pages"])){$_SESSION["pages"]=$_GET["pages"];}
             else{$_SESSION["pages"]=1;}
@@ -324,7 +361,11 @@
 				        else if(isset($_GET["gig"]) && isset($_GET["edited"])){ 
                   print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]&edited=new');");}
                 else if(isset($_GET["gig"])){ print("$('#lefty').load('include/gigs.php?gig=$_GET[gig]');");}
-              }
+              } */
+              if(isset($gig_id))
+                    print("showGigFeedback($gig_id);");
+                else
+                    print("$.post('promoter/profilepage','',showProfileCallback,'json');");
         ?>
         </script>
 		
