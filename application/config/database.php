@@ -44,7 +44,7 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-include_once(FCPATH . 'config.local.php');   //Upload from local file
+//include_once(FCPATH . 'config.local.php');   //Upload from local file
 
 $active_group = 'default';
 $active_record = TRUE;
@@ -66,11 +66,11 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 //If there is a local config file, overwrite the settings with that..
-foreach($db['default'] as $key => $val)
+/*foreach($db['default'] as $key => $val)
 {
     //$db['default'][$key] = (isset($config["db"][$key])) ? $config["db"][$key] : $val;
     error_log('KEY: '.$key.'VALUE: '.$db['default'][$key]);
-}
+}*/
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
