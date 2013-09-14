@@ -216,17 +216,6 @@ $config['cache_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
-| Encryption Key
-|--------------------------------------------------------------------------
-|
-| If you use the Encryption class or the Session class you
-| MUST set an encryption key.  See the user guide for info.
-|
-*/
-$config['encryption_key'] = '1tommyblah';
-
-/*
-|--------------------------------------------------------------------------
 | Session Variables
 |--------------------------------------------------------------------------
 |
