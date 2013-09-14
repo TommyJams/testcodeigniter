@@ -1340,7 +1340,7 @@ class Promoter extends CI_Controller{
 
 		$data['gig_id'] = $this->uri->segment(3);
 
-		error_log("Gig Id: ".$data);
+		error_log("Gig Id: ".$data['gig_id']);
 
 		$this->load->view('promoter_view', $data);
 	}
@@ -1389,7 +1389,7 @@ class Promoter extends CI_Controller{
 					createResponse($response);
 				}
 
-				if($arate!=0)	//Change for promoter
+				if($prate!=0)	//Change for promoter
 				{
 					$response['error'] = 1;
 					$response['reason'] = 'already';
@@ -1414,7 +1414,7 @@ class Promoter extends CI_Controller{
 				createResponse($response);
 			}
 
-			if($loggedInID != $artist_id)	//Change for promoter
+			if($loggedInID != $promoter_id)	//Change for promoter
 			{
 				$response['error'] = 1;
 				$response['reason'] = 'ineligible';
